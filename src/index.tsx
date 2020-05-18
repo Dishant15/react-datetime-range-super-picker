@@ -1,10 +1,3 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+import TimePickerModule from "./timepicker/TimePicker";
 
-interface Props {
-  text: string
-}
-
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text} From Dishant Chavda</div>
-}
+export const TimePicker = TimePickerModule

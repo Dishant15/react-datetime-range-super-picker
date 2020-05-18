@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-datetime-range-super-picker'
+import { TimePicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+	return (
+		<TimePicker time={{hour24 : 22, minute : 30}} 
+			format="HH:mm aaaa" onTimeUpdate={(time) => console.log(time)} />
+	)
 }
 
 export default App
