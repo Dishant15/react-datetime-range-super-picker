@@ -1,0 +1,10 @@
+.root {
+	--primary-color : white;
+	--primary-font-color: rgba(0, 0, 0, 0.57);
+	
+	--secondary-color : #51ADAC;
+	--other-color : #efefef;
+
+	--primary-highlight-color : #88b04b;
+	--secondary-highlight-color: #51ADAC;
+}

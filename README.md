@@ -15,12 +15,12 @@ npm install --save react-datetime-range-super-picker
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-datetime-range-super-picker'
+import { TimePicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <TimePicker time="08:30 am" onTimeUpdate={(time) => console.log(time)} />
   }
 }
 ```

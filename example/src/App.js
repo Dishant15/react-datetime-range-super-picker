@@ -5,8 +5,10 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
 	return (
-		<TimePicker time={{hour24 : 22, minute : 30}} 
-			format="HH:mm aaaa" onTimeUpdate={(time) => console.log(time)} />
+		<div style={{marginTop:"150px"}}>
+			<TimePicker time={{hour24 : 22, minute : 30}} 
+				onTimeUpdate={(time) => console.log(time)} />
+		</div>
 	)
 }
 

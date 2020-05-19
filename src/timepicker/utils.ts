@@ -56,7 +56,7 @@ export const createInputTime = (input_time : TimePickerProps["time"]):MainTime =
 
 export const generateTimeOutput = (
 	{hour, minute, meridiem} : MainTime, 
-	time_format:string = 'hh:mm aaa'
+	time_format:string
 ):OutputTime => {
 	
 	let hour24 = hour
