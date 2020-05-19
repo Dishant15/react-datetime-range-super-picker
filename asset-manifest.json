@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-datetime-range-super-picker/static/css/main.7a018333.chunk.css",
+    "main.js": "/react-datetime-range-super-picker/static/js/main.30282816.chunk.js",
+    "main.js.map": "/react-datetime-range-super-picker/static/js/main.30282816.chunk.js.map",
+    "runtime-main.js": "/react-datetime-range-super-picker/static/js/runtime-main.89dee7b1.js",
+    "runtime-main.js.map": "/react-datetime-range-super-picker/static/js/runtime-main.89dee7b1.js.map",
+    "static/js/2.cb6521ac.chunk.js": "/react-datetime-range-super-picker/static/js/2.cb6521ac.chunk.js",
+    "static/js/2.cb6521ac.chunk.js.map": "/react-datetime-range-super-picker/static/js/2.cb6521ac.chunk.js.map",
+    "index.html": "/react-datetime-range-super-picker/index.html",
+    "precache-manifest.5375ded9a423acf7850c64550af4effb.js": "/react-datetime-range-super-picker/precache-manifest.5375ded9a423acf7850c64550af4effb.js",
+    "service-worker.js": "/react-datetime-range-super-picker/service-worker.js",
+    "static/css/main.7a018333.chunk.css.map": "/react-datetime-range-super-picker/static/css/main.7a018333.chunk.css.map",
+    "static/js/2.cb6521ac.chunk.js.LICENSE.txt": "/react-datetime-range-super-picker/static/js/2.cb6521ac.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.89dee7b1.js",
+    "static/js/2.cb6521ac.chunk.js",
+    "static/css/main.7a018333.chunk.css",
+    "static/js/main.30282816.chunk.js"
+  ]
+}
