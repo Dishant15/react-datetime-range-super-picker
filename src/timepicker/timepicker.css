@@ -9,13 +9,13 @@
 	--clock-padding : 0.8em;
 	--clock-hand-height : 1.8em;
 
+	background: var(--primary-color);
 	color: var(--primary-font-color);
 	padding-top: .8em;
 	width: calc(var(--clock-size) + (var(--clock-padding) * 2) );
 }
 
 .title {
-	background: var(--primary-color);
 	color : var(--primary-highlight-color);
 	text-align: center;
 	font-size: 1.5em;

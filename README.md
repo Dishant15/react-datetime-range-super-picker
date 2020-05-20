@@ -10,17 +10,25 @@
 npm install --save react-datetime-range-super-picker
 ```
 
+[Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
+
 ## Usage
 
 ```tsx
 import React, { Component } from 'react'
 
-import { TimePicker } from 'react-datetime-range-super-picker'
+import { TimePicker, MonthPicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <TimePicker time="08:30 am" onTimeUpdate={(time) => console.log(time)} />
+    return (
+      <TimePicker time="08:30 am" 
+        onTimeUpdate={(time) => console.log(time)} />
+
+      <MonthPicker month={10} year={1991}
+				onTimeUpdate={(time) => console.log(time)} />
+    )
   }
 }
 ```

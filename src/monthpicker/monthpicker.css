@@ -1,0 +1,86 @@
+.wrapper {
+	/** main color imports */
+	composes: root from "../root.css";
+	box-sizing: border-box;
+	margin : 0 auto;
+
+	/* other element sizes */
+	--month-pill-size : 4em;
+	--month-pill-margin : .3em;
+
+	background: var(--primary-color);
+	color: var(--primary-font-color);
+	padding-top: .8em;
+	/* width: calc( (var(--month-pill-size) * 3) + (var(--month-pill-margin) * 6) ); */
+}
+
+/* --------- Year Picker ------------ */
+
+.year_show {
+	color: var(--primary-highlight-color);
+	font-size: 1.5em;
+	text-align: center;
+	padding-bottom: .4em;
+}
+
+.year_edit {
+
+}
+
+/* --------- Month Picker ------------ */
+
+.month_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 18.7em;
+}
+
+.month_pill_wrapper {
+	display: inline-block;
+	padding : .1em;
+	white-space: nowrap;
+	overflow: hidden;
+	width: calc( (var(--month-pill-size) * 3) + (var(--month-pill-margin) * 6) );
+}
+
+.month_pill_crousel {
+	transition: all .2s linear;
+}
+
+.crousel_btns {
+	display: inline-block;
+	cursor: pointer;
+	width: calc(var(--month-pill-size)/2);
+	border-radius: .8em;
+	margin: var(--month-pill-margin);
+	height: 1.2em;
+	line-height: 1.2em;
+	text-align: center;
+	color: var(--light-font-color);
+}
+
+.month_btn {
+	display: inline-block;
+	cursor: pointer;
+	padding : .3em 0;
+	width: var(--month-pill-size);
+	border-radius: .8em;
+	margin: var(--month-pill-margin);
+	background: var(--other-color);
+	height: 1.2em;
+	line-height: 1.2em;
+	text-align: center;
+	transition: all .2s linear;
+}
+
+.month_pill {
+	composes : month_btn;
+	color: var(--light-font-color);
+}
+
+.month_pill_active {
+	composes : month_btn;
+	color: var(--primary-highlight-color);
+	font-weight: bold;
+}

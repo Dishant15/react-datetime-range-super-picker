@@ -1,10 +1,18 @@
 .root {
 	--primary-color : white;
 	--primary-font-color: rgba(0, 0, 0, 0.57);
+	--light-font-color : rgba(0,0,0, 0.35);
 	
 	--secondary-color : #51ADAC;
 	--other-color : #efefef;
 
 	--primary-highlight-color : #88b04b;
 	--secondary-highlight-color: #51ADAC;
+}
+
+.no_select {
+	-webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }

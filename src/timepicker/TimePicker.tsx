@@ -15,8 +15,8 @@ export default ({time, format='hh:mm aaa', onTimeUpdate} : TimePickerProps) => {
 
 	const handleTimeChange = useCallback((new_time : MainTime) => {
 		const res_time = generateTimeOutput(new_time, format)
-		onTimeUpdate(res_time)
 		setTime(new_time)
+		onTimeUpdate(res_time)
 	}, [])
 
 	
