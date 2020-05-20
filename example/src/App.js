@@ -12,7 +12,7 @@ const App = () => {
 				onTimeUpdate={(time) => console.log(time)} />
 
 			<div style={{margin:"50px 0px", fontSize:"2em"}}>MonthPicker</div>
-			<MonthPicker month={10} year={1991}
+			<MonthPicker time={new Date()}
 				onTimeUpdate={(time) => console.log(time)} />
 		</div>
 	)

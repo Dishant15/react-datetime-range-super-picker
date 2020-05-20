@@ -27,7 +27,7 @@ class Example extends Component {
         onTimeUpdate={(time) => console.log(time)} />
 
       <MonthPicker month={10} year={1991}
-				onTimeUpdate={(time) => console.log(time)} />
+        onTimeUpdate={(time) => console.log(time)} />
     )
   }
 }

@@ -11,7 +11,6 @@
 	background: var(--primary-color);
 	color: var(--primary-font-color);
 	padding-top: .8em;
-	/* width: calc( (var(--month-pill-size) * 3) + (var(--month-pill-margin) * 6) ); */
 }
 
 /* --------- Year Picker ------------ */
@@ -24,7 +23,24 @@
 }
 
 .year_edit {
+	padding-bottom: .4em;
+}
 
+.year_edit_input {
+	display: inline-block;
+	text-align: center;
+	border:none;
+	outline: none;
+	padding : .5em;
+	font-size: 1.1em;
+	width: 6em;
+	border-bottom: 1px solid var(--primary-highlight-color);
+}
+
+.year_edit_done {
+	cursor: pointer;
+	padding : .5em;
+	display: inline-block;
 }
 
 /* --------- Month Picker ------------ */

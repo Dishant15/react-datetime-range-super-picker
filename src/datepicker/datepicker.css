@@ -1,0 +1,13 @@
+.wrapper {
+	/** main color imports */
+	composes: root from "../root.css";
+	box-sizing: border-box;
+	margin : 0 auto;
+
+	/* other element sizes */
+	
+
+	background: var(--primary-color);
+	color: var(--primary-font-color);
+	padding-top: .8em;
+}
