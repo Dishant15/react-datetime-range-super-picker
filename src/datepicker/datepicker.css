@@ -11,3 +11,37 @@
 	color: var(--primary-font-color);
 	padding-top: .8em;
 }
+
+
+.calender_wrapper {
+	margin: 0 auto;
+}
+
+.week_day_header {
+	text-align: center;
+	font-weight: bold;
+}
+
+.week_day_title {
+	color: var(--primary-highlight-color);
+	padding : .5em 1em;
+}
+
+.calender_cell {
+	cursor: pointer;
+	color : var(--secondary-highlight-color);
+	font-weight: bold;
+	padding : .5em;
+	transition: all .2s linear;
+}
+
+.calender_cell_active {
+	composes : calender_cell;
+	background: var(--secondary-highlight-color);
+	color : var(--primary-color);
+}
+
+.calender_cell:hover {
+	background: var(--secondary-highlight-color);
+	color : var(--primary-color);
+}

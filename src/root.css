@@ -16,3 +16,11 @@
       -ms-user-select: none;
           user-select: none;
 }
+
+.input {
+	border:none;
+	outline: none;
+	padding : .5em;
+	font-size: 1.1em;
+	border-bottom: 1px solid var(--primary-highlight-color);
+}

@@ -1,4 +1,5 @@
 import { format, isValid } from "date-fns";
+import { get } from "lodash";
 
 import { OutputShape } from "./interfaces";
 
@@ -19,6 +20,10 @@ export const getMonthAndYear = (time:OutputShape | Date): OutputShape => {
 		return {month: time.getMonth(), year: time.getFullYear()}
 	} else {
 		// time is a month object
-		return time
+		const now = new Date()
+		return {
+			month : get(time , 'month', now.getMonth() ), 
+			year : get(time , 'year', now.getFullYear() )
+		}
 	}
 }

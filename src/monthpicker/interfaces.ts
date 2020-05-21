@@ -4,8 +4,8 @@ export interface OutputShape {
 	year : number
 }
 
-export interface MonthPickerProps extends OutputShape {
+export interface MonthPickerProps {
 	/** default value : new Date() ; i.e. current time  */
 	time? : OutputShape | Date,
-	onTimeUpdate : ({}:OutputShape) => void
+	onDateUpdate : ({}:OutputShape) => void
 }

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { range } from 'lodash'
 
 import { formatMonth, getMonthAndYear } from "./utils";
@@ -9,24 +9,26 @@ import root_styles from '../root.css'
 
 
 
-export default ({time=new Date(), onTimeUpdate}:MonthPickerProps) => {
+export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
 
 	const {month, year} = getMonthAndYear(time)
 
-	const [edit, setEdit] = useState(true)
+	const [edit, setEdit] = useState(false)
 	const [res_year, setYear] = useState(year)
-	const [res_month, setMonth] = useState(month)
 
 	// crousel scroll in em
 	const pos_change_delta = 13.8
 	// calculate and set pos according to current selected month
-	const [m_pos, setMPos] = useState(-Math.floor(res_month/3) * pos_change_delta)
+	const [m_pos, setMPos] = useState(-Math.floor(month/3) * pos_change_delta)
+
+	useEffect(() => {
+		setMPos(-Math.floor(month/3) * pos_change_delta)
+	}, [month])
 
 	const handleTimeChange = useCallback((new_time : OutputShape) => {
 		setYear(new_time.year)
-		setMonth(new_time.month)
 		setEdit(false)
-		onTimeUpdate(new_time)
+		if(onDateUpdate) onDateUpdate(new_time);
 	}, [])
 
 	// change direction : 1 : increment , 0 : decrement
@@ -34,7 +36,7 @@ export default ({time=new Date(), onTimeUpdate}:MonthPickerProps) => {
 		if(change_dir) {
 			const next_pos = m_pos + pos_change_delta
 			// can not go left after Jan
-			if(next_pos < 0) setMPos(next_pos)
+			if(next_pos < 3) setMPos(next_pos)
 		} else {
 			const next_pos = m_pos - pos_change_delta
 			// can not go right after Dec
@@ -53,13 +55,13 @@ export default ({time=new Date(), onTimeUpdate}:MonthPickerProps) => {
 						onChange={(e) => setYear(Number(e.target.value))} />
 
 					<div className={styles.year_edit_done}
-						onClick={() => handleTimeChange({month : res_month, year : res_year})}>
+						onClick={() => handleTimeChange({month : month, year : res_year})}>
 						Done
 					</div>
 				</div>
 			:
 				<div className={styles.year_show} onClick={() => setEdit(true)}>
-					{res_year} {formatMonth(res_month, 'MMMM')}
+					{year} {formatMonth(month, 'MMMM')}
 				</div>
 			}
 
@@ -72,13 +74,13 @@ export default ({time=new Date(), onTimeUpdate}:MonthPickerProps) => {
 
 						{month_list.map((curr_month) => {
 
-							let m_class = (curr_month === res_month) ?
+							let m_class = (curr_month === month) ?
 								styles.month_pill_active : styles.month_pill
 							m_class = [m_class, root_styles.no_select].join(' ')
 
 							return (
 								<div className={m_class} key={curr_month}
-									onClick={() => handleTimeChange({year:res_year, month:curr_month})} >
+									onClick={() => handleTimeChange({year:year, month:curr_month})} >
 									{formatMonth(curr_month, "MMM")}
 								</div>
 							)
