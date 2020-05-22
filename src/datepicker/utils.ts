@@ -1,12 +1,29 @@
-import { startOfMonth, startOfWeek,
+import { startOfMonth, startOfWeek, isValid,
 	endOfMonth, addDays, format as date_format } from "date-fns";
-import {chunk} from 'lodash'
+import {chunk, get} from 'lodash'
 
-import { DayListShape, DatePickerOutPut } from "./interfaces";
+import { DayListShape, DatePickerOutPut, MainDate } from "./interfaces";
 
 
-export const formatDate = (date:Date) => {
-	return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
+const _type_safe_isValidDate = (time:any):time is Date => {
+	return isValid(time)
+}
+
+export const formatDate = (date:Date | MainDate) => {
+    console.log("formatDate -> date", date)
+	if(_type_safe_isValidDate(date)) {
+		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
+	} else {
+		const now = new Date()
+		const ip_obj = {
+			day : get(date , 'day', now.getDate() ), 
+			month : get(date , 'month', now.getMonth() ), 
+			year : get(date , 'year', now.getFullYear() )
+		}
+		const ip_date = new Date(ip_obj.year, ip_obj.month, ip_obj.day)
+		return {day : ip_date.getDate(), month : ip_date.getMonth(), year : ip_date.getFullYear()}
+	}
+	
 }
 
 const _WEEK_MAPPER = {
@@ -100,5 +117,5 @@ export const generateDatePickerOutput = (
 	const date = new Date(year, month, day)
 	const formatted = date_format(date, format)
 
-	return {date, formatted}
+	return {date, formatted, day, month, year}
 }

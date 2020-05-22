@@ -55,7 +55,7 @@ export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
 						onChange={(e) => setYear(Number(e.target.value))} />
 
 					<div className={styles.year_edit_done}
-						onClick={() => handleTimeChange({month : month, year : res_year})}>
+						onClick={() => handleTimeChange({month , year : res_year})}>
 						Done
 					</div>
 				</div>

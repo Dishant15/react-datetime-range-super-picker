@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import MonthPicker from "../monthpicker/MonthPicker";
 
@@ -17,22 +17,27 @@ export default ({
 }:DatePickerProps) => {
 
 	const {day, month, year} = formatDate(date)
+    console.log("day", day)
 	const [date_id, setDateID] = useState(`${day}-${month}`)
 
-	const handleMonthUpdate = (updated_date:OutputShape) => {
-		
+	let handleMonthUpdate = (updated_date:OutputShape) => {
+
+		setDateID(`${day}-${updated_date.month}`)
+
+        console.log("handleMonthUpdate -> day", day)
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(day, 
 				updated_date.month, updated_date.year, format))
+		
 	}
 
-	const handleDateUpdate = (day_month:string) => {
+	const handleDateUpdate = useCallback((day_month:string) => {
 		const [new_day, new_month] = day_month.split('-').map((s) => Number(s))
 
 		setDateID(day_month)
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(new_day, new_month, year, format))
-	}
+	}, [year])
 
 	// create week list
 	const week_header_list = getWeekList(weekStartsOn)

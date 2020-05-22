@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useCallback} from "react";
 
 import ClockFace from './ClockFace'
 
@@ -11,11 +11,10 @@ import styles from './timepicker.css'
 
 export default ({time, format='hh:mm aaa', onTimeUpdate} : TimePickerProps) => {
 
-	const [curr_time, setTime] = useState(createInputTime(time))
+	const curr_time = createInputTime(time)
 
 	const handleTimeChange = useCallback((new_time : MainTime) => {
 		const res_time = generateTimeOutput(new_time, format)
-		setTime(new_time)
 		onTimeUpdate(res_time)
 	}, [])
 
