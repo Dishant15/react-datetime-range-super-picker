@@ -10,18 +10,15 @@ const _type_safe_isValidDate = (time:any):time is Date => {
 }
 
 export const formatDate = (date:Date | MainDate) => {
-    console.log("formatDate -> date", date)
 	if(_type_safe_isValidDate(date)) {
 		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
 	} else {
 		const now = new Date()
-		const ip_obj = {
+		return {
 			day : get(date , 'day', now.getDate() ), 
 			month : get(date , 'month', now.getMonth() ), 
 			year : get(date , 'year', now.getFullYear() )
 		}
-		const ip_date = new Date(ip_obj.year, ip_obj.month, ip_obj.day)
-		return {day : ip_date.getDate(), month : ip_date.getMonth(), year : ip_date.getFullYear()}
 	}
 	
 }
@@ -114,8 +111,14 @@ export const generateDatePickerOutput = (
 	day:number, month:number, year:number, 
 	format:string) : DatePickerOutPut => {
 		
-	const date = new Date(year, month, day)
+	let date = new Date(year, month, day)
 	const formatted = date_format(date, format)
+
+	if(date.getDate() !== day) {
+		// reset day as this month don't have that day
+		day = 1
+		date = new Date(year, month, day)
+	}
 
 	return {date, formatted, day, month, year}
 }
