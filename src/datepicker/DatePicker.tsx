@@ -3,17 +3,18 @@ import React, { useState, useCallback, useEffect } from 'react';
 import MonthPicker from "../monthpicker/MonthPicker";
 
 import { formatDate, getWeekList, getDayList, generateDatePickerOutput } from "./utils";
-import { DatePickerProps } from "./interfaces";
+import { DatePickerProps, defaultConfigs } from "./interfaces";
 import { OutputShape } from '../monthpicker/interfaces'
 
 import styles from './datepicker.css'
 
 
 export default ({
-	date=new Date(), 
-	weekStartsOn=0, 
-	format='dd/MM/YYY',
-	onDateUpdate
+	date=defaultConfigs.date, 
+	weekStartsOn=defaultConfigs.weekStartsOn, 
+	format=defaultConfigs.format,
+	onDateUpdate,
+	onComplete
 }:DatePickerProps) => {
 
 	const {day, month, year} = formatDate(date)
@@ -37,6 +38,8 @@ export default ({
 		
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(new_day, new_month, year, format))
+		
+		if(onComplete) onComplete()
 	}, [year])
 
 	// create week list

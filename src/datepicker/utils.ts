@@ -2,7 +2,8 @@ import { startOfMonth, startOfWeek, isValid,
 	endOfMonth, addDays, format as date_format } from "date-fns";
 import {chunk, get} from 'lodash'
 
-import { DayListShape, DatePickerOutPut, MainDate } from "./interfaces";
+import { DayListShape, DatePickerOutPut, MainDate,
+	defaultConfigs } from "./interfaces";
 
 
 const _type_safe_isValidDate = (time:any):time is Date => {
@@ -13,7 +14,7 @@ export const formatDate = (date:Date | MainDate) => {
 	if(_type_safe_isValidDate(date)) {
 		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
 	} else {
-		const now = new Date()
+		const now = defaultConfigs.date
 		return {
 			day : get(date , 'day', now.getDate() ), 
 			month : get(date , 'month', now.getMonth() ), 
@@ -43,7 +44,7 @@ export function incrementCircularData(value:number, length:number) {
     return (value + 1) % length
 }
 
-export const getWeekList = (weekStartsOn=0):string[] => {
+export const getWeekList = (weekStartsOn=defaultConfigs.weekStartsOn):string[] => {
 	let res_week_list = []
 	let curr_pointer = weekStartsOn
 	for (let index = 0; index < 7; index++) {
@@ -53,7 +54,9 @@ export const getWeekList = (weekStartsOn=0):string[] => {
 	return res_week_list
 }
 
-export const getDayList = (day:number, month:number, year:number, weekStartsOn:any = 0) : DayListShape[][] => {
+export const getDayList = (
+	day:number, month:number, year:number, weekStartsOn:any = defaultConfigs.weekStartsOn
+) : DayListShape[][] => {
 	const curr_date = new Date(year, month, day)
 	// start month date
 	const sm_date = startOfMonth(curr_date)
@@ -121,4 +124,11 @@ export const generateDatePickerOutput = (
 	}
 
 	return {date, formatted, day, month, year}
+}
+
+export const getInitialDateForInput = (
+	date : Date | MainDate, format : string=defaultConfigs.format
+):string => {
+	const {day, month, year} = formatDate(date)
+	return generateDatePickerOutput(day, month, year, format).formatted
 }

@@ -47,7 +47,7 @@ export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
 	const handleYearChange = useCallback((e) => {
 		let new_year = Number(e.target.value)
 		// validate year is a number
-		if(!isNaN(new_year)) setYear(Number(e.target.value))
+		if(!isNaN(new_year) && new_year < 9999) setYear(Number(e.target.value))
 	}, [])
 
 	const month_list = range(0, 12)

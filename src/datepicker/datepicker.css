@@ -28,6 +28,7 @@
 }
 
 .calender_cell {
+	text-align: center;
 	cursor: pointer;
 	color : var(--secondary-highlight-color);
 	font-weight: bold;
@@ -44,4 +45,20 @@
 .calender_cell:hover {
 	background: var(--secondary-highlight-color);
 	color : var(--primary-color);
+}
+
+
+.date_picker_input_wrapper {
+	position: relative;
+}
+
+.date_picker_input {
+	composes: input from "../root.css";
+	text-align: center;
+}
+
+.picker_model {
+	position: absolute;
+	left: 45%;
+	z-index: 2;
 }
