@@ -41,9 +41,9 @@ const App = () => {
 			<TimePicker time={{hour24 : hour, minute }} 
 				onTimeUpdate={handleTimeUpdate} />
 
-			<div style={{margin:"50px 0px", fontSize:"2em"}}>MonthPicker</div>
+			{/* <div style={{margin:"50px 0px", fontSize:"2em"}}>MonthPicker</div>
 			<MonthPicker time={date}
-				onDateUpdate={handleUpdate} />
+				onDateUpdate={handleUpdate} /> */}
 		</div>
 	)
 }

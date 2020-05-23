@@ -38,7 +38,7 @@
 	position: absolute;
 	/* top: calc( (var(--clock-size) / 2) - (var(--clock-hand-height) / 2 ) ); */
 	top: calc( (var(--clock-size) / 2) );
-	left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) );
+	/* left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
 	width: calc(var(--clock-size) / 2);
 	height: var(--clock-hand-height);
 	transform-origin: left;
@@ -99,9 +99,9 @@
 	z-index: 1;
 	pointer-events: none;
 	position: absolute;
-	top: calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) );
-	/* top: calc( (var(--clock-size) / 2) ); */
-	left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) );
+	/* top: calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
+	/* top: calc( (var(--clock-size) / 2) ); NOT WORKING OLD */
+	/* left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
 	height: 1px;
 	transform-origin: left;
 	transition: all .2s linear;

@@ -9,9 +9,13 @@ interface ClockFaceProps extends MainTime {
 	onTimeUpdate : ({}:MainTime) => void
 }
 
+// making inline css due to problem with css modules on production build
+const CLOCK_SIZE = 16 // em
+const CLOCK_HAND_HEIGHT = 1.8 // em
 
 export default ({hour, minute, meridiem, onTimeUpdate} : ClockFaceProps) => {
 	const clock_tick_list: number[] = range(1, 13)
+	const hand_position = (CLOCK_SIZE / 2) + (CLOCK_HAND_HEIGHT / 2 )
 
 	return (
 		<div className={styles.clockface} >
@@ -31,7 +35,10 @@ export default ({hour, minute, meridiem, onTimeUpdate} : ClockFaceProps) => {
 
 					return (
 						<div className={styles.hand_wrapper} key={tick} 
-							style={{transform:`rotate(${rotation}deg)`}} >
+							style={{
+								transform:`rotate(${rotation}deg)`,
+								left:`${hand_position}em`
+							}} >
 
 							<div className={mm_class} style={{transform:`rotate(${-rotation}deg)`}}
 								onClick={() => onTimeUpdate({hour, meridiem, minute:curr_minute})}>
@@ -63,10 +70,22 @@ const ClockHands = ({hour, minute}:any) => {
 	const mm_rotation = ((minute / 5) * 30) - 90
 	const hh_rotation = hour === 12 ? -90 : (hour * 30) - 90
 
+	const hand_position = (CLOCK_SIZE / 2) + (CLOCK_HAND_HEIGHT / 2 )
+
 	return (
 		<React.Fragment>
-			<div className={styles.mm_hand} style={{transform:`rotate(${mm_rotation}deg)`}} ></div>
-			<div className={styles.hh_hand} style={{transform:`rotate(${hh_rotation}deg)`}} ></div>
+			<div className={styles.mm_hand} 
+				style={{
+					transform:`rotate(${mm_rotation}deg)`,
+					top : `${hand_position}em`,
+					left : `${hand_position}em`
+				}} ></div>
+			<div className={styles.hh_hand} 
+				style={{
+					transform:`rotate(${hh_rotation}deg)`,
+					top : `${hand_position}em`,
+					left : `${hand_position}em`
+				}} ></div>
 		</React.Fragment>
 	)
 }
