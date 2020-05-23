@@ -28,9 +28,9 @@ const TimePickerWrapper = () => {
   // OR for string time use : "HH:mm" ( 24 hrs ) | "hh:mm aa" ( 12 hrs )
 
   const handleTimeUpdate = ({time}) => {
-		setHour(time.hour24)
-		setMin(time.minute)
-	}
+    setHour(time.hour24)
+    setMin(time.minute)
+  }
 
   return (
     <TimePicker time={{hour24, minute }} 
@@ -45,8 +45,8 @@ const DatePickerWrapper = () => {
   // OR use JSON object with : day, month, year
 
   const handleDateUpdate = ({date}) => {
-		setDate(date)
-	}
+    setDate(date)
+  }
   
   return (
     <DatePicker weekStartsOn={0} 
@@ -63,13 +63,13 @@ const MonthPickerWrapper = () => {
   // OR use Date object as input
 
   const handleUpdate = ({month, year}) => {
-		setMonth(month)
-		setYear(year)
-	}
+    setMonth(month)
+    setYear(year)
+  }
   
   return (
     <MonthPicker time={{month: res_month, year:res_year}}
-				onDateUpdate={handleUpdate} />
+      onDateUpdate={handleUpdate} />
   )
 }
 ```
