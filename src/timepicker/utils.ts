@@ -30,7 +30,7 @@ export const createInputTime = (input_time : TimePickerProps["time"]):MainTime =
 			res_meridiem = meridiem ? meridiem : res_meridiem
 		}
 	} else if (isString(input_time)) {
-		if(input_time.includes("m")) {
+		if(input_time.includes("M")) {
 			// 12 hrs format
 			const [hhmm, meridiem] = trim(input_time).split(" ")
 			const [hour, minute] = trim(hhmm).split(":")

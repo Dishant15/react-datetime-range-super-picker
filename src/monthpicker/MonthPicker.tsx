@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { range } from 'lodash'
+import { range, isNaN } from 'lodash'
 
 import { formatMonth, getMonthAndYear } from "./utils";
 import { MonthPickerProps, OutputShape } from "./interfaces";
@@ -44,6 +44,12 @@ export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
 		}
 	}, [m_pos])
 
+	const handleYearChange = useCallback((e) => {
+		let new_year = Number(e.target.value)
+		// validate year is a number
+		if(!isNaN(new_year)) setYear(Number(e.target.value))
+	}, [])
+
 	const month_list = range(0, 12)
 
 	return (
@@ -52,11 +58,11 @@ export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
 				<div className={styles.year_edit}>
 					<input placeholder="Year ( YYYY )" 
 						value={res_year} className={styles.year_edit_input}
-						onChange={(e) => setYear(Number(e.target.value))} />
+						onChange={handleYearChange} />
 
-					<div className={styles.year_edit_done}
+					<div className={styles.year_edit_submit}
 						onClick={() => handleTimeChange({month , year : res_year})}>
-						Done
+						Set
 					</div>
 				</div>
 			:

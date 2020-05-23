@@ -15,21 +15,62 @@ npm install --save react-datetime-range-super-picker
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React, {useState} from 'react'
 
-import { TimePicker, MonthPicker } from 'react-datetime-range-super-picker'
+import { TimePicker, DatePicker, MonthPicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return (
-      <TimePicker time="08:30 am" 
-        onTimeUpdate={(time) => console.log(time)} />
+const TimePickerWrapper = () => {
 
-      <MonthPicker month={10} year={1991}
-        onTimeUpdate={(time) => console.log(time)} />
-    )
-  }
+  const [hour24, setHour] = useState(22)
+  const [minute, setMin] = useState(30)
+  // OR use hour (12 hour format), minute and meridian (AM | PM) for props
+  // OR for string time use : "HH:mm" ( 24 hrs ) | "hh:mm aa" ( 12 hrs )
+
+  const handleTimeUpdate = ({time}) => {
+		setHour(time.hour24)
+		setMin(time.minute)
+	}
+
+  return (
+    <TimePicker time={{hour24, minute }} 
+      onTimeUpdate={handleTimeUpdate} />
+  )
+}
+
+
+const DatePickerWrapper = () => {
+
+  const [curr_date, setDate] = useState(new Date())
+  // OR use JSON object with : day, month, year
+
+  const handleDateUpdate = ({date}) => {
+		setDate(date)
+	}
+  
+  return (
+    <DatePicker weekStartsOn={0} 
+      date={curr_date}
+      onDateUpdate={handleDateUpdate} />
+  )
+}
+
+
+const MonthPickerWrapper = () => {
+
+  const [res_month, setMonth] = useState(4)
+  const [res_year, setYear] = useState(2020)
+  // OR use Date object as input
+
+  const handleUpdate = ({month, year}) => {
+		setMonth(month)
+		setYear(year)
+	}
+  
+  return (
+    <MonthPicker time={{month: res_month, year:res_year}}
+				onDateUpdate={handleUpdate} />
+  )
 }
 ```
 

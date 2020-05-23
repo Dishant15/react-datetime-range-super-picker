@@ -33,10 +33,19 @@
 	width: 6em;
 }
 
-.year_edit_done {
+.year_edit_submit {
 	cursor: pointer;
 	padding : .5em;
 	display: inline-block;
+	color : var(--secondary-highlight-color);
+	transition: all .2s linear;
+	border-radius: .5em;
+	font-weight: bold;
+}
+
+.year_edit_submit:hover {
+	color: var(--primary-color);
+	background: var(--secondary-highlight-color);
 }
 
 /* --------- Month Picker ------------ */
