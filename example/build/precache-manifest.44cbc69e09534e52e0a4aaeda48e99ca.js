@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "263275f05575597940cbd51cac4ac19f",
+    "revision": "71f72142550821aa039f5299c91bb84a",
     "url": "/react-datetime-range-super-picker/index.html"
   },
   {
-    "revision": "6f691b0196c3b5e386bf",
+    "revision": "0e79a956b8c3d6bd0246",
     "url": "/react-datetime-range-super-picker/static/css/main.79ee96fe.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-datetime-range-super-picker/static/js/2.a7f0a92f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6f691b0196c3b5e386bf",
-    "url": "/react-datetime-range-super-picker/static/js/main.cd06d0f5.chunk.js"
+    "revision": "0e79a956b8c3d6bd0246",
+    "url": "/react-datetime-range-super-picker/static/js/main.25b81450.chunk.js"
   },
   {
     "revision": "d4a6974db80b0050f64e",

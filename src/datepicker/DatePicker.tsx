@@ -55,7 +55,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 			// change year
 			new_year = year - 1
 		} else if(month === 11 && new_month === 0) {
-			// user selected december date from january
+			// user selected jan date from dec
 			// change year
 			new_year = year + 1
 		}
