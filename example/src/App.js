@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 
 import { TimePicker, MonthPicker, DatePicker,
-	DatePickerInput} from 'react-datetime-range-super-picker'
+	DatePickerInput, DateTimePicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
@@ -12,6 +12,8 @@ const App = () => {
 		
 	const [hour, setHour] = useState(22)
 	const [minute, setMin] = useState(30)
+
+	const [date, setDate] = useState(new Date())
 
 	const handleUpdate = useCallback(({month, year}) => {
 		setMonth(month)
@@ -29,10 +31,29 @@ const App = () => {
 		setMin(time.minute)
 	}
 
-	const date = new Date(res_year, res_month, res_day)
+	const handleFullDateTimeUpdate = (args) => {
+        console.log("handleFullDateTimeUpdate -> args", args)
+		
+		setDate(args.date.date)
+	}
 
 	return (
 		<div style={{textAlign:'center', margin:"100px 0px"}}>
+
+		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
+			<div style={{flex:1}}>
+				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Picker Input</div>
+				<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
+					format="dd / MM / YYY"
+					onDateUpdate={handleDateUpdate} />
+			</div>
+
+			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
+				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Time Picker</div>
+				<DateTimePicker date={date} format="dd - MM - YYY hh:mm aaa"
+					onDateTimeUpdate={handleFullDateTimeUpdate} />
+			</div>
+		</div>
 
 		<div style={{display:'flex', padding: '50px'}}>
 			<div style={{flex:1, borderRight:'1px dashed grey'}}>
@@ -53,13 +74,6 @@ const App = () => {
 					onDateUpdate={handleUpdate} />
 			</div>
 		</div>
-
-		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
-			<div style={{flex:1}}>
-				<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
-					onDateUpdate={handleDateUpdate} inputStyle={{}} />
-			</div>
-		</div>	
 
 		</div>
 	)

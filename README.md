@@ -17,8 +17,27 @@ npm install --save react-datetime-range-super-picker
 ```tsx
 import React, {useState} from 'react'
 
-import { TimePicker, DatePicker, MonthPicker } from 'react-datetime-range-super-picker'
+import { TimePicker, 
+  DatePicker, MonthPicker,
+  DateTimePicker
+} from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
+
+const DateTimePickerWrapper = () => {
+
+  const [curr_date, setDate] = useState(new Date())
+  // OR use JSON object with : day, month, year
+
+  const handleDateUpdate = ({date}) => {
+    setDate(date.date)
+  }
+  
+  return (
+    <DateTimePicker date={curr_date}
+      onDateTimeUpdate={handleDateUpdate} />
+  )
+}
+
 
 const TimePickerWrapper = () => {
 

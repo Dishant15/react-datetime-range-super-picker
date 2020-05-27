@@ -6,7 +6,7 @@ import { DayListShape, DatePickerOutPut, MainDate,
 	defaultConfigs } from "./interfaces";
 
 
-const _type_safe_isValidDate = (time:any):time is Date => {
+export const _type_safe_isValidDate = (time:any):time is Date => {
 	return isValid(time)
 }
 

@@ -9,13 +9,17 @@ export interface DatePickerOutPut extends MainDate {
 	formatted : string
 }
 
+export interface DatePickerState extends MainDate {
+	date_id : string
+}
+
 export interface DatePickerProps {
 	/** default value : new Date() ; i.e. current time  */
-	date? : Date | MainDate,
+	date : Date | MainDate,
 	/** default value : 0, Sunday */
 	weekStartsOn : number,
 	/** default value : 'dd/MM/YYY' */
-	format? : string
+	format : string
 	onDateUpdate : ({}:DatePickerOutPut) => void,
 	onComplete? : () => void
 }
@@ -36,6 +40,6 @@ export interface DatePickerInputProps extends DatePickerProps {
 
 export const defaultConfigs = {
 	date : new Date(),
-	format : 'dd - MM - YYY',
+	format : 'dd/MM/YYY',
 	weekStartsOn : 0
 }

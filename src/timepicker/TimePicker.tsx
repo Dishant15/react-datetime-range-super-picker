@@ -4,12 +4,14 @@ import ClockFace from './ClockFace'
 
 import { createInputTime, generateTimeOutput } from "./utils";
 
-import { TimePickerProps, MainTime } from "./interfaces";
+import { TimePickerProps, MainTime, defaultConfigs } from "./interfaces";
 
 import styles from './timepicker.css'
 
 
-export default ({time, format='hh:mm aaa', onTimeUpdate} : TimePickerProps) => {
+export default ({
+	time, format=defaultConfigs.format, onTimeUpdate
+} : TimePickerProps) => {
 
 	const curr_time = createInputTime(time)
 

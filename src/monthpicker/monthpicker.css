@@ -89,7 +89,7 @@
 	border-radius: .8em;
 	margin: var(--month-pill-margin);
 	background: var(--other-color);
-	height: 1.2em;
+	/* height: 1.2em; */
 	line-height: 1.2em;
 	text-align: center;
 	transition: all .2s linear;

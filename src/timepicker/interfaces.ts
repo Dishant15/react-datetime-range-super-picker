@@ -4,7 +4,7 @@ export interface TimeObject {
 	/** default value : undefined */
 	hour24? :number | string, 
 	/** default value : 0 */
-	minute:number | string, 
+	minute?:number | string, 
 	/** default value : AM */
 	meridiem? : string
 }
@@ -16,7 +16,7 @@ export interface TimePickerProps {
 	/** default value : hh:mm aaa */
 	format? : string
 	onTimeUpdate : (time:OutputTime) => void
-	onDone : () => void
+	onDone? : () => void
 }
 
 /**
@@ -30,5 +30,18 @@ export interface MainTime {
 
 export interface OutputTime {
 	formatted : string,
-	time : TimeObject
+	time : {
+		/** default value : 8 */
+		hour :number, 
+		/** default value : undefined */
+		hour24 :number, 
+		/** default value : 0 */
+		minute :number, 
+		/** default value : AM */
+		meridiem : string
+	}
+}
+
+export const defaultConfigs = {
+	format : 'hh:mm aaa'
 }
