@@ -14,12 +14,22 @@ export const formatDate = (date:Date | MainDate) => {
 	if(_type_safe_isValidDate(date)) {
 		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
 	} else {
+		// if(date.day < 0 || date.day > 31) {
+		// 	throw `invalid date : ${date.day}`
+		// }
 		const now = defaultConfigs.date
-		return {
+		let ip_obj = {
 			day : get(date , 'day', now.getDate() ), 
 			month : get(date , 'month', now.getMonth() ), 
 			year : get(date , 'year', now.getFullYear() )
 		}
+		// validate if date is correct else reset day
+		// if day is 31 feb or something else
+		const test_date = new Date(ip_obj.year, ip_obj.month, ip_obj.day)
+		if(test_date.getMonth() !== ip_obj.month) {
+			ip_obj.day = 1
+		}
+		return ip_obj
 	}
 	
 }

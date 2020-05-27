@@ -16,6 +16,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		super(props)
 
 		const date_obj = formatDate(props.date)
+        console.log("DatePicker -> constructor -> date_obj", date_obj)
 		this.state = {
 			...date_obj, 
 			date_id : `${date_obj.day}-${date_obj.month}`
