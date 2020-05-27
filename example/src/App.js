@@ -40,7 +40,7 @@ const App = () => {
 	return (
 		<div style={{textAlign:'center', margin:"100px 0px"}}>
 
-		{/* <div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
+		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Picker Input</div>
 				<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
@@ -53,7 +53,7 @@ const App = () => {
 				<DateTimePicker date={date} format="dd - MM - YYY hh:mm aaa"
 					onDateTimeUpdate={handleFullDateTimeUpdate} />
 			</div>
-		</div> */}
+		</div>
 
 		<div style={{display:'flex', padding: '50px'}}>
 			<div style={{flex:1, borderRight:'1px dashed grey'}}>

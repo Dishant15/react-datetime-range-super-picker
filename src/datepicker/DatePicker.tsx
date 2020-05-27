@@ -16,7 +16,6 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		super(props)
 
 		const date_obj = formatDate(props.date)
-        console.log("DatePicker -> constructor -> date_obj", date_obj)
 		this.state = {
 			...date_obj, 
 			date_id : `${date_obj.day}-${date_obj.month}`
@@ -45,13 +44,24 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	}
 
 	handleDateUpdate = (day_month:string) => {
-		const {year} = this.state
+		const {year, month} = this.state
 		const {onDateUpdate, onComplete, format} = this.props
 
 		const [new_day, new_month] = day_month.split('-').map((s) => Number(s))
+		let new_year = year
+		
+		if(month === 0 && new_month === 11) {
+			// user selected december date from january
+			// change year
+			new_year = year - 1
+		} else if(month === 11 && new_month === 0) {
+			// user selected december date from january
+			// change year
+			new_year = year + 1
+		}
 		
 		if(onDateUpdate) onDateUpdate(
-			generateDatePickerOutput(new_day, new_month, year, format))
+			generateDatePickerOutput(new_day, new_month, new_year, format))
 		
 		if(onComplete) onComplete()
 	}
