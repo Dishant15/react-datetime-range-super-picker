@@ -49,12 +49,11 @@
 	color : var(--primary-color);
 }
 
-
-.date_picker_input_wrapper {
+.picker_input_wrapper {
 	position: relative;
 }
 
-.date_picker_input {
+.picker_input {
 	composes: input from "../root.css";
 	text-align: center;
 	color: var(--secondary-highlight-color) !important;

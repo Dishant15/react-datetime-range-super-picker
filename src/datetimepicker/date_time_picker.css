@@ -25,3 +25,37 @@
 .table_cell:last-child {
 	padding-left: 1.6em;
 }
+
+.picker_input_wrapper {
+	position: relative;
+}
+
+.picker_input {
+	composes: input from "../root.css";
+	text-align: center;
+	min-width: 13em;
+}
+
+.picker_model {
+	position: absolute;
+	z-index: 2;
+	/* primary color */
+	border: 1px solid #51ADAC; 
+}
+
+.picker_header_wrapper {
+	padding: .8em;
+}
+
+.picker_header_wrapper:after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+
+.picker_header_btn {
+	cursor: pointer;
+	float: right;
+	display: inline-block;
+	padding: .5em;
+}

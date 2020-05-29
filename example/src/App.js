@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 
-import { TimePicker, MonthPicker, DatePicker,
-	DatePickerInput, DateTimePicker } from 'react-datetime-range-super-picker'
+import { TimePicker, MonthPicker, 
+	DatePicker, DatePickerInput,
+	DateTimePicker, DateTimePickerInput } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
@@ -42,9 +43,14 @@ const App = () => {
 
 		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
+				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Time Picker Input</div>
+				<DateTimePickerInput date={date}
+					onDateTimeUpdate={handleFullDateTimeUpdate} />
+			</div>
+
+			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Picker Input</div>
 				<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
-					format="dd / MM / YYY"
 					onDateUpdate={handleDateUpdate} />
 			</div>
 

@@ -5,6 +5,7 @@ import DatePickerModule from "./datepicker/DatePicker";
 import DatePickerInputModule from "./datepicker/DatePickerInput";
 
 import DateTimePickerModuel from "./datetimepicker/DateTimePicker";
+import DateTimePickerInputModuel from "./datetimepicker/DateTimePickerInput";
 
 
 export const TimePicker = TimePickerModule
@@ -14,3 +15,4 @@ export const DatePicker = DatePickerModule
 export const DatePickerInput = DatePickerInputModule
 
 export const DateTimePicker = DateTimePickerModuel
+export const DateTimePickerInput = DateTimePickerInputModuel

@@ -6,16 +6,18 @@ import { createInputTime, generateTimeOutput } from "../timepicker/utils";
 import { 
 	DateTimePickerProps, 
 	MainDateTimeObject, 
-	// DateTimePickerOutPut
+	DateTimePickerOutPut,
+	DateObject,
+	defaultConfigs
 } from "./interfaces";
-import { defaultConfigs, OutputTime } from "../timepicker/interfaces";
+import { defaultConfigs as timeDefaultConfig, OutputTime } from "../timepicker/interfaces";
 import { DatePickerOutPut } from "../datepicker/interfaces";
 
 export const getInputDate = (
 	date_time_input: DateTimePickerProps["date"]
 ): MainDateTimeObject => {
 	if(_type_safe_isValidDate(date_time_input)) {
-		const time_str = format(date_time_input, defaultConfigs.format)
+		const time_str = format(date_time_input, timeDefaultConfig.format)
 		const time_obj = createInputTime(time_str)
 		return {
 			day : date_time_input.getDate(),
@@ -36,12 +38,12 @@ export const getInputDate = (
 export const generateOutPut = (
 	curr_date:MainDateTimeObject, date_format:string,
 	date? : DatePickerOutPut, time? : OutputTime, 
-):any => { // DateTimePickerOutPut
+):DateTimePickerOutPut => { // DateTimePickerOutPut
 	let result, formatted;
 
 	if(date) {
-		// date object given
-		const new_time_json = generateTimeOutput({...curr_date}, defaultConfigs.format)
+		// date object given; passed from calender component
+		const new_time_json = generateTimeOutput({...curr_date}, timeDefaultConfig.format)
 		const current_date_obj = new Date(
 			date.year, date.month, date.day,
 			new_time_json.time.hour24, new_time_json.time.minute
@@ -54,6 +56,7 @@ export const generateOutPut = (
 			...new_time_json.time
 		}
 	} else if(time) {
+		// time given; passed from clock component
 		const current_date_obj = new Date(
 			curr_date.year, curr_date.month, curr_date.day,
 			time.time.hour24, time.time.minute
@@ -65,10 +68,32 @@ export const generateOutPut = (
 			date : current_date_obj,
 			...time.time
 		}
+	} else {
+		// only current date given
+		const new_time_json = generateTimeOutput({...curr_date}, timeDefaultConfig.format)
+		const current_date_obj = new Date(
+			curr_date.year, curr_date.month, curr_date.day,
+			new_time_json.time.hour24, new_time_json.time.minute
+		)
+		formatted = format(current_date_obj, date_format)
+
+		result = {
+			date : current_date_obj,
+			day : curr_date.day, month: curr_date.month, year: curr_date.year,
+			...new_time_json.time
+		}
 	}
 
 	return {
 		date : result,
 		formatted
 	}
+}
+
+
+export const getInitialDateForInput = (
+	date:Date | DateObject , format:string=defaultConfigs.format
+): string => {
+	const curr_date = getInputDate(date)
+	return generateOutPut(curr_date, format).formatted
 }

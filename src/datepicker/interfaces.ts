@@ -40,6 +40,6 @@ export interface DatePickerInputProps extends DatePickerProps {
 
 export const defaultConfigs = {
 	date : new Date(),
-	format : 'dd/MM/YYY',
+	format : 'dd-MM-yyyy',
 	weekStartsOn : 0
 }

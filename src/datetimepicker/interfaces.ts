@@ -15,8 +15,8 @@ export interface DateTimePickerProps {
 	weekStartsOn : number,
 
 	onDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
-	onTimeUpdate : (time:OutputTime) => void,
-	onDateUpdate : ({}:DatePickerOutPut) => void,
+	onTimeUpdate? : (time:OutputTime) => void,
+	onDateUpdate? : ({}:DatePickerOutPut) => void,
 }
 
 export interface MainDateTimeObject extends MainDate, MainTime {
@@ -41,8 +41,16 @@ export interface DateTimePickerOutPut {
 	formatted: string
 }
 
+
+export interface DateTimePickerInputProps extends DateTimePickerProps {
+	inputStyle? : React.CSSProperties,
+	popupStyle? : React.CSSProperties,
+	className? : string,
+	popupClassName? : string
+}
+
 export const defaultConfigs = {
 	date : new Date(),
-	format : 'dd/MM/YYY hh:mm aaa',
+	format : 'dd-MM-yyyy hh:mm aaa',
 	weekStartsOn : 0
 }
