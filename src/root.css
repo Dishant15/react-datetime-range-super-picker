@@ -1,4 +1,7 @@
 .root {
+	/* font-family: Tahoma, Verdana, Segoe, sans-serif; */
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
+
 	--primary-color : white;
 	--primary-font-color: rgba(0, 0, 0, 0.57);
 	--light-font-color : rgba(0,0,0, 0.35);
@@ -7,7 +10,7 @@
 	--other-color : #efefef;
 
 	--primary-highlight-color : #88b04b;
-	--secondary-highlight-color: #51ADAC;
+	--secondary-highlight-color: #00aab2;
 }
 
 .no_select {

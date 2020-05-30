@@ -2,7 +2,8 @@ import React, { useCallback, useState } from 'react'
 
 import { TimePicker, MonthPicker, 
 	DatePicker, DatePickerInput,
-	DateTimePicker, DateTimePickerInput } from 'react-datetime-range-super-picker'
+	DateTimePicker, DateTimePickerInput,
+	RangePicker } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
@@ -15,6 +16,17 @@ const App = () => {
 	const [minute, setMin] = useState(30)
 
 	const [date, setDate] = useState(new Date())
+
+	const [from_date, setFromDate] = useState(new Date())
+	const [to_date, setToDate] = useState(new Date())
+
+	const handleRangePickerFromDate = ({date}) => {
+		setFromDate(date.date)
+	}
+
+	const handleRangePickerToDate = ({date}) => {
+		setToDate(date.date)
+	}
 
 	const handleUpdate = useCallback(({month, year}) => {
 		setMonth(month)
@@ -33,13 +45,19 @@ const App = () => {
 	}
 
 	const handleFullDateTimeUpdate = (args) => {
-        console.log("handleFullDateTimeUpdate -> args", args)
-		
 		setDate(args.date.date)
 	}
 
 	return (
 		<div style={{textAlign:'center', margin:"100px 0px"}}>
+
+		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
+			<div style={{flex:1}}>
+				<RangePicker from_date={from_date} to_date={to_date}
+					onFromDateTimeUpdate={handleRangePickerFromDate} 
+					onToDateTimeUpdate={handleRangePickerToDate} />
+			</div>
+		</div>
 
 		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
@@ -56,7 +74,7 @@ const App = () => {
 
 			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Time Picker</div>
-				<DateTimePicker date={date} format="dd - MM - YYY hh:mm aaa"
+				<DateTimePicker date={date} format="dd - MM - y hh:mm aaa"
 					onDateTimeUpdate={handleFullDateTimeUpdate} />
 			</div>
 		</div>
@@ -65,7 +83,7 @@ const App = () => {
 			<div style={{flex:1, borderRight:'1px dashed grey'}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Picker</div>
 				<DatePicker weekStartsOn={0} date={{day:res_day, month: res_month, year:res_year}}
-					onDateUpdate={handleDateUpdate} format="dd-MM-YYY" />
+					onDateUpdate={handleDateUpdate} format="dd-MM-y" />
 			</div>
 
 			<div style={{flex:1}}>

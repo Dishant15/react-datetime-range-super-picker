@@ -34,7 +34,7 @@ export default (props:DateTimePickerInputProps) => {
 					style={props.popupStyle} >
 					<div className={styles.picker_header_wrapper} style={{background:'#51ADAC'}}>
 						<div className={styles.picker_header_btn} onClick={handleComplete}
-							style={{background:'#88b04b', color:'white'}} >
+							style={{background:'white', color:'#51ADAC'}} >
 							Done 
 						</div>
 					</div>

@@ -19,7 +19,7 @@ import { DatePickerOutPut } from '../datepicker/interfaces';
 import { OutputTime } from '../timepicker/interfaces';
 
 
-export default class DateTimePicker extends React.Component<DateTimePickerProps, MainDateTimeObject> {
+export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps, MainDateTimeObject> {
 
 	constructor(props:DateTimePickerProps) {
 		super(props)
@@ -65,8 +65,8 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps,
 		const {dateFormat, weekStartsOn, timeFormat} = this.props
 
 		return (
-			<div className={styles.wrapper} >
-				<div className={styles.table_cell}>
+			<React.Fragment>
+				<div className={[styles.table_cell, styles.calender].join(' ')}>
 					<DatePicker date={{
 							day : curr_date.day,
 							month : curr_date.month,
@@ -86,7 +86,20 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps,
 						format={timeFormat}
 						onTimeUpdate={this.handleTimeUpdate} />
 				</div>
-			</div>
+			</React.Fragment>
 		)
 	}
 }
+
+/**
+ * Wrapper component required for good design of RangePicker
+ * Unwrapped component only has 2 table cells
+ * This component wraps table cells into a table
+ */
+const DateTimePicker = (props:DateTimePickerProps) => (
+	<div className={styles.wrapper}>
+		<UnwrappedDateTimePicker {...props} />
+	</div>
+)
+
+export default DateTimePicker

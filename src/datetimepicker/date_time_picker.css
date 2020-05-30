@@ -17,7 +17,7 @@
 	padding: .8em;
 }
 
-.table_cell:first-child {
+.calender {
 	border-right: 1px solid var(--other-color);
 	padding-right: 1.6em;
 }
@@ -58,4 +58,5 @@
 	float: right;
 	display: inline-block;
 	padding: .5em;
+	font-weight: bold;
 }

@@ -51,6 +51,6 @@ export interface DateTimePickerInputProps extends DateTimePickerProps {
 
 export const defaultConfigs = {
 	date : new Date(),
-	format : 'dd-MM-yyyy hh:mm aaa',
+	format : 'do MMMM yyyy, hh:mm aaa',
 	weekStartsOn : 0
 }

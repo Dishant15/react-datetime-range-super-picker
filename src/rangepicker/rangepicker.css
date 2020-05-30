@@ -1,0 +1,89 @@
+.wrapper {
+	/** main color imports */
+	composes: root from "../root.css";
+	box-sizing: border-box;
+	margin : 0 auto;
+
+	/* other element sizes */
+
+	background: var(--primary-color);
+	color: var(--primary-font-color);
+}
+
+.header {
+	display: table-row;
+	text-align: left;
+	background: var(--secondary-highlight-color);
+}
+
+.header_div {
+	display: inline-block;
+	margin: 1em 1.5em;
+	cursor: pointer;
+}
+
+.header_label {
+	font-size: .8em;
+	padding-left: .5em;
+	color:var(--primary-color);
+}
+
+.header_field_abs {
+	font-size: 1em;
+	min-height: 2em;
+	line-height: 2em;
+	padding: 0em 1em;
+	border-radius: .8em;
+	margin-top: .5em;
+	transition: all .2s linear;
+}
+
+.header_field {
+	composes : header_field_abs;
+	background: #4dc4ca;
+	color : var(--primary-color);
+}
+
+.header_field_active {
+	composes : header_field_abs;
+	font-weight: bold;
+	background: var(--primary-color);
+	color : var(--secondary-highlight-color);
+}
+
+.advance_cell {
+	display: table-cell;
+	vertical-align: middle;
+	background: var(--secondary-highlight-color);
+	text-align: left;
+}
+.advance_pill {
+	cursor: pointer;
+	color : #ffffffbd;
+	font-weight: bold;
+	padding:1em 3em .8em 1em;
+	border-bottom: 1px solid #a2e6e369;
+	border-left: .5em solid transparent;
+	transition: all .2s linear;
+}
+
+.advance_pill_active {
+	composes : advance_pill;
+	color: var(--primary-color);
+	border-left: .5em solid var(--primary-color);
+}
+
+.advance_pill:hover {
+	color: var(--primary-color);
+	border-left: .5em solid var(--primary-color);
+}
+
+.advance_pill:last-child {
+	border-bottom: none;
+}
+
+
+.table_wrapper {
+	display: table;
+	margin: 0 auto;
+}
