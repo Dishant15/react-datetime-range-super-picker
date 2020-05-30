@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { TimePicker, MonthPicker, 
 	DatePicker, DatePickerInput,
 	DateTimePicker, DateTimePickerInput,
-	RangePicker } from 'react-datetime-range-super-picker'
+	DateTimeRangePicker, DateTimeRangePickerInput } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
@@ -53,7 +53,12 @@ const App = () => {
 
 		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
-				<RangePicker from_date={from_date} to_date={to_date}
+				<DateTimeRangePickerInput from_date={from_date} to_date={to_date}
+					onFromDateTimeUpdate={handleRangePickerFromDate} 
+					onToDateTimeUpdate={handleRangePickerToDate} />
+			</div>
+			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
+				<DateTimeRangePicker from_date={from_date} to_date={to_date}
 					onFromDateTimeUpdate={handleRangePickerFromDate} 
 					onToDateTimeUpdate={handleRangePickerToDate} />
 			</div>

@@ -20,8 +20,17 @@ export interface RangePickerProps {
 	onToDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onToTimeUpdate? : (time:OutputTime) => void,
 	onToDateUpdate? : ({}:DatePickerOutPut) => void,
+
+	onDone? : () => void
 }
 
 export interface OutPutRangePicker {
 
+}
+
+export interface RangePickerInputProps extends RangePickerProps {
+	inputStyle? : React.CSSProperties,
+	popupStyle? : React.CSSProperties,
+	className? : string,
+	popupClassName? : string
 }
