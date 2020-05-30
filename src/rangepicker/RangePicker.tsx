@@ -165,8 +165,8 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
-
-	handleThisMonth = () => {
+	
+	handleLastMonth = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
 		const now = new Date()
@@ -181,7 +181,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
-	handleLastMonth = () => {
+	handleThisMonth = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
 		const now = new Date()
