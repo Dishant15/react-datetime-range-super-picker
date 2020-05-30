@@ -19,9 +19,31 @@ import React, {useState} from 'react'
 
 import { TimePicker, 
   DatePicker, MonthPicker,
-  DateTimePicker
+  DateTimePicker,
+  DateTimeRangePicker
 } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
+
+const DateTimeRangePickerWrapper = () => {
+
+  const [from_date, setFromDate] = useState(new Date())
+  const [to_date, setToDate] = useState(new Date())
+  // OR use JSON object with : day, month, year
+
+  const handleFromDateUpdate = ({date}) => {
+    setFromDate(date.date)
+  }
+  const handleToDateUpdate = ({date}) => {
+    setToDate(date.date)
+  }
+  
+  return (
+    <DateTimeRangePicker from_date={from_date} to_date={to_date}
+      onFromDateTimeUpdate={handleFromDateUpdate} 
+      onToDateTimeUpdate={handleToDateUpdate} />
+  )
+}
+
 
 const DateTimePickerWrapper = () => {
 
