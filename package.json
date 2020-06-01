@@ -1,6 +1,6 @@
 {
   "name": "react-datetime-range-super-picker",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "React date, time, date range, calender, clock i.e. all in one picker",
   "author": "Dishant15",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
+    "date-fns" : "2.13.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -53,8 +54,7 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
-    "date-fns" : "2.13.0"
+    "react-scripts": "^3.4.1"
   },
   "files": [
     "dist"

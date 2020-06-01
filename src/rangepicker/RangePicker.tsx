@@ -175,7 +175,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		from_ts = subMonths(from_ts, 1)
 		let to_ts = endOfMonth(now)
 		to_ts = subMonths(to_ts, 1)
-		this.setState({advance_pill: 'tm'})
+		this.setState({advance_pill: 'lm'})
 		// call related handlers
 		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
@@ -188,7 +188,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 
 		const from_ts = startOfMonth(now)
 		const to_ts = endOfMonth(now)
-		this.setState({advance_pill: 'lm'})
+		this.setState({advance_pill: 'tm'})
 		// call related handlers
 		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
