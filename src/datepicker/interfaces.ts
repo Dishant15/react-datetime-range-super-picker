@@ -15,7 +15,7 @@ export interface DatePickerState extends MainDate {
 
 export interface DatePickerProps {
 	/** default value : new Date() ; i.e. current time  */
-	date : Date | MainDate,
+	date : Date | MainDate | string,
 	/** default value : 0, Sunday */
 	weekStartsOn : number,
 	/** default value : 'dd/MM/YYY' */

@@ -24,7 +24,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 	constructor(props:DateTimePickerProps) {
 		super(props)
 
-		this.state = {...getInputDate(props.date)}
+		this.state = {...getInputDate(props.date, props.format)}
 	}
 
 	static defaultProps = {
@@ -35,7 +35,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 	}
 
 	static getDerivedStateFromProps(props:DateTimePickerProps) {
-		return getInputDate(props.date)
+		return getInputDate(props.date, props.format)
 	}
 
 	handleDateUpdate = (date:DatePickerOutPut) => {

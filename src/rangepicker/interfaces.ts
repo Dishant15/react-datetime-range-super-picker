@@ -4,8 +4,8 @@ import { DateTimePickerOutPut, DateObject } from "../datetimepicker/interfaces";
 
 
 export interface RangePickerProps {
-	from_date : Date | DateObject,
-	to_date : Date | DateObject,
+	from_date : Date | DateObject | string,
+	to_date : Date | DateObject | string,
 	// optional props
 	/** default value : 'dd/MM/YYY hh:mm aaa' */
 	format : string,

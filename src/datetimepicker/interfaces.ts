@@ -6,7 +6,7 @@ export interface DateObject extends TimeObject, MainDate {
 }
 
 export interface DateTimePickerProps {
-	date : Date | DateObject,
+	date : Date | DateObject | string,
 	// optional props
 	/** default value : 'dd/MM/YYY hh:mm aaa' */
 	format : string,

@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
+import { isString } from "lodash";
 
 import { formatDate, _type_safe_isValidDate } from "../datepicker/utils";
 import { createInputTime, generateTimeOutput } from "../timepicker/utils";
@@ -14,7 +15,7 @@ import { defaultConfigs as timeDefaultConfig, OutputTime } from "../timepicker/i
 import { DatePickerOutPut } from "../datepicker/interfaces";
 
 export const getInputDate = (
-	date_time_input: DateTimePickerProps["date"]
+	date_time_input: DateTimePickerProps["date"], dt_format=defaultConfigs.format
 ): MainDateTimeObject => {
 	if(_type_safe_isValidDate(date_time_input)) {
 		const time_str = format(date_time_input, timeDefaultConfig.format)
@@ -23,6 +24,16 @@ export const getInputDate = (
 			day : date_time_input.getDate(),
 			month : date_time_input.getMonth(),
 			year : date_time_input.getFullYear(),
+			...time_obj
+		}
+	} else if (isString(date_time_input)) {
+		const ip_date = parse(date_time_input, dt_format, new Date())
+		const time_str = format(ip_date, timeDefaultConfig.format)
+		const time_obj = createInputTime(time_str)
+		return {
+			day : ip_date.getDate(),
+			month : ip_date.getMonth(),
+			year : ip_date.getFullYear(),
 			...time_obj
 		}
 	}
@@ -92,8 +103,8 @@ export const generateOutPut = (
 
 
 export const getInitialDateForInput = (
-	date:Date | DateObject , format:string=defaultConfigs.format
+	date:Date | DateObject | string , format:string=defaultConfigs.format
 ): string => {
-	const curr_date = getInputDate(date)
+	const curr_date = getInputDate(date, format)
 	return generateOutPut(curr_date, format).formatted
 }

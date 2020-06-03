@@ -15,7 +15,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	constructor(props:DatePickerProps) {
 		super(props)
 
-		const date_obj = formatDate(props.date)
+		const date_obj = formatDate(props.date, props.format)
 		this.state = {
 			...date_obj, 
 			date_id : `${date_obj.day}-${date_obj.month}`
@@ -29,7 +29,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	}
 
 	static getDerivedStateFromProps(props:DatePickerProps) {
-		const date_obj = formatDate(props.date)
+		const date_obj = formatDate(props.date, props.format)
 		return {...date_obj, date_id : `${date_obj.day}-${date_obj.month}`}
 	}
 

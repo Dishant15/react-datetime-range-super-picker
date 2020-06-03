@@ -1,6 +1,6 @@
 import { startOfMonth, startOfWeek, isValid,
-	endOfMonth, addDays, format as date_format } from "date-fns";
-import {chunk, get} from 'lodash'
+	endOfMonth, addDays, format as date_format, parse } from "date-fns";
+import {chunk, get, isString} from 'lodash'
 
 import { DayListShape, DatePickerOutPut, MainDate,
 	defaultConfigs } from "./interfaces";
@@ -10,9 +10,18 @@ export const _type_safe_isValidDate = (time:any):time is Date => {
 	return isValid(time)
 }
 
-export const formatDate = (date:Date | MainDate) => {
+export const formatDate = (date:Date | MainDate | string, format=defaultConfigs.format) => {
 	if(_type_safe_isValidDate(date)) {
 		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
+
+	} else if (isString(date)) {
+		const ip_date = parse(date, format, new Date())
+		if(!_type_safe_isValidDate(ip_date)) {
+			console.log('Warning : You have passed invalid date in props !')
+			const now = new Date()
+			return {day : now.getDate(), month : now.getMonth(), year : now.getFullYear()}
+		}
+		return {day : ip_date.getDate(), month : ip_date.getMonth(), year : ip_date.getFullYear()}
 	} else {
 		// if(date.day < 0 || date.day > 31) {
 		// 	throw `invalid date : ${date.day}`
@@ -137,8 +146,8 @@ export const generateDatePickerOutput = (
 }
 
 export const getInitialDateForInput = (
-	date : Date | MainDate, format : string=defaultConfigs.format
+	date : Date | MainDate | string, format : string=defaultConfigs.format
 ):string => {
-	const {day, month, year} = formatDate(date)
+	const {day, month, year} = formatDate(date, format)
 	return generateDatePickerOutput(day, month, year, format).formatted
 }
