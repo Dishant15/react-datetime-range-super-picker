@@ -10,6 +10,12 @@
 npm install --save react-datetime-range-super-picker
 ```
 
+if you are using yarn
+
+ ```bash
+yarn add react-datetime-range-super-picker
+```
+
 [Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
 
 ## Usage
