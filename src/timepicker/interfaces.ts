@@ -1,3 +1,5 @@
+import { ComponentTheme } from "../style.utils";
+
 export interface TimeObject { 
 	/** default value : 8 */
 	hour? :number | string, 
@@ -15,6 +17,9 @@ export interface TimePickerProps {
 	time : undefined | string | TimeObject,
 	/** default value : hh:mm aaa */
 	format? : string
+	// styling props
+	colors : ComponentTheme
+	// handler props
 	onTimeUpdate : (time:OutputTime) => void
 	onDone? : () => void
 }

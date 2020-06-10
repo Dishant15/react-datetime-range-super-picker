@@ -1,3 +1,5 @@
+import { ComponentTheme } from "../style.utils";
+
 export interface OutputShape {
 	// 0 -> 11, 0 = Jan; 11 = Dec
 	month : number,
@@ -6,6 +8,7 @@ export interface OutputShape {
 
 export interface MonthPickerProps {
 	/** default value : new Date() ; i.e. current time  */
-	time? : OutputShape | Date,
-	onDateUpdate : ({}:OutputShape) => void
+	time?: OutputShape | Date,
+	colors: ComponentTheme
+	onDateUpdate: ({}:OutputShape) => void
 }

@@ -9,7 +9,8 @@ import root_styles from '../root.css'
 
 
 
-export default ({time=new Date(), onDateUpdate}:MonthPickerProps) => {
+export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
+	console.log("colors", colors)
 
 	const {month, year} = getMonthAndYear(time)
 

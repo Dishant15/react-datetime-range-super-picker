@@ -47,7 +47,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		const {format, timeFormat, dateFormat, weekStartsOn,
 			from_date, onFromTimeUpdate, onFromDateUpdate,
 			to_date, onToTimeUpdate, onToDateUpdate,
-			onDone
+			onDone, colors,
 		} = this.props
 
 		const common_props = {format, timeFormat, dateFormat, weekStartsOn}
@@ -125,12 +125,12 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 
 						{is_to_date ? 
 							// To date component
-							<UnwrappedDateTimePicker date={to_date}
+							<UnwrappedDateTimePicker date={to_date} colors={colors}
 								onTimeUpdate={onToTimeUpdate} onDateUpdate={onToDateUpdate}
 								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
 							:
 								// from date first
-							<UnwrappedDateTimePicker date={from_date} 
+							<UnwrappedDateTimePicker date={from_date} colors={colors}
 								onTimeUpdate={onFromTimeUpdate} onDateUpdate={onFromDateUpdate}
 								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
 						}

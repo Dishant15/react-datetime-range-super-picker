@@ -1,5 +1,6 @@
 import { TimeObject, OutputTime, MainTime } from "../timepicker/interfaces";
 import { MainDate, DatePickerOutPut } from "../datepicker/interfaces";
+import { ComponentTheme } from "../style.utils";
 
 export interface DateObject extends TimeObject, MainDate {
 	// { day, month, year, hour? , hour24?, minute?, meridem?}
@@ -13,6 +14,8 @@ export interface DateTimePickerProps {
 	timeFormat : string,
 	dateFormat : string,
 	weekStartsOn : number,
+
+	colors: ComponentTheme,
 
 	onDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onTimeUpdate? : (time:OutputTime) => void,

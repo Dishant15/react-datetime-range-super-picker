@@ -68,7 +68,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 	render = () => {
 		const {day, month, year, date_id} = this.state
-		const {weekStartsOn} = this.props
+		const {weekStartsOn, colors} = this.props
 
 		const week_header_list = getWeekList(weekStartsOn)
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
@@ -76,6 +76,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		return(
 			<div className={styles.wrapper}>
 				<MonthPicker time={{month : month, year : year}}
+					colors={colors}
 					onDateUpdate={this.handleMonthUpdate} />
 
 				<table className={styles.calender_wrapper}>

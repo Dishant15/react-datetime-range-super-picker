@@ -38,7 +38,7 @@ export default (props:DateTimePickerInputProps) => {
 							Done 
 						</div>
 					</div>
-					<DateTimePicker date={props.date} 
+					<DateTimePicker date={props.date} colors={props.colors}
 						format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
 						weekStartsOn={props.weekStartsOn} 
 						onDateUpdate={props.onDateUpdate} onTimeUpdate={props.onTimeUpdate}

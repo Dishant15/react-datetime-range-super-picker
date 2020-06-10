@@ -13,6 +13,7 @@ export default (props: RangePickerInputProps) => {
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format)
 	const show_date = `${from_date_str} To ${to_date_str}`
+	const {colors} = props
 
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
@@ -30,7 +31,7 @@ export default (props: RangePickerInputProps) => {
 						onFromDateTimeUpdate={props.onFromDateTimeUpdate}
 						onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
 						onToDateTimeUpdate={props.onToDateTimeUpdate}
-						onDone={() => setShow(false)} />
+						onDone={() => setShow(false)} colors={colors} />
 				</div>
 			}
 		</div>

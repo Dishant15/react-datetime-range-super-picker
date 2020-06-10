@@ -1,6 +1,7 @@
 import { OutputTime } from "../timepicker/interfaces";
 import { DatePickerOutPut } from "../datepicker/interfaces";
 import { DateTimePickerOutPut, DateObject } from "../datetimepicker/interfaces";
+import { ComponentTheme } from "../style.utils";
 
 
 export interface RangePickerProps {
@@ -12,6 +13,8 @@ export interface RangePickerProps {
 	timeFormat : string,
 	dateFormat : string,
 	weekStartsOn : number,
+
+	colors: ComponentTheme,
 
 	onFromDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onFromTimeUpdate? : (time:OutputTime) => void,

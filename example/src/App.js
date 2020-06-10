@@ -100,7 +100,7 @@ const App = () => {
 
 			<div style={{flex:1}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Time Picker</div>
-				<TimePicker time={{hour24 : hour, minute }} 
+				<TimePicker time={{hour24 : hour, minute }} colors={{primary_color:'black'}}
 					onTimeUpdate={handleTimeUpdate} />
 			</div>
 

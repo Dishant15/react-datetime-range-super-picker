@@ -10,9 +10,11 @@ import styles from './timepicker.css'
 
 
 export default ({
-	time, format=defaultConfigs.format, onTimeUpdate
+	time, format=defaultConfigs.format,
+	colors,
+	onTimeUpdate
 } : TimePickerProps) => {
-
+	console.log('c',colors)
 	const curr_time = createInputTime(time)
 
 	const handleTimeChange = useCallback((new_time : MainTime) => {

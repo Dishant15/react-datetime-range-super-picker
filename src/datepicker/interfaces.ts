@@ -1,3 +1,5 @@
+import { ComponentTheme } from "../style.utils";
+
 export interface MainDate {
 	day : number,
 	month : number,
@@ -19,7 +21,8 @@ export interface DatePickerProps {
 	/** default value : 0, Sunday */
 	weekStartsOn : number,
 	/** default value : 'dd/MM/YYY' */
-	format : string
+	format : string,
+	colors: ComponentTheme,
 	onDateUpdate : ({}:DatePickerOutPut) => void,
 	onComplete? : () => void
 }

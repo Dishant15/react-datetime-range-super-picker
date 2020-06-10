@@ -1,3 +1,5 @@
+import StyleWrapper from './style.utils'
+
 import TimePickerModule from "./timepicker/TimePicker";
 import MonthPickerModule from "./monthpicker/MonthPicker";
 
@@ -11,14 +13,14 @@ import RangePicker from "./rangepicker/RangePicker";
 import DateTimeRangePickerInputModule from "./rangepicker/RangePickerInput"
 
 
-export const TimePicker = TimePickerModule
-export const MonthPicker = MonthPickerModule
+export const TimePicker = StyleWrapper(TimePickerModule)
+export const MonthPicker = StyleWrapper(MonthPickerModule)
 
-export const DatePicker = DatePickerModule
-export const DatePickerInput = DatePickerInputModule
+export const DatePicker = StyleWrapper(DatePickerModule)
+export const DatePickerInput = StyleWrapper(DatePickerInputModule)
 
-export const DateTimePicker = DateTimePickerModuel
-export const DateTimePickerInput = DateTimePickerInputModuel
+export const DateTimePicker = StyleWrapper(DateTimePickerModuel)
+export const DateTimePickerInput = StyleWrapper(DateTimePickerInputModuel)
 
-export const DateTimeRangePicker = RangePicker
-export const DateTimeRangePickerInput = DateTimeRangePickerInputModule
+export const DateTimeRangePicker = StyleWrapper(RangePicker)
+export const DateTimeRangePickerInput = StyleWrapper(DateTimeRangePickerInputModule)

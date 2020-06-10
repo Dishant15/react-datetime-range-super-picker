@@ -62,7 +62,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 	render = () => {
 		const curr_date = this.state
-		const {dateFormat, weekStartsOn, timeFormat} = this.props
+		const {dateFormat, weekStartsOn, timeFormat, colors} = this.props
 
 		return (
 			<React.Fragment>
@@ -72,6 +72,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 							month : curr_date.month,
 							year : curr_date.year
 						}}
+						colors={colors}
 						format={dateFormat}
 						weekStartsOn={weekStartsOn}
 						onDateUpdate={this.handleDateUpdate} />
@@ -83,6 +84,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 							minute:curr_date.minute,
 							meridiem : curr_date.meridiem
 						}} 
+						colors={colors}
 						format={timeFormat}
 						onTimeUpdate={this.handleTimeUpdate} />
 				</div>
