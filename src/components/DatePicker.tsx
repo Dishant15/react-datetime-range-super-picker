@@ -1,11 +1,11 @@
 // import React, { useState, useCallback, useEffect } from 'react';
 import React from 'react'
 
-import MonthPicker from "../monthpicker/MonthPicker";
+import MonthPicker from "./MonthPicker";
 
 import { formatDate, getWeekList, getDayList, generateDatePickerOutput } from "../utils/datepicker.utils";
 import { DatePickerProps, defaultConfigs, DatePickerState } from "../interfaces/datepicker.interfaces";
-import { OutputShape } from '../monthpicker/interfaces'
+import { OutputShape } from '../interfaces/monthpicker.interfaces'
 
 import styles from '../styles/datepicker.css'
 

@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { range, isNaN } from 'lodash'
 
-import { formatMonth, getMonthAndYear } from "./utils";
-import { MonthPickerProps, OutputShape } from "./interfaces";
+import { formatMonth, getMonthAndYear } from "../utils/monthpicker.utils";
+import { MonthPickerProps, OutputShape } from "../interfaces/monthpicker.interfaces";
 
-import styles from './monthpicker.css'
+import styles from '../styles/monthpicker.css'
 import root_styles from '../root.css'
 
 
