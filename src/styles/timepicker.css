@@ -1,6 +1,6 @@
 .wrapper {
 	/** main color imports */
-	composes: root from "../root.css";
+	composes: root from "./root.css";
 	box-sizing: border-box;
 	margin : 0 auto;
 

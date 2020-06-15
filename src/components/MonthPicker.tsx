@@ -5,7 +5,7 @@ import { formatMonth, getMonthAndYear } from "../utils/monthpicker.utils";
 import { MonthPickerProps, OutputShape } from "../interfaces/monthpicker.interfaces";
 
 import styles from '../styles/monthpicker.css'
-import root_styles from '../root.css'
+import root_styles from '../styles/root.css'
 
 
 

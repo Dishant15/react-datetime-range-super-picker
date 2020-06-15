@@ -1,4 +1,4 @@
-import StyleWrapper from './style.utils'
+import StyleWrapper from './utils/style.utils'
 
 import TimePickerModule from "./components/TimePicker";
 import MonthPickerModule from "./components/MonthPicker";

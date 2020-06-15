@@ -1,7 +1,7 @@
 import { OutputTime } from "./timepicker.interfaces";
 import { DatePickerOutPut } from "./datepicker.interfaces";
 import { DateTimePickerOutPut, DateObject } from "./datetimepicker.interfaces";
-import { ComponentTheme } from "../style.utils";
+import { ComponentTheme } from "../utils/style.utils";
 
 
 export interface RangePickerProps {
