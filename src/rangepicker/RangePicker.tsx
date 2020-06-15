@@ -5,12 +5,12 @@ import { startOfWeek, endOfWeek, subWeeks,
 	startOfYesterday, endOfYesterday
 } from "date-fns";
 
-import { UnwrappedDateTimePicker } from "../datetimepicker/DateTimePicker";
+import { UnwrappedDateTimePicker } from "../components/DateTimePicker";
 import { getInitialDateForInput, 
-	getInputDate, generateOutPut } from '../datetimepicker/utils';
+	getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 
 import { RangePickerProps } from './interfaces'
-import { DateTimePickerOutPut, defaultConfigs } from '../datetimepicker/interfaces';
+import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
 import styles from "./rangepicker.css";
 
 

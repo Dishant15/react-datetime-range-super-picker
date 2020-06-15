@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import RangePicker from "./RangePicker";
 import { RangePickerInputProps } from './interfaces';
-import { getInitialDateForInput } from '../datetimepicker/utils';
+import { getInitialDateForInput } from '../utils/datetimepicker.utils';
 
 import styles from "./rangepicker.css";
 
