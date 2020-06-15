@@ -1,5 +1,5 @@
 import { TimeObject, OutputTime, MainTime } from "../timepicker/interfaces";
-import { MainDate, DatePickerOutPut } from "../datepicker/interfaces";
+import { MainDate, DatePickerOutPut } from "../interfaces/datepicker.interfaces";
 import { ComponentTheme } from "../style.utils";
 
 export interface DateObject extends TimeObject, MainDate {

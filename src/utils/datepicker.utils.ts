@@ -3,7 +3,7 @@ import { startOfMonth, startOfWeek, isValid,
 import {chunk, get, isString} from 'lodash'
 
 import { DayListShape, DatePickerOutPut, MainDate,
-	defaultConfigs } from "./interfaces";
+	defaultConfigs } from "../interfaces/datepicker.interfaces";
 
 
 export const _type_safe_isValidDate = (time:any):time is Date => {

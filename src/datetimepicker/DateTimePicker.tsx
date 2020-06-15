@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from 'react'
 import React from 'react'
 
-import DatePicker from '../datepicker/DatePicker'
+import DatePicker from '../components/DatePicker'
 import TimePicker from '../timepicker/TimePicker'
 
 import { 
@@ -10,12 +10,12 @@ import {
 	defaultConfigs, 
 } from "./interfaces";
 import {defaultConfigs as timeDefaultConfigs } from "../timepicker/interfaces"
-import {defaultConfigs as dateDefaultConfigs } from "../datepicker/interfaces"
+import {defaultConfigs as dateDefaultConfigs } from "../interfaces/datepicker.interfaces"
 
 import { getInputDate, generateOutPut } from './utils'
 
 import styles from './date_time_picker.css'
-import { DatePickerOutPut } from '../datepicker/interfaces';
+import { DatePickerOutPut } from '../interfaces/datepicker.interfaces';
 import { OutputTime } from '../timepicker/interfaces';
 
 

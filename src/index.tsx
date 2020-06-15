@@ -3,8 +3,8 @@ import StyleWrapper from './style.utils'
 import TimePickerModule from "./timepicker/TimePicker";
 import MonthPickerModule from "./monthpicker/MonthPicker";
 
-import DatePickerModule from "./datepicker/DatePicker";
-import DatePickerInputModule from "./datepicker/DatePickerInput";
+import DatePickerModule from "./components/DatePicker";
+import DatePickerInputModule from "./components/DatePickerInput";
 
 import DateTimePickerModuel from "./datetimepicker/DateTimePicker";
 import DateTimePickerInputModuel from "./datetimepicker/DateTimePickerInput";
