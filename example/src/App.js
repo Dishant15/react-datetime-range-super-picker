@@ -17,10 +17,14 @@ const App = () => {
 
 	const [date, setDate] = useState(new Date())
 
-	const [str_date, setStrDate] = useState('02-05-2020 5:30 am')
+	const [str_date_time, setStrDateTime] = useState('02-05-2020 5:30 am')
+	const [str_date, setStrDate] = useState('02-05-2020')
+
+	const handleStrDateTimeUpdate = (args) => {
+		setStrDateTime(args.formatted)
+	}
 
 	const handleStrDateUpdate = (args) => {
-        console.log("handleStrDateUpdate -> args", args)
 		setStrDate(args.formatted)
 	}
 
@@ -86,8 +90,8 @@ const App = () => {
 
 			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Time Picker</div>
-				<DateTimePicker date={str_date} format="dd-MM-y hh:mm aaa"
-					onDateTimeUpdate={handleStrDateUpdate} />
+				<DateTimePicker date={str_date_time} format="dd-MM-y hh:mm aaa"
+					onDateTimeUpdate={handleStrDateTimeUpdate} />
 			</div>
 		</div>
 
