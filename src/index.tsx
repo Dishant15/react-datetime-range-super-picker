@@ -9,8 +9,8 @@ import DatePickerInputModule from "./components/DatePickerInput";
 import DateTimePickerModuel from "./components/DateTimePicker";
 import DateTimePickerInputModuel from "./components/DateTimePickerInput";
 
-import RangePicker from "./rangepicker/RangePicker";
-import DateTimeRangePickerInputModule from "./rangepicker/RangePickerInput"
+import RangePicker from "./components/RangePicker";
+import DateTimeRangePickerInputModule from "./components/RangePickerInput"
 
 
 export const TimePicker = StyleWrapper(TimePickerModule)

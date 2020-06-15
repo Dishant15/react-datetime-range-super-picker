@@ -5,13 +5,14 @@ import { startOfWeek, endOfWeek, subWeeks,
 	startOfYesterday, endOfYesterday
 } from "date-fns";
 
-import { UnwrappedDateTimePicker } from "../components/DateTimePicker";
+import { UnwrappedDateTimePicker } from "./DateTimePicker";
 import { getInitialDateForInput, 
 	getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 
-import { RangePickerProps } from './interfaces'
+import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
 import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
-import styles from "./rangepicker.css";
+
+import styles from "../styles/rangepicker.css";
 
 
 export default class RangePicker extends React.Component<RangePickerProps> {

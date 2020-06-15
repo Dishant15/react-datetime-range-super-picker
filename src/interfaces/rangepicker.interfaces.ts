@@ -1,6 +1,6 @@
 import { OutputTime } from "../timepicker/interfaces";
-import { DatePickerOutPut } from "../interfaces/datepicker.interfaces";
-import { DateTimePickerOutPut, DateObject } from "../interfaces/datetimepicker.interfaces";
+import { DatePickerOutPut } from "./datepicker.interfaces";
+import { DateTimePickerOutPut, DateObject } from "./datetimepicker.interfaces";
 import { ComponentTheme } from "../style.utils";
 
 
