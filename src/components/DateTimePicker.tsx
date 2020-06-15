@@ -2,14 +2,14 @@
 import React from 'react'
 
 import DatePicker from './DatePicker'
-import TimePicker from '../timepicker/TimePicker'
+import TimePicker from './TimePicker'
 
 import { 
 	DateTimePickerProps, 
 	MainDateTimeObject,
 	defaultConfigs, 
 } from "../interfaces/datetimepicker.interfaces";
-import {defaultConfigs as timeDefaultConfigs, OutputTime } from "../timepicker/interfaces"
+import {defaultConfigs as timeDefaultConfigs, OutputTime } from "../interfaces/timepicker.interfaces"
 import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 
 import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils'

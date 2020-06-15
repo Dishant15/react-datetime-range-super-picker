@@ -1,6 +1,6 @@
 import StyleWrapper from './style.utils'
 
-import TimePickerModule from "./timepicker/TimePicker";
+import TimePickerModule from "./components/TimePicker";
 import MonthPickerModule from "./components/MonthPicker";
 
 import DatePickerModule from "./components/DatePicker";

@@ -1,8 +1,9 @@
 import React from 'react';
 import {range} from 'lodash'
 
-import { MainTime } from "./interfaces";
-import styles from './timepicker.css'
+import { MainTime } from "../interfaces/timepicker.interfaces";
+
+import styles from '../styles/timepicker.css'
 
 
 interface ClockFaceProps extends MainTime {

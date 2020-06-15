@@ -2,7 +2,7 @@ import { format, parse } from "date-fns";
 import { isString } from "lodash";
 
 import { formatDate, _type_safe_isValidDate } from "./datepicker.utils";
-import { createInputTime, generateTimeOutput } from "../timepicker/utils";
+import { createInputTime, generateTimeOutput } from "./timepicker.utils";
 
 import { 
 	DateTimePickerProps, 
@@ -11,7 +11,7 @@ import {
 	DateObject,
 	defaultConfigs
 } from "../interfaces/datetimepicker.interfaces";
-import { defaultConfigs as timeDefaultConfig, OutputTime } from "../timepicker/interfaces";
+import { defaultConfigs as timeDefaultConfig, OutputTime } from "../interfaces/timepicker.interfaces";
 import { DatePickerOutPut } from "../interfaces/datepicker.interfaces";
 
 export const getInputDate = (

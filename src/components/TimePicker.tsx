@@ -2,11 +2,11 @@ import React, {useCallback} from "react";
 
 import ClockFace from './ClockFace'
 
-import { createInputTime, generateTimeOutput } from "./utils";
+import { createInputTime, generateTimeOutput } from "../utils/timepicker.utils";
 
-import { TimePickerProps, MainTime, defaultConfigs } from "./interfaces";
+import { TimePickerProps, MainTime, defaultConfigs } from "../interfaces/timepicker.interfaces";
 
-import styles from './timepicker.css'
+import styles from '../styles/timepicker.css'
 
 
 export default ({
