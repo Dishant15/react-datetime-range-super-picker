@@ -1,6 +1,6 @@
 .wrapper {
 	/** main color imports */
-	composes: root from "./root.css";
+	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 
@@ -9,14 +9,11 @@
 	--clock-padding : 0.8em;
 	--clock-hand-height : 1.8em;
 
-	background: var(--primary-color);
-	color: var(--primary-font-color);
 	padding-top: .8em;
 	width: calc(var(--clock-size) + (var(--clock-padding) * 2) );
 }
 
 .title {
-	color : var(--primary-highlight-color);
 	text-align: center;
 	font-size: 1.5em;
 	padding-bottom: .4em;
@@ -30,7 +27,6 @@
 .clock {
 	height: var(--clock-size);
 	width: var(--clock-size);
-	background: var(--other-color);
 	border-radius: 50%;
 }
 
@@ -65,35 +61,33 @@
 	composes: btns;
 }
 
-.hh_active {
+/* .hh_active {
 	composes: btns;
-	color: var(--primary-color);
-	background:  var(--secondary-highlight-color);
 	transform:scale(1.2);
-}
+} */
 
-.hh:hover {
-	color: var(--primary-color);
-	background:  var(--secondary-highlight-color);
-	transform:scale(1.2);
+.hh:hover, .mm:hover {
+	background: var(--hover-bg-color) !important;
+	color:  var(--hover-color) !important;
+	/* transform:scale(1.2); */
 }
 
 .mm {
 	composes : btns;
 }
 
-.mm_active {
+/* .mm_active {
 	composes : btns;
 	color: var(--primary-color);
 	background:  var(--primary-highlight-color);
 	transform:scale(1.2);
-}
+} */
 
-.mm:hover {
+/* .mm:hover {
 	color: var(--primary-color);
 	background:  var(--primary-highlight-color);
 	transform:scale(1.2);
-}
+} */
 
 .hand {
 	z-index: 1;
@@ -109,13 +103,13 @@
 
 .mm_hand {
 	composes : hand;
-	background: var(--primary-highlight-color);
+	/* background: var(--primary-highlight-color); */
 	width: calc( (var(--clock-size) / 2) - var(--clock-hand-height) );
 }
 
 .hh_hand {
 	composes : hand;
-	background: var(--secondary-highlight-color);
+	/* background: var(--secondary-highlight-color); */
 	width: calc( (var(--clock-size) / 2) - (var(--clock-hand-height) * 2.5) );
 }
 
@@ -128,8 +122,8 @@
 	width: 2.5em;
 	text-align: center;
 	border-radius: 50%;
-	color:  var(--primary-font-color);
-	background: var(--primary-color);
+	/* color:  var(--primary-font-color);
+	background: var(--primary-color); */
 	transition: all .2s linear;
 }
 
@@ -142,12 +136,12 @@
 }
 
 .meridiem:hover {
-	color:  var(--primary-color);
-	background: var(--secondary-highlight-color);
+	color:  var(--hover-color) !important;
+	background: var(--hover-bg-color) !important;
 }
 
-.meridiem_active {
+/* .meridiem_active {
 	composes: meridiem;
 	color:  var(--primary-color);
 	background: var(--secondary-highlight-color);
-}
+} */
