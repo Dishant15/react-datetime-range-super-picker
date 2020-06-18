@@ -1,4 +1,4 @@
-import { ComponentTheme } from "../style.utils";
+import { ComponentTheme } from "../utils/style.utils";
 
 export interface TimeObject { 
 	/** default value : 8 */
@@ -49,4 +49,14 @@ export interface OutputTime {
 
 export const defaultConfigs = {
 	format : 'hh:mm aaa'
+}
+
+export interface TimeTitleWrapperProps extends MainTime {
+	time_format : string,
+	colors: ComponentTheme
+}
+
+export interface ClockFaceProps extends MainTime {
+	onTimeUpdate : ({}:MainTime) => void,
+	colors: ComponentTheme
 }

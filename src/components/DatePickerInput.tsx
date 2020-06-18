@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import DatePicker from './DatePicker'
 
-import { getInitialDateForInput } from './utils';
-import { DatePickerInputProps, DatePickerOutPut } from "./interfaces";
-import styles from './datepicker.css'
+import { getInitialDateForInput } from '../utils/datepicker.utils';
+import { DatePickerInputProps, DatePickerOutPut } from "../interfaces/datepicker.interfaces";
+
+import styles from '../styles/datepicker.css'
 
 
 export default (props:DatePickerInputProps) => {

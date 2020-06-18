@@ -1,22 +1,20 @@
 // import React, { useState, useEffect } from 'react'
 import React from 'react'
 
-import DatePicker from '../datepicker/DatePicker'
-import TimePicker from '../timepicker/TimePicker'
+import DatePicker from './DatePicker'
+import TimePicker from './TimePicker'
 
 import { 
 	DateTimePickerProps, 
 	MainDateTimeObject,
 	defaultConfigs, 
-} from "./interfaces";
-import {defaultConfigs as timeDefaultConfigs } from "../timepicker/interfaces"
-import {defaultConfigs as dateDefaultConfigs } from "../datepicker/interfaces"
+} from "../interfaces/datetimepicker.interfaces";
+import {defaultConfigs as timeDefaultConfigs, OutputTime } from "../interfaces/timepicker.interfaces"
+import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 
-import { getInputDate, generateOutPut } from './utils'
+import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils'
 
-import styles from './date_time_picker.css'
-import { DatePickerOutPut } from '../datepicker/interfaces';
-import { OutputTime } from '../timepicker/interfaces';
+import styles from '../styles/date_time_picker.css'
 
 
 export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps, MainDateTimeObject> {

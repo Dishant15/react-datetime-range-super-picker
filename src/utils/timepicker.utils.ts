@@ -2,7 +2,7 @@ import { isObject, isString, isUndefined, trim } from "lodash";
 import { format } from "date-fns";
 
 
-import { TimePickerProps, MainTime, OutputTime } from "./interfaces";
+import { TimePickerProps, MainTime, OutputTime } from "../interfaces/timepicker.interfaces";
 
 
 export const createInputTime = (input_time : TimePickerProps["time"]):MainTime => {
