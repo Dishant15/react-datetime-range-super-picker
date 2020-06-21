@@ -54,27 +54,27 @@
 	margin-right: .4em;
 	border-radius: 50%;
 	transition: all .2s linear;
-	transform:scale(1);
+	transform:scale(1) rotate(var(--font-rotation));
 }
 
 .hh {
 	composes: btns;
 }
 
-/* .hh_active {
-	composes: btns;
-	transform:scale(1.2);
-} */
+.mm {
+	composes : btns;
+}
 
 .hh:hover, .mm:hover {
 	background: var(--hover-bg-color) !important;
 	color:  var(--hover-color) !important;
-	/* transform:scale(1.2); */
+	transform:scale(1.2) rotate(var(--font-rotation));
 }
 
-.mm {
-	composes : btns;
-}
+/* .hh_active {
+	composes: btns;
+	transform:scale(1.2);
+} */
 
 /* .mm_active {
 	composes : btns;

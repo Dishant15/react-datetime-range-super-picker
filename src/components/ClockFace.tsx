@@ -4,6 +4,7 @@ import {range} from 'lodash'
 import { ClockFaceProps } from "../interfaces/timepicker.interfaces";
 
 import styles from '../styles/timepicker.css'
+import { getTickColors, getMeridiemStyles } from '../styles/clockface.colors';
 
 
 // making inline css due to problem with css modules on production build
@@ -14,19 +15,7 @@ export default ({hour, minute, meridiem, onTimeUpdate, colors} : ClockFaceProps)
 	const clock_tick_list: number[] = range(1, 13)
 	const hand_position = (CLOCK_SIZE / 2) + (CLOCK_HAND_HEIGHT / 2 )
 
-	const meridiem_active_style = {
-		'--hover-color' : colors.primary_color,
-		'--hover-bg-color': colors.secondary_highlight_color,
-		color : colors.primary_color,
-		background: colors.secondary_highlight_color
-	}
-
-	const meridiem_style = {
-		'--hover-color' : colors.primary_color,
-		'--hover-bg-color': colors.secondary_highlight_color,
-		background: colors.primary_color,
-		color: colors.primary_font_color
-	}
+	const { meridiem_style, meridiem_active_style } = getMeridiemStyles(colors)
 
 	return (
 		<div className={styles.clockface} >
@@ -41,35 +30,9 @@ export default ({hour, minute, meridiem, onTimeUpdate, colors} : ClockFaceProps)
 					let rotation = tick === 12 ? 0 : tick * 30
 					// adjust hands so 12 O'clock is at the top rather than at 3 O'clock
 					rotation -= 90
-					// is current tick active ?
 
-					const active_hh_style = {
-											background : colors.secondary_highlight_color,
-											color: colors.primary_color,
-											transform:`rotate(${-rotation}deg)`
-										}
-					
-					const inactive_hh_style = {
-											'--hover-bg-color': colors.secondary_highlight_color,
-											'--hover-color': colors.primary_color,
-											transform:`rotate(${-rotation}deg)`
-										}
-
-					const active_mm_style = {
-											background : colors.primary_highlight_color,
-											color: colors.primary_color,
-											transform:`rotate(${-rotation}deg)`
-										}
-					
-					const inactive_mm_style = {
-											'--hover-bg-color': colors.primary_highlight_color,
-											'--hover-color': colors.primary_color,
-											transform:`rotate(${-rotation}deg)`
-										}
-
-					const hh_style = tick === hour ? active_hh_style : inactive_hh_style
-					const mm_style = curr_minute === minute ? active_mm_style : inactive_mm_style
-
+					const { hh_style, mm_style} = getTickColors(
+						colors, rotation, tick === hour, curr_minute === minute)
 
 					return (
 						<div className={styles.hand_wrapper} key={tick} 
