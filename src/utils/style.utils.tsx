@@ -1,22 +1,10 @@
 import React from 'react'
-
 import { assign } from 'lodash'
 
-
-export type ComponentTheme = {
-	primary_color?: string,
-	primary_font_color?: string,
-	light_font_color?: string,
-	
-	secondary_color?: string,
-	other_color?: string,
-
-	primary_highlight_color?: string,
-	secondary_highlight_color?: string,
-}
+import { ComponentTheme } from '../interfaces/style.interfaces'
 
 
-const LIGHT_THEME_COLORS = {
+const LIGHT_THEME_COLORS:ComponentTheme = {
 	primary_color : 'white',
 	primary_font_color : 'rgba(0, 0, 0, 0.57)',
 	light_font_color : 'rgba(0,0,0, 0.35)',
@@ -28,7 +16,7 @@ const LIGHT_THEME_COLORS = {
 	secondary_highlight_color: '#00aab2',
 }
 
-const getThemeColors = (theme = 'light') => {
+const getThemeColors = (theme = 'light'):ComponentTheme => {
 	switch (theme) {
 		case 'light':
 			return LIGHT_THEME_COLORS

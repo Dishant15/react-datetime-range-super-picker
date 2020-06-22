@@ -1,11 +1,10 @@
-import { ComponentTheme } from "../utils/style.utils"
-import { CSSProperties } from "react"
+import { ComponentTheme, InlineCssStyles } from '../interfaces/style.interfaces';
 
 export const getTickColors = (
 	colors:ComponentTheme, rotation:number, 
 	is_hh_active:boolean, is_mm_active:boolean
 ) => {
-	const active_hh_style:CSSProperties | { [key: string]: string } = {
+	const active_hh_style:InlineCssStyles = {
 		background : colors.secondary_highlight_color,
 		color: colors.primary_color,
 		'--hover-bg-color': colors.secondary_highlight_color,
@@ -13,13 +12,13 @@ export const getTickColors = (
 		'--font-rotation': `${-rotation}deg`,
 	}
 	
-	const inactive_hh_style:any = {
+	const inactive_hh_style:InlineCssStyles = {
 		'--hover-bg-color': colors.secondary_highlight_color,
 		'--hover-color': colors.primary_color,
 		'--font-rotation': `${-rotation}deg`,
 	}
 	
-	const active_mm_style:any = {
+	const active_mm_style:InlineCssStyles = {
 		background : colors.primary_highlight_color,
 		color: colors.primary_color,
 		'--hover-bg-color': colors.primary_highlight_color,
@@ -27,7 +26,7 @@ export const getTickColors = (
 		'--font-rotation': `${-rotation}deg`,
 	}
 	
-	const inactive_mm_style:any = {
+	const inactive_mm_style:InlineCssStyles = {
 		'--hover-bg-color': colors.primary_highlight_color,
 		'--hover-color': colors.primary_color,
 		'--font-rotation': `${-rotation}deg`,

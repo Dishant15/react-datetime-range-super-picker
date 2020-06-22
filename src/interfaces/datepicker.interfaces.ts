@@ -1,4 +1,4 @@
-import { ComponentTheme } from "../utils/style.utils";
+import { ComponentTheme } from './style.interfaces';
 
 export interface MainDate {
 	day : number,

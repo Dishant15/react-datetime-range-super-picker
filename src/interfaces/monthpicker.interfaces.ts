@@ -1,4 +1,4 @@
-import { ComponentTheme } from "../utils/style.utils";
+import { ComponentTheme } from './style.interfaces';
 
 export interface OutputShape {
 	// 0 -> 11, 0 = Jan; 11 = Dec
