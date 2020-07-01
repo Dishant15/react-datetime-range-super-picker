@@ -6,6 +6,7 @@ import MonthPicker from "./MonthPicker";
 import { formatDate, getWeekList, getDayList, generateDatePickerOutput } from "../utils/datepicker.utils";
 import { DatePickerProps, defaultConfigs, DatePickerState } from "../interfaces/datepicker.interfaces";
 import { OutputShape } from '../interfaces/monthpicker.interfaces'
+import { getWrapperStyles, getCalenderCellColors } from '../styles/datepicker.color'
 
 import styles from '../styles/datepicker.css'
 
@@ -74,7 +75,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
 
 		return(
-			<div className={styles.wrapper}>
+			<div className={styles.wrapper} style={getWrapperStyles(colors)}>
 				<MonthPicker time={{month : month, year : year}}
 					colors={colors}
 					onDateUpdate={this.handleMonthUpdate} />
@@ -85,7 +86,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 					<tr className={styles.week_day_header}>
 						{week_header_list.map((week_str, i) => {
 							return (
-								<th key={i} className={styles.week_day_title}>
+								<th key={i} className={styles.week_day_title} style={{ color: colors.primary_highlight_color }}>
 									{week_str}
 								</th>
 							)
@@ -98,13 +99,12 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
-									const day_class = curr_day.id === date_id ?
-										styles.calender_cell_active : styles.calender_cell
+									const day_styles = getCalenderCellColors(colors, curr_day.id === date_id)
 
 									return (
-										<td key={j} className={day_class}
+										<td key={j} className={styles.calender_cell}
 											onClick={() => this.handleDateUpdate(curr_day.id)}
-											style={{opacity}} > {curr_day.day}
+											style={{opacity, ...day_styles }} > {curr_day.day}
 										</td>
 									)
 								})}
