@@ -1,13 +1,14 @@
 .wrapper {
 	/** main color imports */
-	composes: root from "./root.css";
+	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
 
-	background: var(--primary-color);
-	color: var(--primary-font-color);
+	/* background: var(--primary-color);
+	color: var(--primary-font-color); */
 	display: table;
 }
 
@@ -18,7 +19,7 @@
 }
 
 .calender {
-	border-right: 1px solid var(--other-color);
+	/* border-right: 1px solid var(--other-color); */
 	padding-right: 1.6em;
 }
 
@@ -40,7 +41,7 @@
 	position: absolute;
 	z-index: 2;
 	/* primary color */
-	border: 1px solid #51ADAC; 
+	/* border: 1px solid #51ADAC;  */
 }
 
 .picker_header_wrapper {

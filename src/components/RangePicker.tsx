@@ -11,6 +11,7 @@ import { getInitialDateForInput,
 
 import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
 import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
+import { getWrapperStyles, getHeaderFieldColors, getDoneBtnStyles, getActivePillColors } from '../styles/rangepicker.colors'
 
 import styles from "../styles/rangepicker.css";
 
@@ -57,15 +58,16 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		const to_date_str = getInitialDateForInput(to_date, format)
 
 		return (
-			<div className={styles.wrapper}>
+			<div className={styles.wrapper} style={getWrapperStyles(colors)}>
 				<div className={styles.table_wrapper}>
 
-					<div className={styles.header}>
+					<div className={styles.header} style={{ background: colors.secondary_highlight_color }}>
 						<div className={styles.header_div} 
 							onClick={() => this.setState({is_to_date:false})} >
 
-							<div className={styles.header_label}>From</div>
-							<div className={is_to_date ? styles.header_field : styles.header_field_active}>
+							<div className={styles.header_label} style={{ color: colors.primary_color }}>From</div>
+							<div className={styles.header_field_abs}
+								style={getHeaderFieldColors(colors, !is_to_date)}>
 								{from_date_str}
 							</div>
 
@@ -74,14 +76,15 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 						<div className={styles.header_div}
 							onClick={() => this.setState({is_to_date:true})} 
 						>
-							<div className={styles.header_label}>To</div>
-							<div className={is_to_date ? styles.header_field_active : styles.header_field}>
+							<div className={styles.header_label} style={{ color: colors.primary_color }}>To</div>
+							<div className={styles.header_field_abs}
+								style={getHeaderFieldColors(colors, is_to_date)}>
 								{to_date_str}
 							</div>
 						</div>
 
 						{Boolean(onDone) &&
-							<div className={styles.done_btn} onClick={onDone}>
+							<div className={styles.done_btn} style={getDoneBtnStyles(colors)} onClick={onDone}>
 								Done
 							</div>
 						}
@@ -89,36 +92,36 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 					</div>
 
 					<div>
-						<div className={styles.advance_cell}>
-							<div className={advance_pill === 'tm' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+						<div className={styles.advance_cell} style={{ background: colors.secondary_highlight_color }}>
+							<div className={styles.advance_pill}
+								style={getActivePillColors(colors, advance_pill === 'tm')}
 								onClick={this.handleThisMonth}>
 								This Month
 							</div>
-							<div className={advance_pill === 'lm' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+							<div className={styles.advance_pill} 
+								style={getActivePillColors(colors, advance_pill === 'lm')}
 								onClick={this.handleLastMonth}>
 								Last Month
 							</div>
 
-							<div className={advance_pill === 'tw' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+							<div className={styles.advance_pill} 
+								style={getActivePillColors(colors, advance_pill === 'tw')}
 								onClick={this.handleThisWeek} >
 								This Week
 							</div>
-							<div className={advance_pill === 'lw' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+							<div className={styles.advance_pill} 
+								style={getActivePillColors(colors, advance_pill === 'lw')}
 								onClick={this.handleLastWeek}>
 								Last Week
 							</div>
 
-							<div className={advance_pill === 't' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+							<div className={styles.advance_pill} 
+								style={getActivePillColors(colors, advance_pill === 't')}
 								onClick={this.handleToday}>
 								Today
 							</div>
-							<div className={advance_pill === 'y' ? 
-								styles.advance_pill_active : styles.advance_pill} 
+							<div className={styles.advance_pill} 
+								style={getActivePillColors(colors, advance_pill === 'y')}
 								onClick={this.handleYesterday}>
 								Yesterday
 							</div>

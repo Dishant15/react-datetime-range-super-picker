@@ -3,6 +3,7 @@
 	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/** clock size */
 	--clock-size : 16em;
@@ -55,6 +56,7 @@
 	border-radius: 50%;
 	transition: all .2s linear;
 	transform:scale(1) rotate(var(--font-rotation));
+	composes: no_select from "./root.css";
 }
 
 .hh {
@@ -129,10 +131,12 @@
 
 .meridiem_am {
 	left: .4em;
+	composes: no_select from "./root.css";
 }
 
 .meridiem_pm {
 	right: .4em;
+	composes: no_select from "./root.css";
 }
 
 .meridiem:hover {

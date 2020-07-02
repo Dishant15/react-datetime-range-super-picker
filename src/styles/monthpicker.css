@@ -3,6 +3,7 @@
 	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
 	--month-pill-size : 4em;
@@ -44,7 +45,7 @@
 }
 
 .year_edit_submit:hover {
-	color: var(--year-edit-hover-color);
+	color: var(--year-edit-hover-color) !important;
 	background: var(--year-edit-hover-bg-color);
 }
 

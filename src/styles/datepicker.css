@@ -3,6 +3,7 @@
 	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
 	

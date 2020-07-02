@@ -18,7 +18,7 @@ export const getMonthPillColors = (
 }
 
 export const getSetButtonStyles = (colors: ComponentTheme) => ({
-	color: colors.primary_highlight_color,
+	color: colors.secondary_highlight_color,
 	'--year-edit-hover-color': colors.primary_color,
 	'--year-edit-hover-bg-color': colors.secondary_highlight_color
 })

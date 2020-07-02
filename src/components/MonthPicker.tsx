@@ -10,7 +10,6 @@ import styles from '../styles/monthpicker.css'
 
 
 export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
-	console.log("colors", colors)
 
 	const {month, year} = getMonthAndYear(time)
 
@@ -54,22 +53,24 @@ export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
 	const month_list = range(0, 12)
 
 	return (
-		<div className={styles.wrapper} style={{ background: colors.primary_color, color: colors.primary_font_color }}>
+		<div className={styles.wrapper} 
+			style={{ background: colors.primary_color, color: colors.primary_font_color }}>
 			{edit ?
 				<div className={styles.year_edit}>
 					<input placeholder="Year ( YYYY )" 
 						value={res_year} className={styles.year_edit_input}
+						style={{ borderBottom: '1px solid', borderBottomColor: colors.primary_highlight_color }}
 						onChange={handleYearChange} />
 
 					<div className={styles.year_edit_submit}
-						style={{ color: colors.secondary_highlight_color }}
+						style={getSetButtonStyles(colors)} 
 						onClick={() => handleTimeChange({month , year : res_year})}>
 						Set
 					</div>
 				</div>
 			:
-				<div className={styles.year_show} 
-					style={getSetButtonStyles(colors)} 
+				<div className={styles.year_show}
+					style={{ color: colors.primary_highlight_color }}
 					onClick={() => setEdit(true)}>
 					{year} {formatMonth(month, 'MMMM')}
 				</div>

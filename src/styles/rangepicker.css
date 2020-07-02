@@ -1,19 +1,20 @@
 .wrapper {
 	/** main color imports */
-	composes: root from "./root.css";
+	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
 
-	background: var(--primary-color);
-	color: var(--primary-font-color);
+	/* background: var(--primary-color);
+	color: var(--primary-font-color); */
 }
 
 .header {
 	display: table-row;
 	text-align: left;
-	background: var(--secondary-highlight-color);
+	/* background: var(--secondary-highlight-color); */
 }
 
 .header_div {
@@ -25,7 +26,7 @@
 .header_label {
 	font-size: .8em;
 	padding-left: .5em;
-	color:var(--primary-color);
+	/* color:var(--primary-color); */
 }
 
 .header_field_abs {
@@ -58,20 +59,20 @@
 	padding : .4em .8em;
 	border-radius: .3em;
 	cursor: pointer;
-	color: var(--primary-color);
+	/* color: var(--primary-color); */
 	font-weight: bold;
 	transition: all .2s linear;
 }
 
 .done_btn:hover{
-	background: var(--primary-color);
-	color : var(--primary-highlight-color);
+	background: var(--donebtn-hover-bg-color);
+	color : var(--donebtn-hover-color) !important;
 }
 
 .advance_cell {
 	display: table-cell;
 	vertical-align: middle;
-	background: var(--secondary-highlight-color);
+	/* background: var(--secondary-highlight-color); */
 	text-align: left;
 }
 .advance_pill {
@@ -87,13 +88,13 @@
 
 .advance_pill_active {
 	composes : advance_pill;
-	color: var(--primary-color);
-	border-left: .5em solid var(--primary-color);
+	/* color: var(--primary-color); */
+	border-left: .5em solid;
 }
 
 .advance_pill:hover {
-	color: var(--primary-color);
-	border-left: .5em solid var(--primary-color);
+	color: var(--active-pill-hover-color);
+	border-left: .5em solid;
 }
 
 .advance_pill:last-child {
@@ -113,7 +114,7 @@
 .picker_input {
 	composes: input from "./root.css";
 	text-align: center;
-	color: var(--secondary-highlight-color) !important;
+	/* color: var(--secondary-highlight-color) !important; */
 	min-width: 30em;
 }
 
