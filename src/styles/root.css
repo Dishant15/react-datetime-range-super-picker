@@ -1,5 +1,4 @@
-.root {
-	/* font-family: Tahoma, Verdana, Segoe, sans-serif; */
+/* .root {
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	--primary-color : white;
@@ -11,7 +10,7 @@
 
 	--primary-highlight-color : #88b04b;
 	--secondary-highlight-color: #00aab2;
-}
+} */
 
 .no_select {
 	-webkit-user-select: none;
@@ -25,6 +24,6 @@
 	outline: none;
 	padding : .5em;
 	font-size: 1.1em;
-	border-bottom: 1px solid var(--primary-highlight-color);
+	/* border-bottom: 1px solid var(--primary-highlight-color); */
 }
 

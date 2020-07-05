@@ -1,14 +1,15 @@
 .wrapper {
 	/** main color imports */
-	composes: root from "./root.css";
+	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
+	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
 	
 
-	background: var(--primary-color);
-	color: var(--primary-font-color);
+	/* background: var(--primary-color);
+	color: var(--primary-font-color); */
 	padding-top: .8em;
 }
 
@@ -25,28 +26,28 @@
 }
 
 .week_day_title {
-	color: var(--primary-highlight-color);
+	/* color: var(--primary-highlight-color); */
 	padding : .5em 1em;
 }
 
 .calender_cell {
 	text-align: center;
 	cursor: pointer;
-	color : var(--secondary-highlight-color);
+	/* color : var(--secondary-highlight-color); */
 	font-weight: bold;
 	padding : .5em;
 	transition: all .2s linear;
 }
 
-.calender_cell_active {
+/* .calender_cell_active {
 	composes : calender_cell;
 	background: var(--secondary-highlight-color);
 	color : var(--primary-color);
-}
+} */
 
 .calender_cell:hover {
-	background: var(--secondary-highlight-color);
-	color : var(--primary-color);
+	background: var(--calender-cell-hover-bg-color);
+	color : var(--calender-cell-hover-color) !important;
 }
 
 .picker_input_wrapper {
@@ -56,7 +57,7 @@
 .picker_input {
 	composes: input from "./root.css";
 	text-align: center;
-	color: var(--secondary-highlight-color) !important;
+	/* color: var(--secondary-highlight-color) !important; */
 }
 
 .picker_model {

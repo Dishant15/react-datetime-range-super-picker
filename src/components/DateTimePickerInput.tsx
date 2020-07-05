@@ -10,6 +10,8 @@ import styles from '../styles/date_time_picker.css'
 
 export default (props:DateTimePickerInputProps) => {
 
+	const { colors } = props
+
 	const [show_picker, setShow] = useState(false)
 	const [show_date, setDate] = useState(
 		getInitialDateForInput(props.date || new Date(), props.format)
@@ -27,19 +29,25 @@ export default (props:DateTimePickerInputProps) => {
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={show_date} className={styles.picker_input} readOnly
-				style={{borderBottom:'1px solid #88b04b', ...props.inputStyle}}
+				style={{
+					borderBottom:'1px solid', 
+					borderBottomColor: colors.primary_highlight_color, 
+					...props.inputStyle
+				}}
 				onFocus={() => setShow(true)} />
 
 			{show_picker &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
-					style={props.popupStyle} >
-					<div className={styles.picker_header_wrapper} style={{background:'#51ADAC'}}>
+					style={{ border: '1px solid', borderColor: colors.secondary_color, ...props.popupStyle}} >
+
+					<div className={styles.picker_header_wrapper} style={{background: colors.secondary_color }}>
 						<div className={styles.picker_header_btn} onClick={handleComplete}
-							style={{background:'white', color:'#51ADAC'}} >
+							style={{background: colors.primary_color, color: colors.secondary_color }} >
 							Done 
 						</div>
 					</div>
-					<DateTimePicker date={props.date} colors={props.colors}
+
+					<DateTimePicker date={props.date} colors={colors}
 						format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
 						weekStartsOn={props.weekStartsOn} 
 						onDateUpdate={props.onDateUpdate} onTimeUpdate={props.onTimeUpdate}

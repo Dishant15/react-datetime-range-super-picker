@@ -64,7 +64,8 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 		return (
 			<React.Fragment>
-				<div className={[styles.table_cell, styles.calender].join(' ')}>
+				<div className={[styles.table_cell, styles.calender].join(' ')}
+					style={{ borderRight: '1px solid', borderRightColor: colors.other_color }}>
 					<DatePicker date={{
 							day : curr_date.day,
 							month : curr_date.month,
@@ -97,7 +98,8 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
  * This component wraps table cells into a table
  */
 const DateTimePicker = (props:DateTimePickerProps) => (
-	<div className={styles.wrapper}>
+	<div className={styles.wrapper} 
+		style={{ color: props.colors.primary_font_color, background: props.colors.primary_color }}>
 		<UnwrappedDateTimePicker {...props} />
 	</div>
 )

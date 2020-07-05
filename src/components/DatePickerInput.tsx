@@ -28,7 +28,11 @@ export default (props:DatePickerInputProps) => {
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={show_date} className={styles.picker_input} readOnly
-				style={{borderBottom:'1px solid #88b04b', ...props.inputStyle}}
+				style={{
+					borderBottom:'1px solid',
+					borderBottomColor: props.colors.primary_highlight_color,
+					...props.inputStyle
+				}}
 				onFocus={() => setShow(true)} />
 
 			{show_picker &&

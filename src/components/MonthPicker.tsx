@@ -3,14 +3,13 @@ import { range, isNaN } from 'lodash'
 
 import { formatMonth, getMonthAndYear } from "../utils/monthpicker.utils";
 import { MonthPickerProps, OutputShape } from "../interfaces/monthpicker.interfaces";
+import { getSetButtonStyles, getMonthPillColors } from "../styles/monthpicker.colors"
 
 import styles from '../styles/monthpicker.css'
-import root_styles from '../styles/root.css'
 
 
 
 export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
-	console.log("colors", colors)
 
 	const {month, year} = getMonthAndYear(time)
 
@@ -54,39 +53,43 @@ export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
 	const month_list = range(0, 12)
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper} 
+			style={{ background: colors.primary_color, color: colors.primary_font_color }}>
 			{edit ?
 				<div className={styles.year_edit}>
 					<input placeholder="Year ( YYYY )" 
 						value={res_year} className={styles.year_edit_input}
+						style={{ borderBottom: '1px solid', borderBottomColor: colors.primary_highlight_color }}
 						onChange={handleYearChange} />
 
 					<div className={styles.year_edit_submit}
+						style={getSetButtonStyles(colors)} 
 						onClick={() => handleTimeChange({month , year : res_year})}>
 						Set
 					</div>
 				</div>
 			:
-				<div className={styles.year_show} onClick={() => setEdit(true)}>
+				<div className={styles.year_show}
+					style={{ color: colors.primary_highlight_color }}
+					onClick={() => setEdit(true)}>
 					{year} {formatMonth(month, 'MMMM')}
 				</div>
 			}
 
 			<div className={styles.month_wrapper} >
 				<div onClick={() => handleMonthPosChange(1)}
-					className={[styles.crousel_btns, root_styles.no_select].join(' ')}> &lt; </div>
+					style={{ color: colors.light_font_color }}
+					className={styles.crousel_btns}> &lt; </div>
 
 				<div className={styles.month_pill_wrapper}>
 					<div className={styles.month_pill_crousel} style={{transform:`translateX(${m_pos}em)`}}>
 
 						{month_list.map((curr_month) => {
 
-							let m_class = (curr_month === month) ?
-								styles.month_pill_active : styles.month_pill
-							m_class = [m_class, root_styles.no_select].join(' ')
+							const m_styles = getMonthPillColors(colors, (curr_month === month))
 
 							return (
-								<div className={m_class} key={curr_month}
+								<div style={m_styles} className={styles.month_btn} key={curr_month}
 									onClick={() => handleTimeChange({year:year, month:curr_month})} >
 									{formatMonth(curr_month, "MMM")}
 								</div>
@@ -97,7 +100,7 @@ export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
 				</div>
 
 				<div onClick={() => handleMonthPosChange(0)}
-					className={[styles.crousel_btns, root_styles.no_select].join(' ')}> &gt; </div>
+					className={styles.crousel_btns}> &gt; </div>
 			</div>
 		</div>
 	)
