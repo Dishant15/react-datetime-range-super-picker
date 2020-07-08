@@ -62,8 +62,10 @@ Available Props
 
 | **Props** | **Default** | **Type** | **Description** |
 | :--- |:--- | :---:| :--- |
-| time | { hour: 8, minute: 0, meridiem: 'AM'} | Object or String | Example <br><ul><li>{ hour: 8, minute: 0, meridiem: 'AM'}</li><li>{hour24: 16, minute: 0}</li><li>"16:30"</li><li>"8:30 AM"</li></ul>|
-| onTimeUpdate | -- | Function | Returns <br>{ hour24, hour, minute:, meridiem }|
+| time | { hour: 8, minute: 0, meridiem: 'AM' } | Object or String | Example <br><ul><li>{ hour: 8, minute: 0, meridiem: 'AM' }</li><li>{ hour24: 16, minute: 0 }</li><li>"16:30"</li><li>"8:30 AM"</li></ul>|
+| onTimeUpdate | -- | Function | Returns <br>{ hour24, hour, minute, meridiem }|
+
+
 ## DatePicker
 
 ```tsx
@@ -89,6 +91,17 @@ const DatePickerWrapper = () => {
   )
 }
 ```
+
+Available Props
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| date | new Date() | Date Object, Object or String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li><li></li></ul>|
+| weekStartsOn | 0 | Number | where 0 - sunday, 6 - saturday |
+| format | do MMMM yyyy | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| onDateUpdate | -- | Function | Returns <br>{ day, month, year, date, formatted } |
+| onComplete | -- | Function | () => void |
+
 
 ## DatePickerInput
 
