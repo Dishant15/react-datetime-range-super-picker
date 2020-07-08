@@ -96,8 +96,8 @@ Available Props
 
 | **Props** | **Default** | **Type** | **Description** |
 | :--- |:--- | :---:| :--- |
-| date | new Date() | Date Object, Object or String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li><li></li></ul>|
-| weekStartsOn | 0 | Number | where 0 - sunday, 6 - saturday |
+| date | new Date() | Date Object,<br> Object or <br> String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li></ul>|
+| weekStartsOn | 0 | Number | where 0 - sunday and 6 - saturday |
 | format | do MMMM yyyy | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | onDateUpdate | -- | Function | Returns <br>{ day, month, year, date, formatted } |
 | onComplete | -- | Function | () => void |
