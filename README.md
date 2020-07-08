@@ -62,7 +62,13 @@ Available Props
 
 | **Props** | **Default** | **Type** | **Description** |
 | :---: |:---:| :---:| :---:|
-| time | { hour: 8, minute: 0, meridiem: 'AM'} | Object or String | Example. <br> * { hour: 8, minute: 0, meridiem: 'AM' }<br> * { hour24: 16, minute: 0 }<br> * "16:30"<br> * "8:30 AM"<br> |
+| time | { hour: 8, minute: 0, meridiem: 'AM'} | Object or String | Example <br>
+<ul>
+<li>{ hour: 8, minute: 0, meridiem: 'AM' }</li>
+<li>{ hour24: 16, minute: 0 }</li>
+<li>"16:30"</li>
+<li>"8:30 AM"</li>
+</ul>|
 | onTimeUpdate | -- | Function | Returns { hour24, hour, minute:, meridiem }|
 ## DatePicker
 
