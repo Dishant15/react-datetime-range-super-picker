@@ -6,11 +6,12 @@
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
 	/* other element sizes */
-	
+	--calender-pill-size : 3em;
 
 	/* background: var(--primary-color);
 	color: var(--primary-font-color); */
-	padding-top: .8em;
+	padding-bottom: .8em;
+	width: calc( (var(--calender-pill-size) * 7) + 1.6em);
 }
 
 
@@ -18,6 +19,7 @@
 	margin: 0 auto;
 	/* month may have 6 or 5 rows, keep calender hight same for both */
 	min-height: 16em;
+	/* border: 1px solid yellow */
 }
 
 .week_day_header {

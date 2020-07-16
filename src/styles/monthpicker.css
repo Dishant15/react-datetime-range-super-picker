@@ -12,6 +12,8 @@
 	/* background: var(--primary-color);
 	color: var(--primary-font-color); */
 	padding-top: .8em;
+	width: calc( (var(--month-pill-size) * 4) + (var(--month-pill-margin) * 9) );
+	/* border: 1px solid red */
 }
 
 /* --------- Year Picker ------------ */
