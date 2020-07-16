@@ -36,10 +36,9 @@ export default (props:DateTimePickerInputProps) => {
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={{ border: '1px solid', borderColor: colors.secondary_color, ...props.popupStyle}} >
 
-					<div className={styles.picker_header_wrapper} style={{background: colors.secondary_color }}>
-						<div className={styles.picker_header_btn} onClick={handleComplete}
-							style={{background: colors.primary_color, color: colors.secondary_color }} >
-							Done 
+					<div className={styles.picker_header_wrapper}>
+						<div className={styles.picker_header_btn} onClick={handleComplete} >
+							<div className={styles.check_icon} style={{ color: colors.primary_highlight_color }}></div>
 						</div>
 					</div>
 

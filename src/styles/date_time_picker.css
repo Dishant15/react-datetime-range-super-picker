@@ -45,19 +45,31 @@
 }
 
 .picker_header_wrapper {
-	padding: .8em;
+	position: relative;
 }
 
-.picker_header_wrapper:after {
-	content: "";
-	clear: both;
-	display: table;
-  }
 
 .picker_header_btn {
+	position: absolute;
+	height: 1.4em;
+	width: 1.4em;
+	right: .7em;
+	top: .7em;
 	cursor: pointer;
-	float: right;
-	display: inline-block;
-	padding: .5em;
-	font-weight: bold;
+}
+
+.check_icon {
+	position: absolute;
+	width: 1em;
+	height: .5em;
+	border-bottom: solid 2px currentColor;
+	border-left: solid 2px currentColor;
+	transition: all .2s linear;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+}
+
+.check_icon:hover {
+	-webkit-transform: rotate(-45deg) scale(1.4);
+			transform: rotate(-45deg) scale(1.4);
 }

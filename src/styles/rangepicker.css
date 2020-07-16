@@ -62,11 +62,22 @@
 	/* color: var(--primary-color); */
 	font-weight: bold;
 	transition: all .2s linear;
+	min-height: 2em;
 }
 
-.done_btn:hover{
-	background: var(--donebtn-hover-bg-color);
-	color : var(--donebtn-hover-color) !important;
+.done_btn:hover > .check_icon {
+	-webkit-transform: rotate(-45deg) scale(1.4);
+			transform: rotate(-45deg) scale(1.4);
+}
+
+.check_icon {
+	width: 1.4em;
+	height: .7em;
+	border-bottom: solid 2px currentColor;
+	border-left: solid 2px currentColor;
+	transition: all .2s linear;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
 }
 
 .advance_cell {

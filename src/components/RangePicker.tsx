@@ -11,7 +11,7 @@ import { getInitialDateForInput,
 
 import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
 import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
-import { getHeaderFieldColors, getDoneBtnStyles, getActivePillColors } from '../styles/rangepicker.colors'
+import { getHeaderFieldColors, getActivePillColors } from '../styles/rangepicker.colors'
 
 import styles from "../styles/rangepicker.css";
 
@@ -84,8 +84,8 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 						</div>
 
 						{Boolean(onDone) &&
-							<div className={styles.done_btn} style={getDoneBtnStyles(colors)} onClick={onDone}>
-								Done
+							<div className={styles.done_btn} onClick={onDone}>
+								<div className={styles.check_icon} style={{ color: colors.primary_highlight_color }}></div>
 							</div>
 						}
 
