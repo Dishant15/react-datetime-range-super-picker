@@ -42,6 +42,7 @@
 	transition: all .2s linear;
 	border-radius: .5em;
 	font-weight: bold;
+	margin: 0 0.6em;
 }
 
 .year_edit_submit:hover {

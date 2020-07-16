@@ -16,10 +16,25 @@ const LIGHT_THEME_COLORS:ComponentTheme = {
 	secondary_highlight_color: '#00aab2',
 }
 
-const getThemeColors = (theme = 'light'):ComponentTheme => {
+const DARK_THEME_COLORS:ComponentTheme = {
+	primary_color : '#36465D',
+	primary_font_color : '#8897b9',
+	light_font_color : '#8897b9',
+	
+	secondary_color: '#2B303B',
+	other_color: '#efefef',
+
+	primary_highlight_color: '#CDB274',
+	secondary_highlight_color: '#a9a9a9',
+}
+
+const getThemeColors = (theme = 'dark'):ComponentTheme => {
 	switch (theme) {
 		case 'light':
 			return LIGHT_THEME_COLORS
+
+		case 'dark':
+			return DARK_THEME_COLORS
 	
 		default:
 			return LIGHT_THEME_COLORS;

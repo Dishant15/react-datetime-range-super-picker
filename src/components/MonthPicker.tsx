@@ -59,7 +59,6 @@ export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
 				<div className={styles.year_edit}>
 					<input placeholder="Year ( YYYY )" 
 						value={res_year} className={styles.year_edit_input}
-						style={{ borderBottom: '1px solid', borderBottomColor: colors.primary_highlight_color }}
 						onChange={handleYearChange} />
 
 					<div className={styles.year_edit_submit}

@@ -22,8 +22,11 @@
 .input {
 	border:none;
 	outline: none;
-	padding : .5em;
-	font-size: 1.1em;
-	/* border-bottom: 1px solid var(--primary-highlight-color); */
+	font-size: 0.9em;
+	height: 2.5em;
+	padding: .2em 1.2em .2em .5em;
+	border-radius: 0.417em;
+	background-color: #f7f7f7;
+	color: #6c6b6b;
 }
 
