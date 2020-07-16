@@ -11,7 +11,7 @@ import { getInitialDateForInput,
 
 import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
 import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
-import { getWrapperStyles, getHeaderFieldColors, getDoneBtnStyles, getActivePillColors } from '../styles/rangepicker.colors'
+import { getHeaderFieldColors, getDoneBtnStyles, getActivePillColors } from '../styles/rangepicker.colors'
 
 import styles from "../styles/rangepicker.css";
 
@@ -58,8 +58,8 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		const to_date_str = getInitialDateForInput(to_date, format)
 
 		return (
-			<div className={styles.wrapper} style={getWrapperStyles(colors)}>
-				<div className={styles.table_wrapper}>
+			<div className={styles.wrapper} style={{color: colors.primary_font_color}}>
+				<div className={styles.table_wrapper} style={{background: colors.primary_color}}>
 
 					<div className={styles.header} style={{ background: colors.secondary_highlight_color }}>
 						<div className={styles.header_div} 

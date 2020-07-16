@@ -22,10 +22,10 @@ const DARK_THEME_COLORS:ComponentTheme = {
 	light_font_color : '#8897b9',
 	
 	secondary_color: '#2B303B',
-	other_color: '#efefef',
+	other_color: '#2b303b',
 
 	primary_highlight_color: '#CDB274',
-	secondary_highlight_color: '#a9a9a9',
+	secondary_highlight_color: 'rgba(165,201,213,.61)',
 }
 
 const getThemeColors = (theme = 'dark'):ComponentTheme => {

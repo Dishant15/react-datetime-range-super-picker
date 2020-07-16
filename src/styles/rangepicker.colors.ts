@@ -1,10 +1,5 @@
 import { ComponentTheme, InlineCssStyles } from '../interfaces/style.interfaces';
 
-export const getWrapperStyles = (colors: ComponentTheme) => ({
-	background: colors.primary_color,
-	color: colors.primary_font_color
-})
-
 export const getHeaderFieldColors = (
 	colors:ComponentTheme, is_active:boolean
 ) : InlineCssStyles => {
