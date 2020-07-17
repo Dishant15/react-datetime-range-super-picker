@@ -26,13 +26,22 @@
 
 .picker_input {
 	composes: input from "./root.css";
+	/* 1.7 is padding in input */
+	width: calc(100% - 1.7em);
 	text-align: center;
 	min-width: 13em;
 }
 
 .picker_model {
 	position: absolute;
+	left: 0;
+	right: 0;
 	z-index: 2;
+}
+
+.picker_model_inside {
+	margin: 0 auto;
+	display: inline-block;
 }
 
 .picker_header_wrapper {

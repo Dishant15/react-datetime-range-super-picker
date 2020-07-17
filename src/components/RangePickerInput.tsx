@@ -24,14 +24,16 @@ export default (props: RangePickerInputProps) => {
 			{show_picker &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-					<RangePicker from_date={props.from_date} to_date={props.to_date}
-						format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
-						weekStartsOn={props.weekStartsOn} 
-						onFromDateUpdate={props.onFromDateUpdate} onFromTimeUpdate={props.onFromTimeUpdate}
-						onFromDateTimeUpdate={props.onFromDateTimeUpdate}
-						onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
-						onToDateTimeUpdate={props.onToDateTimeUpdate}
-						onDone={() => setShow(false)} colors={colors} />
+						<div className={styles.picker_model_inside} >
+							<RangePicker from_date={props.from_date} to_date={props.to_date}
+								format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
+								weekStartsOn={props.weekStartsOn} 
+								onFromDateUpdate={props.onFromDateUpdate} onFromTimeUpdate={props.onFromTimeUpdate}
+								onFromDateTimeUpdate={props.onFromDateTimeUpdate}
+								onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
+								onToDateTimeUpdate={props.onToDateTimeUpdate}
+								onDone={() => setShow(false)} colors={colors} />
+						</div>
 				</div>
 			}
 		</div>

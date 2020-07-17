@@ -34,21 +34,25 @@ export default (props:DateTimePickerInputProps) => {
 
 			{show_picker &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
-					style={{ border: '1px solid', borderColor: colors.secondary_color, ...props.popupStyle}} >
-
-					<div className={styles.picker_header_wrapper}>
-						<div className={styles.picker_header_btn}
-							style={{ color: colors.primary_highlight_color }}
-							onClick={handleComplete} >
-							Close
+					style={{ ...props.popupStyle }} >
+					
+					<div className={styles.picker_model_inside} 
+						style={{border: '1px solid', borderColor: colors.secondary_color}}>
+						<div className={styles.picker_header_wrapper}>
+							<div className={styles.picker_header_btn}
+								style={{ color: colors.primary_highlight_color }}
+								onClick={handleComplete} >
+								Close
+							</div>
 						</div>
+
+						<DateTimePicker date={props.date} colors={colors}
+							format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
+							weekStartsOn={props.weekStartsOn} 
+							onDateUpdate={props.onDateUpdate} onTimeUpdate={props.onTimeUpdate}
+							onDateTimeUpdate={handleDateUpdate} />
 					</div>
 
-					<DateTimePicker date={props.date} colors={colors}
-						format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
-						weekStartsOn={props.weekStartsOn} 
-						onDateUpdate={props.onDateUpdate} onTimeUpdate={props.onTimeUpdate}
-						onDateTimeUpdate={handleDateUpdate} />
 				</div>
 			}
 		</div>
