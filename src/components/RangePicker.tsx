@@ -84,8 +84,10 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 						</div>
 
 						{Boolean(onDone) &&
-							<div className={styles.done_btn} onClick={onDone}>
-								<div className={styles.check_icon} style={{ color: colors.primary_highlight_color }}></div>
+							<div className={styles.done_btn}
+								style={{ color: colors.primary_highlight_color }}
+								onClick={onDone}>
+								Close
 							</div>
 						}
 

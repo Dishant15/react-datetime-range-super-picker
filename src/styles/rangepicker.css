@@ -1,20 +1,12 @@
 .wrapper {
-	/** main color imports */
-	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
-
-	/* other element sizes */
-
-	/* background: var(--primary-color);
-	color: var(--primary-font-color); */
 }
 
 .header {
 	display: table-row;
 	text-align: left;
-	/* background: var(--secondary-highlight-color); */
 }
 
 .header_div {
@@ -26,7 +18,6 @@
 .header_label {
 	font-size: .8em;
 	padding-left: .5em;
-	/* color:var(--primary-color); */
 }
 
 .header_field_abs {
@@ -54,36 +45,23 @@
 
 .done_btn {
 	float: right;
-	display: inline-block;
 	margin: 1.7em 1.5em;
 	padding : .4em .8em;
 	border-radius: .3em;
 	cursor: pointer;
-	/* color: var(--primary-color); */
 	font-weight: bold;
 	transition: all .2s linear;
 	min-height: 2em;
+	line-height: 2em;
 }
 
-.done_btn:hover > .check_icon {
-	-webkit-transform: rotate(-45deg) scale(1.4);
-			transform: rotate(-45deg) scale(1.4);
-}
-
-.check_icon {
-	width: 1.4em;
-	height: .7em;
-	border-bottom: solid 2px currentColor;
-	border-left: solid 2px currentColor;
-	transition: all .2s linear;
-	-webkit-transform: rotate(-45deg);
-			transform: rotate(-45deg);
+.done_btn:hover {
+	text-decoration: underline;
 }
 
 .advance_cell {
 	display: table-cell;
 	vertical-align: middle;
-	/* background: var(--secondary-highlight-color); */
 	text-align: left;
 }
 .advance_pill {
@@ -99,7 +77,6 @@
 
 .advance_pill_active {
 	composes : advance_pill;
-	/* color: var(--primary-color); */
 	border-left: .5em solid;
 }
 
@@ -125,7 +102,6 @@
 .picker_input {
 	composes: input from "./root.css";
 	text-align: center;
-	/* color: var(--secondary-highlight-color) !important; */
 	min-width: 30em;
 }
 

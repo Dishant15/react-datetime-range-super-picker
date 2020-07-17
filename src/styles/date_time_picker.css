@@ -40,8 +40,6 @@
 .picker_model {
 	position: absolute;
 	z-index: 2;
-	/* primary color */
-	/* border: 1px solid #51ADAC;  */
 }
 
 .picker_header_wrapper {
@@ -51,25 +49,11 @@
 
 .picker_header_btn {
 	position: absolute;
-	height: 1.4em;
-	width: 1.4em;
-	right: .7em;
-	top: .7em;
+	padding: .7em;
+	right: 0;
 	cursor: pointer;
 }
 
-.check_icon {
-	position: absolute;
-	width: 1em;
-	height: .5em;
-	border-bottom: solid 2px currentColor;
-	border-left: solid 2px currentColor;
-	transition: all .2s linear;
-	-webkit-transform: rotate(-45deg);
-			transform: rotate(-45deg);
-}
-
-.check_icon:hover {
-	-webkit-transform: rotate(-45deg) scale(1.4);
-			transform: rotate(-45deg) scale(1.4);
+.picker_header_btn:hover {
+	text-decoration: underline;
 }
