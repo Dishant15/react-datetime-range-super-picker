@@ -1,14 +1,8 @@
 .wrapper {
-	/** main color imports */
-	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
 
-	/* other element sizes */
-
-	/* background: var(--primary-color);
-	color: var(--primary-font-color); */
 	display: table;
 }
 
@@ -19,7 +13,6 @@
 }
 
 .calender {
-	/* border-right: 1px solid var(--other-color); */
 	padding-right: 1.6em;
 }
 

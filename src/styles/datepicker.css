@@ -1,6 +1,4 @@
 .wrapper {
-	/** main color imports */
-	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
@@ -8,8 +6,6 @@
 	/* other element sizes */
 	--calender-pill-size : 3em;
 
-	/* background: var(--primary-color);
-	color: var(--primary-font-color); */
 	padding-bottom: .8em;
 	width: calc( (var(--calender-pill-size) * 7) + 1.6em);
 }
@@ -19,7 +15,6 @@
 	margin: 0 auto;
 	/* month may have 6 or 5 rows, keep calender hight same for both */
 	min-height: 16em;
-	/* border: 1px solid yellow */
 }
 
 .week_day_header {
@@ -28,24 +23,16 @@
 }
 
 .week_day_title {
-	/* color: var(--primary-highlight-color); */
 	padding : .5em 1em;
 }
 
 .calender_cell {
 	text-align: center;
 	cursor: pointer;
-	/* color : var(--secondary-highlight-color); */
 	font-weight: bold;
 	padding : .5em;
 	transition: all .2s linear;
 }
-
-/* .calender_cell_active {
-	composes : calender_cell;
-	background: var(--secondary-highlight-color);
-	color : var(--primary-color);
-} */
 
 .calender_cell:hover {
 	background: var(--calender-cell-hover-bg-color);
@@ -59,7 +46,6 @@
 .picker_input {
 	composes: input from "./root.css";
 	text-align: center;
-	/* color: var(--secondary-highlight-color) !important; */
 }
 
 .picker_model {

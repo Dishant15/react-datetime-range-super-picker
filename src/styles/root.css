@@ -1,17 +1,3 @@
-/* .root {
-	font-family: Geneva, Tahoma, Verdana, sans-serif;
-
-	--primary-color : white;
-	--primary-font-color: rgba(0, 0, 0, 0.57);
-	--light-font-color : rgba(0,0,0, 0.35);
-	
-	--secondary-color : #51ADAC;
-	--other-color : #efefef;
-
-	--primary-highlight-color : #88b04b;
-	--secondary-highlight-color: #00aab2;
-} */
-
 .no_select {
 	-webkit-user-select: none;
      -moz-user-select: none;

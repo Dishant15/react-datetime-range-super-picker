@@ -1,6 +1,4 @@
 .wrapper {
-	/** main color imports */
-	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
@@ -33,9 +31,7 @@
 
 .hand_wrapper {
 	position: absolute;
-	/* top: calc( (var(--clock-size) / 2) - (var(--clock-hand-height) / 2 ) ); */
 	top: calc( (var(--clock-size) / 2) );
-	/* left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
 	width: calc(var(--clock-size) / 2);
 	height: var(--clock-hand-height);
 	transform-origin: left;
@@ -73,31 +69,10 @@
 	transform:scale(1.2) rotate(var(--font-rotation));
 }
 
-/* .hh_active {
-	composes: btns;
-	transform:scale(1.2);
-} */
-
-/* .mm_active {
-	composes : btns;
-	color: var(--primary-color);
-	background:  var(--primary-highlight-color);
-	transform:scale(1.2);
-} */
-
-/* .mm:hover {
-	color: var(--primary-color);
-	background:  var(--primary-highlight-color);
-	transform:scale(1.2);
-} */
-
 .hand {
 	z-index: 1;
 	pointer-events: none;
 	position: absolute;
-	/* top: calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
-	/* top: calc( (var(--clock-size) / 2) ); NOT WORKING OLD */
-	/* left : calc( (var(--clock-size) / 2) + (var(--clock-hand-height) / 2 ) ); */
 	height: 1px;
 	transform-origin: left;
 	transition: all .2s linear;
@@ -105,13 +80,11 @@
 
 .mm_hand {
 	composes : hand;
-	/* background: var(--primary-highlight-color); */
 	width: calc( (var(--clock-size) / 2) - var(--clock-hand-height) );
 }
 
 .hh_hand {
 	composes : hand;
-	/* background: var(--secondary-highlight-color); */
 	width: calc( (var(--clock-size) / 2) - (var(--clock-hand-height) * 2.5) );
 }
 
@@ -124,8 +97,6 @@
 	width: 2.5em;
 	text-align: center;
 	border-radius: 50%;
-	/* color:  var(--primary-font-color);
-	background: var(--primary-color); */
 	transition: all .2s linear;
 }
 
@@ -143,9 +114,3 @@
 	color:  var(--hover-color) !important;
 	background: var(--hover-bg-color) !important;
 }
-
-/* .meridiem_active {
-	composes: meridiem;
-	color:  var(--primary-color);
-	background: var(--secondary-highlight-color);
-} */
