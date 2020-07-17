@@ -64,9 +64,11 @@ const App = () => {
 
 		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
-				<DateTimeRangePickerInput from_date={from_date} to_date={to_date}
-					onFromDateTimeUpdate={handleRangePickerFromDate} 
-					onToDateTimeUpdate={handleRangePickerToDate} />
+				<div className="dtrpi-wrapper">
+					<DateTimeRangePickerInput from_date={from_date} to_date={to_date}
+						onFromDateTimeUpdate={handleRangePickerFromDate} 
+						onToDateTimeUpdate={handleRangePickerToDate} />
+				</div>
 			</div>
 			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
 				<DateTimeRangePicker from_date={from_date} to_date={to_date}
@@ -78,14 +80,18 @@ const App = () => {
 		<div style={{display:'flex', padding: '50px', marginBottom:'200px'}}>
 			<div style={{flex:1}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Time Picker Input</div>
-				<DateTimePickerInput date={date}
-					onDateTimeUpdate={handleFullDateTimeUpdate} />
+				<div className="dtpi-wrapper">
+					<DateTimePickerInput date={date}
+						onDateTimeUpdate={handleFullDateTimeUpdate} />
+				</div>
 			</div>
 
 			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
 				<div style={{marginBottom:"30px", fontSize:"2em"}}>Date Picker Input</div>
-				<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
-					onDateUpdate={handleDateUpdate} />
+				<div className="dtpi-wrapper">
+					<DatePickerInput date={{day:res_day, month: res_month, year:res_year}}
+						onDateUpdate={handleDateUpdate} />
+				</div>
 			</div>
 
 			<div style={{flex:1, borderLeft:'1px dashed grey'}}>
