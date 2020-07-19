@@ -35,6 +35,8 @@ export default (props:DatePickerInputProps) => {
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
 						<div className={styles.picker_model_inside} >
+						<div className={styles.close_icon} onClick={() => setShow(false)}
+								style={{ color: props.colors.primary_highlight_color }}></div>
 							<DatePicker date={props.date} format={props.format} 
 								weekStartsOn={props.weekStartsOn} colors={props.colors}
 								onDateUpdate={handleDateUpdate} onComplete={handleComplete} />
