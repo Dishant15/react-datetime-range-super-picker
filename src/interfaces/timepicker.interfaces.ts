@@ -60,3 +60,10 @@ export interface ClockFaceProps extends MainTime {
 	onTimeUpdate : ({}:MainTime) => void,
 	colors: ComponentTheme
 }
+
+export interface TimePickerInputProps extends TimePickerProps {
+	inputStyle? : React.CSSProperties,
+	popupStyle? : React.CSSProperties,
+	className? : string,
+	popupClassName? : string
+}

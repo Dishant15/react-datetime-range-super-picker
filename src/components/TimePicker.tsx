@@ -22,9 +22,9 @@ export default ({
 
 	const curr_time = createInputTime(time)
 
-	const handleTimeChange = useCallback((new_time : MainTime) => {
-		const res_time = generateTimeOutput(new_time, format)
-		onTimeUpdate(res_time)
+	const handleTimeChange = useCallback((newTime : MainTime) => {
+		const resTime = generateTimeOutput(newTime, format)
+		onTimeUpdate(resTime)
 	}, [])
 
 
