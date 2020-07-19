@@ -25,7 +25,7 @@ const DARK_THEME_COLORS:ComponentTheme = {
 	secondary_highlight_color: 'rgba(165,201,213,.61)',
 }
 
-export const getThemeColors = (theme = 'dark'):ComponentTheme => {
+export const getThemeColors = (theme = 'light'):ComponentTheme => {
 	switch (theme) {
 		case 'light':
 			return LIGHT_THEME_COLORS

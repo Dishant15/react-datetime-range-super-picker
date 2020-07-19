@@ -5,9 +5,10 @@
   "private": true,
   "dependencies": {
     "react": "link:../node_modules/react",
+    "react-datetime-range-super-picker": "link:..",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",
-    "react-datetime-range-super-picker": "link:.."
+    "react-syntax-highlighter": "^12.2.1"
   },
   "scripts": {
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
