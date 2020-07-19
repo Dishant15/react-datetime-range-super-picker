@@ -6,7 +6,6 @@ export type ComponentThemeOptional = {
 	light_font_color?: string,
 	
 	secondary_color?: string,
-	other_color?: string,
 
 	primary_highlight_color?: string,
 	secondary_highlight_color?: string,
@@ -64,12 +63,6 @@ export type ComponentTheme = {
 	secondary_color: string,
 	/**
 	 * Used location of secondary_color
-	 *   - DateTimePickerInput
-	 * 		- popup border color
-	 */
-	other_color: string,
-	/**
-	 * Used location of other_color
 	 *  - TimePicker
 	 * 		- clock face background color
 	 *	- MonthPicker
