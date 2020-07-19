@@ -5,7 +5,7 @@ import TimePicker from "./TimePicker";
 import { createInputTime, generateTimeOutput } from '../utils/timepicker.utils';
 import { TimePickerInputProps, OutputTime, defaultConfigs } from '../interfaces/timepicker.interfaces';
 
-import styles from '../styles/datepicker.css'
+import styles from '../styles/timepicker.css'
 
 
 export default (props:TimePickerInputProps) => {
@@ -38,6 +38,8 @@ export default (props:TimePickerInputProps) => {
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
 						<div className={styles.picker_model_inside} >
+							<div className={styles.close_icon} onClick={() => setShow(false)}
+								style={{ color: props.colors.primary_highlight_color }}></div>
 							<TimePicker time={props.time} format={props.format} 
 								colors={props.colors}
 								onTimeUpdate={handleTimeUpdate} onDone={handleComplete} />
