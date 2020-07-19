@@ -75,12 +75,12 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
 
 		return(
-			<div className={styles.wrapper} style={getWrapperStyles(colors)}>
+			<div className={styles.wrapper} style={{ background: colors.primary_color }}>
 				<MonthPicker time={{month : month, year : year}}
 					colors={colors}
 					onDateUpdate={this.handleMonthUpdate} />
 
-				<table className={styles.calender_wrapper}>
+				<table className={styles.calender_wrapper} style={getWrapperStyles(colors)}>
 				<tbody>
 
 					<tr className={styles.week_day_header}>

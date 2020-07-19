@@ -34,9 +34,11 @@ export default (props:DatePickerInputProps) => {
 			{show_picker &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-					<DatePicker date={props.date} format={props.format} 
-						weekStartsOn={props.weekStartsOn} colors={props.colors}
-						onDateUpdate={handleDateUpdate} onComplete={handleComplete} />
+						<div className={styles.picker_model_inside} >
+							<DatePicker date={props.date} format={props.format} 
+								weekStartsOn={props.weekStartsOn} colors={props.colors}
+								onDateUpdate={handleDateUpdate} onComplete={handleComplete} />
+						</div>
 				</div>
 			}
 		</div>

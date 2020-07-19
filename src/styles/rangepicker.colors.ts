@@ -31,9 +31,3 @@ export const getActivePillColors = (
 		return { '--active-pill-hover-color': colors.primary_color }
 	}
 }
-
-export const getDoneBtnStyles = (colors: ComponentTheme) => ({
-	color: colors.primary_color,
-	'--donebtn-hover-bg-color': colors.primary_color,
-	'--donebtn-hover-color': colors.primary_highlight_color,
-})

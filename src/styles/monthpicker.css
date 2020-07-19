@@ -1,6 +1,4 @@
 .wrapper {
-	/** main color imports */
-	/* composes: root from "./root.css"; */
 	box-sizing: border-box;
 	margin : 0 auto;
 	font-family: Geneva, Tahoma, Verdana, sans-serif;
@@ -9,15 +7,13 @@
 	--month-pill-size : 4em;
 	--month-pill-margin : .3em;
 
-	/* background: var(--primary-color);
-	color: var(--primary-font-color); */
 	padding-top: .8em;
+	width: calc( (var(--month-pill-size) * 4) + (var(--month-pill-margin) * 9) );
 }
 
 /* --------- Year Picker ------------ */
 
 .year_show {
-	/* color: var(--primary-highlight-color); */
 	font-size: 1.5em;
 	text-align: center;
 	padding-bottom: .4em;
@@ -38,7 +34,6 @@
 	cursor: pointer;
 	padding : .5em;
 	display: inline-block;
-	/* color : var(--secondary-highlight-color); */
 	transition: all .2s linear;
 	border-radius: .5em;
 	font-weight: bold;
@@ -81,7 +76,6 @@
 	line-height: 1.2em;
 	text-align: center;
 	composes: no_select from "./root.css";
-	/* color: var(--light-font-color); */
 }
 
 .month_btn {
@@ -91,8 +85,6 @@
 	width: var(--month-pill-size);
 	border-radius: .8em;
 	margin: var(--month-pill-margin);
-	/* background: var(--other-color); */
-	/* height: 1.2em; */
 	line-height: 1.2em;
 	text-align: center;
 	transition: all .2s linear;

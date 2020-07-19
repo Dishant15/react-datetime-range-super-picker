@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dtrpi-wrapper {
+  width: 40em;
+  margin: 0 auto;
+}
+
+.dtpi-wrapper {
+  width: 18em;
+  margin: 0 auto;
+}
