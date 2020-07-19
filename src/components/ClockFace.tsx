@@ -20,7 +20,7 @@ export default ({hour, minute, meridiem, onTimeUpdate, colors} : ClockFaceProps)
 	return (
 		<div className={styles.clockface} >
 			<div className={styles.clock} 
-				style={{ background: colors.other_color }}>
+				style={{ background: colors.secondary_color }}>
 
 				<ClockHands hour={hour} minute={minute} colors={colors} />
 

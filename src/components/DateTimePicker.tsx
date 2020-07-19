@@ -65,7 +65,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 		return (
 			<React.Fragment>
 				<div className={[styles.table_cell, styles.calender].join(' ')}
-					style={{ borderRight: '1px solid', borderRightColor: colors.other_color }}>
+					style={{ borderRight: '1px solid', borderRightColor: colors.secondary_color }}>
 					<DatePicker date={{
 							day : curr_date.day,
 							month : curr_date.month,

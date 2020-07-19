@@ -5,14 +5,14 @@ export const getMonthPillColors = (
 ) : InlineCssStyles => {
 	if(is_active) {
 		return {
-			background: colors.other_color,
+			background: colors.secondary_color,
 			color: colors.primary_highlight_color,
 			fontWeight: 'bold'
 		}
 	} else {
 		return {
 			color: colors.light_font_color,
-			background: colors.other_color,
+			background: colors.secondary_color,
 		}
 	}
 }
