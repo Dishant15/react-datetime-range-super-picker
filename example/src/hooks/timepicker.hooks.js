@@ -1,6 +1,9 @@
 import { useState, useCallback } from "react"
 
-const generatePickerHtml = ({format}) => {
+
+const generatePickerHtml = ({format, isInput}) => {
+	const componentStr = isInput ? 'TimePickerInput' : 'TimePicker'
+
 	let propStr = `time={{hour24 : hour, minute }}
 				onTimeUpdate={handleTimeUpdate}`
 	
@@ -10,7 +13,7 @@ const generatePickerHtml = ({format}) => {
 
 	return `
 	import React, { useState } from 'react';
-	import { TimePicker, TimePickerInput } from 'react-datetime-range-super-picker';
+	import { ${componentStr} } from 'react-datetime-range-super-picker';
 
 	const TimePickerComponent = () => {
 		const [hour, setHour] = useState(22)
@@ -22,7 +25,7 @@ const generatePickerHtml = ({format}) => {
 		}
 
 		return (
-			<TimePickerInput ${propStr} />
+			<${componentStr} ${propStr} />
 		)
 	}
 	`
@@ -30,13 +33,19 @@ const generatePickerHtml = ({format}) => {
 
 export const useTimePickerProps = () => {
 	
+	const [isInput, setInput] = useState(false)
 	const [pickerProps, setPickerProps] = useState({})
 	const [pickerHtml, setPickerHtml] = useState(generatePickerHtml({}))
 
 	const handlePropsUpdate = useCallback((newProps) => {
 		setPickerProps(newProps)
-		setPickerHtml(generatePickerHtml(newProps))
-	}, [])
+		setPickerHtml(generatePickerHtml({...newProps, isInput}))
+	}, [isInput])
 
-	return [pickerProps, pickerHtml, handlePropsUpdate]
+	const handleToggleInput = useCallback((isInput) => {
+		setInput(isInput)
+		setPickerHtml(generatePickerHtml({...pickerProps, isInput}))
+	}, [pickerProps])
+
+	return [pickerProps, pickerHtml, handlePropsUpdate, isInput, handleToggleInput]
 }

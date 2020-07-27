@@ -35,8 +35,9 @@ const PropSelector = ({pickerProps, handlePropsUpdate}) => {
 
 
 export default () => {
-	const [isInput, setInput] = useState(false)
-	const [pickerProps, pickerHtml, handlePropsUpdate] = useTimePickerProps()
+	
+	const [pickerProps, pickerHtml, handlePropsUpdate,
+		isInput, handleToggleInput] = useTimePickerProps()
 
 	const [hour, setHour] = useState(22)
 	const [minute, setMin] = useState(30)
@@ -51,27 +52,24 @@ export default () => {
 		time: {hour24 : hour, minute }, onTimeUpdate: handleTimeUpdate
 	}
 
+	const picker = isInput ? <TimePickerInput {...TProps} /> : <TimePicker {...TProps} />
+
 	return (
 		<div className="timepicker-wrapper">
-			<button className="btn waves-effect waves-light" onClick={() => setInput(!isInput)} >
+			<div className='heading'>Time Picker</div>
+			<button className="btn waves-effect waves-light" onClick={() => handleToggleInput(!isInput)} >
 				{isInput ? 'Simple Component' : 'Input Component'}
 				<i className="material-icons right">send</i>
 			</button>
 		
-			<div className='row' style={{textAlign:'center', margin:"100px 0px"}}>
-				{isInput ?
-					<div className='col s4'>
-						<div style={{marginBottom:"30px", fontSize:"2em"}}>Time Input</div>
-						<TimePickerInput {...TProps} />
-					</div>
-				:
-					<div className='col s4'>
-						<div style={{marginBottom:"30px", fontSize:"2em"}}>Time Picker</div>
-						<TimePicker {...TProps} />
-					</div>
-				}
+			<div className='row'>
+				
+				<div className='col s12 m5 l4'>
+					<div style={{marginBottom:"30px", fontSize:"2em"}}>Time Picker</div>
+					{picker}
+				</div>
 
-				<div className="col s8">
+				<div className="col s12 m7 l8">
 
 					<SyntaxHighlighter language="javascript" style={atomDark}>
 						{pickerHtml}

@@ -1,0 +1,43 @@
+.layout-wrapper {
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+#layout-menu {
+	height: 100vh;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	max-width: 19em;
+}
+
+#layout-menu .layout-pill {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 1;
+	background: white;
+	color: black;
+	border-right: black solid 3px;
+	border-bottom: transparent solid 3px;
+	transition: all .2s linear;
+	text-align: center;
+}
+
+.layout-pill.active {
+	background: black !important;
+	color: white !important;
+}
+
+.layout-pill:hover {
+	border-bottom: black solid 3px !important;
+}
+
+#layout-content {
+	flex: 4;
+	display: block;
+	height: 100vh;
+	overflow-y: scroll;
+}
