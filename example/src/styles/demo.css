@@ -5,3 +5,12 @@
 	font-weight: bold;
 	border-bottom: 2px solid black;
 }
+
+.picker-wrapper {
+	text-align: center;
+	padding: 30px;
+}
+
+.picker-wrapper .switch { margin-bottom: 20px }
+
+.picker-wrapper label { font-size: 1em }

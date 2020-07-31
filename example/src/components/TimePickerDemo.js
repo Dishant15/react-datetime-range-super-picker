@@ -52,21 +52,30 @@ export default () => {
 		time: {hour24 : hour, minute }, onTimeUpdate: handleTimeUpdate
 	}
 
-	const picker = isInput ? <TimePickerInput {...TProps} /> : <TimePicker {...TProps} />
+	const handleInputToggle = (e) => {
+		if(e) e.preventDefault();
+		handleToggleInput(!isInput)
+	}
 
 	return (
 		<div className="timepicker-wrapper">
 			<div className='heading'>Time Picker</div>
-			<button className="btn waves-effect waves-light" onClick={() => handleToggleInput(!isInput)} >
-				{isInput ? 'Simple Component' : 'Input Component'}
-				<i className="material-icons right">send</i>
-			</button>
 		
 			<div className='row'>
 				
 				<div className='col s12 m5 l4'>
-					<div style={{marginBottom:"30px", fontSize:"2em"}}>Time Picker</div>
-					{picker}
+					<div className='picker-wrapper'>
+						<div class="switch" onClick={handleInputToggle}>
+							<label>
+								<input type="checkbox" checked={isInput} />
+								<span class="lever"></span>
+								Input Component
+							</label>
+						</div>
+
+						{isInput ? 
+							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
+					</div>
 				</div>
 
 				<div className="col s12 m7 l8">
@@ -77,7 +86,17 @@ export default () => {
 				</div>
 			</div>
 
-			<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
+			<hr />
+			
+			<div className='row'>
+				<div className="col s12 m6">
+					<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
+				</div>
+
+				<div className="col s12 m6">
+
+				</div>
+			</div>
 		</div>
 	)
 }
