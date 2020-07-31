@@ -19,14 +19,13 @@ yarn add react-datetime-range-super-picker
 [Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
 
 ## Table of Contents
-- [TimePicker](#TimePicker)
-- [DatePicker](#DatePicker)
-- [DatePickerInput](#DatePickerInput)
-- [MonthPicker](#MonthPicker)
-- [DateTimePicker](#DateTimePicker)
-- [DateTimePickerInput](#DateTimePickerInput)
-- [DateTimeRangePicker](#DateTimeRangePicker)
-- [DateTimeRangePickerInput](#DateTimeRangePickerInput)
+- Component
+	- [TimePicker](#TimePicker)
+	- [DatePicker](#DatePicker)
+	- [MonthPicker](#MonthPicker)
+	- [DateTimePicker](#DateTimePicker)
+	- [DateTimeRangePicker](#DateTimeRangePicker)
+- [Styling](#Styling)
 
 ---
 
@@ -108,7 +107,7 @@ Available Props
 ```tsx
 import React, {useState} from 'react'
 
-import { DatePicker } from 'react-datetime-range-super-picker'
+import { DatePickerInput } from 'react-datetime-range-super-picker'
 import 'react-datetime-range-super-picker/dist/index.css'
 
 
@@ -131,6 +130,17 @@ const DatePickerInputWrapper = () => {
   )
 }
 ```
+
+Additional Props
+
+All [DatePicker](#DatePicker) props are inherited
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| inputStyle |  | css style | |
+| popupStyle |  | css style | |
+| className |  | String | |
+| popupClassName |  | String | | |
 
 ## MonthPicker
 
@@ -159,6 +169,14 @@ const MonthPickerWrapper = () => {
 }
 ```
 
+Available Props
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| time | new Date() | Date Object<br> or Object | Example <br><ul><li>new Date()</li><li>{ month : number, year : number }</li></ul> |
+| onDateUpdate | -- | Function | Returns <br>{ month, year } |
+
+
 ## DateTimePicker
 
 ```tsx
@@ -184,6 +202,20 @@ const DateTimePickerWrapper = () => {
 }
 ```
 
+Available Props
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| date | new Date() | Date Object,<br> Object or <br> String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li></ul>|
+| format | dd/MM/YYY hh:mm aaa | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| timeFormat |  | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| dateFormat |  | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| weekStartsOn | 0 | Number | where 0 - sunday and 6 - saturday |
+| onDateTimeUpdate | -- | Function | Returns <br>{ date: { day, month, year, hour , hour24, minute, meridem }, formatted } |
+| onDateUpdate | -- | Function | Returns <br>{ day, month, year, date, formatted } |
+| onTimeUpdate | -- | Function | Returns <br>{ time: { hour, hour24, minute, meridiem }, formatted } |
+
+
 ## DateTimePickerInput
 
 ```tsx
@@ -207,6 +239,18 @@ const DateTimePickerInputWrapper = () => {
   )
 }
 ```
+
+Additional Props
+
+All [DateTimePicker](#DateTimePicker) props are inherited
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| inputStyle |  | css style | |
+| popupStyle |  | css style | |
+| className |  | String | |
+| popupClassName |  | String | | |
+
 
 ## DateTimeRangePicker
 
@@ -238,6 +282,21 @@ const DateTimeRangePickerWrapper = () => {
 }
 ```
 
+Available Props
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| from_date,<br/>to_date | new Date() | Date Object,<br> Object or <br> String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li></ul>|
+| format | dd/MM/YYY hh:mm aaa | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| timeFormat |  | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| dateFormat |  | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| weekStartsOn | 0 | Number | where 0 - sunday and 6 - saturday |
+| onFromDateTimeUpdate,<br/>onToDateTimeUpdate | -- | Function | Returns <br>{ date: { day, month, year, hour , hour24, minute, meridem }, formatted } |
+| onFromDateUpdate,<br/>onToDateUpdate | -- | Function | Returns <br>{ day, month, year, date, formatted } |
+| onFromTimeUpdate,<br/>onToTimeUpdate | -- | Function | Returns <br>{ time: { hour, hour24, minute, meridiem }, formatted } |
+| onDone | -- | Function | () => void |
+
+
 ## DateTimeRangePickerInput
 
 ```tsx
@@ -267,6 +326,27 @@ const DateTimeRangePickerInputWrapper = () => {
   )
 }
 ```
+
+Additional Props
+
+All [DateTimeRangePickerInput](#DateTimeRangePickerInput) props are inherited
+
+| **Props** | **Default** | **Type** | **Description** |
+| :--- |:--- | :---:| :--- |
+| inputStyle |  | css style | |
+| popupStyle |  | css style | |
+| className |  | String | |
+| popupClassName |  | String | | |
+
+
+## Styling
+
+common props for all component
+
+| **Props** | **Type** | **Description** |
+| :--- | :---:| :--- |
+| theme | String | light or dark <br/> Default is light |
+| colors | Object | {<br/>primary_color,<br/>primary_font_color,<br/>light_font_color,<br/>secondary_color,<br/>primary_highlight_color,<br/>secondary_highlight_color<br/>}| |
 
 ---
 
