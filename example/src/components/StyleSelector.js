@@ -10,7 +10,11 @@ export default class StyleSelector extends React.Component {
 			theme : props.theme || '',
 			colors : {
 				primary_color: get(props, 'colors.primary_color', ''),
+				primary_highlight_color: get(props, 'colors.primary_highlight_color', ''),
+				primary_font_color: get(props, 'colors.primary_font_color', ''),
+				light_font_color: get(props, 'colors.light_font_color', ''),
 				secondary_color: get(props, 'colors.secondary_color', ''),
+				secondary_highlight_color: get(props, 'colors.secondary_highlight_color', ''),
 			}
 		}
 	}
@@ -26,15 +30,26 @@ export default class StyleSelector extends React.Component {
 	}
 
 	handleSubmit = () => {
+		// remove color if empty
+		let colors = {...this.state.colors}
+		for (const color in colors) {
+			if (colors.hasOwnProperty(color)) {
+				if(!colors[color]) delete colors[color];
+			}
+		}
+
 		this.props.handlePropsUpdate({
 			...this.props.pickerProps, 
-			...this.state
+			colors,
+			theme: this.state.theme
 		})
 	}
 
 	render = () => {
 		const {theme} = this.state
-		const {primary_color, secondary_color} = this.state.colors
+		const {primary_color, secondary_color, 
+			primary_font_color, light_font_color,
+			secondary_highlight_color, primary_highlight_color} = this.state.colors
 
 		return (
 			<div className='form-wrapper'>
@@ -51,9 +66,29 @@ export default class StyleSelector extends React.Component {
 							value={primary_color} name="primary_color"
 							onChange={this.handleColorUpdate} />
 
+						<label>Primary highlight Color</label>
+						<input placeholder="rgb, hex, color name ..." 
+							value={primary_highlight_color} name="primary_highlight_color"
+							onChange={this.handleColorUpdate} />
+
 						<label>Secondary Color</label>
 						<input placeholder="rgb, hex, color name ..." 
 							value={secondary_color} name="secondary_color"
+							onChange={this.handleColorUpdate} />
+
+						<label>Secondary highlight Color</label>
+						<input placeholder="rgb, hex, color name ..." 
+							value={secondary_highlight_color} name="secondary_highlight_color"
+							onChange={this.handleColorUpdate} />
+
+						<label>Primary font Color</label>
+						<input placeholder="rgb, hex, color name ..." 
+							value={primary_font_color} name="primary_font_color"
+							onChange={this.handleColorUpdate} />
+
+						<label>Light font Color</label>
+						<input placeholder="rgb, hex, color name ..." 
+							value={light_font_color} name="light_font_color"
 							onChange={this.handleColorUpdate} />
 					</div>
 				</div>

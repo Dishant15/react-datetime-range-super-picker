@@ -3,7 +3,6 @@ import { useState, useCallback } from "react"
 
 const generatePickerHtml = ({format, isInput,
 	theme, colors}) => {
-    console.log("colors", colors)
 	const componentStr = isInput ? 'TimePickerInput' : 'TimePicker'
 
 	let propStr = `time={{hour24 : hour, minute }}
