@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 
-import TimePickerDemo from './components/TimePickerDemo'
+import TimePickerDemo from './TimePicker/TimePickerDemo'
 import DatePickerDemo from './components/DatePickerDemo'
 
 import './styles/materialize.css'

@@ -14,3 +14,12 @@
 .picker-wrapper .switch { margin-bottom: 20px }
 
 .picker-wrapper label { font-size: 1em }
+
+
+.form-wrapper {
+	padding: 30px;
+}
+
+.form-wrapper .submit-btn-wrapper {
+	text-align: center;
+}

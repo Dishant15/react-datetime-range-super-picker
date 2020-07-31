@@ -1,36 +1,12 @@
 import React, { useState } from 'react';
+import { TimePicker, TimePickerInput } from 'react-datetime-range-super-picker';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import { useTimePickerProps } from '../hooks/timepicker.hooks';
-import { TimePicker, TimePickerInput } from 'react-datetime-range-super-picker';
-
-const PropSelector = ({pickerProps, handlePropsUpdate}) => {
-
-	const [format, setFormat] = useState(pickerProps.format || '')
-
-	const handleSubmit = () => {
-		handlePropsUpdate({...pickerProps, format})
-	}
-
-	return (
-		<div className="row">
-			<h3>Props Selector</h3>
-
-			<div className="col s6">
-				<label>Format</label>
-				<input placeholder="Format" value={format} 
-					onChange={e => setFormat(e.target.value)} />
-			</div>
-
-			<button className="btn waves-effect waves-light" onClick={handleSubmit} >
-				Submit
-				<i className="material-icons right">send</i>
-			</button>
-		</div>
-	)
-}
+import PropSelector from "./PropSelector";
+import StyleSelector from "../components/StyleSelector";
+import { useTimePickerProps } from './timepicker.hooks';
 
 
 
@@ -94,7 +70,7 @@ export default () => {
 				</div>
 
 				<div className="col s12 m6">
-
+					<StyleSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
 				</div>
 			</div>
 		</div>
