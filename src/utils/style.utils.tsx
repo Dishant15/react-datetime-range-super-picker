@@ -17,10 +17,10 @@ export default (WrappedComponent : React.ElementType) => {
 			// override theme colors provided by props
 			let themeColors = {...getThemeColors(theme)}
 			themeColors = assign(themeColors, colors)
-			// passon other props with new colors
+			// pass-on other props with new colors
 			const mergeProps = {...otherProps, colors: themeColors}
 
-			return <WrappedComponent {...mergeProps}  />
+			return <WrappedComponent {...mergeProps} />
 		}
 	}
 }

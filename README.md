@@ -1,10 +1,16 @@
 # react-datetime-range-super-picker
 
-> React date, time, date range, calender, clock i.e. all in one picker
+###### React date, time, date-time range, calender, clock and even month i.e. all in one picker !!
+
+###### This is a _super_ picker due to how it handles date-time props for each components. This component permenantly solves the time handling issue where you get certain format of Date as an input and you have to return completely different format after user edit. Not to forget it does it while looking extremely cool ! 
+
+###### There are lot of Date Range pickers but most of them do not handle _Date-TIME_ Range picking
 
 [![NPM](https://img.shields.io/npm/v/react-datetime-range-super-picker.svg)](https://www.npmjs.com/package/react-datetime-range-super-picker) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
+
+Install using npm simply (If you can just get that long name right...)
 
 ```bash
 npm install --save react-datetime-range-super-picker
@@ -16,15 +22,15 @@ if you are using yarn
 yarn add react-datetime-range-super-picker
 ```
 
-[Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
+Amazing demo just for you ---> [Checkout Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
 
 ## Table of Contents
-- Component
-	- [TimePicker](#TimePicker)
-	- [DatePicker](#DatePicker)
-	- [MonthPicker](#MonthPicker)
-	- [DateTimePicker](#DateTimePicker)
-	- [DateTimeRangePicker](#DateTimeRangePicker)
+- Components
+  - [TimePicker](#TimePicker)
+  - [DatePicker](#DatePicker)
+  - [MonthPicker](#MonthPicker)
+  - [DateTimePicker](#DateTimePicker)
+  - [DateTimeRangePicker](#DateTimeRangePicker)
 - [Styling](#Styling)
 
 ---
@@ -114,19 +120,17 @@ import 'react-datetime-range-super-picker/dist/index.css'
 const DatePickerInputWrapper = () => {
 
   const [res_day, setDay] = useState(10)
-	const [res_month, setMonth] = useState(1)
-	const [res_year, setYear] = useState(2020)
+  const [res_month, setMonth] = useState(1)
+  const [res_year, setYear] = useState(2020)
 
   const handleDateUpdate = ({month, year, day}) => {
-		setMonth(month)
-		setYear(year)
-		setDay(day)
-	}
+    setMonth(month) setYear(year) setDay(day)
+  }
   
   return (
     <DatePickerInput 
       date={{day:res_day, month: res_month, year:res_year}}
-			onDateUpdate={handleDateUpdate} />
+      onDateUpdate={handleDateUpdate} />
   )
 }
 ```
@@ -227,15 +231,15 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 const DateTimePickerInputWrapper = () => {
 
-	const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState(new Date())
 
   const handleFullDateTimeUpdate = (args) => {
-		setDate(args.date.date)
-	}
+    setDate(args.date.date)
+  }
   
   return (
     <DateTimePickerInput date={date}
-			onDateTimeUpdate={handleFullDateTimeUpdate} />
+      onDateTimeUpdate={handleFullDateTimeUpdate} />
   )
 }
 ```
