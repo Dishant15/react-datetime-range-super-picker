@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 import TimePickerDemo from './TimePicker/TimePickerDemo'
 import DatePickerDemo from './DatePicker/DatePickerDemo'
 import MonthPickerDemo from './MonthPicker/MonthPickerDemo'
+import DateTimePickerDemo from './DateTimePicker/DateTimePickerDemo'
 
 import './styles/materialize.css'
 import './styles/layout.css'
@@ -23,6 +24,9 @@ const App = () => {
 		}
 		else if(selectedComponent === 'monthPicker') {
 			return <MonthPickerDemo />
+		}
+		else if(selectedComponent === 'dateTimePicker') {
+			return <DateTimePickerDemo />
 		}
 	}, [selectedComponent])
 
