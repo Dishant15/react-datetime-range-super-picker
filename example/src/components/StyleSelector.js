@@ -7,7 +7,7 @@ export default class StyleSelector extends React.Component {
 		super(props);
 
 		this.state = {
-			theme : props.theme || '',
+			theme : 'light',
 			colors : {
 				primary_color: get(props, 'colors.primary_color', ''),
 				primary_highlight_color: get(props, 'colors.primary_highlight_color', ''),
@@ -19,8 +19,8 @@ export default class StyleSelector extends React.Component {
 		}
 	}
 
-	handleThemeUpdate = (e) => {
-		this.setState({theme: e.target.value})
+	handleThemeUpdate = (theme) => {
+		this.setState({theme})
 	}
 
 	handleColorUpdate = (e) => {
@@ -58,8 +58,12 @@ export default class StyleSelector extends React.Component {
 						<h3>Style Selector</h3>
 
 						<label>Theme</label>
-						<input placeholder="light, dark" value={theme} 
-							onChange={this.handleThemeUpdate} />
+						<div className="theme-action-wrapper">
+							<div className={`waves-effect waves-light btn z-depth-1 light-btn mr-right ${theme === 'light' ? 'active z-depth-2' : ''}`}
+								onClick={this.handleThemeUpdate.bind(this, 'light')}>LIGHT</div>
+							<div className={`waves-effect waves-light btn z-depth-1 dark-btn ${theme === 'dark' ? 'active z-depth-2' : ''}`}
+								onClick={this.handleThemeUpdate.bind(this, 'dark')}>DARK</div>
+						</div>
 
 						<label>Primary Color</label>
 						<input placeholder="rgb, hex, color name ..." 

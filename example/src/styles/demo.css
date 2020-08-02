@@ -23,3 +23,49 @@
 .form-wrapper .submit-btn-wrapper {
 	text-align: center;
 }
+
+.demo-input-class {
+	border:none;
+	outline: none;
+	font-size: 0.9em;
+	height: 2.5em;
+	padding: .2em 1.2em .2em .5em;
+	border-radius: 0.417em;
+	background-color: #f7f7f7;
+	color: #6c6b6b;
+}
+
+.light-btn {
+	background-color: white;
+	color : rgba(0, 0, 0, 0.57)
+}
+.light-btn:hover {
+	background-color: white;
+}
+.light-btn.active {
+	-webkit-transform: scale(1.166);
+	    -ms-transform: scale(1.166);
+	        transform: scale(1.166);
+}
+
+.dark-btn {
+	background-color : #36465D;
+	color : #8897b9
+}
+.dark-btn:hover {
+	background-color : #36465D;
+}
+.dark-btn.active {
+	-webkit-transform: scale(1.166);
+	    -ms-transform: scale(1.166);
+	        transform: scale(1.166);
+}
+
+.theme-action-wrapper {
+	padding-top: 0.8em;
+	padding-bottom: 1em;
+}
+
+.mr-right {
+	margin-right: 1.8em;
+}
