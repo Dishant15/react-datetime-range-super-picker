@@ -10,11 +10,14 @@ import { getThemeColors } from './style.theme'
  */
 export default (WrappedComponent : React.ElementType) => {
 
-	return class extends React.Component<any> {
+	return class ComponentWrapper extends React.Component<any> {
 
 		render = () => {
 			const {colors, theme, ...otherProps} = this.props
-			const themeColors = assign(getThemeColors(theme), colors)
+			// override theme colors provided by props
+			let themeColors = {...getThemeColors(theme)}
+			themeColors = assign(themeColors, colors)
+			// passon other props with new colors
 			const mergeProps = {...otherProps, colors: themeColors}
 
 			return <WrappedComponent {...mergeProps}  />

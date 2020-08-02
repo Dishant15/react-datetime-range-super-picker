@@ -50,7 +50,7 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<TimePickerInput {...TProps} /> : <TimePicker  key={JSON.stringify(pickerProps.colors)} {...TProps} />}
+							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
 					</div>
 				</div>
 

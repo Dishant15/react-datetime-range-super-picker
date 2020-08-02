@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react"
+import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, isInput,
@@ -16,7 +17,7 @@ const generatePickerHtml = ({format, isInput,
 		propStr += `\n\t\t\t\ttheme="${theme}"`
 	}
 
-	if(!!colors) {
+	if(!isEmpty(colors)) {
 		propStr += `\n\t\t\t\tcolors=${JSON.stringify(colors)}`
 	}
 
