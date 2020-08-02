@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-datetime-range-super-picker/precache-manifest.78bf5b2f28e72c685a8163e7ff3a981e.js"
+  "/react-datetime-range-super-picker/precache-manifest.22ec90533875830cd3fda5c497e739dd.js"
 );
 
 self.addEventListener('message', (event) => {
