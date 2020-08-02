@@ -66,7 +66,7 @@ const TimePickerWrapper = () => {
 }
 ```
 
-Available Props
+**Available Props:**
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
@@ -102,7 +102,7 @@ const DatePickerWrapper = () => {
 }
 ```
 
-Available Props
+**Available Props:**
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
@@ -139,7 +139,7 @@ const DateTimePickerWrapper = () => {
 }
 ```
 
-Available Props
+**Available Props:**
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
@@ -184,7 +184,7 @@ const DateTimeRangePickerWrapper = () => {
 }
 ```
 
-Available Props
+**Available Props:**
 
 | **Props** | **Type** | **Description** |
 | :--- |:---:| :--- |
@@ -229,7 +229,7 @@ const MonthPickerWrapper = () => {
 }
 ```
 
-Available Props
+**Available Props:**
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
@@ -283,7 +283,7 @@ In addition provides extra props for styling. Which are as listed below.
 | className | String, css class to be used apply additional style to text box with raw css |
 | popupClassName | String, css class to be used apply additional style to picker popup with raw css |
 
-Note : All of above props are optinal.
+Note : All of above props are optional.
 
 
 ## Styling
@@ -295,12 +295,12 @@ Theme is created using colors listed in props table below.
 There are 3 easy ways to customise color scheme to suit your requirements:
 1. Use theme prop if that matches your needs.
 2. Use all the colors and customise whole picker look.
-3. Use theme prop and override just the colors you want to change in that theme. i.e. choose "dark" theme and just override primary_color
+3. Use theme prop and override just the colors you want to change in that theme. i.e. choose "dark" _theme_ and just override _primary color_
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
 | theme | String | **light** or **dark** <br/> Default is light |
-| colors | Json Object | {<br/>primary_color,<br/>primary_font_color,<br/>light_font_color,<br/>secondary_color,<br/>primary_highlight_color,<br/>secondary_highlight_color<br/>}| |
+| colors | Json Object | Json object keys :<ul><li>primary_color</li><li>primary_font_color<li/><li>light_font_color<li/><li>secondary_color<li/><li>primary_highlight_color<li/><li>secondary_highlight_color<li/><ul/> | |
 
 **All styling props above are optional**
 
