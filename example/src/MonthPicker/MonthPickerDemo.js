@@ -70,9 +70,7 @@ export default () => {
 			<hr />
 
 			<div className='row'>
-				<div className="col s12 m6"></div>
-
-				<div className="col s12 m6">
+				<div className="col s12 m6 push-m3 pull-m3">
 					<StyleSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
 				</div>
 			</div>
