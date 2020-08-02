@@ -14,7 +14,7 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
 	
-	const [selectedComponent, setComponent] = useState('rangePicker')
+	const [selectedComponent, setComponent] = useState('timePicker')
 
 	const renderComponent = useCallback(() => {
 		if(selectedComponent === 'timePicker') {

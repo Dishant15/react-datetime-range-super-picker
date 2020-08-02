@@ -65,41 +65,55 @@ export default class StyleSelector extends React.Component {
 								onClick={this.handleThemeUpdate.bind(this, 'dark')}>DARK</div>
 						</div>
 
-						<label>Primary Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={primary_color} name="primary_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={primary_color} name="primary_color"
+								onChange={this.handleColorUpdate} 
+							/>
+							<label class="active">Primary Color</label>
+						</div>
 
-						<label>Primary highlight Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={primary_highlight_color} name="primary_highlight_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={primary_highlight_color} name="primary_highlight_color"
+								onChange={this.handleColorUpdate} />
+							<label class="active">Primary highlight Color</label>
+						</div>
 
-						<label>Secondary Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={secondary_color} name="secondary_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={secondary_color} name="secondary_color"
+								onChange={this.handleColorUpdate} />
+							<label class="active">Secondary Color</label>
+						</div>
 
-						<label>Secondary highlight Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={secondary_highlight_color} name="secondary_highlight_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={secondary_highlight_color} name="secondary_highlight_color"
+								onChange={this.handleColorUpdate} />
+							<label class="active">Secondary highlight Color</label>
+						</div>
 
-						<label>Primary font Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={primary_font_color} name="primary_font_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={primary_font_color} name="primary_font_color"
+								onChange={this.handleColorUpdate} />
+							<label class="active">Primary font Color</label>
+						</div>
 
-						<label>Light font Color</label>
-						<input placeholder="rgb, hex, color name ..." 
-							value={light_font_color} name="light_font_color"
-							onChange={this.handleColorUpdate} />
+						<div class="input-field">
+							<input placeholder="rgb, hex, color name ..." 
+								value={light_font_color} name="light_font_color"
+								onChange={this.handleColorUpdate} />
+							<label class="active">Light font Color</label>
+						</div>
+
 					</div>
 				</div>
 				<div className='submit-btn-wrapper'>
-					<button className="btn waves-effect waves-light" onClick={this.handleSubmit} >
+					<button className="btn waves-effect waves-light red lighten-2" onClick={this.handleSubmit} >
 						Update Style
-						<i className="material-icons right">send</i>
+						<i className="material-icons right">edit</i>
 					</button>
 				</div>
 			</div>
