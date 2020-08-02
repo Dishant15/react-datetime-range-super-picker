@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TimePicker, TimePickerInput } from 'react-datetime-range-super-picker';
+import { DatePicker, DatePickerInput } from 'react-datetime-range-super-picker';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
-import { useTimePickerProps } from './timepicker.hooks';
+import { useTimePickerProps } from './datepicker.hooks';
 
 const inputStyle = {
 	border: 'none',
@@ -24,18 +24,16 @@ export default () => {
 	const [pickerProps, pickerHtml, handlePropsUpdate,
 		isInput, handleToggleInput] = useTimePickerProps()
 
-	const [hour, setHour] = useState(22)
-	const [minute, setMin] = useState(30)
+	const [curr_date, setDate] = useState(new Date())
 	const [isCopy, setCopy] = useState(false)
 
 
-	const handleTimeUpdate = ({time}) => {
-		setHour(time.hour24)
-		setMin(time.minute)
+	const handleDateUpdate = ({date}) => {
+		setDate(date)
 	}
 
-	const TProps = {...pickerProps, 
-		time: {hour24 : hour, minute }, onTimeUpdate: handleTimeUpdate
+	const DProps = {...pickerProps, 
+		date: curr_date, onDateUpdate: handleDateUpdate
 	}
 
 	const handleInputToggle = (e) => {
@@ -54,11 +52,11 @@ export default () => {
 
 	return (
 		<div className="timepicker-wrapper">
-			<div className='heading'>Time Picker</div>
+			<div className='heading'>Date Picker</div>
 		
 			<div className='row'>
 				
-				<div className='col s12 m5 l4'>
+				<div className='col s12 m5 l5'>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -69,11 +67,11 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<TimePickerInput {...TProps} inputStyle={inputStyle} /> : <TimePicker {...TProps} />}
+							<DatePickerInput {...DProps} inputStyle={inputStyle} /> : <DatePicker {...DProps} />}
 					</div>
 				</div>
 
-				<div className="col s12 m7 l8">
+				<div className="col s12 m7 l7">
 					
 					<div className="code-wrapper">
 						{isCopy ?
