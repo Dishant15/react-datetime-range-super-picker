@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { DateTimePicker, DateTimePickerInput } from 'react-datetime-range-super-picker';
+import { DateTimeRangePicker, DateTimeRangePickerInput } from 'react-datetime-range-super-picker';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
-import { useTimePickerProps } from './datetimepicker.hooks';
+import { useTimePickerProps } from './datetimerangepicker.hooks';
 
 const inputStyle = {
 	border: 'none',
@@ -24,16 +24,22 @@ export default () => {
 	const [pickerProps, pickerHtml, handlePropsUpdate,
 		isInput, handleToggleInput] = useTimePickerProps()
 
-    const [curr_date, setDate] = useState(new Date())
+	const [from_date, setFromDate] = useState(new Date())
+	const [to_date, setToDate] = useState(new Date())
 	const [isCopy, setCopy] = useState(false)
 
 
-	const handleDateUpdate = ({date}) => {
-        setDate(date.date)
-    }
+	const handleFromDateUpdate = ({date}) => {
+		setFromDate(date.date)
+	}
+	const handleToDateUpdate = ({date}) => {
+		setToDate(date.date)
+	}
 
 	const TProps = {...pickerProps, 
-		date: curr_date, onDateTimeUpdate: handleDateUpdate
+		from_date, to_date, 
+		onFromDateTimeUpdate: handleFromDateUpdate,
+		onToDateTimeUpdate: handleToDateUpdate
 	}
 
 	const handleInputToggle = (e) => {
@@ -52,11 +58,11 @@ export default () => {
 
 	return (
 		<div className="timepicker-wrapper">
-			<div className='heading'>Date Time Picker</div>
+			<div className='heading'>Date Time Range Picker</div>
 		
 			<div className='row'>
 				
-				<div className='col s12 m8 l8'>
+				<div className='col s12'>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -67,11 +73,13 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DateTimePickerInput {...TProps} inputStyle={inputStyle} /> : <DateTimePicker {...TProps} />}
+							<DateTimeRangePickerInput {...TProps} inputStyle={inputStyle} />
+							:
+							<DateTimeRangePicker {...TProps} />}
 					</div>
 				</div>
 
-				<div className="col s12 m4 l4">
+				<div className="col s12">
 					
 					<div className="code-wrapper">
 						{isCopy ?

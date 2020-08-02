@@ -4,6 +4,7 @@ import TimePickerDemo from './TimePicker/TimePickerDemo'
 import DatePickerDemo from './DatePicker/DatePickerDemo'
 import MonthPickerDemo from './MonthPicker/MonthPickerDemo'
 import DateTimePickerDemo from './DateTimePicker/DateTimePickerDemo'
+import DateTimeRangePickerDemo from './DateTimeRangePicker/DateTimeRangePickerDemo'
 
 import './styles/materialize.css'
 import './styles/layout.css'
@@ -13,7 +14,7 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
 	
-	const [selectedComponent, setComponent] = useState('datePicker')
+	const [selectedComponent, setComponent] = useState('rangePicker')
 
 	const renderComponent = useCallback(() => {
 		if(selectedComponent === 'timePicker') {
@@ -27,6 +28,9 @@ const App = () => {
 		}
 		else if(selectedComponent === 'dateTimePicker') {
 			return <DateTimePickerDemo />
+		}
+		else if(selectedComponent === 'rangePicker') {
+			return <DateTimeRangePickerDemo />
 		}
 	}, [selectedComponent])
 
