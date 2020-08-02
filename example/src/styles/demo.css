@@ -69,3 +69,16 @@
 .mr-right {
 	margin-right: 1.8em;
 }
+
+.code-wrapper {
+	width: 100%;
+	position: relative;
+}
+
+.copy-block {
+	position: absolute;
+	top: 0.6em;
+	right: 0.6em;
+	cursor: pointer;
+	color: #fff;
+}

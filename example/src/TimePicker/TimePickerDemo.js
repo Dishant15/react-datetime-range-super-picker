@@ -26,6 +26,7 @@ export default () => {
 
 	const [hour, setHour] = useState(22)
 	const [minute, setMin] = useState(30)
+	const [isCopy, setCopy] = useState(false)
 
 
 	const handleTimeUpdate = ({time}) => {
@@ -42,6 +43,15 @@ export default () => {
 		handleToggleInput(!isInput)
 	}
 
+	const onCopyClick = () => {
+		window.Clipboard.copy(pickerHtml);
+		setCopy(true)
+
+		setTimeout(() => {
+			setCopy(false)
+		}, 3000);
+	}
+
 	return (
 		<div className="timepicker-wrapper">
 			<div className='heading'>Time Picker</div>
@@ -50,10 +60,10 @@ export default () => {
 				
 				<div className='col s12 m5 l4'>
 					<div className='picker-wrapper'>
-						<div class="switch" onClick={handleInputToggle}>
+						<div className="switch" onClick={handleInputToggle}>
 							<label>
-								<input type="checkbox" checked={isInput} />
-								<span class="lever"></span>
+								<input type="checkbox" checked={isInput} readOnly/>
+								<span className="lever"></span>
 								Input Component
 							</label>
 						</div>
@@ -64,10 +74,21 @@ export default () => {
 				</div>
 
 				<div className="col s12 m7 l8">
-
-					<SyntaxHighlighter language="javascript" style={atomDark}>
-						{pickerHtml}
-					</SyntaxHighlighter>
+					
+					<div className="code-wrapper">
+						{isCopy ?
+							<div className="copy-block">
+								<i className="material-icons" >content_paste</i>
+							</div>
+							:
+							<div className="copy-block">
+								<i className="material-icons" onClick={onCopyClick} >content_copy</i>
+							</div>
+						}
+						<SyntaxHighlighter language="javascript" style={atomDark}>
+							{pickerHtml}
+						</SyntaxHighlighter>
+					</div>
 				</div>
 			</div>
 
