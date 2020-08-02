@@ -33,7 +33,7 @@ yarn add react-datetime-range-super-picker
   - [MonthPicker](#MonthPicker)
 - [Input Components](#InputComponents)
 - [Styling](#Styling)
-- [Future Updates](#FuturUpdates)
+- [Future Updates](#Future%20Updates)
 - [Contributors](#Contributors)
 
 ---
@@ -273,7 +273,7 @@ const DateTimeRangePickerInputWrapper = () => {
 }
 ```
 
-Every Input components excepts same **props** as simple picker component.
+Every Input component takes the same **props** as simple picker component.
 In addition provides extra props for styling. Which are as listed below.
 
 | **Props** | **Description** |
@@ -305,7 +305,7 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 **All styling props above are optional**
 
 
-## FuturUpdates
+## Future Updates
 
 ###### Things that this date time range super picker library does not do (YET). 
 ###### We are open to suggestions. Open an issue with your ideas, if we like it and it is really useful ( or just cool ) we will implement it in next release !
@@ -317,8 +317,8 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 ## Contributors
 
-- [Dishant Chavda](https://github.com/Dishant15) : Creator.
-- [Harsh Darji](https://github.com/hARSHVDARJI) : Massive contribution with styling updates and setting up demo.
+- [Dishant Chavda](https://github.com/Dishant15) : Creator
+- [Harsh Darji](https://github.com/hARSHVDARJI) : Contributions with styling updates and setting up demo
 
 ---
 
