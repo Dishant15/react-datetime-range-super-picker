@@ -33,7 +33,7 @@ yarn add react-datetime-range-super-picker
   - [MonthPicker](#MonthPicker)
 - [Input Components](#InputComponents)
 - [Styling](#Styling)
-- [Future Updates](#FuturUpdates)
+- [Future Updates](#FutureUpdates)
 - [Contributors](#Contributors)
 
 ---
@@ -70,7 +70,7 @@ const TimePickerWrapper = () => {
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| time | <ul><li>Object</li> <li>String</li></ul> | Default value: "08:00 am"<br>Time can be Json object, which can be either 12hr OR 24hr format.<br>While using string time format is hh:mm aaa (12 hr) OR HH:mm (24hr)<br>Examples :<ul><li>12 hour format : { hour: 8, minute: 0, meridiem: 'AM' }</li><li>24 hour format : { hour24: 16, minute: 0 }</li><li>"16:30"</li><li>"08:30 AM"</li></ul>|
+| time | <ul><li>Object</li> <li>String</li></ul> | Default value: "08:00 am"<br>Time can be Json object, which can be either 12hr OR 24hr format.<br>While using string time, format is hh:mm aaa (12 hr) OR HH:mm (24hr)<br>Examples :<ul><li>12 hour format : { hour: 8, minute: 0, meridiem: 'AM' }</li><li>24 hour format : { hour24: 16, minute: 0 }</li><li>"16:30"</li><li>"08:30 AM"</li></ul>|
 | format (Optional) | String | Default value: **'hh:mm aaa'** <br>choose format of time returned and shown on picker |
 | onTimeUpdate | Function | This function will be called every time user changes time.<br>Handler Arguments :{ { hour24, hour, minute, meridiem }, formatted}<br>formatted will be time as per selected format |
 
@@ -108,7 +108,7 @@ const DatePickerWrapper = () => {
 | :--- | :---:| :--- |
 | date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day : number, month : number, year : number }</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formtats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | onDateUpdate | Function | Every time user changes date, month or year this function will be called with following Json object as an argument: <br>{ day, month, year, date, formatted } |
 | onComplete | Function | Once user selects a date this handler is called. Can be used to hide picker on date select |
 
@@ -143,14 +143,14 @@ const DateTimePickerWrapper = () => {
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridem?}; use hour(12 hr format) with meridem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
-| format (optinal) | String | Select input and output string format of the picker.<br> Default value : "dd/MM/YYY hh:mm aaa" More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| timeFormat (optinal) | String | Select time picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| dateFormat (optinal) | String | Select date picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| weekStartsOn (optinal) | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| onDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called. <br>Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridem }, formatted } |
-| onDateUpdate (optinal) | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
-| onTimeUpdate (optinal) | Function | Every time user changes **time** this handler will be called.<br>Arguments for the handlers : { time: { hour, hour24, minute, meridiem }, formatted } |
+| date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridiem?}; use hour(12 hr format) with meridiem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
+| format (optional) | String | Select input and output string format of the picker.<br> Default value : "dd/MM/YYY hh:mm aaa" More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| timeFormat (optional) | String | Select time picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| dateFormat (optional) | String | Select date picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| weekStartsOn (optional) | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
+| onDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called. <br>Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridiem }, formatted } |
+| onDateUpdate (optional) | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
+| onTimeUpdate (optional) | Function | Every time user changes **time** this handler will be called.<br>Arguments for the handlers : { time: { hour, hour24, minute, meridiem }, formatted } |
 
 Supports Input component : DateTimePickerInput . [Checkout further details](#InputComponents)
 
@@ -188,12 +188,12 @@ const DateTimeRangePickerWrapper = () => {
 
 | **Props** | **Type** | **Description** |
 | :--- |:---:| :--- |
-| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridem?}; use hour(12 hr format) with meridem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
+| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridiem?}; use hour(12 hr format) with meridiem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
 | format | String | Default value : "dd/MM/YYY hh:mm aaa". More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | timeFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | dateFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| onFromDateTimeUpdate,<br/>onToDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called<br> Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridem }, formatted } |
+| onFromDateTimeUpdate,<br/>onToDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called<br> Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridiem }, formatted } |
 | onFromDateUpdate,<br/>onToDateUpdate<br/>(optional) | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
 | onFromTimeUpdate,<br/>onToTimeUpdate<br/>(optional) | Function | Every time user changes **time** this handler will be called.<br>Arguments for the handlers : { time: { hour, hour24, minute, meridiem }, formatted } |
 | onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
@@ -273,8 +273,8 @@ const DateTimeRangePickerInputWrapper = () => {
 }
 ```
 
-Every Input components excepts same **props** as simple picker component.
-In addition provides extra props for styling. Which are as listed below.
+Every Input component takes the same **props** as simple picker component.
+In addition it provides extra props for styling. Which are as listed below.
 
 | **Props** | **Description** |
 | :--- | :--- |
@@ -305,7 +305,7 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 **All styling props above are optional**
 
 
-## FuturUpdates
+## FutureUpdates
 
 ###### Things that this date time range super picker library does not do (YET). 
 ###### We are open to suggestions. Open an issue with your ideas, if we like it and it is really useful ( or just cool ) we will implement it in next release !
@@ -317,8 +317,8 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 ## Contributors
 
-- [Dishant Chavda](https://github.com/Dishant15) : Creator.
-- [Harsh Darji](https://github.com/hARSHVDARJI) : Massive contribution with styling updates and setting up demo.
+- [Dishant Chavda](https://github.com/Dishant15) : Creator
+- [Harsh Darji](https://github.com/hARSHVDARJI) : Contributions with styling updates and setting up the demo
 
 ---
 
