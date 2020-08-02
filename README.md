@@ -70,12 +70,9 @@ Available Props
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| time | Object or String | Default value: "08:00 am"<br>Time can be Json object, which can be either 12hr or 24hr format.<br>While using string time format is hh:mm aaa (12 hr) OR HH:mm (24hr)<br>Examples :<ul><li>12 hour format : { hour: 8, minute: 0, meridiem: 'AM' }</li><li>24 hour format : { hour24: 16, minute: 0 }</li><li>"16:30"</li><li>"08:30 AM"</li></ul>|
+| time | <ul><li>Object</li> <li>String</li></ul> | Default value: "08:00 am"<br>Time can be Json object, which can be either 12hr OR 24hr format.<br>While using string time format is hh:mm aaa (12 hr) OR HH:mm (24hr)<br>Examples :<ul><li>12 hour format : { hour: 8, minute: 0, meridiem: 'AM' }</li><li>24 hour format : { hour24: 16, minute: 0 }</li><li>"16:30"</li><li>"08:30 AM"</li></ul>|
 | format (Optional) | String | Default value: **'hh:mm aaa'** <br>choose format of time returned and shown on picker |
-| onTimeUpdate | Function | 
-* This function will be called every time user changes time.
-* Handler Arguments :{ { hour24, hour, minute, meridiem }, formatted}
-* formatted will be time as per selected format |
+| onTimeUpdate | Function | This function will be called every time user changes time.<br>Handler Arguments :{ { hour24, hour, minute, meridiem }, formatted}<br>formatted will be time as per selected format |
 
 Supports Input component : TimePickerInput . [Checkout further details](#InputComponents)
 
@@ -109,7 +106,7 @@ Available Props
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| date | Date Object,<br> Json Object,<br> String | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day : number, month : number, year : number }</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
+| date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day : number, month : number, year : number }</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
 | format | String | Default value : "do MMMM yyyy"<br> checkout all supported formtats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | onDateUpdate | Function | Every time user changes date, month or year this function will be called with following Json object as an argument: <br>{ day, month, year, date, formatted } |
@@ -146,7 +143,7 @@ Available Props
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| date | Date Object,<br> Object or <br> String | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridem?}; use hour(12 hr format) with meridem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
+| date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridem?}; use hour(12 hr format) with meridem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
 | format (optinal) | String | Select input and output string format of the picker.<br> Default value : "dd/MM/YYY hh:mm aaa" More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | timeFormat (optinal) | String | Select time picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | dateFormat (optinal) | String | Select date picker specific format. More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
@@ -191,7 +188,7 @@ Available Props
 
 | **Props** | **Type** | **Description** |
 | :--- |:---:| :--- |
-| from_date,<br/>to_date | Date Object,<br> Object or <br> String | Example <br><ul><li>new Date()</li><li>{ day : number, month : number, year : number }</li><li>"1st january 2020"</li></ul>|
+| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridem?}; use hour(12 hr format) with meridem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
 | format | String | Default value : "dd/MM/YYY hh:mm aaa". More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | timeFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | dateFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
@@ -309,6 +306,9 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 
 ## FuturUpdates
+
+###### Things that this date time range super picker library does not do (YET). 
+###### We are open to suggestions. Open an issue with your ideas, if we like it and it is really useful ( or just cool ) we will implement it in next release !
 
 * Filter props to handle disable / enable pickable dates
 * Time duration component with range picker
