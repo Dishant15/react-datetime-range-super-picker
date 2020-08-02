@@ -3016,9 +3016,9 @@ table.centered thead tr th, table.centered tbody tr td {
   text-align: center;
 }
 
-tr {
+/* tr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
+} */
 
 td, th {
   padding: 15px 5px;
