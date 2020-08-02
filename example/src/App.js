@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 
 import TimePickerDemo from './TimePicker/TimePickerDemo'
-import DatePickerDemo from './components/DatePickerDemo'
+import DatePickerDemo from './DatePicker/DatePickerDemo'
+import MonthPickerDemo from './MonthPicker/MonthPickerDemo'
 
 import './styles/materialize.css'
 import './styles/layout.css'
@@ -11,7 +12,7 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 const App = () => {
 	
-	const [selectedComponent, setComponent] = useState('timePicker')
+	const [selectedComponent, setComponent] = useState('datePicker')
 
 	const renderComponent = useCallback(() => {
 		if(selectedComponent === 'timePicker') {
@@ -19,6 +20,9 @@ const App = () => {
 		}
 		else if(selectedComponent === 'datePicker') {
 			return <DatePickerDemo />
+		}
+		else if(selectedComponent === 'monthPicker') {
+			return <MonthPickerDemo />
 		}
 	}, [selectedComponent])
 
