@@ -300,7 +300,7 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
 | theme | String | **light** or **dark** <br/> Default is light |
-| colors | Json Object | Json object keys :<ul><li>primary_color</li> <li>primary_font_color<li/> <li>light_font_color<li/> <li>secondary_color<li/> <li>primary_highlight_color<li/> <li>secondary_highlight_color<li/><ul/> | |
+| colors | Json Object | Json object keys :<br/> <ul><li>primary_color</li> <li>primary_font_color</li> <li>light_font_color</li> <li>secondary_color</li> <li>primary_highlight_color</li> <li>secondary_highlight_color</li></ul> |
 
 **All styling props above are optional**
 
@@ -318,7 +318,7 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 ## Contributors
 
 - [Dishant Chavda](https://github.com/Dishant15) : Creator.
-- [Harsh Darji](https://github.com/hARSHVDARJI) : Massive contribution with styling updates and seting up demo.
+- [Harsh Darji](https://github.com/hARSHVDARJI) : Massive contribution with styling updates and setting up demo.
 
 ---
 
