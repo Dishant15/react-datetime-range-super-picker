@@ -13,15 +13,18 @@ export default ({pickerProps, handlePropsUpdate}) => {
 			<div className="row">
 				<div className="col s12">
 					<h3>Props Selector</h3>
-					<label>Format</label>
-					<input placeholder="Format" value={format} 
-						onChange={e => setFormat(e.target.value)} />
+
+					<div class="input-field">
+						<input placeholder="Format" value={format} 
+							onChange={e => setFormat(e.target.value)} />
+						<label class="active">Format</label>
+					</div>
 				</div>
 			</div>
 			<div className='submit-btn-wrapper'>
-				<button className="btn waves-effect waves-light" onClick={handleSubmit} >
+				<button className="btn waves-effect waves-light red lighten-2" onClick={handleSubmit} >
 					Update Props
-					<i className="material-icons right">send</i>
+					<i className="material-icons right">edit</i>
 				</button>
 			</div>
 		</div>

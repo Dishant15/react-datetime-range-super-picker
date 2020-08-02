@@ -17,6 +17,7 @@ const inputStyle = {
 	borderRadius: '0.417em',
 	backgroundColor: '#f7f7f7',
 	color: '#6c6b6b',
+	maxWidth: '12em'
 }
 
 export default () => {
@@ -62,7 +63,7 @@ export default () => {
 		
 			<div className='row'>
 				
-				<div className='col s12'>
+				<div className='col s12 l8'>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -75,12 +76,12 @@ export default () => {
 						{isInput ? 
 							<DateTimeRangePickerInput {...TProps} inputStyle={inputStyle} />
 							:
-							<DateTimeRangePicker {...TProps} />}
+							<DateTimeRangePicker {...TProps} />
+						}
 					</div>
 				</div>
 
-				<div className="col s12">
-					
+				<div className="col s12 l4">
 					<div className="code-wrapper">
 						{isCopy ?
 							<div className="copy-block">
