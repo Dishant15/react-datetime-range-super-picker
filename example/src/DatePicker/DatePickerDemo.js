@@ -58,7 +58,7 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<div className="datetime-pad-bot">
+							<div className="date-pad-bot">
 								<DatePickerInput {...DProps} /> 
 							</div>
 							:

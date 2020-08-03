@@ -96,14 +96,26 @@
 	padding-bottom: 8px;
 }
 
-.range-picker-pad-bot {
+.range-picker-input-wrapper {
 	padding-bottom: 30em;
+	max-width: 56em;
+	margin: 0 auto;
 }
 
 .datetime-pad-bot {
 	padding-bottom: 24em;
+	max-width: 48em;
+    margin: 0 auto;
+}
+
+.date-pad-bot {
+	padding-bottom: 24em;
+	max-width: 26em;
+    margin: 0 auto;
 }
 
 .time-pad-bot {
 	padding-bottom: 20em;
+	max-width: 20em;
+    margin: 0 auto;
 }
