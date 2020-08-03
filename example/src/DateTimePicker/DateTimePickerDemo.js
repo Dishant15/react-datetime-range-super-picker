@@ -8,16 +8,6 @@ import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
 import { useTimePickerProps } from './datetimepicker.hooks';
 
-const inputStyle = {
-	border: 'none',
-	outline: 'none',
-	fontSize: '0.9em',
-	height: '2.5em',
-	padding: '.2em 1.2em .2em .5em',
-	borderRadius: '0.417em',
-	backgroundColor: '#f7f7f7',
-	color: '#6c6b6b',
-}
 
 export default () => {
 	
@@ -67,7 +57,7 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DateTimePickerInput {...TProps} inputStyle={inputStyle} /> : <DateTimePicker {...TProps} />}
+							<DateTimePickerInput {...TProps} /> : <DateTimePicker {...TProps} />}
 					</div>
 				</div>
 

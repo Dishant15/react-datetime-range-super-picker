@@ -8,17 +8,6 @@ import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
 import { useTimePickerProps } from './timepicker.hooks';
 
-const inputStyle = {
-	border: 'none',
-	outline: 'none',
-	fontSize: '0.9em',
-	height: '2.5em',
-	padding: '.2em 1.2em .2em .5em',
-	borderRadius: '0.417em',
-	backgroundColor: '#f7f7f7',
-	color: '#6c6b6b',
-}
-
 export default () => {
 	
 	const [pickerProps, pickerHtml, handlePropsUpdate,
@@ -59,6 +48,9 @@ export default () => {
 			<div className='row'>
 				
 				<div className='col s12 m5 l4'>
+					<div className="theme-wrapper">
+						
+					</div>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -69,7 +61,7 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<TimePickerInput {...TProps} inputStyle={inputStyle} /> : <TimePicker {...TProps} />}
+							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
 					</div>
 				</div>
 
