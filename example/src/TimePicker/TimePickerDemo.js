@@ -62,7 +62,7 @@ export default () => {
 		
 			<div className='row'>
 				
-				<div className='col s12 m5 l4'>
+				<div className='col s12 m5 l5'>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -85,7 +85,7 @@ export default () => {
 
 				</div>
 
-				<div className="col s12 m7 l8">
+				<div className="col s12 m7 l7">
 					
 					<div className="code-wrapper">
 						{isCopy ?
