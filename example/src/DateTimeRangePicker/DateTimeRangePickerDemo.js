@@ -65,7 +65,9 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DateTimeRangePickerInput {...TProps} />
+							<div className="range-picker-pad-bot">
+								<DateTimeRangePickerInput {...TProps} />
+							</div>
 							:
 							<DateTimeRangePicker {...TProps} />
 						}

@@ -58,7 +58,12 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DatePickerInput {...DProps} /> : <DatePicker {...DProps} />}
+							<div className="datetime-pad-bot">
+								<DatePickerInput {...DProps} /> 
+							</div>
+							:
+							<DatePicker {...DProps} />
+						}
 					</div>
 
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>

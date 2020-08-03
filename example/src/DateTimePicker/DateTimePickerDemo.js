@@ -59,7 +59,11 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DateTimePickerInput {...TProps} /> : <DateTimePicker {...TProps} />}
+							<div className="datetime-pad-bot">
+								<DateTimePickerInput {...TProps} /> 
+							</div>
+							:
+							<DateTimePicker {...TProps} />}
 					</div>
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
 

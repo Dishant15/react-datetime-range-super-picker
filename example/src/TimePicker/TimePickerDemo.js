@@ -60,7 +60,12 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
+							<div className="time-pad-bot">
+								<TimePickerInput {...TProps} /> 
+							</div>
+							:
+							<TimePicker {...TProps} />
+						}
 					</div>
 
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
