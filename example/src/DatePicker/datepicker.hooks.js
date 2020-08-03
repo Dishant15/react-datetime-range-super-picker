@@ -18,7 +18,7 @@ const generatePickerHtml = ({format, weekStartsOn, isInput,
 	}
 
 	if(!!weekStartsOn) {
-		propStr += `\n\t\t\t\t\weekStartsOn={${weekStartsOn}}`
+		propStr += `\n\t\t\t\tweekStartsOn={${weekStartsOn}}`
 	}
 
 	if(!isEmpty(colors)) {

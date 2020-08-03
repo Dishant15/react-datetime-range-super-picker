@@ -14,11 +14,11 @@ export default ({pickerProps, handlePropsUpdate}) => {
 				<div className="col s12">
 					<h3>Props Selector</h3>
 
-					<div class="input-field">
+					<div className="input-field">
 						<input className="input-class"
 							placeholder="Format" value={format} 
 							onChange={e => setFormat(e.target.value)} />
-						<label class="active">Format</label>
+						<label className="active">Format</label>
 					</div>
 				</div>
 			</div>
