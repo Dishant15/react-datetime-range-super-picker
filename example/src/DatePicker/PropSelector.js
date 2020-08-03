@@ -13,18 +13,20 @@ export default ({pickerProps, handlePropsUpdate}) => {
 		<div className='form-wrapper'>
 			<div className="row">
 				<div className="col s12">
-					<h3>Props Selector</h3>
+					<h3 className="pad-bottom-8">Props Selector</h3>
 
-					<div class="input-field">
-						<input placeholder="Default : do MMMM yyyy" value={format} 
+					<div className="input-field">
+						<input className="input-class" 
+							placeholder="Default : do MMMM yyyy" value={format} 
 							onChange={e => setFormat(e.target.value)} />
-						<label class="active">Format ( Optional )</label>
+						<label className="active">Format ( Optional )</label>
 					</div>
 
-					<div class="input-field">
-						<input placeholder="Default : 0, Values - [0-6]" value={weekStartsOn} 
+					<div className="input-field">
+						<input className="input-class" 
+							placeholder="Default : 0, Values - [0-6]" value={weekStartsOn} 
 							onChange={e => setWeekStartsOn(e.target.value)} />
-						<label class="active">Week Starts On ( Optional )</label>
+						<label className="active">Week Starts On ( Optional )</label>
 					</div>
 
 				</div>

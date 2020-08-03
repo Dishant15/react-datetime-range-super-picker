@@ -6,18 +6,10 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
+import ThemeSelector from "../components/ThemeSelector";
+
 import { useTimePickerProps } from './datetimepicker.hooks';
 
-const inputStyle = {
-	border: 'none',
-	outline: 'none',
-	fontSize: '0.9em',
-	height: '2.5em',
-	padding: '.2em 1.2em .2em .5em',
-	borderRadius: '0.417em',
-	backgroundColor: '#f7f7f7',
-	color: '#6c6b6b',
-}
 
 export default () => {
 	
@@ -67,8 +59,10 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<DateTimePickerInput {...TProps} inputStyle={inputStyle} /> : <DateTimePicker {...TProps} />}
+							<DateTimePickerInput {...TProps} /> : <DateTimePicker {...TProps} />}
 					</div>
+					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
+
 				</div>
 
 				<div className="col s12 m4 l4">

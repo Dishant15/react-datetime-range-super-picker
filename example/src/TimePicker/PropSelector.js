@@ -12,12 +12,13 @@ export default ({pickerProps, handlePropsUpdate}) => {
 		<div className='form-wrapper'>
 			<div className="row">
 				<div className="col s12">
-					<h3>Props Selector</h3>
+					<h3 className="pad-bottom-8">Props Selector</h3>
 
-					<div class="input-field">
-						<input placeholder="Format" value={format} 
+					<div className="input-field">
+						<input className="input-class"
+							placeholder="Format" value={format} 
 							onChange={e => setFormat(e.target.value)} />
-						<label class="active">Format</label>
+						<label className="active">Format</label>
 					</div>
 				</div>
 			</div>
