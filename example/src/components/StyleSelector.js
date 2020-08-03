@@ -66,7 +66,8 @@ export default class StyleSelector extends React.Component {
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class" 
+								placeholder="rgb, hex, color name ..." 
 								value={primary_color} name="primary_color"
 								onChange={this.handleColorUpdate} 
 							/>
@@ -74,35 +75,40 @@ export default class StyleSelector extends React.Component {
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class"  
+								placeholder="rgb, hex, color name ..." 
 								value={primary_highlight_color} name="primary_highlight_color"
 								onChange={this.handleColorUpdate} />
 							<label class="active">Primary highlight Color</label>
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class" 
+								placeholder="rgb, hex, color name ..." 
 								value={secondary_color} name="secondary_color"
 								onChange={this.handleColorUpdate} />
 							<label class="active">Secondary Color</label>
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class" 
+								placeholder="rgb, hex, color name ..." 
 								value={secondary_highlight_color} name="secondary_highlight_color"
 								onChange={this.handleColorUpdate} />
 							<label class="active">Secondary highlight Color</label>
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class" 
+								placeholder="rgb, hex, color name ..." 
 								value={primary_font_color} name="primary_font_color"
 								onChange={this.handleColorUpdate} />
 							<label class="active">Primary font Color</label>
 						</div>
 
 						<div class="input-field">
-							<input placeholder="rgb, hex, color name ..." 
+							<input className="input-class" 
+								placeholder="rgb, hex, color name ..." 
 								value={light_font_color} name="light_font_color"
 								onChange={this.handleColorUpdate} />
 							<label class="active">Light font Color</label>

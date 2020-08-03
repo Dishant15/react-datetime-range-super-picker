@@ -15,7 +15,8 @@ export default ({pickerProps, handlePropsUpdate}) => {
 					<h3>Props Selector</h3>
 
 					<div class="input-field">
-						<input placeholder="Format" value={format} 
+						<input className="input-class"
+							placeholder="Format" value={format} 
 							onChange={e => setFormat(e.target.value)} />
 						<label class="active">Format</label>
 					</div>

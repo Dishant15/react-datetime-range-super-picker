@@ -16,13 +16,15 @@ export default ({pickerProps, handlePropsUpdate}) => {
 					<h3>Props Selector</h3>
 
 					<div class="input-field">
-						<input placeholder="Default : do MMMM yyyy" value={format} 
+						<input className="input-class" 
+							placeholder="Default : do MMMM yyyy" value={format} 
 							onChange={e => setFormat(e.target.value)} />
 						<label class="active">Format ( Optional )</label>
 					</div>
 
 					<div class="input-field">
-						<input placeholder="Default : 0, Values - [0-6]" value={weekStartsOn} 
+						<input className="input-class" 
+							placeholder="Default : 0, Values - [0-6]" value={weekStartsOn} 
 							onChange={e => setWeekStartsOn(e.target.value)} />
 						<label class="active">Week Starts On ( Optional )</label>
 					</div>
