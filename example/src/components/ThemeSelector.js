@@ -25,9 +25,11 @@ export default class ThemeSelector extends Component {
                 </div>
                 <div>
                     <div className={`waves-effect waves-light btn z-depth-1 light-btn mr-right ${theme === 'light' ? 'active z-depth-2' : ''}`}
-                        onClick={this.handleThemeUpdate.bind(this, 'light')}>LIGHT</div>
-                    <div className={`waves-effect waves-light btn z-depth-1 dark-btn ${theme === 'dark' ? 'active z-depth-2' : ''}`}
-                        onClick={this.handleThemeUpdate.bind(this, 'dark')}>DARK</div>
+                        onClick={this.handleThemeUpdate.bind(this, 'light')}>Light</div>
+                    <div className={`waves-effect waves-light btn z-depth-1 dark-btn mr-right ${theme === 'dark' ? 'active z-depth-2' : ''}`}
+                        onClick={this.handleThemeUpdate.bind(this, 'dark')}>Dark</div>
+                    <div className={`waves-effect waves-light btn z-depth-1 colorful-btn ${theme === 'colorful' ? 'active z-depth-2' : ''}`}
+                        onClick={this.handleThemeUpdate.bind(this, 'colorful')}>Colorful</div>
                 </div>
             </div>
         )

@@ -23,6 +23,17 @@ const DARK_THEME_COLORS:ComponentTheme = {
 	secondary_highlight_color: 'rgba(165,201,213,.61)',
 }
 
+const COLORFUL_THEME_COLORS:ComponentTheme = {
+	primary_color : 'ghostwhite',
+	primary_font_color : 'SlateGray',
+	light_font_color : 'grey',
+	
+	secondary_color: '#ffd180',
+
+	primary_highlight_color: '#88b999',
+	secondary_highlight_color: '#8897b9',
+}
+
 export const getThemeColors = (theme = 'light'):ComponentTheme => {
 	switch (theme) {
 		case 'light':
@@ -30,6 +41,9 @@ export const getThemeColors = (theme = 'light'):ComponentTheme => {
 
 		case 'dark':
 			return DARK_THEME_COLORS
+
+		case 'colorful':
+			return COLORFUL_THEME_COLORS
 	
 		default:
 			return LIGHT_THEME_COLORS;

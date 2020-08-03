@@ -39,10 +39,8 @@
 	background-color: white;
 	color : rgba(0, 0, 0, 0.57)
 }
-.light-btn:hover {
+.light-btn.active, .light-btn:hover {
 	background-color: white;
-}
-.light-btn.active {
 	-webkit-transform: scale(1.166);
 	    -ms-transform: scale(1.166);
 	        transform: scale(1.166);
@@ -52,10 +50,19 @@
 	background-color : #36465D;
 	color : #8897b9
 }
-.dark-btn:hover {
+.dark-btn.active, .dark-btn:hover {
 	background-color : #36465D;
+	-webkit-transform: scale(1.166);
+	    -ms-transform: scale(1.166);
+	        transform: scale(1.166);
 }
-.dark-btn.active {
+
+.colorful-btn {
+	background-color : #8897b9;
+	color : #ffd180;
+}
+.colorful-btn.active, .colorful-btn:hover {
+	background-color : #8897b9;
 	-webkit-transform: scale(1.166);
 	    -ms-transform: scale(1.166);
 	        transform: scale(1.166);
