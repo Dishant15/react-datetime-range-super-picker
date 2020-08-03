@@ -11,6 +11,19 @@ import ThemeSelector from "../components/ThemeSelector";
 import { useTimePickerProps } from './timepicker.hooks';
 
 export default () => {
+
+	/**
+	 * Parent:
+	 * 		App
+	 * 
+	 * Renders:
+	 * 		PropSelector
+	 * 		StyleSelector
+	 * 		ThemeSelector
+	 * 
+	 * 		TimePicker
+	 * 		TimePickerInput
+	 */
 	
 	const [pickerProps, pickerHtml, handlePropsUpdate,
 		isInput, handleToggleInput] = useTimePickerProps()
@@ -49,7 +62,7 @@ export default () => {
 		
 			<div className='row'>
 				
-				<div className='col s12 m5 l4'>
+				<div className='col s12 m5 l5'>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -60,14 +73,19 @@ export default () => {
 						</div>
 
 						{isInput ? 
-							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
+							<div className="time-pad-bot">
+								<TimePickerInput {...TProps} /> 
+							</div>
+							:
+							<TimePicker {...TProps} />
+						}
 					</div>
 
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
 
 				</div>
 
-				<div className="col s12 m7 l8">
+				<div className="col s12 m7 l7">
 					
 					<div className="code-wrapper">
 						{isCopy ?

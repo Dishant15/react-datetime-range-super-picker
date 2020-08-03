@@ -7,12 +7,23 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import StyleSelector from "../components/StyleSelector";
 import ThemeSelector from "../components/ThemeSelector";
 
-import { useTimePickerProps } from './monthpicker.hooks';
+import { useMonthPickerProps } from './monthpicker.hooks';
 
 
 export default () => {
 
-	const [pickerProps, pickerHtml, handlePropsUpdate] = useTimePickerProps()
+	/**
+	 * Parent:
+	 * 		App
+	 * 
+	 * Renders:
+	 * 		StyleSelector
+	 * 		ThemeSelector
+	 * 
+	 * 		MonthPicker
+	 */
+
+	const [pickerProps, pickerHtml, handlePropsUpdate] = useMonthPickerProps()
 
 	const [res_month, setMonth] = useState(4)
 	const [res_year, setYear] = useState(2020)
@@ -44,14 +55,14 @@ export default () => {
 
 			<div className='row'>
 
-				<div className='col s12 m5 l4'>
+				<div className='col s12 m5 l5'>
 					<div className='picker-wrapper'>
 						<MonthPicker {...MProps} />
 					</div>
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
 				</div>
 
-				<div className="col s12 m7 l8">
+				<div className="col s12 m7 l7">
 
 					<div className="code-wrapper">
 						{isCopy ?

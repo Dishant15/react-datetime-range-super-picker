@@ -13,7 +13,19 @@ import 'react-datetime-range-super-picker/dist/index.css'
 
 
 const App = () => {
-	
+
+	/**
+	 * Parent :
+	 * 		index
+	 * 
+	 * Renders:
+	 * 		TimePickerDemo
+	 * 		DatePickerDemo
+	 * 		MonthPickerDemo
+	 * 		DateTimePickerDemo
+	 * 		DateTimeRangePickerDemo
+	 */
+
 	const [selectedComponent, setComponent] = useState('timePicker')
 
 	const renderComponent = useCallback(() => {

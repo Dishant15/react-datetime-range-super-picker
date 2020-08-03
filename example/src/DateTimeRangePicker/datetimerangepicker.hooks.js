@@ -58,7 +58,7 @@ const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
 	`
 }
 
-export const useTimePickerProps = () => {
+export const useRangePickerProps = () => {
 	
 	const [isInput, setInput] = useState(false)
 	const [pickerProps, setPickerProps] = useState({})
