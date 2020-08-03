@@ -90,3 +90,8 @@
 	cursor: pointer;
 	color: #fff;
 }
+
+/* space below input fields in style and props selector */
+.input-field {
+	padding-bottom: 8px;
+}

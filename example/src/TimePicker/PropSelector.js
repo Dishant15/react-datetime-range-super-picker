@@ -12,7 +12,7 @@ export default ({pickerProps, handlePropsUpdate}) => {
 		<div className='form-wrapper'>
 			<div className="row">
 				<div className="col s12">
-					<h3>Props Selector</h3>
+					<h3 className="pad-bottom-8">Props Selector</h3>
 
 					<div className="input-field">
 						<input className="input-class"
