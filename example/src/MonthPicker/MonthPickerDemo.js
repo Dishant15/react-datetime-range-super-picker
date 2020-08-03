@@ -5,6 +5,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import StyleSelector from "../components/StyleSelector";
+import ThemeSelector from "../components/ThemeSelector";
+
 import { useTimePickerProps } from './monthpicker.hooks';
 
 
@@ -46,6 +48,7 @@ export default () => {
 					<div className='picker-wrapper'>
 						<MonthPicker {...MProps} />
 					</div>
+					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
 				</div>
 
 				<div className="col s12 m7 l8">

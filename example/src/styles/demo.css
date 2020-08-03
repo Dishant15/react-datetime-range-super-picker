@@ -62,8 +62,16 @@
 }
 
 .theme-action-wrapper {
-	padding-top: 0.8em;
-	padding-bottom: 1em;
+	padding: 30px;
+	padding-bottom: 0;
+}
+
+.pad-bottom-16 {
+	padding-bottom: 16px;
+}
+
+.pad-bottom-8 {
+	padding-bottom: 8px;
 }
 
 .mr-right {

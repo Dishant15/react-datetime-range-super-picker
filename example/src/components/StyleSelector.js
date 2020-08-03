@@ -7,7 +7,6 @@ export default class StyleSelector extends React.Component {
 		super(props);
 
 		this.state = {
-			theme : 'light',
 			colors : {
 				primary_color: get(props, 'colors.primary_color', ''),
 				primary_highlight_color: get(props, 'colors.primary_highlight_color', ''),
@@ -17,10 +16,6 @@ export default class StyleSelector extends React.Component {
 				secondary_highlight_color: get(props, 'colors.secondary_highlight_color', ''),
 			}
 		}
-	}
-
-	handleThemeUpdate = (theme) => {
-		this.setState({theme})
 	}
 
 	handleColorUpdate = (e) => {
@@ -41,12 +36,10 @@ export default class StyleSelector extends React.Component {
 		this.props.handlePropsUpdate({
 			...this.props.pickerProps, 
 			colors,
-			theme: this.state.theme
 		})
 	}
 
 	render = () => {
-		const {theme} = this.state
 		const {primary_color, secondary_color, 
 			primary_font_color, light_font_color,
 			secondary_highlight_color, primary_highlight_color} = this.state.colors
@@ -55,15 +48,7 @@ export default class StyleSelector extends React.Component {
 			<div className='form-wrapper'>
 				<div className="row">
 					<div className="col s12">
-						<h3>Style Selector</h3>
-
-						<label>Theme</label>
-						<div className="theme-action-wrapper">
-							<div className={`waves-effect waves-light btn z-depth-1 light-btn mr-right ${theme === 'light' ? 'active z-depth-2' : ''}`}
-								onClick={this.handleThemeUpdate.bind(this, 'light')}>LIGHT</div>
-							<div className={`waves-effect waves-light btn z-depth-1 dark-btn ${theme === 'dark' ? 'active z-depth-2' : ''}`}
-								onClick={this.handleThemeUpdate.bind(this, 'dark')}>DARK</div>
-						</div>
+						<h3 className="pad-bottom-8">Style Selector</h3>
 
 						<div className="input-field">
 							<input className="input-class" 

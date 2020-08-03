@@ -6,6 +6,8 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
+import ThemeSelector from "../components/ThemeSelector";
+
 import { useTimePickerProps } from './datepicker.hooks';
 
 export default () => {
@@ -58,6 +60,9 @@ export default () => {
 						{isInput ? 
 							<DatePickerInput {...DProps} /> : <DatePicker {...DProps} />}
 					</div>
+
+					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
+
 				</div>
 
 				<div className="col s12 m7 l7">

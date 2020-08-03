@@ -6,6 +6,8 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
+import ThemeSelector from "../components/ThemeSelector";
+
 import { useTimePickerProps } from './timepicker.hooks';
 
 export default () => {
@@ -48,9 +50,6 @@ export default () => {
 			<div className='row'>
 				
 				<div className='col s12 m5 l4'>
-					<div className="theme-wrapper">
-						
-					</div>
 					<div className='picker-wrapper'>
 						<div className="switch" onClick={handleInputToggle}>
 							<label>
@@ -63,6 +62,9 @@ export default () => {
 						{isInput ? 
 							<TimePickerInput {...TProps} /> : <TimePicker {...TProps} />}
 					</div>
+
+					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
+
 				</div>
 
 				<div className="col s12 m7 l8">
