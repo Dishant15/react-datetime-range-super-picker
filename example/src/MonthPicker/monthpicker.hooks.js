@@ -35,7 +35,7 @@ const generatePickerHtml = ({theme, colors}) => {
 	`
 }
 
-export const useTimePickerProps = () => {
+export const useMonthPickerProps = () => {
 	
 	const [pickerProps, setPickerProps] = useState({})
 	const [pickerHtml, setPickerHtml] = useState(generatePickerHtml({}))

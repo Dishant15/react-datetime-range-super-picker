@@ -8,12 +8,25 @@ import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
 import ThemeSelector from "../components/ThemeSelector";
 
-import { useTimePickerProps } from './datepicker.hooks';
+import { useDatePickerProps } from './datepicker.hooks';
 
 export default () => {
+
+	/**
+	 * Parent:
+	 * 		App
+	 * 
+	 * Renders:
+	 * 		PropSelector
+	 * 		StyleSelector
+	 * 		ThemeSelector
+	 * 
+	 * 		DatePicker
+	 * 		DatePickerInput
+	 */
 	
 	const [pickerProps, pickerHtml, handlePropsUpdate,
-		isInput, handleToggleInput] = useTimePickerProps()
+		isInput, handleToggleInput] = useDatePickerProps()
 
 	const [curr_date, setDate] = useState(new Date())
 	const [isCopy, setCopy] = useState(false)

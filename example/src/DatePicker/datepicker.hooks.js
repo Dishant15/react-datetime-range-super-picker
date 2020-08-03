@@ -43,7 +43,7 @@ const generatePickerHtml = ({format, weekStartsOn, isInput,
 	`
 }
 
-export const useTimePickerProps = () => {
+export const useDatePickerProps = () => {
 	
 	const [isInput, setInput] = useState(false)
 	const [pickerProps, setPickerProps] = useState({})

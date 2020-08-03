@@ -11,6 +11,19 @@ import ThemeSelector from "../components/ThemeSelector";
 import { useTimePickerProps } from './timepicker.hooks';
 
 export default () => {
+
+	/**
+	 * Parent:
+	 * 		App
+	 * 
+	 * Renders:
+	 * 		PropSelector
+	 * 		StyleSelector
+	 * 		ThemeSelector
+	 * 
+	 * 		TimePicker
+	 * 		TimePickerInput
+	 */
 	
 	const [pickerProps, pickerHtml, handlePropsUpdate,
 		isInput, handleToggleInput] = useTimePickerProps()

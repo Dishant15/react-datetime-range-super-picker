@@ -8,13 +8,26 @@ import PropSelector from "./PropSelector";
 import StyleSelector from "../components/StyleSelector";
 import ThemeSelector from "../components/ThemeSelector";
 
-import { useTimePickerProps } from './datetimerangepicker.hooks';
+import { useRangePickerProps } from './datetimerangepicker.hooks';
 
 
 export default () => {
+
+	/**
+	 * Parent:
+	 * 		App
+	 * 
+	 * Renders:
+	 * 		PropSelector
+	 * 		StyleSelector
+	 * 		ThemeSelector
+	 * 
+	 * 		DateTimeRangePicker
+	 * 		DateTimeRangePickerInput
+	 */
 	
 	const [pickerProps, pickerHtml, handlePropsUpdate,
-		isInput, handleToggleInput] = useTimePickerProps()
+		isInput, handleToggleInput] = useRangePickerProps()
 
 	const [from_date, setFromDate] = useState(new Date())
 	const [to_date, setToDate] = useState(new Date())
