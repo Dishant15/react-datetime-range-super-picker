@@ -289,7 +289,7 @@ Note : All of above props are optional.
 ## Styling
 
 Every picker component color scheme can be changed with 2 props: **theme** and **colors**.
-Currently all picker supports 2 themes out of the box : "light" and "dark". (More themes coming soon !!)
+Currently all picker supports few themes out of the box as shown in props table below. (More themes coming soon !!)
 Theme is created using colors listed in props table below.
 
 There are 3 easy ways to customise color scheme to suit your requirements:
@@ -299,7 +299,7 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 | **Props** | **Type** | **Description** |
 | :--- | :---:| :--- |
-| theme | String | **light** or **dark** <br/> Default is light |
+| theme | String | **light**, **dark**, **colorful** <br/> Default is light |
 | colors | Json Object | Json object keys :<br/> <ul><li>primary_color</li> <li>primary_font_color</li> <li>light_font_color</li> <li>secondary_color</li> <li>primary_highlight_color</li> <li>secondary_highlight_color</li></ul> |
 
 **All styling props above are optional**
