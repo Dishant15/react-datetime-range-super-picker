@@ -28,6 +28,8 @@
 	border-radius: .8em;
 	margin-top: .5em;
 	transition: all .2s linear;
+	min-width: 19em;
+    text-align: center;
 }
 
 .header_field {
@@ -63,12 +65,15 @@
 	display: table-cell;
 	vertical-align: middle;
 	text-align: left;
+	min-width: 10em;
+	height: 27em;
+	/* min height not work on td; */
 }
 .advance_pill {
 	cursor: pointer;
 	color : #ffffffbd;
 	font-weight: bold;
-	padding:1em 3em .8em 1em;
+	padding:1em 1em .8em 1em;
 	border-bottom: 1px solid #a2e6e369;
 	border-left: .5em solid transparent;
 	transition: all .2s linear;
