@@ -78,6 +78,8 @@ Supports Input component : TimePickerInput . [Checkout further details](#InputCo
 
 ## DatePicker
 
+![datepicker](https://user-images.githubusercontent.com/20855294/89798760-36b33b00-db4a-11ea-8ea4-373ff34831bf.gif "datepicker") ![datepickerinput](https://user-images.githubusercontent.com/20855294/89798771-3c108580-db4a-11ea-8262-77724f6a8138.gif "datepickerinput")
+
 ```tsx
 import React, {useState} from 'react'
 
