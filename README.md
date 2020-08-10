@@ -125,6 +125,11 @@ Supports Input component : DatePickerInput . [Checkout further details](#InputCo
 
 ## DateTimePicker
 
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![datetimepicker](https://user-images.githubusercontent.com/20855294/89801499-e3db8280-db4d-11ea-9e44-490982d1d9df.gif "datetimepicker")  |  ![datetimepickerinput](https://user-images.githubusercontent.com/20855294/89801504-e5a54600-db4d-11ea-9e58-343abfab8776.gif "datetimepickerinput")
+
+
 ```tsx
 import React, {useState} from 'react'
 
