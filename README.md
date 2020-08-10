@@ -40,6 +40,11 @@ yarn add react-datetime-range-super-picker
 
 ## TimePicker
 
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![timepicker](https://user-images.githubusercontent.com/20855294/89800366-521f4580-db4c-11ea-9a13-14be2e5afd9c.gif "timepicker")  |  ![timepickerinput](https://user-images.githubusercontent.com/20855294/89800354-4cc1fb00-db4c-11ea-8404-743a926ec3fc.gif "timepickerinput")
+
+
 ```tsx
 import React, {useState} from 'react'
 
@@ -80,7 +85,7 @@ Supports Input component : TimePickerInput . [Checkout further details](#InputCo
 
 Simple             |  Input Component
 :-------------------------:|:-------------------------:
-![datepicker](https://user-images.githubusercontent.com/20855294/89798760-36b33b00-db4a-11ea-8ea4-373ff34831bf.gif "datepicker")  |  ![datepickerinput](https://user-images.githubusercontent.com/20855294/89798771-3c108580-db4a-11ea-8262-77724f6a8138.gif "datepickerinput")(https://...Ocean.png)
+![datepicker](https://user-images.githubusercontent.com/20855294/89798760-36b33b00-db4a-11ea-8ea4-373ff34831bf.gif "datepicker")  |  ![datepickerinput](https://user-images.githubusercontent.com/20855294/89798771-3c108580-db4a-11ea-8262-77724f6a8138.gif "datepickerinput")
 
 ```tsx
 import React, {useState} from 'react'
