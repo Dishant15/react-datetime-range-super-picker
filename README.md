@@ -170,6 +170,11 @@ Supports Input component : DateTimePickerInput . [Checkout further details](#Inp
 
 ## DateTimeRangePicker
 
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![range](https://user-images.githubusercontent.com/20855294/89801902-5a788000-db4e-11ea-855e-ccea427e322c.gif "range")  |  ![rangeinput](https://user-images.githubusercontent.com/20855294/89801892-56e4f900-db4e-11ea-843f-de899780942d.gif "rangeinput")
+
+
 ```tsx
 import React, {useState} from 'react'
 
@@ -215,6 +220,10 @@ const DateTimeRangePickerWrapper = () => {
 Supports Input component : DateTimeRangePickerInput . [Checkout further details](#InputComponents)
 
 ## MonthPicker
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/20855294/89802128-ad523780-db4e-11ea-864c-19b86c6d0424.gif" width="300" />
+</p>
 
 ###### Bonus Month picker! Useful when you want to pick just month and year in a cool way.
 
