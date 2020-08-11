@@ -24,6 +24,14 @@ if you are using yarn
 yarn add react-datetime-range-super-picker
 ```
 
+## Preview
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/20855294/89807921-f1493a80-db56-11ea-8173-a4fb0764a8a8.gif" width="700" />
+</p>
+<br />
+
+
 ## Table of Contents
 - Components
   - [TimePicker](#TimePicker)
@@ -39,6 +47,11 @@ yarn add react-datetime-range-super-picker
 ---
 
 ## TimePicker
+
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![timepicker](https://user-images.githubusercontent.com/20855294/89800366-521f4580-db4c-11ea-9a13-14be2e5afd9c.gif "timepicker")  |  ![timepickerinput](https://user-images.githubusercontent.com/20855294/89800354-4cc1fb00-db4c-11ea-8404-743a926ec3fc.gif "timepickerinput")
+
 
 ```tsx
 import React, {useState} from 'react'
@@ -78,6 +91,10 @@ Supports Input component : TimePickerInput . [Checkout further details](#InputCo
 
 ## DatePicker
 
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![datepicker](https://user-images.githubusercontent.com/20855294/89807260-fb1e6e00-db55-11ea-970d-f89357541149.gif "datepicker")  |  ![datepickerinput](https://user-images.githubusercontent.com/20855294/89807269-feb1f500-db55-11ea-8070-ab958f779708.gif "datepickerinput")
+
 ```tsx
 import React, {useState} from 'react'
 
@@ -115,6 +132,11 @@ const DatePickerWrapper = () => {
 Supports Input component : DatePickerInput . [Checkout further details](#InputComponents)
 
 ## DateTimePicker
+
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![datetimepicker](https://user-images.githubusercontent.com/20855294/89801499-e3db8280-db4d-11ea-9e44-490982d1d9df.gif "datetimepicker")  |  ![datetimepickerinput](https://user-images.githubusercontent.com/20855294/89801504-e5a54600-db4d-11ea-9e58-343abfab8776.gif "datetimepickerinput")
+
 
 ```tsx
 import React, {useState} from 'react'
@@ -155,6 +177,11 @@ const DateTimePickerWrapper = () => {
 Supports Input component : DateTimePickerInput . [Checkout further details](#InputComponents)
 
 ## DateTimeRangePicker
+
+Simple             |  Input Component
+:-------------------------:|:-------------------------:
+![range](https://user-images.githubusercontent.com/20855294/89807921-f1493a80-db56-11ea-8173-a4fb0764a8a8.gif "range")  |  ![rangeinput](https://user-images.githubusercontent.com/20855294/89807903-ec848680-db56-11ea-963b-afd8624806e0.gif "rangeinput")
+
 
 ```tsx
 import React, {useState} from 'react'
@@ -201,6 +228,10 @@ const DateTimeRangePickerWrapper = () => {
 Supports Input component : DateTimeRangePickerInput . [Checkout further details](#InputComponents)
 
 ## MonthPicker
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/20855294/89802128-ad523780-db4e-11ea-864c-19b86c6d0424.gif" width="400" />
+</p>
 
 ###### Bonus Month picker! Useful when you want to pick just month and year in a cool way.
 

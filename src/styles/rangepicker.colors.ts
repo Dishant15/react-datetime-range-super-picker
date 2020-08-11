@@ -7,7 +7,7 @@ export const getHeaderFieldColors = (
 		return {
 			background: colors.primary_color,
 			color: colors.secondary_highlight_color,
-			fontWeight: 'bold',
+			textShadow: `0 0 .65px ${colors.secondary_highlight_color}, 0 0 .65px ${colors.secondary_highlight_color}`
 		}
 	} else {
 		return {
