@@ -16,6 +16,8 @@ export interface RangePickerProps {
 
 	colors: ComponentTheme,
 
+	closeButtonText?: String,
+
 	onFromDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onFromTimeUpdate? : (time:OutputTime) => void,
 	onFromDateUpdate? : ({}:DatePickerOutPut) => void,

@@ -105,7 +105,7 @@ export default () => {
 			
 			<div className='row'>
 				<div className="col s12 m6">
-					<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
+					<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} isInput={isInput}/>
 				</div>
 
 				<div className="col s12 m6">

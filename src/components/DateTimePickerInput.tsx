@@ -8,9 +8,9 @@ import { DateTimePickerInputProps, DateTimePickerOutPut } from "../interfaces/da
 import styles from '../styles/date_time_picker.css'
 
 
-export default (props:DateTimePickerInputProps) => {
+const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 
-	const { colors } = props
+	const { colors, closeButtonText } = props
 
 	const [show_picker, setShow] = useState(false)
 	const [show_date, setDate] = useState(
@@ -41,7 +41,7 @@ export default (props:DateTimePickerInputProps) => {
 							<div className={styles.picker_header_btn}
 								style={{ color: colors.primary_highlight_color }}
 								onClick={handleComplete} >
-								Close
+								{closeButtonText}
 							</div>
 						</div>
 
@@ -57,3 +57,9 @@ export default (props:DateTimePickerInputProps) => {
 		</div>
 	)
 }
+
+DateTimePickerInput.defaultProps = {
+	closeButtonText: 'Done'
+}
+
+export default DateTimePickerInput

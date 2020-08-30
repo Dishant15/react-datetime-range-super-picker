@@ -49,7 +49,8 @@ export interface DateTimePickerInputProps extends DateTimePickerProps {
 	inputStyle? : React.CSSProperties,
 	popupStyle? : React.CSSProperties,
 	className? : string,
-	popupClassName? : string
+	popupClassName? : string,
+	closeButtonText?: String,
 }
 
 export const defaultConfigs = {

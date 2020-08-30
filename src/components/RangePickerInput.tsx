@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import RangePicker from "./RangePicker";
 import { RangePickerInputProps } from '../interfaces/rangepicker.interfaces';
 import { getInitialDateForInput } from '../utils/datetimepicker.utils';
 
+import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
+
 import styles from "../styles/rangepicker.css";
 
 
-export default (props: RangePickerInputProps) => {
+const RangePickerInput = (props: RangePickerInputProps) => {
+	const wrapperRef = useRef(null);
+
 	const [show_picker, setShow] = useState(false)
+
+	useOutsideAlerter(wrapperRef, show_picker, () => setShow(false));
+
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format)
@@ -16,7 +23,7 @@ export default (props: RangePickerInputProps) => {
 	const {colors} = props
 
 	return (
-		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
+		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={show_date} className={styles.picker_input} readOnly
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
@@ -27,7 +34,8 @@ export default (props: RangePickerInputProps) => {
 						<div className={styles.picker_model_inside} >
 							<RangePicker from_date={props.from_date} to_date={props.to_date}
 								format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
-								weekStartsOn={props.weekStartsOn} 
+								weekStartsOn={props.weekStartsOn}
+								closeButtonText={props.closeButtonText}
 								onFromDateUpdate={props.onFromDateUpdate} onFromTimeUpdate={props.onFromTimeUpdate}
 								onFromDateTimeUpdate={props.onFromDateTimeUpdate}
 								onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
@@ -39,3 +47,10 @@ export default (props: RangePickerInputProps) => {
 		</div>
 	)
 }
+
+RangePickerInput.defaultProps = {
+	closeButtonText: 'Done'
+}
+
+
+export default RangePickerInput

@@ -12,12 +12,14 @@ const generatePickerHtml = ({theme, colors}) => {
 	}
 
 	if(!isEmpty(colors)) {
-		propStr += `\n\t\t\t\tcolors=${JSON.stringify(colors)}`
+		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
 	}
 
 	return `
 	import React, { useState } from 'react';
 	import { MonthPicker } from 'react-datetime-range-super-picker';
+
+	import 'react-datetime-range-super-picker/dist/index.css'
 
 	const MonthPickerComponent = () => {
 		const [res_month, setMonth] = useState(4)

@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
-	isInput, theme, colors}) => {
+	isInput, theme, colors, closeButtonText}) => {
 	const componentStr = isInput ? 'DateTimePickerInput' : 'DateTimePicker'
 
 	let propStr = `date={curr_date}
@@ -25,17 +25,23 @@ const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
 		propStr += `\n\t\t\t\tweekStartsOn={${weekStartsOn}}`
 	}
 
+	if(!!closeButtonText && isInput) {
+		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"`
+	}
+
 	if(!!theme) {
 		propStr += `\n\t\t\t\ttheme="${theme}"`
 	}
 
 	if(!isEmpty(colors)) {
-		propStr += `\n\t\t\t\tcolors=${JSON.stringify(colors)}`
+		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
 	}
 
 	return `
 	import React, { useState } from 'react';
 	import { ${componentStr} } from 'react-datetime-range-super-picker';
+
+	import 'react-datetime-range-super-picker/dist/index.css'
 
 	const DateTimePickerComponent = () => {
 		const [curr_date, setDate] = useState(new Date())
