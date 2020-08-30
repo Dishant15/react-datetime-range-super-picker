@@ -22,12 +22,14 @@ const generatePickerHtml = ({format, weekStartsOn, isInput,
 	}
 
 	if(!isEmpty(colors)) {
-		propStr += `\n\t\t\t\tcolors=${JSON.stringify(colors)}`
+		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
 	}
 
 	return `
 	import React, { useState } from 'react';
 	import { ${componentStr} } from 'react-datetime-range-super-picker';
+
+	import 'react-datetime-range-super-picker/dist/index.css'
 
 	const DatePickerComponent = () => {
 		const [curr_date, setDate] = useState(new Date())

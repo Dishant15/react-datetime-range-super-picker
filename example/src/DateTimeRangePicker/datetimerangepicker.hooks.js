@@ -43,6 +43,8 @@ const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
 	import React, { useState } from 'react';
 	import { ${componentStr} } from 'react-datetime-range-super-picker';
 
+	import 'react-datetime-range-super-picker/dist/index.css'
+
 	const DateTimeRangePickerComponent = () => {
 		const [from_date, setFromDate] = useState(new Date())
 		const [to_date, setToDate] = useState(new Date())
