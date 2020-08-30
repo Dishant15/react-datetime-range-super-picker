@@ -16,8 +16,9 @@
 }
 
 .header_label {
-	font-size: .8em;
+	font-size: .86em;
 	padding-left: .5em;
+	font-weight: bold;
 }
 
 .header_field_abs {
