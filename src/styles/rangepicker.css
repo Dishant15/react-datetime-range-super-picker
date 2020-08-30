@@ -124,3 +124,45 @@
 	margin: 0 auto;
 	display: inline-block;
 }
+
+/*
+* heartbeet effect when range selection active
+*/
+
+.header_field_abs_active {
+	-webkit-animation: beat 2s infinite linear;
+	        animation: beat 2s infinite linear;
+	-webkit-transform-origin: center;
+	    -ms-transform-origin: center;
+	        transform-origin: center;
+}
+
+/* Heart beat animation */
+@-webkit-keyframes beat {
+	0% {
+		-webkit-transform: scale(1);
+		        transform: scale(1)
+	}
+	10% {
+		-webkit-transform: scale(1.04);
+		        transform: scale(1.04)
+	}
+	20% {
+		-webkit-transform: scale(1);
+		        transform: scale(1)
+	}
+}
+@keyframes beat {
+	0% {
+		-webkit-transform: scale(1);
+		        transform: scale(1)
+	}
+	10% {
+		-webkit-transform: scale(1.04);
+		        transform: scale(1.04)
+	}
+	20% {
+		-webkit-transform: scale(1);
+		        transform: scale(1)
+	}
+}

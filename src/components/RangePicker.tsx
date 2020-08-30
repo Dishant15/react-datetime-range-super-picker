@@ -66,7 +66,10 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 							onClick={() => this.setState({is_to_date:false})} >
 
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>From</div>
-							<div className={styles.header_field_abs}
+							<div className={[
+								styles.header_field_abs, 
+								!is_to_date && styles.header_field_abs_active
+							].join(' ')}
 								style={getHeaderFieldColors(colors, !is_to_date)}>
 								{from_date_str}
 							</div>
@@ -77,7 +80,10 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 							onClick={() => this.setState({is_to_date:true})} 
 						>
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>To</div>
-							<div className={styles.header_field_abs}
+							<div className={[
+								styles.header_field_abs, 
+								is_to_date && styles.header_field_abs_active
+							].join(' ')}
 								style={getHeaderFieldColors(colors, is_to_date)}>
 								{to_date_str}
 							</div>
