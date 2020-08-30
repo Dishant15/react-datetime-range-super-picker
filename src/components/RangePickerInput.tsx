@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import RangePicker from "./RangePicker";
 import { RangePickerInputProps } from '../interfaces/rangepicker.interfaces';
 import { getInitialDateForInput } from '../utils/datetimepicker.utils';
 
+import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
+
 import styles from "../styles/rangepicker.css";
 
 
 const RangePickerInput = (props: RangePickerInputProps) => {
+	const wrapperRef = useRef(null);
+
 	const [show_picker, setShow] = useState(false)
+
+	useOutsideAlerter(wrapperRef, show_picker, () => setShow(false));
+
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format)
@@ -16,7 +23,7 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 	const {colors} = props
 
 	return (
-		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
+		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={show_date} className={styles.picker_input} readOnly
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
