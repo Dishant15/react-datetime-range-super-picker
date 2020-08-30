@@ -29,7 +29,8 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		from_date : defaultConfigs.date,
 		to_date : defaultConfigs.date,
 		weekStartsOn : defaultConfigs.weekStartsOn,
-		format : defaultConfigs.format
+		format : defaultConfigs.format,
+		closeButtonText: 'Close'
 	}
 
 	handleDateTimeUpdate = (date_time:DateTimePickerOutPut) => {
@@ -49,7 +50,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		const {format, timeFormat, dateFormat, weekStartsOn,
 			from_date, onFromTimeUpdate, onFromDateUpdate,
 			to_date, onToTimeUpdate, onToDateUpdate,
-			onDone, colors,
+			onDone, colors, closeButtonText
 		} = this.props
 
 		const common_props = {format, timeFormat, dateFormat, weekStartsOn}
@@ -93,7 +94,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 							<div className={styles.done_btn}
 								style={{ color: colors.primary_color }}
 								onClick={onDone}>
-								Close
+								{closeButtonText}
 							</div>
 						}
 

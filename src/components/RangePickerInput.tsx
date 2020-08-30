@@ -7,7 +7,7 @@ import { getInitialDateForInput } from '../utils/datetimepicker.utils';
 import styles from "../styles/rangepicker.css";
 
 
-export default (props: RangePickerInputProps) => {
+const RangePickerInput = (props: RangePickerInputProps) => {
 	const [show_picker, setShow] = useState(false)
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
@@ -27,7 +27,8 @@ export default (props: RangePickerInputProps) => {
 						<div className={styles.picker_model_inside} >
 							<RangePicker from_date={props.from_date} to_date={props.to_date}
 								format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
-								weekStartsOn={props.weekStartsOn} 
+								weekStartsOn={props.weekStartsOn}
+								closeButtonText={props.closeButtonText}
 								onFromDateUpdate={props.onFromDateUpdate} onFromTimeUpdate={props.onFromTimeUpdate}
 								onFromDateTimeUpdate={props.onFromDateTimeUpdate}
 								onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
@@ -39,3 +40,10 @@ export default (props: RangePickerInputProps) => {
 		</div>
 	)
 }
+
+RangePickerInput.defaultProps = {
+	closeButtonText: 'Done'
+}
+
+
+export default RangePickerInput
