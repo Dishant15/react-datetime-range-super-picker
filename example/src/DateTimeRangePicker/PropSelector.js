@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 export default ({pickerProps, handlePropsUpdate}) => {
-console.log("pickerProps", pickerProps)
 
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [timeFormat, setTimeFormat] = useState(pickerProps.timeFormat || undefined)
