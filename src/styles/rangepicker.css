@@ -75,10 +75,26 @@
 	color : #ffffffbd;
 	font-weight: bold;
 	padding:1em 1em .8em 1em;
-	border-bottom: 1px solid #a2e6e369;
+	/* border-bottom: 1px solid #a2e6e369; */
 	border-left: .5em solid transparent;
 	transition: all .2s linear;
 	min-width: 8em;
+	position: relative;
+}
+
+.advance_pill::after {
+	content: "";
+	position: absolute;
+	left: -0.5em;
+	right: 0;
+	bottom: 0;
+	height: 1px;
+	background: var(--active-pill-hover-color);
+	opacity: 0.28;
+}
+
+.advance_pill:last-child::after {
+	height: 0px;
 }
 
 .advance_pill_active {
@@ -90,11 +106,6 @@
 	color: var(--active-pill-hover-color);
 	border-left: .5em solid;
 }
-
-.advance_pill:last-child {
-	border-bottom: none;
-}
-
 
 .table_wrapper {
 	display: table;
