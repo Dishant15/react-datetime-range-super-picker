@@ -25,7 +25,7 @@ export const getActivePillColors = (
 	if(is_active) {
 		return {
 			color: colors.primary_color,
-			'--active-pill-hover-color': colors.primary_color
+			'--active-pill-hover-color': colors.primary_color,
 		}
 	} else {
 		return { '--active-pill-hover-color': colors.primary_color }
