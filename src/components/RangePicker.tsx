@@ -68,8 +68,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>From</div>
 							<div className={[
-								styles.header_field_abs, 
-								!is_to_date && styles.header_field_abs_active
+								styles.header_field_abs
 							].join(' ')}
 								style={getHeaderFieldColors(colors, !is_to_date)}>
 								{from_date_str}
@@ -82,8 +81,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 						>
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>To</div>
 							<div className={[
-								styles.header_field_abs, 
-								is_to_date && styles.header_field_abs_active
+								styles.header_field_abs
 							].join(' ')}
 								style={getHeaderFieldColors(colors, is_to_date)}>
 								{to_date_str}
