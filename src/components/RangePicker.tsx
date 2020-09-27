@@ -8,21 +8,33 @@ import { startOfWeek, endOfWeek, subWeeks,
 import { UnwrappedDateTimePicker } from "./DateTimePicker";
 import { getInitialDateForInput, 
 	getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
+import { createRangeIndex } from '../utils/datepicker.utils';
 
-import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
+import { RangePickerProps, RangePickerStates } from '../interfaces/rangepicker.interfaces'
 import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
 import { getHeaderFieldColors, getActivePillColors } from '../styles/rangepicker.colors'
 
 import styles from "../styles/rangepicker.css";
 
 
-export default class RangePicker extends React.Component<RangePickerProps> {
+export default class RangePicker extends React.Component<RangePickerProps, RangePickerStates> {
 
-	state = {
-		// from date is selected as default
-		is_to_date : false,
-		// which advance pill is selected
-		advance_pill : null,
+	constructor(props:RangePickerProps) {
+		super(props);
+
+		let otherDateRangeIndex = 0;
+		if(props.showRangeTrace) {
+			const date_obj = getInputDate(props.to_date)
+			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		}
+
+		this.state = {
+			// from date is selected as default
+			is_to_date : false,
+			// which advance pill is selected
+			advance_pill : null,
+			otherDateRangeIndex,
+		}
 	}
 
 	static defaultProps = {
@@ -30,7 +42,8 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		to_date : defaultConfigs.date,
 		weekStartsOn : defaultConfigs.weekStartsOn,
 		format : defaultConfigs.format,
-		closeButtonText: 'Close'
+		closeButtonText: 'Close',
+		showRangeTrace: true,
 	}
 
 	handleDateTimeUpdate = (date_time:DateTimePickerOutPut) => {
@@ -45,15 +58,39 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 		}
 	}
 
+	handleToDateSelect = () => {
+		const {showRangeTrace, from_date} = this.props
+
+		let otherDateRangeIndex = 0;
+		if(showRangeTrace) {
+			const date_obj = getInputDate(from_date)
+			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		}
+		this.setState({is_to_date: true, otherDateRangeIndex})
+	}
+
+	handleFromDateSelect = () => {
+		const {showRangeTrace, to_date} = this.props
+
+		let otherDateRangeIndex = 0;
+		if(showRangeTrace) {
+			const date_obj = getInputDate(to_date)
+			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		}
+		this.setState({is_to_date: false, otherDateRangeIndex})
+	}
+
 	render = () => {
-		const {is_to_date, advance_pill} = this.state
+		const {is_to_date, advance_pill, otherDateRangeIndex} = this.state
 		const {format, timeFormat, dateFormat, weekStartsOn,
 			from_date, onFromTimeUpdate, onFromDateUpdate,
 			to_date, onToTimeUpdate, onToDateUpdate,
-			onDone, colors, closeButtonText
+			onDone, colors, closeButtonText,
+			showRangeTrace,
 		} = this.props
 
-		const common_props = {format, timeFormat, dateFormat, weekStartsOn}
+		const commonProps = {format, timeFormat, dateFormat, weekStartsOn,
+			showRangeTrace, otherDateRangeIndex}
 
 		const from_date_str = getInitialDateForInput(from_date, format)
 		const to_date_str = getInitialDateForInput(to_date, format)
@@ -64,7 +101,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 
 					<div className={styles.header} style={{ background: colors.secondary_highlight_color }}>
 						<div className={styles.header_div} 
-							onClick={() => this.setState({is_to_date:false})} >
+							onClick={this.handleFromDateSelect} >
 
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>From</div>
 							<div className={[
@@ -77,7 +114,7 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 						</div>
 
 						<div className={styles.header_div}
-							onClick={() => this.setState({is_to_date:true})} 
+							onClick={this.handleToDateSelect} 
 						>
 							<div className={styles.header_label} style={{ color: colors.primary_color }}>To</div>
 							<div className={[
@@ -138,12 +175,12 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 							// To date component
 							<UnwrappedDateTimePicker date={to_date} colors={colors}
 								onTimeUpdate={onToTimeUpdate} onDateUpdate={onToDateUpdate}
-								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
+								onDateTimeUpdate={this.handleDateTimeUpdate} {...commonProps} />
 							:
 								// from date first
 							<UnwrappedDateTimePicker date={from_date} colors={colors}
 								onTimeUpdate={onFromTimeUpdate} onDateUpdate={onFromDateUpdate}
-								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
+								onDateTimeUpdate={this.handleDateTimeUpdate} {...commonProps} />
 						}
 					</div>
 				</div>
@@ -156,13 +193,20 @@ export default class RangePicker extends React.Component<RangePickerProps> {
 	handleToday = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
 
 		const from_ts = startOfToday()
 		const to_ts = endOfToday()
-		this.setState({advance_pill: 't'})
+		
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+		
+		let otherDateRangeIndex = is_to_date ?
+			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 't', otherDateRangeIndex})
 	}
 
 	handleYesterday = () => {

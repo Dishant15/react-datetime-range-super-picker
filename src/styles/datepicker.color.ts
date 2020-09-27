@@ -1,9 +1,9 @@
 import { ComponentTheme, InlineCssStyles } from '../interfaces/style.interfaces';
 
 export const getCalenderCellColors = (
-	colors:ComponentTheme, is_active:boolean
+	colors:ComponentTheme, isActive:boolean
 ) : InlineCssStyles => {
-	if(is_active) {
+	if(isActive) {
 		return {
 			background: colors.secondary_highlight_color,
 			color: colors.primary_color,

@@ -3,7 +3,7 @@ import React from 'react'
 
 import MonthPicker from "./MonthPicker";
 
-import { formatDate, getWeekList, getDayList, generateDatePickerOutput } from "../utils/datepicker.utils";
+import { formatDate, getWeekList, getDayList, generateDatePickerOutput, createRangeIndex } from "../utils/datepicker.utils";
 import { DatePickerProps, defaultConfigs, DatePickerState } from "../interfaces/datepicker.interfaces";
 import { OutputShape } from '../interfaces/monthpicker.interfaces'
 import { getWrapperStyles, getCalenderCellColors } from '../styles/datepicker.color'
@@ -19,19 +19,29 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const date_obj = formatDate(props.date, props.format)
 		this.state = {
 			...date_obj, 
-			date_id : `${date_obj.day}-${date_obj.month}`
+			date_id : `${date_obj.day}-${date_obj.month}`,
+			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month),
+			// hover states
+			hoverOn: false,
+			hoverRangeIndex: 0,
 		}
 	}
 
 	static defaultProps = {
 		date : defaultConfigs.date,
 		weekStartsOn : defaultConfigs.weekStartsOn,
-		format : defaultConfigs.format
+		format : defaultConfigs.format,
+		showRangeTrace: false,
+		otherDateRangeIndex: 0,
 	}
 
 	static getDerivedStateFromProps(props:DatePickerProps) {
 		const date_obj = formatDate(props.date, props.format)
-		return {...date_obj, date_id : `${date_obj.day}-${date_obj.month}`}
+		return {
+			...date_obj, 
+			date_id : `${date_obj.day}-${date_obj.month}`,
+			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month)
+		}
 	}
 
 	handleMonthUpdate = (updated_date:OutputShape) => {
@@ -67,12 +77,34 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		if(onComplete) onComplete()
 	}
 
+	handleMouseEnter = (hoverRangeIndex:number) => () => {
+		this.setState({
+			hoverOn: true, hoverRangeIndex,
+		})
+	}
+
+	handleMouseLeave = () => {
+		this.setState({
+			hoverOn: false, hoverRangeIndex: 0,
+		})
+	}
+
 	render = () => {
-		const {day, month, year, date_id} = this.state
-		const {weekStartsOn, colors} = this.props
+		const {day, month, year, date_id, 
+			hoverOn, hoverRangeIndex, dateRangeIndex} = this.state
+		const {weekStartsOn, colors, showRangeTrace, otherDateRangeIndex} = this.props
 
 		const week_header_list = getWeekList(weekStartsOn)
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
+
+		let minRangeIndex:number, maxRangeIndex:number;
+		// create min max selected range end points of our current range
+		if(showRangeTrace) {
+			// if hover than show range on hover state, else show on selected state
+			const compareDate = hoverOn ? hoverRangeIndex : dateRangeIndex;
+			minRangeIndex = Math.min(compareDate, otherDateRangeIndex)
+			maxRangeIndex = Math.max(compareDate, otherDateRangeIndex)
+		}
 
 		return(
 			<div className={styles.wrapper} style={{ background: colors.primary_color }}>
@@ -99,11 +131,28 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
-									const day_styles = getCalenderCellColors(colors, curr_day.id === date_id)
+									let isActive = curr_day.id === date_id
+									if(!isActive) {
+										if(showRangeTrace) {
+											// check if current day is between otherDate and HOVER date
+											// if(hoverOn) {
+												// can be used if want different style for hover highlight
+											// }
+											
+											// check if current day is between otherDate and SELECTED date
+											if(curr_day.rangeIndex <= maxRangeIndex && 
+												curr_day.rangeIndex >= minRangeIndex) {
+													isActive = true
+											}
+										}
+									}
+									const day_styles = getCalenderCellColors(colors, isActive)
 
 									return (
 										<td key={j} className={styles.calender_cell}
 											onClick={() => this.handleDateUpdate(curr_day.id)}
+											onMouseEnter={this.handleMouseEnter(curr_day.rangeIndex)}
+											onMouseLeave={this.handleMouseLeave}
 											style={{opacity, ...day_styles }} > {curr_day.day}
 										</td>
 									)

@@ -16,6 +16,9 @@ export interface DateTimePickerProps {
 	weekStartsOn : number,
 
 	colors: ComponentTheme,
+	// range driller props
+	otherDateRangeIndex: number,
+	showRangeTrace: boolean,
 
 	onDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onTimeUpdate? : (time:OutputTime) => void,

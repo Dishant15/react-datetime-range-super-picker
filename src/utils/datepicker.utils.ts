@@ -73,6 +73,10 @@ export const getWeekList = (weekStartsOn=defaultConfigs.weekStartsOn):string[] =
 	return res_week_list
 }
 
+export const createRangeIndex = (day:number, month:number):number => {
+	return (month*100) + day
+}
+
 export const getDayList = (
 	day:number, month:number, year:number, weekStartsOn:any = defaultConfigs.weekStartsOn
 ) : DayListShape[][] => {
@@ -88,7 +92,7 @@ export const getDayList = (
 	let res_list = []
 	for(let index = sm_day; index <= em_day; index++) {
 		res_list.push({
-			day : index, 
+			day : index, rangeIndex: createRangeIndex(index, month),
 			curr_month : true, 
 			id : `${index}-${month}`
 		})
@@ -104,7 +108,7 @@ export const getDayList = (
 		const this_day = sw_day + index
 		// add at the front
 		res_list.unshift({
-			day : this_day, 
+			day : this_day, rangeIndex: createRangeIndex(this_day, sw_month),
 			curr_month : false,
 			id : `${this_day}-${sw_month}`
 		})
@@ -119,7 +123,7 @@ export const getDayList = (
 	const next_month = addDays(em_date, 1).getMonth()
 	for(let index = 1; index <= end_delta; index++) {
 		chunked_res_list[last_week_ind].push({
-			day : index, 
+			day : index, rangeIndex: createRangeIndex(index, next_month),
 			curr_month : false,
 			id : `${index}-${next_month}`
 		})

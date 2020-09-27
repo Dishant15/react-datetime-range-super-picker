@@ -60,7 +60,8 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 	render = () => {
 		const curr_date = this.state
-		const {dateFormat, weekStartsOn, timeFormat, colors} = this.props
+		const {dateFormat, weekStartsOn, timeFormat, colors,
+			showRangeTrace, otherDateRangeIndex} = this.props
 
 		return (
 			<React.Fragment>
@@ -74,7 +75,9 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 						colors={colors}
 						format={dateFormat}
 						weekStartsOn={weekStartsOn}
-						onDateUpdate={this.handleDateUpdate} />
+						onDateUpdate={this.handleDateUpdate} 
+						showRangeTrace={showRangeTrace} otherDateRangeIndex={otherDateRangeIndex}
+					/>
 				</div>
 
 				<div className={styles.table_cell}>

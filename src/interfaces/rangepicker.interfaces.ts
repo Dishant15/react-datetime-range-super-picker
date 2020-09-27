@@ -17,6 +17,7 @@ export interface RangePickerProps {
 	colors: ComponentTheme,
 
 	closeButtonText?: String,
+	showRangeTrace: boolean,
 
 	onFromDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onFromTimeUpdate? : (time:OutputTime) => void,
@@ -27,6 +28,12 @@ export interface RangePickerProps {
 	onToDateUpdate? : ({}:DatePickerOutPut) => void,
 
 	onDone? : () => void
+}
+
+export interface RangePickerStates {
+	is_to_date: boolean,
+	advance_pill: string | null,
+	otherDateRangeIndex: number,
 }
 
 export interface OutPutRangePicker {

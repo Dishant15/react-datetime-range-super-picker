@@ -12,7 +12,11 @@ export interface DatePickerOutPut extends MainDate {
 }
 
 export interface DatePickerState extends MainDate {
-	date_id : string
+	date_id : string,
+	dateRangeIndex: number,
+	// hover states
+	hoverOn: boolean,
+	hoverRangeIndex: number,
 }
 
 export interface DatePickerProps {
@@ -24,11 +28,17 @@ export interface DatePickerProps {
 	format : string,
 	colors: ComponentTheme,
 	onDateUpdate : ({}:DatePickerOutPut) => void,
-	onComplete? : () => void
+	onComplete? : () => void,
+	// internal props
+	/** created with func datepicker.utils => createRangeIndex */
+	otherDateRangeIndex: number,
+	showRangeTrace: boolean,
 }
 
 export interface DayListShape {
 	day : number,
+	rangeIndex: number,
+	// is this current month or not
 	curr_month : boolean,
 	// id : day-month
 	id : string
