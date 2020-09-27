@@ -212,60 +212,92 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 	handleYesterday = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
 
 		const from_ts = startOfYesterday()
 		const to_ts = endOfYesterday()
 		this.setState({advance_pill: 'y'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+
+		let otherDateRangeIndex = is_to_date ?
+			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 'y', otherDateRangeIndex})
 	}
 	
 	handleLastMonth = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
 		const now = new Date()
+
 
 		let from_ts = startOfMonth(now)
 		from_ts = subMonths(from_ts, 1)
 		let to_ts = endOfMonth(now)
 		to_ts = subMonths(to_ts, 1)
-		this.setState({advance_pill: 'lm'})
+
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+
+		let otherDateRangeIndex = is_to_date ?
+			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 'lm', otherDateRangeIndex})
+
 	}
 
 	handleThisMonth = () => {
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
 		const now = new Date()
 
 		const from_ts = startOfMonth(now)
 		const to_ts = endOfMonth(now)
-		this.setState({advance_pill: 'tm'})
+
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+
+		let otherDateRangeIndex = is_to_date ?
+			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 'tm', otherDateRangeIndex})
 	}
 
 	handleThisWeek = () => {
 		const {weekStartsOn, format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
 		const now = new Date()
+
 		// @ts-ignore
 		const from_ts = startOfWeek(now, {weekStartsOn})
 		// @ts-ignore
 		const to_ts = endOfWeek(now, {weekStartsOn})
-		this.setState({advance_pill: 'tw'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+
+		let otherDateRangeIndex = is_to_date ?
+		createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 'tw', otherDateRangeIndex})
 	}
 
 	handleLastWeek = () => {
 		const {weekStartsOn, format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		const { is_to_date } = this.state
+
 		const now = new Date()
 		// @ts-ignore
 		let from_ts = startOfWeek(now, {weekStartsOn})
@@ -273,9 +305,14 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		// @ts-ignore
 		let to_ts = endOfWeek(now, {weekStartsOn})
 		to_ts = subWeeks(to_ts, 1)
-		this.setState({advance_pill: 'lw'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		const fromDateObj = getInputDate(from_ts)
+		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
+		const toDateObj = getInputDate(to_ts)
+		onToDateTimeUpdate(generateOutPut(toDateObj, format))
+
+		let otherDateRangeIndex = is_to_date ?
+		createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+		this.setState({advance_pill: 'lw', otherDateRangeIndex})
 	}
 }
