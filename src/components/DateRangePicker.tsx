@@ -3,17 +3,18 @@ import { startOfWeek, endOfWeek, subWeeks,
 	startOfMonth, endOfMonth, subMonths,
 } from "date-fns";
 
-import { UnwrappedDateTimePicker } from "./DateTimePicker";
-import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
+import DatePicker from './DatePicker'
+// import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 
-import { RangePickerProps } from '../interfaces/rangepicker.interfaces'
-import { DateTimePickerOutPut, defaultConfigs } from '../interfaces/datetimepicker.interfaces';
+import { DateRangePickerProps, DateRangePickerStates } from '../interfaces/rangepicker.interfaces'
+import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
+import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 import { getActivePillColors } from '../styles/rangepicker.colors'
 
 import styles from "../styles/rangepicker.css";
 
 
-export default class DateRangePicker extends React.Component<RangePickerProps> {
+export default class DateRangePicker extends React.Component<DateRangePickerProps, DateRangePickerStates> {
 
 	state = {
 		// from date is selected as default
@@ -25,32 +26,33 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 	static defaultProps = {
 		from_date : defaultConfigs.date,
 		to_date : defaultConfigs.date,
-		weekStartsOn : defaultConfigs.weekStartsOn,
-		format : defaultConfigs.format,
+		weekStartsOn : dateDefaultConfigs.weekStartsOn,
+		format : dateDefaultConfigs.format,
 		closeButtonText: 'Close'
 	}
 
-	handleDateTimeUpdate = (date_time:DateTimePickerOutPut) => {
-		const {is_to_date} = this.state
-		const {onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+	handleToDateTimeUpdate = (date_time:DatePickerOutPut) => {
+		const {onToDateUpdate} = this.props
 
 		this.setState({advance_pill : null})
-		if(is_to_date) {
-			onToDateTimeUpdate(date_time)
-		} else {
-			onFromDateTimeUpdate(date_time)
-		}
+		onToDateUpdate(date_time)
+	}
+
+	handleFromDateUpdate = (date_time:DatePickerOutPut) => {
+		const {onFromDateUpdate} = this.props
+
+		this.setState({advance_pill : null})
+		onFromDateUpdate(date_time)
 	}
 
 	render = () => {
-		const {is_to_date, advance_pill} = this.state
-		const {format, timeFormat, dateFormat, weekStartsOn,
-			from_date, onFromTimeUpdate, onFromDateUpdate,
-			to_date, onToTimeUpdate, onToDateUpdate,
-			colors,
+		const {advance_pill} = this.state
+		const {format, weekStartsOn,
+			from_date, to_date,
+			colors
 		} = this.props
 
-		const common_props = {format, timeFormat, dateFormat, weekStartsOn}
+		const common_props = {format, weekStartsOn, otherDateRangeIndex: 0}
 
 		return (
 			<div className={styles.wrapper} style={{color: colors.primary_font_color}}>
@@ -81,17 +83,30 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 							</div>
 						</div>
 
-						{is_to_date ? 
-							// To date component
-							<UnwrappedDateTimePicker date={to_date} colors={colors}
-								onTimeUpdate={onToTimeUpdate} onDateUpdate={onToDateUpdate}
-								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
-							:
-								// from date first
-							<UnwrappedDateTimePicker date={from_date} colors={colors}
-								onTimeUpdate={onFromTimeUpdate} onDateUpdate={onFromDateUpdate}
-								onDateTimeUpdate={this.handleDateTimeUpdate} {...common_props} />
-						}
+						{/* from date first */}
+						<div className={[styles.table_cell, styles.picker_pad_right].join(' ')}>
+							<DatePicker date={from_date} colors={colors}
+								onDateUpdate={this.handleFromDateUpdate}
+								showRangeTrace={false}
+								{...common_props} />
+						</div>
+
+						<div className={[styles.table_cell, styles.separator_wrapper].join(' ')}
+							style={{color: colors.secondary_color}}>
+							<div className={styles.separator_circle} 
+								style={{ color: colors.primary_highlight_color }}>
+								<div className={styles.separator}>To</div>
+							</div>
+						</div>
+
+						{/* To date component */}
+						<div className={[styles.table_cell, styles.picker_pad_left].join(' ')}>
+							<DatePicker date={to_date} colors={colors}
+								onDateUpdate={this.handleToDateTimeUpdate}
+								showRangeTrace={false}
+								{...common_props} />
+						</div>
+	
 					</div>
 				</div>
 			</div>
@@ -101,8 +116,8 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 	// Advanced picker handler logic
 	
 	handleLastMonth = () => {
-		const {format,
-			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		// const {format,
+		// 	onFromDateUpdate, onToDateUpdate} = this.props
 		const now = new Date()
 
 		let from_ts = startOfMonth(now)
@@ -111,26 +126,26 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 		to_ts = subMonths(to_ts, 1)
 		this.setState({advance_pill: 'lm'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleThisMonth = () => {
-		const {format,
-			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
-		const now = new Date()
+		// const {format,
+		// 	onFromDateUpdate, onToDateUpdate} = this.props
+		// const now = new Date()
 
-		const from_ts = startOfMonth(now)
-		const to_ts = endOfMonth(now)
+		// const from_ts = startOfMonth(now)
+		// const to_ts = endOfMonth(now)
 		this.setState({advance_pill: 'tm'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleThisWeek = () => {
-		const {weekStartsOn, format,
-			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		// const {weekStartsOn, format,
+		// 	onFromDateUpdate, onToDateUpdate} = this.props
 		const now = new Date()
 		// @ts-ignore
 		const from_ts = startOfWeek(now, {weekStartsOn})
@@ -138,13 +153,13 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 		const to_ts = endOfWeek(now, {weekStartsOn})
 		this.setState({advance_pill: 'tw'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleLastWeek = () => {
-		const {weekStartsOn, format,
-			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
+		// const {weekStartsOn, format,
+		// 	onFromDateUpdate, onToDateUpdate} = this.props
 		const now = new Date()
 		// @ts-ignore
 		let from_ts = startOfWeek(now, {weekStartsOn})
@@ -154,7 +169,7 @@ export default class DateRangePicker extends React.Component<RangePickerProps> {
 		to_ts = subWeeks(to_ts, 1)
 		this.setState({advance_pill: 'lw'})
 		// call related handlers
-		onFromDateTimeUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateTimeUpdate(generateOutPut(getInputDate(to_ts), format))
+		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 }

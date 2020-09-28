@@ -48,8 +48,12 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 						<DateTimePicker date={props.date} colors={colors}
 							format={props.format} timeFormat={props.timeFormat} dateFormat={props.dateFormat}
 							weekStartsOn={props.weekStartsOn} 
-							onDateUpdate={props.onDateUpdate} onTimeUpdate={props.onTimeUpdate}
-							onDateTimeUpdate={handleDateUpdate} />
+							onDateUpdate={props.onDateUpdate} 
+							onTimeUpdate={props.onTimeUpdate}
+							onDateTimeUpdate={handleDateUpdate}
+							showRangeTrace={props.showRangeTrace} 
+							otherDateRangeIndex={props.otherDateRangeIndex}
+						/>
 					</div>
 
 				</div>

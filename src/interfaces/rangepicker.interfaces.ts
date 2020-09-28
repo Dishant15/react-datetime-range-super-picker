@@ -1,8 +1,12 @@
 import { OutputTime } from "./timepicker.interfaces";
-import { DatePickerOutPut } from "./datepicker.interfaces";
+import { DatePickerOutPut, MainDate } from "./datepicker.interfaces";
 import { DateTimePickerOutPut, DateObject } from "./datetimepicker.interfaces";
 import { ComponentTheme } from './style.interfaces';
 
+
+/*************************************
+ * Date Time Range Picker Interfaces *
+ *************************************/
 
 export interface RangePickerProps {
 	from_date : Date | DateObject | string,
@@ -45,4 +49,42 @@ export interface RangePickerInputProps extends RangePickerProps {
 	popupStyle? : React.CSSProperties,
 	className? : string,
 	popupClassName? : string
+}
+
+/********************************
+ * Date Range Picker Interfaces *
+ ********************************/
+
+export interface DateRangePickerProps {
+	/** default value : new Date() ; i.e. current time  */
+	from_date : Date | MainDate | string,
+	to_date : Date | MainDate | string,
+	// optional props
+	/** default value : 'dd/MM/YYY' */
+	format : string,
+	/** default value : 0, Sunday */
+	weekStartsOn : number,
+
+	colors: ComponentTheme,
+
+	closeButtonText?: String,
+	showRangeTrace: boolean,
+
+	onFromDateUpdate : ({}:DatePickerOutPut) => void,
+
+	onToDateUpdate : ({}:DatePickerOutPut) => void,
+
+	onDone? : () => void
+}
+
+export interface DateRangePickerInputProps extends DateRangePickerProps {
+	inputStyle? : React.CSSProperties,
+	popupStyle? : React.CSSProperties,
+	className? : string,
+	popupClassName? : string
+}
+
+export interface DateRangePickerStates {
+	is_to_date: boolean,
+	advance_pill: string | null,
 }

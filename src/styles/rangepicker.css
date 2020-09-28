@@ -30,7 +30,10 @@
 	margin-top: .5em;
 	transition: all .2s linear;
 	min-width: 19em;
-    text-align: center;
+	text-align: center;
+	box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.16);
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.16);
 }
 
 .header_field {
@@ -135,48 +138,60 @@
 	margin: 0 auto;
 	display: inline-block;
 	margin-top: 1px;
-	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
+	-webkit-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
+	-moz-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
 }
 
-/*
-* heartbeet effect when range selection active
-*/
+/**
+Date range picker style
+**/
 
-.header_field_abs_active {
-	-webkit-animation: beat 2s infinite linear;
-	        animation: beat 2s infinite linear;
-	-webkit-transform-origin: center;
-	    -ms-transform-origin: center;
-	        transform-origin: center;
+.table_cell {
+	display: table-cell;
+	vertical-align: middle;
+	padding: .8em;
 }
 
-/* Heart beat animation */
-@-webkit-keyframes beat {
-	0% {
-		-webkit-transform: scale(1);
-		        transform: scale(1)
-	}
-	10% {
-		-webkit-transform: scale(1.04);
-		        transform: scale(1.04)
-	}
-	20% {
-		-webkit-transform: scale(1);
-		        transform: scale(1)
-	}
+.separator_wrapper {
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
 }
-@keyframes beat {
-	0% {
-		-webkit-transform: scale(1);
-		        transform: scale(1)
-	}
-	10% {
-		-webkit-transform: scale(1.04);
-		        transform: scale(1.04)
-	}
-	20% {
-		-webkit-transform: scale(1);
-		        transform: scale(1)
-	}
+
+.separator_wrapper::before {
+	position: absolute;
+	content: "";
+	height: calc(50% - 1.6em);
+	border-right: 1px solid;
+	top: 0;
+}
+
+.separator_wrapper::after {
+	position: absolute;
+	content: "";
+	height: calc(50% - 1.6em);
+	border-right: 1px solid;
+	bottom: 0;
+}
+
+.separator_circle {
+	height: 2em;
+	width: 2em;
+	border: 1px solid;
+	border-radius: 50%;
+	font-size: 1.2em;
+}
+
+.separator {
+	text-align: center;
+	line-height: 2em;
+}
+
+.picker_pad_left {
+	padding-left: 0;
+}
+
+.picker_pad_right {
+	padding-right: 0;
 }
