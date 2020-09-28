@@ -205,7 +205,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 		
 		let otherDateRangeIndex = is_to_date ?
-			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 't', otherDateRangeIndex})
 	}
 
@@ -216,7 +216,6 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 
 		const from_ts = startOfYesterday()
 		const to_ts = endOfYesterday()
-		this.setState({advance_pill: 'y'})
 		// call related handlers
 		const fromDateObj = getInputDate(from_ts)
 		onFromDateTimeUpdate(generateOutPut(fromDateObj, format))
@@ -224,7 +223,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 
 		let otherDateRangeIndex = is_to_date ?
-			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 'y', otherDateRangeIndex})
 	}
 	
@@ -247,7 +246,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 
 		let otherDateRangeIndex = is_to_date ?
-			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 'lm', otherDateRangeIndex})
 
 	}
@@ -268,7 +267,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 
 		let otherDateRangeIndex = is_to_date ?
-			createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 'tm', otherDateRangeIndex})
 	}
 
@@ -289,7 +288,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 
 		let otherDateRangeIndex = is_to_date ?
-		createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 'tw', otherDateRangeIndex})
 	}
 
@@ -312,7 +311,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		onToDateTimeUpdate(generateOutPut(toDateObj, format))
 
 		let otherDateRangeIndex = is_to_date ?
-		createRangeIndex(toDateObj.day, toDateObj.month) : createRangeIndex(fromDateObj.day, fromDateObj.month)
+			createRangeIndex(fromDateObj.day, fromDateObj.month) : createRangeIndex(toDateObj.day, toDateObj.month)
 		this.setState({advance_pill: 'lw', otherDateRangeIndex})
 	}
 }
