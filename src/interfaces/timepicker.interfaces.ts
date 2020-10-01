@@ -65,5 +65,6 @@ export interface TimePickerInputProps extends TimePickerProps {
 	inputStyle? : React.CSSProperties,
 	popupStyle? : React.CSSProperties,
 	className? : string,
-	popupClassName? : string
+	popupClassName? : string,
+	isDisabled?: boolean
 }
