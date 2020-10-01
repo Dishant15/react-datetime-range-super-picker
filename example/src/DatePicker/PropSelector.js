@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 
-export default ({pickerProps, handlePropsUpdate}) => {
+export default ({pickerProps, handlePropsUpdate, isInput}) => {
 
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
+	const [isDisabled, setIsDisabled] = useState(false)
 
 	const handleSubmit = () => {
-		handlePropsUpdate({...pickerProps, format, weekStartsOn: Number(weekStartsOn)})
+		handlePropsUpdate({...pickerProps, 
+			format, isDisabled,
+			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined,
+		})
+	}
+
+	const handleCheckbox = (e) => {
+		if(e) e.preventDefault();
+		setIsDisabled(!isDisabled)
 	}
 
 	return (
@@ -28,6 +37,18 @@ export default ({pickerProps, handlePropsUpdate}) => {
 							onChange={e => setWeekStartsOn(e.target.value)} />
 						<label className="active">Week Starts On ( Optional )</label>
 					</div>
+
+					{isInput &&
+						<div className='disabled-wrapper'>
+							<div className="switch" onClick={handleCheckbox}>
+								<label>
+									<input type="checkbox" checked={isDisabled} readOnly/>
+									<span className="lever"></span>
+									isDisabled
+								</label>
+							</div>
+						</div>
+					}
 
 				</div>
 			</div>
