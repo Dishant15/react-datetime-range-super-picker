@@ -5,12 +5,18 @@ export default ({pickerProps, handlePropsUpdate}) => {
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
 	const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
+	const [isDisabled, setIsDisabled] = useState(false)
 
 	const handleSubmit = () => {
 		handlePropsUpdate({...pickerProps, 
-			format, closeButtonText,
+			format, closeButtonText, isDisabled,
 			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined
 		})
+	}
+
+	const handleCheckbox = (e) => {
+		if(e) e.preventDefault();
+		setIsDisabled(!isDisabled)
 	}
 
 	return (
@@ -38,6 +44,16 @@ export default ({pickerProps, handlePropsUpdate}) => {
 							placeholder="Default : Close" value={closeButtonText} 
 							onChange={e => setCloseBtnText(e.target.value)} />
 						<label className="active">Close Button Text ( Optional )</label>
+					</div>
+
+					<div className='disabled-wrapper'>
+						<div className="switch" onClick={handleCheckbox}>
+							<label>
+								<input type="checkbox" checked={isDisabled} readOnly/>
+								<span className="lever"></span>
+								isDisabled
+							</label>
+						</div>
 					</div>
 
 				</div>
