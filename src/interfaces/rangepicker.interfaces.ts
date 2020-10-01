@@ -81,7 +81,8 @@ export interface DateRangePickerInputProps extends DateRangePickerProps {
 	inputStyle? : React.CSSProperties,
 	popupStyle? : React.CSSProperties,
 	className? : string,
-	popupClassName? : string
+	popupClassName? : string,
+	isDisabled?: boolean
 }
 
 export interface DateRangePickerStates {
