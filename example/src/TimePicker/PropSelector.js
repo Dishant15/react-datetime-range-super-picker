@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 
-export default ({pickerProps, handlePropsUpdate}) => {
+export default ({pickerProps, handlePropsUpdate, isInput}) => {
 
-	const [format, setFormat] = useState(pickerProps.format || '')
+	const [format, setFormat] = useState(pickerProps.format || undefined)
+	const [isDisabled, setIsDisabled] = useState(false)
 
 	const handleSubmit = () => {
-		handlePropsUpdate({...pickerProps, format})
+		handlePropsUpdate({...pickerProps, format, isDisabled})
 	}
+
+	const handleCheckbox = (e) => {
+		if(e) e.preventDefault();
+		setIsDisabled(!isDisabled)
+	}
+
 
 	return (
 		<div className='form-wrapper'>
@@ -20,6 +27,19 @@ export default ({pickerProps, handlePropsUpdate}) => {
 							onChange={e => setFormat(e.target.value)} />
 						<label className="active">Format</label>
 					</div>
+
+					{isInput &&
+						<div className='disabled-wrapper'>
+							<div className="switch" onClick={handleCheckbox}>
+								<label>
+									<input type="checkbox" checked={isDisabled} readOnly/>
+									<span className="lever"></span>
+									isDisabled
+								</label>
+							</div>
+						</div>
+					}
+
 				</div>
 			</div>
 			<div className='submit-btn-wrapper'>

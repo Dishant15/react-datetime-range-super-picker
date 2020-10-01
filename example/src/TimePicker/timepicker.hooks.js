@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, isInput,
-	theme, colors}) => {
+	theme, colors, isDisabled}) => {
 	const componentStr = isInput ? 'TimePickerInput' : 'TimePicker'
 
 	let propStr = `time={{hour24 : hour, minute }}
@@ -19,6 +19,10 @@ const generatePickerHtml = ({format, isInput,
 
 	if(!isEmpty(colors)) {
 		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
+	}
+
+	if(!!isDisabled && isInput) {
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
 	}
 
 	return `
