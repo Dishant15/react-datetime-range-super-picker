@@ -313,6 +313,7 @@ In addition it provides extra props for styling. Which are as listed below.
 | popupStyle | Pass styles directly to picker popup wrapper component as Json object. Can be used to position, resize wrapper. Follows same rules as React style object. |
 | className | String, css class to be used apply additional style to text box with raw css |
 | popupClassName | String, css class to be used apply additional style to picker popup with raw css |
+| isDisabled | Boolean, to control input model show |
 
 Note : All of above props are optional.
 
