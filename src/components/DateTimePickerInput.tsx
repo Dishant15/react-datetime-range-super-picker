@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import DateTimePicker from './DateTimePicker'
 
 import { getInitialDateForInput } from '../utils/datetimepicker.utils';
 import { DateTimePickerInputProps, DateTimePickerOutPut } from "../interfaces/datetimepicker.interfaces";
+
+import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 
 import styles from '../styles/date_time_picker.css'
 
@@ -12,10 +14,18 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 
 	const { colors, closeButtonText } = props
 
+	const wrapperRef = useRef(null);
 	const [show_picker, setShow] = useState(false)
 	const [show_date, setDate] = useState(
 		getInitialDateForInput(props.date || new Date(), props.format)
 	)
+
+	// update state if direct prop update
+	useEffect(() => {
+		setDate(
+			getInitialDateForInput(props.date || new Date(), props.format)
+		)
+	}, [props.date, props.format])
 
 	const handleDateUpdate = (date_obj:DateTimePickerOutPut) => {
 		props.onDateTimeUpdate(date_obj)
@@ -26,17 +36,20 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 		setShow(false)
 	}
 
+	useOutsideAlerter(wrapperRef, show_picker, () => setShow(false));
+
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={show_date} className={styles.picker_input} readOnly
+			<input value={show_date} className={styles.picker_input} 
+				readOnly disabled={props.isDisabled}
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
 
-			{show_picker &&
+			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={{ ...props.popupStyle }} >
 					
-					<div className={styles.picker_model_inside} >
+					<div ref={wrapperRef} className={styles.picker_model_inside} >
 						<div className={styles.picker_header_wrapper}>
 							<div className={styles.picker_header_btn}
 								style={{ color: colors.primary_highlight_color }}
@@ -63,7 +76,8 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 }
 
 DateTimePickerInput.defaultProps = {
-	closeButtonText: 'Done'
+	closeButtonText: 'Done',
+	isDisabled: false
 }
 
 export default DateTimePickerInput

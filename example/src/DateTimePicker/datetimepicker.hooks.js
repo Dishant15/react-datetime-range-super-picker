@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
-	isInput, theme, colors, closeButtonText}) => {
+	isInput, theme, colors, closeButtonText, isDisabled }) => {
 	const componentStr = isInput ? 'DateTimePickerInput' : 'DateTimePicker'
 
 	let propStr = `date={curr_date}
@@ -27,6 +27,10 @@ const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
 
 	if(!!closeButtonText && isInput) {
 		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"`
+	}
+
+	if(!!isDisabled && isInput) {
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
 	}
 
 	if(!!theme) {

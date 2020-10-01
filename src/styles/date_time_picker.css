@@ -32,6 +32,10 @@
 	min-width: 13em;
 }
 
+.picker_input:disabled {
+	background-color: #e9e9e9;
+}
+
 .picker_model {
 	position: absolute;
 	left: 0;

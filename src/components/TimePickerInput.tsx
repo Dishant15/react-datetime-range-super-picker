@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import TimePicker from "./TimePicker";
 
 import { createInputTime, generateTimeOutput } from '../utils/timepicker.utils';
 import { TimePickerInputProps, OutputTime, defaultConfigs } from '../interfaces/timepicker.interfaces';
 
+import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
+
 import styles from '../styles/timepicker.css'
 
 
 export default (props:TimePickerInputProps) => {
 
+	const wrapperRef = useRef(null);
 	const [show_picker, setShow] = useState(false)
 	const [showTime, setTime] = useState(
 		// create initial string representaion to show in input
@@ -17,6 +20,16 @@ export default (props:TimePickerInputProps) => {
 			createInputTime(props.time), props.format || defaultConfigs.format
 		).formatted
 	)
+
+	// update state if direct prop update
+	useEffect(() => {
+		setTime(
+			generateTimeOutput(
+				createInputTime(props.time), props.format || defaultConfigs.format
+			).formatted
+		)
+	}, [props.time, props.format])
+
 
 	const handleTimeUpdate = (timeObj:OutputTime) => {
 		props.onTimeUpdate(timeObj)
@@ -28,6 +41,8 @@ export default (props:TimePickerInputProps) => {
 		if(props.onDone) props.onDone()
 	}
 
+	useOutsideAlerter(wrapperRef, show_picker, () => setShow(false));
+
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={showTime} className={styles.picker_input} readOnly
@@ -37,9 +52,7 @@ export default (props:TimePickerInputProps) => {
 			{show_picker &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div className={styles.picker_model_inside} >
-							<div className={styles.close_icon} onClick={() => setShow(false)}
-								style={{ color: props.colors.primary_highlight_color }}></div>
+						<div ref={wrapperRef} className={styles.picker_model_inside} >
 							<TimePicker time={props.time} format={props.format} 
 								colors={props.colors}
 								onTimeUpdate={handleTimeUpdate} onDone={handleComplete} />

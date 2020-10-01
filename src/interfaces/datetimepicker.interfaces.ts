@@ -54,6 +54,7 @@ export interface DateTimePickerInputProps extends DateTimePickerProps {
 	className? : string,
 	popupClassName? : string,
 	closeButtonText?: String,
+	isDisabled: boolean
 }
 
 export const defaultConfigs = {
