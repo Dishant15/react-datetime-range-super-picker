@@ -74,11 +74,11 @@ const App = () => {
 						<div>Date Time Picker</div>
 				</div>
 
-				<div className={`${selectedComponent === 'dateRangePicker' ? 'active': ''} layout-pill`}
+				{/* <div className={`${selectedComponent === 'dateRangePicker' ? 'active': ''} layout-pill`}
 					onClick={() => setComponent('dateRangePicker')}>
 						<i className="material-icons">date_range</i>
 						Date Range Picker
-				</div>
+				</div> */}
 
 				
 				<div className={`${selectedComponent === 'rangePicker' ? 'active': ''} layout-pill`}

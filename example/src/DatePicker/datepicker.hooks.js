@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, weekStartsOn, isInput,
-	theme, colors}) => {
+	theme, colors, isDisabled}) => {
 	const componentStr = isInput ? 'DatePickerInput' : 'DatePicker'
 
 	let propStr = `date={curr_date}
@@ -23,6 +23,10 @@ const generatePickerHtml = ({format, weekStartsOn, isInput,
 
 	if(!isEmpty(colors)) {
 		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
+	}
+
+	if(!!isDisabled && isInput) {
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
 	}
 
 	return `

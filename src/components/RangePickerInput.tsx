@@ -24,11 +24,12 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={show_date} className={styles.picker_input} readOnly
+			<input value={show_date} className={styles.picker_input} 
+				readOnly disabled={props.isDisabled}
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
 
-			{show_picker &&
+			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
 						<div className={styles.picker_model_inside} >
@@ -49,7 +50,8 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 }
 
 RangePickerInput.defaultProps = {
-	closeButtonText: 'Done'
+	closeButtonText: 'Done',
+	isDisabled: false
 }
 
 

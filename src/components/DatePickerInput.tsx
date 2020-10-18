@@ -10,9 +10,9 @@ import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 import styles from '../styles/datepicker.css'
 
 
-export default (props:DatePickerInputProps) => {
+const DatePickerInput = (props:DatePickerInputProps) => {
 
-	const {date, format} = props
+	const {date, format, isDisabled} = props
 
 	const wrapperRef = useRef(null);
 
@@ -40,11 +40,12 @@ export default (props:DatePickerInputProps) => {
 	
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={show_date} className={styles.picker_input} readOnly
+			<input value={show_date} className={styles.picker_input} 
+				readOnly disabled={isDisabled}
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
 
-			{show_picker &&
+			{(show_picker && !isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
 						<div className={styles.picker_model_inside} ref={wrapperRef}>
@@ -57,3 +58,9 @@ export default (props:DatePickerInputProps) => {
 		</div>
 	)
 }
+
+DatePickerInput.defaultProps = {
+	isDisabled: false
+}
+
+export default DatePickerInput

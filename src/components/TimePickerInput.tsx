@@ -10,7 +10,7 @@ import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 import styles from '../styles/timepicker.css'
 
 
-export default (props:TimePickerInputProps) => {
+const TimePickerInput = (props:TimePickerInputProps) => {
 
 	const wrapperRef = useRef(null);
 	const [show_picker, setShow] = useState(false)
@@ -45,11 +45,12 @@ export default (props:TimePickerInputProps) => {
 
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={showTime} className={styles.picker_input} readOnly
+			<input value={showTime} className={styles.picker_input} 
+				readOnly disabled={props.isDisabled}
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
 
-			{show_picker &&
+			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
 						<div ref={wrapperRef} className={styles.picker_model_inside} >
@@ -62,3 +63,9 @@ export default (props:TimePickerInputProps) => {
 		</div>
 	)
 }
+
+TimePickerInput.defaultProps = {
+	isDisabled: false
+}
+
+export default TimePickerInput
