@@ -4,7 +4,7 @@ import { startOfWeek, endOfWeek, subWeeks,
 } from "date-fns";
 
 import DatePicker from './DatePicker'
-// import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
+import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 
 import { DateRangePickerProps, DateRangePickerStates } from '../interfaces/rangepicker.interfaces'
 import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
@@ -116,36 +116,34 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 	// Advanced picker handler logic
 	
 	handleLastMonth = () => {
-		// const {format,
-		// 	onFromDateUpdate, onToDateUpdate} = this.props
-		const now = new Date()
+		const {format,
+			onFromDateUpdate, onToDateUpdate} = this.props
+		const lastMonth = subMonths(new Date(), 1)
 
-		let from_ts = startOfMonth(now)
-		from_ts = subMonths(from_ts, 1)
-		let to_ts = endOfMonth(now)
-		to_ts = subMonths(to_ts, 1)
+		let from_ts = startOfMonth(lastMonth)
+		let to_ts = endOfMonth(lastMonth)
 		this.setState({advance_pill: 'lm'})
 		// call related handlers
-		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleThisMonth = () => {
-		// const {format,
-		// 	onFromDateUpdate, onToDateUpdate} = this.props
-		// const now = new Date()
+		const {format,
+			onFromDateUpdate, onToDateUpdate} = this.props
+		const now = new Date()
 
-		// const from_ts = startOfMonth(now)
-		// const to_ts = endOfMonth(now)
+		const from_ts = startOfMonth(now)
+		const to_ts = endOfMonth(now)
 		this.setState({advance_pill: 'tm'})
 		// call related handlers
-		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleThisWeek = () => {
-		// const {weekStartsOn, format,
-		// 	onFromDateUpdate, onToDateUpdate} = this.props
+		const {weekStartsOn, format,
+			onFromDateUpdate, onToDateUpdate} = this.props
 		const now = new Date()
 		// @ts-ignore
 		const from_ts = startOfWeek(now, {weekStartsOn})
@@ -153,13 +151,13 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const to_ts = endOfWeek(now, {weekStartsOn})
 		this.setState({advance_pill: 'tw'})
 		// call related handlers
-		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 
 	handleLastWeek = () => {
-		// const {weekStartsOn, format,
-		// 	onFromDateUpdate, onToDateUpdate} = this.props
+		const {weekStartsOn, format,
+			onFromDateUpdate, onToDateUpdate} = this.props
 		const now = new Date()
 		// @ts-ignore
 		let from_ts = startOfWeek(now, {weekStartsOn})
@@ -169,7 +167,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		to_ts = subWeeks(to_ts, 1)
 		this.setState({advance_pill: 'lw'})
 		// call related handlers
-		// onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		// onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
+		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
 	}
 }

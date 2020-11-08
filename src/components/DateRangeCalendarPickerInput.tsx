@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-import DateRangePicker from "./DateRangePicker";
+import DateRangePicker from "./DateRangeCalendarPicker";
 import { DateRangePickerInputProps } from '../interfaces/rangepicker.interfaces';
 import {defaultConfigs as dateDefaultConfigs } from "../interfaces/datepicker.interfaces"
 import { getInitialDateForInput } from '../utils/datetimepicker.utils';

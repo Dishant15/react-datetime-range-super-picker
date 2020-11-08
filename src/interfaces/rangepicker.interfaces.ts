@@ -71,9 +71,9 @@ export interface DateRangePickerProps {
 	closeButtonText?: String,
 	showRangeTrace: boolean,
 
-	onFromDateUpdate : ({}:DatePickerOutPut) => void,
-
-	onToDateUpdate : ({}:DatePickerOutPut) => void,
+	// if input is DateTime output than make sure to reset time values
+	onFromDateUpdate : ({}:DateTimePickerOutPut | DatePickerOutPut) => void,
+	onToDateUpdate : ({}:DateTimePickerOutPut | DatePickerOutPut) => void,
 
 	onDone? : () => void
 }

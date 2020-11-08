@@ -12,7 +12,9 @@ import DateTimePickerInputModuel from "./components/DateTimePickerInput";
 
 import RangePicker from "./components/RangePicker";
 import DateTimeRangePickerInputModule from "./components/RangePickerInput";
-import DateRangePickerInputModule from "./components/DateRangePickerInput";
+
+import DateRangeCalendarPickerModule from "./components/DateRangeCalendarPicker";
+import DateRangeCalendarPickerInputModule from "./components/DateRangeCalendarPickerInput";
 
 
 export const TimePicker = StyleWrapper(TimePickerModule)
@@ -27,4 +29,6 @@ export const DateTimePickerInput = StyleWrapper(DateTimePickerInputModuel)
 
 export const DateTimeRangePicker = StyleWrapper(RangePicker)
 export const DateTimeRangePickerInput = StyleWrapper(DateTimeRangePickerInputModule)
-export const DateRangePickerInput = StyleWrapper(DateRangePickerInputModule)
+
+export const DateRangeCalendarPicker = StyleWrapper(DateRangeCalendarPickerModule)
+export const DateRangeCalendarPickerInput = StyleWrapper(DateRangeCalendarPickerInputModule)

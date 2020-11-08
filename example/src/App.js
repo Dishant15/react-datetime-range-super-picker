@@ -5,7 +5,7 @@ import DatePickerDemo from './DatePicker/DatePickerDemo'
 import MonthPickerDemo from './MonthPicker/MonthPickerDemo'
 import DateTimePickerDemo from './DateTimePicker/DateTimePickerDemo'
 import DateTimeRangePickerDemo from './DateTimeRangePicker/DateTimeRangePickerDemo'
-import DateRangePickerDemo from './DateRangePicker/DateRangePickerDemo'
+import DateRangeCalendarPickerDemo from './DateRangePicker/DateRangeCalendarPickerDemo'
 
 import './styles/materialize.css'
 import './styles/layout.css'
@@ -45,8 +45,8 @@ const App = () => {
 		else if(selectedComponent === 'rangePicker') {
 			return <DateTimeRangePickerDemo />
 		}
-		else if(selectedComponent === 'dateRangePicker') {
-			return <DateRangePickerDemo />
+		else if(selectedComponent === 'dateRangeCalendarPicker') {
+			return <DateRangeCalendarPickerDemo />
 		}
 	}, [selectedComponent])
 
@@ -74,11 +74,11 @@ const App = () => {
 						<div>Date Time Picker</div>
 				</div>
 
-				{/* <div className={`${selectedComponent === 'dateRangePicker' ? 'active': ''} layout-pill`}
-					onClick={() => setComponent('dateRangePicker')}>
+				<div className={`${selectedComponent === 'dateRangeCalendarPicker' ? 'active': ''} layout-pill`}
+					onClick={() => setComponent('dateRangeCalendarPicker')}>
 						<i className="material-icons">date_range</i>
-						Date Range Picker
-				</div> */}
+						Date Range Calendar Picker
+				</div>
 
 				
 				<div className={`${selectedComponent === 'rangePicker' ? 'active': ''} layout-pill`}

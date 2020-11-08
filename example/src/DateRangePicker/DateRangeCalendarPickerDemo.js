@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateRangePickerInput } from 'react-datetime-range-super-picker';
+import { DateRangeCalendarPickerInput, DateRangeCalendarPicker } from 'react-datetime-range-super-picker';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -64,7 +64,7 @@ export default () => {
 					<div className='picker-wrapper'>
 
 						<div className="range-picker-input-wrapper">
-							<DateRangePickerInput {...TProps} />
+							<DateRangeCalendarPicker {...TProps} />
 						</div>
 					</div>
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
