@@ -231,13 +231,10 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		const {format,
 			onFromDateTimeUpdate, onToDateTimeUpdate} = this.props
 		const { is_to_date } = this.state
-		const now = new Date()
+		const lastMonth = subMonths(new Date(), 1)
 
-
-		let from_ts = startOfMonth(now)
-		from_ts = subMonths(from_ts, 1)
-		let to_ts = endOfMonth(now)
-		to_ts = subMonths(to_ts, 1)
+		let from_ts = startOfMonth(lastMonth)
+		let to_ts = endOfMonth(lastMonth)
 
 		// call related handlers
 		const fromDateObj = getInputDate(from_ts)
