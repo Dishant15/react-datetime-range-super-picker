@@ -131,13 +131,11 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
-									let isActive = curr_day.id === date_id
+									// set current selected day as active only if hover is off
+									let isActive = (curr_day.id === date_id && !hoverOn)
 									if(!isActive) {
 										if(showRangeTrace) {
 											// check if current day is between otherDate and HOVER date
-											// if(hoverOn) {
-												// can be used if want different style for hover highlight
-											// }
 											
 											// check if current day is between otherDate and SELECTED date
 											if(curr_day.rangeIndex <= maxRangeIndex && 
@@ -146,7 +144,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 											}
 										}
 									}
-									const day_styles = getCalenderCellColors(colors, isActive)
+									const day_styles = getCalenderCellColors(colors, isActive, hoverOn)
 
 									return (
 										<td key={j} className={styles.calender_cell}

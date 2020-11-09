@@ -15,6 +15,7 @@
 	margin: 0 auto;
 	/* month may have 6 or 5 rows, keep calender hight same for both */
 	min-height: 16em;
+	border-collapse: collapse;
 }
 
 .week_day_header {
@@ -30,8 +31,15 @@
 	text-align: center;
 	cursor: pointer;
 	font-weight: bold;
-	padding : .5em;
+	padding : .5em .8em;
 	transition: all .2s linear;
+	/* transparent border so when hover adds 1 px border UI do not change size */
+	border-bottom-color: transparent;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: transparent;
+	border-top-style: solid;
+	border-top-width: 1px;
 }
 
 .calender_cell:hover {
