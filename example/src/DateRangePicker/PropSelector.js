@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default ({pickerProps, handlePropsUpdate}) => {
+export default ({pickerProps, handlePropsUpdate, isInput}) => {
 
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
@@ -46,15 +46,17 @@ export default ({pickerProps, handlePropsUpdate}) => {
 						<label className="active">Close Button Text ( Optional )</label>
 					</div>
 
-					<div className='disabled-wrapper'>
-						<div className="switch" onClick={handleCheckbox}>
-							<label>
-								<input type="checkbox" checked={isDisabled} readOnly/>
-								<span className="lever"></span>
-								isDisabled
-							</label>
+					{isInput &&
+						<div className='disabled-wrapper'>
+							<div className="switch" onClick={handleCheckbox}>
+								<label>
+									<input type="checkbox" checked={isDisabled} readOnly/>
+									<span className="lever"></span>
+									isDisabled
+								</label>
+							</div>
 						</div>
-					</div>
+					}
 
 				</div>
 			</div>
