@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 
-export default ({pickerProps, handlePropsUpdate, isInput}) => {
+export default ({ pickerProps, handlePropsUpdate, isInput }) => {
 
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
 	// const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
 	const [isDisabled, setIsDisabled] = useState(false)
+	const [showRangeTrace, setShowRangeTrace] = useState(true)
 
 	const handleSubmit = () => {
-		handlePropsUpdate({...pickerProps, 
-			format, isDisabled,
+		handlePropsUpdate({ ...pickerProps, format, isDisabled, showRangeTrace,
 			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined
 		})
 	}
 
 	const handleCheckbox = (e) => {
-		if(e) e.preventDefault();
+		if (e) e.preventDefault();
 		setIsDisabled(!isDisabled)
+	}
+
+	const handleTraceChange = (e) => {
+		if (e) e.preventDefault();
+		setShowRangeTrace(!showRangeTrace)
 	}
 
 	return (
@@ -26,15 +31,15 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 					<h3 className="pad-bottom-8">Props Selector</h3>
 
 					<div className="input-field">
-						<input className="input-class" 
-							placeholder="Default : dd/MM/YYY" value={format} 
+						<input className="input-class"
+							placeholder="Default : dd/MM/YYY" value={format}
 							onChange={e => setFormat(e.target.value)} />
 						<label className="active">Format ( Optional )</label>
 					</div>
 
 					<div className="input-field">
-						<input className="input-class" 
-							placeholder="Default : 0, Values - [0-6]" value={weekStartsOn} 
+						<input className="input-class"
+							placeholder="Default : 0, Values - [0-6]" value={weekStartsOn}
 							onChange={e => setWeekStartsOn(e.target.value)} />
 						<label className="active">Week Starts On ( Optional )</label>
 					</div>
@@ -46,17 +51,27 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 						<label className="active">Close Button Text ( Optional )</label>
 					</div> */}
 
+
 					{isInput &&
-						<div className='disabled-wrapper'>
+						<div className='disabled-wrapper pad-bottom-16'>
 							<div className="switch" onClick={handleCheckbox}>
 								<label>
-									<input type="checkbox" checked={isDisabled} readOnly/>
+									<input type="checkbox" checked={isDisabled} readOnly />
 									<span className="lever"></span>
 									isDisabled
 								</label>
 							</div>
 						</div>
 					}
+					<div className='disabled-wrapper'>
+						<div className="switch" onClick={handleTraceChange}>
+							<label>
+								<input type="checkbox" checked={showRangeTrace} readOnly />
+								<span className="lever"></span>
+									showRangeTrace
+								</label>
+						</div>
+					</div>
 
 				</div>
 			</div>
