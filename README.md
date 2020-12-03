@@ -181,11 +181,6 @@ Supports Input component : DateTimePickerInput . [Checkout further details](#Inp
 
 ## DateRangePicker
 
-Simple             |  Input Component
-:-------------------------:|:-------------------------:
-![range](https://user-images.githubusercontent.com/20855294/89807921-f1493a80-db56-11ea-8173-a4fb0764a8a8.gif "range")  |  ![rangeinput](https://user-images.githubusercontent.com/20855294/89807903-ec848680-db56-11ea-963b-afd8624806e0.gif "rangeinput")
-
-
 ```tsx
 import React, {useState} from 'react'
 
@@ -218,17 +213,13 @@ const DateRangePickerWrapper = () => {
 
 | **Props** | **Type** | **Description** |
 | :--- |:---:| :--- |
-| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year, hour? , hour24?, minute?, meridiem?}; use hour(12 hr format) with meridiem, OR hour24 and minute only for time </li><li>String : "1st january 2020 12:30 PM"; string format needs to be same as format prop</li></ul>|
-| format | String | Default value : "dd/MM/YYY hh:mm aaa". More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| timeFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| dateFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
+| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| onFromDateTimeUpdate,<br/>onToDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called<br> Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridiem }, formatted } |
-| onFromDateUpdate,<br/>onToDateUpdate<br/>(optional) | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
-| onFromTimeUpdate,<br/>onToTimeUpdate<br/>(optional) | Function | Every time user changes **time** this handler will be called.<br>Arguments for the handlers : { time: { hour, hour24, minute, meridiem }, formatted } |
+| onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
 | onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
 
-Supports Input component : DateTimeRangePickerInput . [Checkout further details](#InputComponents)
+Supports Input component : DateRangePickerInput . [Checkout further details](#InputComponents)
 
 
 ## DateTimeRangePicker

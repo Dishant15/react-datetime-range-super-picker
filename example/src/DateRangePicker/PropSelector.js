@@ -4,12 +4,12 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 
 	const [format, setFormat] = useState(pickerProps.format || undefined)
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
-	const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
+	// const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
 	const [isDisabled, setIsDisabled] = useState(false)
 
 	const handleSubmit = () => {
 		handlePropsUpdate({...pickerProps, 
-			format, closeButtonText, isDisabled,
+			format, isDisabled,
 			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined
 		})
 	}
@@ -39,12 +39,12 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 						<label className="active">Week Starts On ( Optional )</label>
 					</div>
 
-					<div className="input-field">
+					{/* <div className="input-field">
 						<input className="input-class" 
 							placeholder="Default : Close" value={closeButtonText} 
 							onChange={e => setCloseBtnText(e.target.value)} />
 						<label className="active">Close Button Text ( Optional )</label>
-					</div>
+					</div> */}
 
 					{isInput &&
 						<div className='disabled-wrapper'>
