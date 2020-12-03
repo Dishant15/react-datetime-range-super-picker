@@ -28,7 +28,7 @@ const App = () => {
 	 * 		DateRangePickerDemo
 	 */
 
-	const [selectedComponent, setComponent] = useState('dateRangePicker')
+	const [selectedComponent, setComponent] = useState('timePicker')
 
 	const renderComponent = useCallback(() => {
 		if(selectedComponent === 'timePicker') {
