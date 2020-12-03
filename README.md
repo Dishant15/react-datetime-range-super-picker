@@ -27,7 +27,7 @@ yarn add react-datetime-range-super-picker
 ## Preview
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/20855294/89807921-f1493a80-db56-11ea-8173-a4fb0764a8a8.gif" width="700" />
+  <img src="https://user-images.githubusercontent.com/20855294/101040877-43004f80-35a2-11eb-8355-01347c0af7f7.gif" width="700" />
 </p>
 <br />
 
@@ -48,11 +48,6 @@ yarn add react-datetime-range-super-picker
 ---
 
 ## TimePicker
-
-Simple             |  Input Component
-:-------------------------:|:-------------------------:
-![timepicker](https://user-images.githubusercontent.com/20855294/89800366-521f4580-db4c-11ea-9a13-14be2e5afd9c.gif "timepicker")  |  ![timepickerinput](https://user-images.githubusercontent.com/20855294/89800354-4cc1fb00-db4c-11ea-8404-743a926ec3fc.gif "timepickerinput")
-
 
 ```tsx
 import React, {useState} from 'react'
@@ -92,10 +87,6 @@ Supports Input component : TimePickerInput . [Checkout further details](#InputCo
 
 ## DatePicker
 
-Simple             |  Input Component
-:-------------------------:|:-------------------------:
-![datepicker](https://user-images.githubusercontent.com/20855294/89807260-fb1e6e00-db55-11ea-970d-f89357541149.gif "datepicker")  |  ![datepickerinput](https://user-images.githubusercontent.com/20855294/89807269-feb1f500-db55-11ea-8070-ab958f779708.gif "datepickerinput")
-
 ```tsx
 import React, {useState} from 'react'
 
@@ -133,11 +124,6 @@ const DatePickerWrapper = () => {
 Supports Input component : DatePickerInput . [Checkout further details](#InputComponents)
 
 ## DateTimePicker
-
-Simple             |  Input Component
-:-------------------------:|:-------------------------:
-![datetimepicker](https://user-images.githubusercontent.com/20855294/89801499-e3db8280-db4d-11ea-9e44-490982d1d9df.gif "datetimepicker")  |  ![datetimepickerinput](https://user-images.githubusercontent.com/20855294/89801504-e5a54600-db4d-11ea-9e58-343abfab8776.gif "datetimepickerinput")
-
 
 ```tsx
 import React, {useState} from 'react'
@@ -223,11 +209,6 @@ Supports Input component : DateRangePickerInput . [Checkout further details](#In
 
 
 ## DateTimeRangePicker
-
-Simple             |  Input Component
-:-------------------------:|:-------------------------:
-![range](https://user-images.githubusercontent.com/20855294/89807921-f1493a80-db56-11ea-8173-a4fb0764a8a8.gif "range")  |  ![rangeinput](https://user-images.githubusercontent.com/20855294/89807903-ec848680-db56-11ea-963b-afd8624806e0.gif "rangeinput")
-
 
 ```tsx
 import React, {useState} from 'react'
@@ -383,6 +364,17 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 **All styling props above are optional**
 
+1. Light (Default)
+<p float="left">
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 35 PM" src="https://user-images.githubusercontent.com/20855294/101042274-04b76000-35a3-11eb-9e9d-df8e69cc71c9.png"></p>
+2. Dark
+<p float="left">
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 45 PM" src="https://user-images.githubusercontent.com/20855294/101042289-097c1400-35a3-11eb-8a33-51cce5930e9d.png">
+</p>
+3. Colorful
+<p float="left">
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 53 PM" src="https://user-images.githubusercontent.com/20855294/101042287-08e37d80-35a3-11eb-9777-f66d6e3391a0.png">
+</p>
 
 ## FutureUpdates
 
