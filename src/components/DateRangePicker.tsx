@@ -20,11 +20,8 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 	constructor(props:DateRangePickerProps) {
 		super(props);
 
-		let otherDateRangeIndex = 0;
-		if(props.showRangeTrace) {
-			const date_obj = getInputDate(props.to_date)
-			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
-		}
+		const date_obj = getInputDate(props.to_date)
+		let otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 
 		this.state = {
 			// from date is selected as default
@@ -47,7 +44,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 	handleToDateUpdate = (date_time:DatePickerOutPut) => {
 		const {onToDateUpdate} = this.props
 
-		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month)
+		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
 		this.setState({advance_pill : null, is_to_date: false, otherDateRangeIndex})
 		onToDateUpdate(date_time)
 	}
@@ -55,7 +52,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 	handleFromDateUpdate = (date_time:DatePickerOutPut) => {
 		const {onFromDateUpdate} = this.props
 
-		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month)
+		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
 		this.setState({advance_pill : null, is_to_date: true, otherDateRangeIndex})
 		onFromDateUpdate(date_time)
 	}
@@ -96,7 +93,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 							<div className={styles.advance_pill} 
 								style={getActivePillColors(colors, advance_pill === 'lw')}
 								onClick={this.handleLastWeek}>
-								Last Week
+								Last Week WTF
 							</div>
 						</div>
 
@@ -125,7 +122,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 
 		// set range again
 		const date_obj = getInputDate(from_ts)
-		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'lm', is_to_date: true, otherDateRangeIndex})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
@@ -141,7 +138,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const to_ts = endOfMonth(now)
 		// set range again
 		const date_obj = getInputDate(from_ts)
-		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'tm', is_to_date: true, otherDateRangeIndex})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
@@ -158,7 +155,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const to_ts = endOfWeek(now, {weekStartsOn})
 		// set range again
 		const date_obj = getInputDate(from_ts)
-		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'tw', is_to_date: true, otherDateRangeIndex})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
@@ -177,7 +174,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		to_ts = subWeeks(to_ts, 1)
 		// set range again
 		const date_obj = getInputDate(from_ts)
-		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month)
+		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'lw', is_to_date: true, otherDateRangeIndex})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))

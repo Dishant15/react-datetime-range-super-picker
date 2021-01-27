@@ -1,4 +1,3 @@
-// import React, { useState, useCallback, useEffect } from 'react';
 import React from 'react'
 
 import MonthPicker from "./MonthPicker";
@@ -20,7 +19,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		this.state = {
 			...date_obj, 
 			date_id : `${date_obj.day}-${date_obj.month}`,
-			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month),
+			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month, date_obj.year),
 			// hover states
 			hoverOn: false,
 			hoverRangeIndex: 0,
@@ -40,7 +39,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		return {
 			...date_obj, 
 			date_id : `${date_obj.day}-${date_obj.month}`,
-			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month)
+			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		}
 	}
 
@@ -91,8 +90,8 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 	render = () => {
 		const {day, month, year, date_id, 
-			hoverOn, hoverRangeIndex, dateRangeIndex} = this.state
-		const {weekStartsOn, colors, showRangeTrace, otherDateRangeIndex} = this.props
+			hoverOn, hoverRangeIndex, dateRangeIndex} = this.state;
+		const {weekStartsOn, colors, showRangeTrace, otherDateRangeIndex} = this.props;
 
 		const week_header_list = getWeekList(weekStartsOn)
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)

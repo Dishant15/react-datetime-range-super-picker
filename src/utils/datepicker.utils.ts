@@ -73,8 +73,8 @@ export const getWeekList = (weekStartsOn=defaultConfigs.weekStartsOn):string[] =
 	return res_week_list
 }
 
-export const createRangeIndex = (day:number, month:number):number => {
-	return (month*100) + day
+export const createRangeIndex = (day:number, month:number, year:number):number => {
+	return (year*10000) + (month*100) + day
 }
 
 export const getDayList = (
@@ -92,7 +92,7 @@ export const getDayList = (
 	let res_list = []
 	for(let index = sm_day; index <= em_day; index++) {
 		res_list.push({
-			day : index, rangeIndex: createRangeIndex(index, month),
+			day : index, rangeIndex: createRangeIndex(index, month, year),
 			curr_month : true, 
 			id : `${index}-${month}`
 		})
@@ -104,11 +104,12 @@ export const getDayList = (
 
 	const sw_day = sw_date.getDate()
 	const sw_month = sw_date.getMonth()
+	const sw_year = sw_date.getFullYear()
 	for(let index = start_delta - 1; index >= 0; index--) {
 		const this_day = sw_day + index
 		// add at the front
 		res_list.unshift({
-			day : this_day, rangeIndex: createRangeIndex(this_day, sw_month),
+			day : this_day, rangeIndex: createRangeIndex(this_day, sw_month, sw_year),
 			curr_month : false,
 			id : `${this_day}-${sw_month}`
 		})
@@ -119,11 +120,14 @@ export const getDayList = (
 	const last_week_ind = (chunked_res_list.length - 1)
 	const end_delta = 7 - chunked_res_list[last_week_ind].length
 
+	const next_month_first_day = addDays(em_date, 1)
 	// get next month
-	const next_month = addDays(em_date, 1).getMonth()
+	const next_month = next_month_first_day.getMonth()
+	// year may change for next month
+	const next_year = next_month_first_day.getFullYear()
 	for(let index = 1; index <= end_delta; index++) {
 		chunked_res_list[last_week_ind].push({
-			day : index, rangeIndex: createRangeIndex(index, next_month),
+			day : index, rangeIndex: createRangeIndex(index, next_month, next_year),
 			curr_month : false,
 			id : `${index}-${next_month}`
 		})
