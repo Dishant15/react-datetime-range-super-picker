@@ -77,6 +77,15 @@ export const createRangeIndex = (day:number, month:number, year:number):number =
 	return (year*10000) + (month*100) + day
 }
 
+export const parseRangeIndex = (rangeIndex:number):number[] => {
+	const day = rangeIndex % 100
+	const m_y_temp = Math.round(rangeIndex/100)
+	const month = m_y_temp % 100
+	const year = Math.round(m_y_temp / 100)
+
+	return [ day, month, year]
+}
+
 export const getDayList = (
 	day:number, month:number, year:number, weekStartsOn:any = defaultConfigs.weekStartsOn
 ) : DayListShape[][] => {
@@ -92,9 +101,9 @@ export const getDayList = (
 	let res_list = []
 	for(let index = sm_day; index <= em_day; index++) {
 		res_list.push({
-			day : index, rangeIndex: createRangeIndex(index, month, year),
+			day : index, 
+			rangeIndex: createRangeIndex(index, month, year),
 			curr_month : true, 
-			id : `${index}-${month}`
 		})
 	}
 	// get padding week days of previous month
@@ -109,9 +118,9 @@ export const getDayList = (
 		const this_day = sw_day + index
 		// add at the front
 		res_list.unshift({
-			day : this_day, rangeIndex: createRangeIndex(this_day, sw_month, sw_year),
+			day : this_day, 
+			rangeIndex: createRangeIndex(this_day, sw_month, sw_year),
 			curr_month : false,
-			id : `${this_day}-${sw_month}`
 		})
 	}
 
@@ -127,9 +136,9 @@ export const getDayList = (
 	const next_year = next_month_first_day.getFullYear()
 	for(let index = 1; index <= end_delta; index++) {
 		chunked_res_list[last_week_ind].push({
-			day : index, rangeIndex: createRangeIndex(index, next_month, next_year),
+			day : index, rangeIndex: 
+			createRangeIndex(index, next_month, next_year),
 			curr_month : false,
-			id : `${index}-${next_month}`
 		})
 	}
 

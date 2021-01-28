@@ -12,7 +12,6 @@ export interface DatePickerOutPut extends MainDate {
 }
 
 export interface DatePickerState extends MainDate {
-	date_id : string,
 	dateRangeIndex: number,
 	// hover states
 	hoverOn: boolean,
@@ -37,11 +36,10 @@ export interface DatePickerProps {
 
 export interface DayListShape {
 	day : number,
+	// this will also be used as ID -> YYYYMMDD
 	rangeIndex: number,
 	// is this current month or not
 	curr_month : boolean,
-	// id : day-month
-	id : string
 }
 
 export interface DatePickerInputProps extends DatePickerProps {

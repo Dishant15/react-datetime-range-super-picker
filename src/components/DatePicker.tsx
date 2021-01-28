@@ -2,7 +2,8 @@ import React from 'react'
 
 import MonthPicker from "./MonthPicker";
 
-import { formatDate, getWeekList, getDayList, generateDatePickerOutput, createRangeIndex } from "../utils/datepicker.utils";
+import { formatDate, getWeekList, getDayList, 
+	generateDatePickerOutput, createRangeIndex, parseRangeIndex } from "../utils/datepicker.utils";
 import { DatePickerProps, defaultConfigs, DatePickerState } from "../interfaces/datepicker.interfaces";
 import { OutputShape } from '../interfaces/monthpicker.interfaces'
 import { getWrapperStyles, getCalenderCellColors } from '../styles/datepicker.color'
@@ -17,8 +18,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 		const date_obj = formatDate(props.date, props.format)
 		this.state = {
-			...date_obj, 
-			date_id : `${date_obj.day}-${date_obj.month}`,
+			...date_obj,
 			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month, date_obj.year),
 			// hover states
 			hoverOn: false,
@@ -38,7 +38,6 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const date_obj = formatDate(props.date, props.format)
 		return {
 			...date_obj, 
-			date_id : `${date_obj.day}-${date_obj.month}`,
 			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		}
 	}
@@ -53,22 +52,21 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		
 	}
 
-	handleDateUpdate = (day_month:string) => {
-		const {year, month} = this.state
+	handleDateUpdate = (rangeIndex:number) => {
+		// const {year, month} = this.state
 		const {onDateUpdate, onComplete, format} = this.props
 
-		const [new_day, new_month] = day_month.split('-').map((s) => Number(s))
-		let new_year = year
+		const [new_day, new_month, new_year] = parseRangeIndex(rangeIndex)
 		
-		if(month === 0 && new_month === 11) {
-			// user selected december date from january
-			// change year
-			new_year = year - 1
-		} else if(month === 11 && new_month === 0) {
-			// user selected jan date from dec
-			// change year
-			new_year = year + 1
-		}
+		// if(month === 0 && new_month === 11) {
+		// 	// user selected december date from january
+		// 	// change year
+		// 	new_year = year - 1
+		// } else if(month === 11 && new_month === 0) {
+		// 	// user selected jan date from dec
+		// 	// change year
+		// 	new_year = year + 1
+		// }
 		
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(new_day, new_month, new_year, format))
@@ -89,7 +87,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	}
 
 	render = () => {
-		const {day, month, year, date_id, 
+		const {day, month, year,
 			hoverOn, hoverRangeIndex, dateRangeIndex} = this.state;
 		const {weekStartsOn, colors, showRangeTrace, otherDateRangeIndex} = this.props;
 
@@ -131,7 +129,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
 									// set current selected day as active only if hover is off
-									let isActive = (curr_day.id === date_id && !hoverOn)
+									let isActive = (curr_day.rangeIndex === dateRangeIndex && !hoverOn)
 									if(!isActive) {
 										if(showRangeTrace) {
 											// check if current day is between otherDate and HOVER date
@@ -147,7 +145,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 									return (
 										<td key={j} className={styles.calender_cell}
-											onClick={() => this.handleDateUpdate(curr_day.id)}
+											onClick={() => this.handleDateUpdate(curr_day.rangeIndex)}
 											onMouseEnter={this.handleMouseEnter(curr_day.rangeIndex)}
 											onMouseLeave={this.handleMouseLeave}
 											style={{opacity, ...day_styles }} > {curr_day.day}
