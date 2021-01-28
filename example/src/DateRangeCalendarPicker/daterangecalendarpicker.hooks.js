@@ -2,26 +2,17 @@ import { useState, useCallback } from "react"
 import { isEmpty } from "lodash";
 
 
-const generatePickerHtml = ({format, timeFormat, 
-	dateFormat, weekStartsOn, showRangeTrace = true,
-	isInput, theme, colors, closeButtonText, isDisabled}) => {
+const generatePickerHtml = ({format, weekStartsOn,
+	theme, colors, closeButtonText, isInput, isDisabled}) => {
 		
-	const componentStr = isInput ? 'DateTimePickerInput' : 'DateTimeRangePicker'
+	const componentStr = isInput ? 'DateRangeCalendarPickerInput' : 'DateRangeCalendarPicker'
 
 	let propStr = `from_date={from_date} to_date={to_date}
-				onFromDateTimeUpdate={handleFromDateUpdate} 
-				onToDateTimeUpdate={handleToDateUpdate}`
+				onFromDateUpdate={handleFromDateUpdate} 
+				onToDateUpdate={handleToDateUpdate}`
 	
 	if(!!format) {
 		propStr += `\n\t\t\t\tformat="${format}"`
-	}
-
-	if(!!timeFormat) {
-		propStr += `\n\t\t\t\ttimeFormat="${timeFormat}"`
-	}
-
-	if(!!dateFormat) {
-		propStr += `\n\t\t\t\tdateFormat="${dateFormat}"`
 	}
 
 	if(!!weekStartsOn) {
@@ -40,11 +31,10 @@ const generatePickerHtml = ({format, timeFormat,
 		propStr += `\n\t\t\t\tcolors={${JSON.stringify(colors)}}`
 	}
 
-	if(!!isDisabled && isInput) {
+	if(!!isDisabled) {
 		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
 	}
 
-	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}`
 
 	return `
 	import React, { useState } from 'react';
@@ -52,16 +42,16 @@ const generatePickerHtml = ({format, timeFormat,
 
 	import 'react-datetime-range-super-picker/dist/index.css'
 
-	const DateTimeRangePickerComponent = () => {
+	const DateRangeCalendarPickerComponent = () => {
 		const [from_date, setFromDate] = useState(new Date())
 		const [to_date, setToDate] = useState(new Date())
 
 		const handleFromDateUpdate = ({date}) => {
-			setFromDate(date.date)
+			setFromDate(date)
 		}
 
 		const handleToDateUpdate = ({date}) => {
-			setToDate(date.date)
+			setToDate(date)
 		}
 
 		return (

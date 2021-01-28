@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateRangeCalendarPickerInput, DateRangePicker } from 'react-datetime-range-super-picker';
+import { DateRangePickerInput, DateRangePicker } from 'react-datetime-range-super-picker';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -25,7 +25,8 @@ export default () => {
 	 * 		DateRangePickerInput
 	 */
 	
-	const [pickerProps, pickerHtml, handlePropsUpdate] = useRangePickerProps()
+	const [pickerProps, pickerHtml, handlePropsUpdate, 
+		isInput, handleToggleInput ] = useRangePickerProps()
 
 	const [from_date, setFromDate] = useState(new Date())
 	const [to_date, setToDate] = useState(new Date())
@@ -43,6 +44,11 @@ export default () => {
 		from_date, to_date, 
 		onFromDateUpdate: handleFromDateUpdate,
 		onToDateUpdate: handleToDateUpdate
+	}
+
+	const handleInputToggle = (e) => {
+		if(e) e.preventDefault();
+		handleToggleInput(!isInput)
 	}
 
 	const onCopyClick = () => {
@@ -63,9 +69,20 @@ export default () => {
 				<div className='col s12 l8'>
 					<div className='picker-wrapper'>
 
-						<div className="range-picker-input-wrapper">
-							<DateRangePicker {...TProps} />
+						<div className="switch" onClick={handleInputToggle}>
+							<label>
+								<input type="checkbox" checked={isInput} readOnly/>
+								<span className="lever"></span>
+								Input Component
+							</label>
 						</div>
+						{isInput ? 
+							<div className="range-picker-input-wrapper">
+								<DateRangePickerInput {...TProps} />
+							</div>
+							:
+							<DateRangePicker {...TProps} />
+						}
 					</div>
 					<ThemeSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate}/>
 
@@ -93,7 +110,7 @@ export default () => {
 			
 			<div className='row'>
 				<div className="col s12 m6">
-					<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} />
+					<PropSelector pickerProps={pickerProps} handlePropsUpdate={handlePropsUpdate} isInput={isInput}/>
 				</div>
 
 				<div className="col s12 m6">

@@ -6,10 +6,9 @@ export default ({ pickerProps, handlePropsUpdate, isInput }) => {
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
 	// const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
 	const [isDisabled, setIsDisabled] = useState(false)
-	const [showRangeTrace, setShowRangeTrace] = useState(true)
 
 	const handleSubmit = () => {
-		handlePropsUpdate({ ...pickerProps, format, isDisabled, showRangeTrace,
+		handlePropsUpdate({ ...pickerProps, format, isDisabled,
 			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined
 		})
 	}
@@ -17,11 +16,6 @@ export default ({ pickerProps, handlePropsUpdate, isInput }) => {
 	const handleCheckbox = (e) => {
 		if (e) e.preventDefault();
 		setIsDisabled(!isDisabled)
-	}
-
-	const handleTraceChange = (e) => {
-		if (e) e.preventDefault();
-		setShowRangeTrace(!showRangeTrace)
 	}
 
 	return (
@@ -44,14 +38,6 @@ export default ({ pickerProps, handlePropsUpdate, isInput }) => {
 						<label className="active">Week Starts On ( Optional )</label>
 					</div>
 
-					{/* <div className="input-field">
-						<input className="input-class" 
-							placeholder="Default : Close" value={closeButtonText} 
-							onChange={e => setCloseBtnText(e.target.value)} />
-						<label className="active">Close Button Text ( Optional )</label>
-					</div> */}
-
-
 					{isInput &&
 						<div className='disabled-wrapper pad-bottom-16'>
 							<div className="switch" onClick={handleCheckbox}>
@@ -63,15 +49,6 @@ export default ({ pickerProps, handlePropsUpdate, isInput }) => {
 							</div>
 						</div>
 					}
-					<div className='disabled-wrapper'>
-						<div className="switch" onClick={handleTraceChange}>
-							<label>
-								<input type="checkbox" checked={showRangeTrace} readOnly />
-								<span className="lever"></span>
-									showRangeTrace
-								</label>
-						</div>
-					</div>
 
 				</div>
 			</div>

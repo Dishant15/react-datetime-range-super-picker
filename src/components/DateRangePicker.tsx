@@ -37,7 +37,8 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		to_date : defaultConfigs.date,
 		weekStartsOn : dateDefaultConfigs.weekStartsOn,
 		format : dateDefaultConfigs.format,
-		closeButtonText: 'Close'
+		closeButtonText: 'Close',
+		showRangeTrace: true,
 	}
 
 	handleToDateUpdate = (date_time:DatePickerOutPut) => {
@@ -60,9 +61,9 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const {advance_pill, is_to_date, otherDateRangeIndex} = this.state
 		const {format, weekStartsOn,
 			from_date, to_date,
-			colors
-		} = this.props;
-		
+			colors, showRangeTrace
+		} = this.props
+
 		const common_props = { format, weekStartsOn, otherDateRangeIndex }
 		const currDate = is_to_date ? to_date : from_date
 		const handler = is_to_date ? this.handleToDateUpdate : this.handleFromDateUpdate
@@ -98,7 +99,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 
 						{/* from date first */}
 						<div className={[styles.table_cell, styles.picker_pad_right].join(' ')}>
-							<DatePicker colors={colors} showRangeTrace={true}
+							<DatePicker colors={colors} showRangeTrace={showRangeTrace}
 								onDateUpdate={handler} date={currDate}
 								{...common_props} />
 						</div>

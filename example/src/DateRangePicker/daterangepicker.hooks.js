@@ -2,10 +2,10 @@ import { useState, useCallback } from "react"
 import { isEmpty } from "lodash";
 
 
-const generatePickerHtml = ({format, weekStartsOn,
-	theme, colors, closeButtonText, isDisabled}) => {
+const generatePickerHtml = ({format, weekStartsOn, showRangeTrace = true,
+	theme, colors, closeButtonText, isInput, isDisabled}) => {
 		
-	const componentStr = 'DateRangePickerInput'
+	const componentStr = isInput ? 'DateRangePickerInput' : 'DateRangePicker'
 
 	let propStr = `from_date={from_date} to_date={to_date}
 				onFromDateUpdate={handleFromDateUpdate} 
@@ -35,6 +35,8 @@ const generatePickerHtml = ({format, weekStartsOn,
 		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
 	}
 
+	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}`
+
 	return `
 	import React, { useState } from 'react';
 	import { ${componentStr} } from 'react-datetime-range-super-picker';
@@ -62,13 +64,19 @@ const generatePickerHtml = ({format, weekStartsOn,
 
 export const useRangePickerProps = () => {
 	
+	const [isInput, setInput] = useState(false)
 	const [pickerProps, setPickerProps] = useState({})
 	const [pickerHtml, setPickerHtml] = useState(generatePickerHtml({}))
 
 	const handlePropsUpdate = useCallback((newProps) => {
 		setPickerProps(newProps)
-		setPickerHtml(generatePickerHtml({...newProps}))
-	}, [])
+		setPickerHtml(generatePickerHtml({...newProps, isInput}))
+	}, [isInput])
 
-	return [pickerProps, pickerHtml, handlePropsUpdate]
+	const handleToggleInput = useCallback((isInput) => {
+		setInput(isInput)
+		setPickerHtml(generatePickerHtml({...pickerProps, isInput}))
+	}, [pickerProps])
+
+	return [pickerProps, pickerHtml, handlePropsUpdate, isInput, handleToggleInput]
 }
