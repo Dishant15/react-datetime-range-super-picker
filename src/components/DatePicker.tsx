@@ -89,7 +89,8 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	render = () => {
 		const {day, month, year,
 			hoverOn, hoverRangeIndex, dateRangeIndex} = this.state;
-		const {weekStartsOn, colors, showRangeTrace, otherDateRangeIndex} = this.props;
+		const {weekStartsOn, colors,  otherDateRangeIndex,
+			showRangeTrace, traceStatus} = this.props;
 
 		const week_header_list = getWeekList(weekStartsOn)
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
@@ -98,7 +99,8 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		// create min max selected range end points of our current range
 		if(showRangeTrace) {
 			// if hover than show range on hover state, else show on selected state
-			const compareDate = hoverOn ? hoverRangeIndex : dateRangeIndex;
+			const compareDate = traceStatus==='A' ? dateRangeIndex :
+				hoverOn ? hoverRangeIndex : dateRangeIndex;
 			minRangeIndex = Math.min(compareDate, otherDateRangeIndex)
 			maxRangeIndex = Math.max(compareDate, otherDateRangeIndex)
 		}
@@ -129,19 +131,21 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
 									// set current selected day as active only if hover is off
-									let isActive = (curr_day.rangeIndex === dateRangeIndex && !hoverOn)
-									if(!isActive) {
-										if(showRangeTrace) {
-											// check if current day is between otherDate and HOVER date
-											
-											// check if current day is between otherDate and SELECTED date
-											if(curr_day.rangeIndex <= maxRangeIndex && 
-												curr_day.rangeIndex >= minRangeIndex) {
-													isActive = true
-											}
-										}
+									let cell_type = ''
+									if(curr_day.rangeIndex === dateRangeIndex) {
+										// only when selecting To date dont show curr day as solid
+										if(traceStatus !== 'T') cell_type = 'solid'
 									}
-									const day_styles = getCalenderCellColors(colors, isActive, hoverOn)
+									else if(curr_day.rangeIndex === otherDateRangeIndex) {
+										if(traceStatus==='T' || traceStatus==='A') cell_type = 'solid';
+									}
+									else if(curr_day.rangeIndex < maxRangeIndex && 
+										curr_day.rangeIndex > minRangeIndex) {
+										if(traceStatus==='T') cell_type = 'border'
+										else if(traceStatus==='A') cell_type = 'solid'
+									}
+									
+									const day_styles = getCalenderCellColors(colors, cell_type)
 
 									return (
 										<td key={j} className={styles.calender_cell}

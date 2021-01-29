@@ -32,6 +32,7 @@ export interface DatePickerProps {
 	/** created with func datepicker.utils => createRangeIndex */
 	otherDateRangeIndex: number,
 	showRangeTrace: boolean,
+	traceStatus?: string
 }
 
 export interface DayListShape {

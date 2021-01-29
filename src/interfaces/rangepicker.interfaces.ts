@@ -36,6 +36,7 @@ export interface RangePickerProps {
 
 export interface RangePickerStates {
 	is_to_date: boolean,
+	traceStatus: string,
 	advance_pill: string | null,
 	otherDateRangeIndex: number,
 }

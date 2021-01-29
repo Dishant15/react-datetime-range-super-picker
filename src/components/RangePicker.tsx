@@ -31,6 +31,8 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		this.state = {
 			// from date is selected as default
 			is_to_date : false,
+			// just placeholder atm
+			traceStatus: 'F', // ----------- REMOVE IN FUTURE -----------
 			// which advance pill is selected
 			advance_pill : null,
 			otherDateRangeIndex,
@@ -43,7 +45,8 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		weekStartsOn : defaultConfigs.weekStartsOn,
 		format : defaultConfigs.format,
 		closeButtonText: 'Close',
-		showRangeTrace: true,
+		// always false ----------- REMOVE IN FUTURE -----------
+		showRangeTrace: false,
 	}
 
 	handleDateTimeUpdate = (date_time:DateTimePickerOutPut) => {
@@ -66,7 +69,7 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 			const date_obj = getInputDate(from_date)
 			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		}
-		this.setState({is_to_date: true, otherDateRangeIndex})
+		this.setState({is_to_date: true, otherDateRangeIndex, traceStatus:'A'})
 	}
 
 	handleFromDateSelect = () => {
@@ -77,20 +80,20 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 			const date_obj = getInputDate(to_date)
 			otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		}
-		this.setState({is_to_date: false, otherDateRangeIndex})
+		this.setState({is_to_date: false, otherDateRangeIndex, traceStatus:'T'})
 	}
 
 	render = () => {
-		const {is_to_date, advance_pill, otherDateRangeIndex} = this.state
+		const {is_to_date, advance_pill, otherDateRangeIndex, traceStatus} = this.state
 		const {format, timeFormat, dateFormat, weekStartsOn,
 			from_date, onFromTimeUpdate, onFromDateUpdate,
 			to_date, onToTimeUpdate, onToDateUpdate,
 			onDone, colors, closeButtonText,
-			showRangeTrace,
+			showRangeTrace
 		} = this.props
 
 		const commonProps = {format, timeFormat, dateFormat, weekStartsOn,
-			showRangeTrace, otherDateRangeIndex}
+			showRangeTrace, otherDateRangeIndex, traceStatus}
 
 		const from_date_str = getInitialDateForInput(from_date, format)
 		const to_date_str = getInitialDateForInput(to_date, format)

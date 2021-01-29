@@ -26,6 +26,9 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		this.state = {
 			// from date is selected as default
 			is_to_date : false,
+			// 'F' , user is selecting from date, 
+			// 'T' , user is selecting To date, 'A' : all dates selected
+			traceStatus: 'F',
 			// which advance pill is selected
 			advance_pill : null,
 			otherDateRangeIndex,
@@ -44,7 +47,8 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const {onToDateUpdate} = this.props
 
 		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
-		this.setState({advance_pill : null, is_to_date: false, otherDateRangeIndex})
+		this.setState({advance_pill : null, is_to_date: false, otherDateRangeIndex,
+			traceStatus:'A'})
 		onToDateUpdate(date_time)
 	}
 
@@ -52,20 +56,25 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const {onFromDateUpdate} = this.props
 
 		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
-		this.setState({advance_pill : null, is_to_date: true, otherDateRangeIndex})
+		this.setState({advance_pill : null, is_to_date: true, otherDateRangeIndex, 
+			traceStatus:'T'})
 		onFromDateUpdate(date_time)
 	}
 
 	render = () => {
-		const {advance_pill, is_to_date, otherDateRangeIndex} = this.state
+		const {advance_pill, is_to_date, otherDateRangeIndex, 
+			traceStatus} = this.state
 		const {format, weekStartsOn,
 			from_date, to_date,
 			colors
 		} = this.props
 
-		const common_props = { format, weekStartsOn, otherDateRangeIndex }
 		const currDate = is_to_date ? to_date : from_date
 		const handler = is_to_date ? this.handleToDateUpdate : this.handleFromDateUpdate
+
+		const datePickerProps = { colors, format, weekStartsOn, otherDateRangeIndex,
+			onDateUpdate: handler, date: currDate,
+			showRangeTrace:true, traceStatus }
 
 		return (
 			<div className={styles.wrapper} style={{color: colors.primary_font_color}}>
@@ -92,15 +101,13 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 							<div className={styles.advance_pill} 
 								style={getActivePillColors(colors, advance_pill === 'lw')}
 								onClick={this.handleLastWeek}>
-								Last Week WTF
+								Last Week
 							</div>
 						</div>
 
 						{/* from date first */}
 						<div className={[styles.table_cell, styles.picker_pad_right].join(' ')}>
-							<DatePicker colors={colors} showRangeTrace={true}
-								onDateUpdate={handler} date={currDate}
-								{...common_props} />
+							<DatePicker {...datePickerProps} />
 						</div>
 	
 					</div>
