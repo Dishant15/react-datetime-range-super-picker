@@ -129,7 +129,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		// set range again
 		const date_obj = getInputDate(from_ts)
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
-		this.setState({advance_pill: 'lm', is_to_date: true, otherDateRangeIndex})
+		this.setState({advance_pill: 'lm', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
@@ -145,7 +145,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		// set range again
 		const date_obj = getInputDate(from_ts)
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
-		this.setState({advance_pill: 'tm', is_to_date: true, otherDateRangeIndex})
+		this.setState({advance_pill: 'tm', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
@@ -162,7 +162,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		// set range again
 		const date_obj = getInputDate(from_ts)
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
-		this.setState({advance_pill: 'tw', is_to_date: true, otherDateRangeIndex})
+		this.setState({advance_pill: 'tw', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
@@ -181,7 +181,7 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		// set range again
 		const date_obj = getInputDate(from_ts)
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
-		this.setState({advance_pill: 'lw', is_to_date: true, otherDateRangeIndex})
+		this.setState({advance_pill: 'lw', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
 		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
 		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))

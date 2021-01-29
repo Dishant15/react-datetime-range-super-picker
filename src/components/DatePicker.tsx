@@ -53,20 +53,9 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	}
 
 	handleDateUpdate = (rangeIndex:number) => {
-		// const {year, month} = this.state
 		const {onDateUpdate, onComplete, format} = this.props
 
 		const [new_day, new_month, new_year] = parseRangeIndex(rangeIndex)
-		
-		// if(month === 0 && new_month === 11) {
-		// 	// user selected december date from january
-		// 	// change year
-		// 	new_year = year - 1
-		// } else if(month === 11 && new_month === 0) {
-		// 	// user selected jan date from dec
-		// 	// change year
-		// 	new_year = year + 1
-		// }
 		
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(new_day, new_month, new_year, format))
@@ -98,8 +87,9 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		let minRangeIndex:number, maxRangeIndex:number;
 		// create min max selected range end points of our current range
 		if(showRangeTrace) {
-			// if hover than show range on hover state, else show on selected state
+			// if user selected both date only show selected Range and disable hover highlights
 			const compareDate = traceStatus==='A' ? dateRangeIndex :
+			// if hover than show range on hover state, else show on selected state
 				hoverOn ? hoverRangeIndex : dateRangeIndex;
 			minRangeIndex = Math.min(compareDate, otherDateRangeIndex)
 			maxRangeIndex = Math.max(compareDate, otherDateRangeIndex)
