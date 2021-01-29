@@ -130,18 +130,21 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 								{week.map((curr_day, j) => {
 									const opacity = curr_day.curr_month ? 1 : 0.5
-									// set current selected day as active only if hover is off
+									// style current cell according to hover state, for DateRangePicker
 									let cell_type = ''
 									if(curr_day.rangeIndex === dateRangeIndex) {
 										// only when selecting To date dont show curr day as solid
 										if(traceStatus !== 'T') cell_type = 'solid'
 									}
 									else if(curr_day.rangeIndex === otherDateRangeIndex) {
+										// other selected day will be simple when selecting from date
 										if(traceStatus==='T' || traceStatus==='A') cell_type = 'solid';
 									}
 									else if(curr_day.rangeIndex < maxRangeIndex && 
 										curr_day.rangeIndex > minRangeIndex) {
+										// range between hovered date and selected From date
 										if(traceStatus==='T') cell_type = 'border'
+										// range between From date and To date
 										else if(traceStatus==='A') cell_type = 'solid'
 									}
 									
