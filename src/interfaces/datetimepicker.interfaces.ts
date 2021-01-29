@@ -18,7 +18,8 @@ export interface DateTimePickerProps {
 	colors: ComponentTheme,
 	// range driller props
 	otherDateRangeIndex: number,
-	showRangeTrace: boolean,
+	// default false
+	showRangeTrace?: boolean,
 
 	onDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onTimeUpdate? : (time:OutputTime) => void,

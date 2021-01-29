@@ -36,7 +36,9 @@ export interface RangePickerProps {
 
 export interface RangePickerStates {
 	is_to_date: boolean,
-	traceStatus: string,
+	// required only for DateRangePicker to show range trace on single calendar
+	// will not be there for RangePicker
+	traceStatus?: string,
 	advance_pill: string | null,
 	otherDateRangeIndex: number,
 }

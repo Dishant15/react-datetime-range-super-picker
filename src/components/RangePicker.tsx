@@ -31,8 +31,6 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		this.state = {
 			// from date is selected as default
 			is_to_date : false,
-			// just placeholder atm
-			traceStatus: 'F', // ----------- REMOVE IN FUTURE -----------
 			// which advance pill is selected
 			advance_pill : null,
 			otherDateRangeIndex,
@@ -45,8 +43,6 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 		weekStartsOn : defaultConfigs.weekStartsOn,
 		format : defaultConfigs.format,
 		closeButtonText: 'Close',
-		// always false ----------- REMOVE IN FUTURE -----------
-		showRangeTrace: false,
 	}
 
 	handleDateTimeUpdate = (date_time:DateTimePickerOutPut) => {
@@ -84,16 +80,15 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 	}
 
 	render = () => {
-		const {is_to_date, advance_pill, otherDateRangeIndex, traceStatus} = this.state
+		const {is_to_date, advance_pill, otherDateRangeIndex} = this.state
 		const {format, timeFormat, dateFormat, weekStartsOn,
 			from_date, onFromTimeUpdate, onFromDateUpdate,
 			to_date, onToTimeUpdate, onToDateUpdate,
-			onDone, colors, closeButtonText,
-			showRangeTrace
+			onDone, colors, closeButtonText
 		} = this.props
 
 		const commonProps = {format, timeFormat, dateFormat, weekStartsOn,
-			showRangeTrace, otherDateRangeIndex, traceStatus}
+			otherDateRangeIndex }
 
 		const from_date_str = getInitialDateForInput(from_date, format)
 		const to_date_str = getInitialDateForInput(to_date, format)

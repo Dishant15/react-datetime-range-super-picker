@@ -31,7 +31,7 @@ export interface DatePickerProps {
 	// internal props
 	/** created with func datepicker.utils => createRangeIndex */
 	otherDateRangeIndex: number,
-	showRangeTrace: boolean,
+	showRangeTrace?: boolean,
 	traceStatus?: string
 }
 

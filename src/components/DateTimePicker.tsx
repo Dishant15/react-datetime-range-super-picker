@@ -29,7 +29,8 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 		format : defaultConfigs.format,
 		timeFormat: timeDefaultConfigs.format,
 		dateFormat: dateDefaultConfigs.format,
-		weekStartsOn : dateDefaultConfigs.weekStartsOn
+		weekStartsOn : dateDefaultConfigs.weekStartsOn,
+		showRangeTrace: false
 	}
 
 	static getDerivedStateFromProps(props:DateTimePickerProps) {
