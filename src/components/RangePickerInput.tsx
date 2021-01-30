@@ -40,7 +40,6 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 								onFromDateTimeUpdate={props.onFromDateTimeUpdate}
 								onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
 								onToDateTimeUpdate={props.onToDateTimeUpdate}
-								showRangeTrace={props.showRangeTrace}
 								onDone={() => setShow(false)} colors={colors} />
 						</div>
 				</div>

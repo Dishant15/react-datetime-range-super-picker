@@ -6,7 +6,7 @@ import { startOfWeek, endOfWeek, subWeeks,
 import DatePicker from './DatePicker'
 import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 
-import { DateRangePickerProps, DateRangePickerStates } from '../interfaces/rangepicker.interfaces'
+import { DateRangePickerProps, DateRangeCalendarPickerStates } from '../interfaces/rangepicker.interfaces'
 import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
 import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 import { getActivePillColors } from '../styles/rangepicker.colors'
@@ -14,7 +14,7 @@ import { getActivePillColors } from '../styles/rangepicker.colors'
 import styles from "../styles/rangepicker.css";
 
 
-export default class DateRangeCalendarPicker extends React.Component<DateRangePickerProps, DateRangePickerStates> {
+export default class DateRangeCalendarPicker extends React.Component<DateRangePickerProps, DateRangeCalendarPickerStates> {
 
 	state = {
 		// from date is selected as default

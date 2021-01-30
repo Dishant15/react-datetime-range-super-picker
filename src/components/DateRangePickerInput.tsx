@@ -41,7 +41,6 @@ const DateRangePickerInput = (props:DateRangePickerInputProps) => {
 								closeButtonText={props.closeButtonText}
 								onFromDateUpdate={props.onFromDateUpdate}
 								onToDateUpdate={props.onToDateUpdate}
-								showRangeTrace={props.showRangeTrace}
 								onDone={() => setShow(false)} colors={colors} />
 						</div>
 				</div>

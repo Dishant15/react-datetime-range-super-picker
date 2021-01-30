@@ -7,7 +7,7 @@ import DatePicker from './DatePicker'
 import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
 import { createRangeIndex } from '../utils/datepicker.utils';
 
-import { DateRangePickerProps, RangePickerStates } from '../interfaces/rangepicker.interfaces'
+import { DateRangePickerProps, DateRangePickerStates } from '../interfaces/rangepicker.interfaces'
 import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
 import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 import { getActivePillColors } from '../styles/rangepicker.colors'
@@ -15,7 +15,7 @@ import { getActivePillColors } from '../styles/rangepicker.colors'
 import styles from "../styles/rangepicker.css";
 
 
-export default class DateRangePicker extends React.Component<DateRangePickerProps, RangePickerStates> {
+export default class DateRangePicker extends React.Component<DateRangePickerProps, DateRangePickerStates> {
 
 	constructor(props:DateRangePickerProps) {
 		super(props);

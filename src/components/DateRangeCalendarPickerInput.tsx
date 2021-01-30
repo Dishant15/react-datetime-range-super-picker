@@ -10,7 +10,7 @@ import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 import styles from "../styles/rangepicker.css";
 
 
-const DateRangePickerInput = (props: DateRangePickerInputProps) => {
+const DateRangeCalendarPickerInput = (props: DateRangePickerInputProps) => {
 	const wrapperRef = useRef(null);
 
 	const [show_picker, setShow] = useState(false)
@@ -41,8 +41,7 @@ const DateRangePickerInput = (props: DateRangePickerInputProps) => {
 								onFromDateUpdate={props.onFromDateUpdate}
 								onToDateUpdate={props.onToDateUpdate}
 								onDone={() => setShow(false)} 
-								colors={colors}
-								showRangeTrace={false} />
+								colors={colors} />
 						</div>
 				</div>
 			}
@@ -50,10 +49,10 @@ const DateRangePickerInput = (props: DateRangePickerInputProps) => {
 	)
 }
 
-DateRangePickerInput.defaultProps = {
+DateRangeCalendarPickerInput.defaultProps = {
 	closeButtonText: 'Done',
 	isDisabled: false
 }
 
 
-export default DateRangePickerInput
+export default DateRangeCalendarPickerInput
