@@ -2,7 +2,7 @@ import { useState, useCallback } from "react"
 import { isEmpty } from "lodash";
 
 
-const generatePickerHtml = ({format, weekStartsOn, showRangeTrace = true,
+const generatePickerHtml = ({format, weekStartsOn,
 	theme, colors, closeButtonText, isInput, isDisabled}) => {
 		
 	const componentStr = isInput ? 'DateRangePickerInput' : 'DateRangePicker'
@@ -34,8 +34,6 @@ const generatePickerHtml = ({format, weekStartsOn, showRangeTrace = true,
 	if(!!isDisabled) {
 		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
-
-	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}` //eslint-disable-line
 
 	return `
 	import React, { useState } from 'react';

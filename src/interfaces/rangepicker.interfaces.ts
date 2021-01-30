@@ -72,7 +72,6 @@ export interface DateRangePickerProps {
 	colors: ComponentTheme,
 
 	closeButtonText?: String,
-	showRangeTrace: boolean,
 
 	// if input is DateTime output than make sure to reset time values
 	onFromDateUpdate : ({}:DateTimePickerOutPut | DatePickerOutPut) => void,
