@@ -29,7 +29,7 @@ const generatePickerHtml = ({format, timeFormat,
 	}
 
 	if(!!closeButtonText) {
-		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"`
+		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"` //eslint-disable-line
 	}
 
 	if(!!theme) {
@@ -41,10 +41,10 @@ const generatePickerHtml = ({format, timeFormat,
 	}
 
 	if(!!isDisabled && isInput) {
-		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
 
-	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}`
+	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}` //eslint-disable-line
 
 	return `
 	import React, { useState } from 'react';
