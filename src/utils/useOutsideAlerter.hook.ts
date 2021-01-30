@@ -1,17 +1,31 @@
 import React, { useEffect } from "react";
 
 
-export const useOutsideAlerter = (ref:React.RefObject<Element>, isOpen:Boolean, handleClose: Function) => {
+export const useOutsideAlerter = (
+    wrapperRef:React.RefObject<Element>, 
+    isOpen:Boolean, handlerShow: Function,
+    inputId:String,
+) => {
 
     useEffect(() => {
         /**
          * Alert if clicked on outside of element
          */
         const handleClickOutside = (event: any) => {
-            // check curr ref's child not contains clicked ref
-            // and picker is open 
-            if (ref.current && !ref.current.contains(event.target) && isOpen) {
-                handleClose()
+
+            if (wrapperRef.current) {
+                // check click outside of picker, and picker open
+                if(!wrapperRef.current.contains(event.target) && isOpen) {
+                    handlerShow(false)
+                    return
+                }
+            }
+            else {
+                // check input clicked, open picker
+                if(event.target.id === inputId) {
+                    handlerShow(true)
+                    return
+                }
             }
         }
 
@@ -22,5 +36,5 @@ export const useOutsideAlerter = (ref:React.RefObject<Element>, isOpen:Boolean, 
             // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref, isOpen]);
+    }, [wrapperRef, isOpen]);
 }
