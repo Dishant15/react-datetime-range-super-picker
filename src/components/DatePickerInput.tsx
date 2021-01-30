@@ -47,7 +47,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 			{(show_picker && !isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div className={styles.picker_model_inside} ref={wrapperRef}>
+						<div ref={wrapperRef} className={styles.picker_model_inside} >
 							<DatePicker date={props.date} format={props.format} 
 								weekStartsOn={props.weekStartsOn} colors={props.colors}
 								onDateUpdate={handleDateUpdate} onComplete={handleComplete} />

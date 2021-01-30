@@ -16,7 +16,7 @@ const DateRangePickerInput = (props:DateRangePickerInputProps) => {
 
 	const [show_picker, setShow] = useState(false)
 
-	useOutsideAlerter(wrapperRef, show_picker, () => setShow(false));
+	useOutsideAlerter(wrapperRef, show_picker, setShow, "super-date-range-picker-input");
 
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
@@ -25,16 +25,16 @@ const DateRangePickerInput = (props:DateRangePickerInputProps) => {
 	const {colors} = props
 	
 	return (
-		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={show_date} className={styles.picker_input} 
+		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
+			<input id="super-date-range-picker-input"
+				value={show_date} className={styles.picker_input} 
 				readOnly disabled={props.isDisabled}
-				style={{...props.inputStyle}}
-				onFocus={() => setShow(true)} />
+				style={{...props.inputStyle}} />
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div className={styles.picker_model_inside} >
+						<div ref={wrapperRef} className={styles.picker_model_inside}>
 							<DateRangePicker from_date={props.from_date} to_date={props.to_date}
 								format={props.format}
 								weekStartsOn={props.weekStartsOn}
