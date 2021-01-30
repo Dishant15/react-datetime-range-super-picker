@@ -21,7 +21,6 @@ export interface RangePickerProps {
 	colors: ComponentTheme,
 
 	closeButtonText?: String,
-	showRangeTrace: boolean,
 
 	onFromDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onFromTimeUpdate? : (time:OutputTime) => void,
@@ -36,11 +35,7 @@ export interface RangePickerProps {
 
 export interface RangePickerStates {
 	is_to_date: boolean,
-	// required only for DateRangePicker to show range trace on single calendar
-	// will not be there for RangePicker
-	traceStatus?: string,
 	advance_pill: string | null,
-	otherDateRangeIndex: number,
 }
 
 export interface OutPutRangePicker {

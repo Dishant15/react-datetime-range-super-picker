@@ -3,8 +3,8 @@ import { isEmpty } from "lodash";
 
 
 const generatePickerHtml = ({format, timeFormat, 
-	dateFormat, weekStartsOn, showRangeTrace = true,
-	isInput, theme, colors, closeButtonText, isDisabled}) => {
+	dateFormat, weekStartsOn, isInput, theme, 
+	colors, closeButtonText, isDisabled }) => {
 		
 	const componentStr = isInput ? 'DateTimePickerInput' : 'DateTimeRangePicker'
 
@@ -44,7 +44,6 @@ const generatePickerHtml = ({format, timeFormat,
 		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
 
-	propStr += `\n\t\t\t\t\showRangeTrace={${showRangeTrace}}` //eslint-disable-line
 
 	return `
 	import React, { useState } from 'react';
