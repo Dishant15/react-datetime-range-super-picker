@@ -41,3 +41,20 @@
 	height: 100vh;
 	overflow-y: scroll;
 }
+
+#layout-content .git-wrapper {
+	float: right;
+	padding: 6px 10px;
+	cursor: pointer;
+}
+
+#layout-content .git-wrapper svg,
+#layout-content .git-wrapper span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#layout-content .git-wrapper span {
+	padding: 0 4px;
+	color: black;
+}

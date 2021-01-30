@@ -22,7 +22,7 @@ const generatePickerHtml = ({format, isInput,
 	}
 
 	if(!!isDisabled && isInput) {
-		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
 
 	return `

@@ -26,11 +26,11 @@ const generatePickerHtml = ({format, timeFormat, dateFormat, weekStartsOn,
 	}
 
 	if(!!closeButtonText && isInput) {
-		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"`
+		propStr += `\n\t\t\t\t\closeButtonText="${closeButtonText}"` //eslint-disable-line
 	}
 
 	if(!!isDisabled && isInput) {
-		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
 
 	if(!!theme) {

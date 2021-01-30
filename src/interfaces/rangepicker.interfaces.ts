@@ -8,6 +8,7 @@ import { ComponentTheme } from './style.interfaces';
  * Date Time Range Picker Interfaces *
  *************************************/
 
+// use by :  RangePicker ( date time range picker )
 export interface RangePickerProps {
 	from_date : Date | DateObject | string,
 	to_date : Date | DateObject | string,
@@ -21,7 +22,6 @@ export interface RangePickerProps {
 	colors: ComponentTheme,
 
 	closeButtonText?: String,
-	showRangeTrace: boolean,
 
 	onFromDateTimeUpdate : ({}:DateTimePickerOutPut) => void,
 	onFromTimeUpdate? : (time:OutputTime) => void,
@@ -34,19 +34,7 @@ export interface RangePickerProps {
 	onDone? : () => void
 }
 
-export interface RangePickerStates {
-	is_to_date: boolean,
-	// required only for DateRangePicker to show range trace on single calendar
-	// will not be there for RangePicker
-	traceStatus?: string,
-	advance_pill: string | null,
-	otherDateRangeIndex: number,
-}
-
-export interface OutPutRangePicker {
-
-}
-
+// use by :  RangePickerInput
 export interface RangePickerInputProps extends RangePickerProps {
 	inputStyle? : React.CSSProperties,
 	popupStyle? : React.CSSProperties,
@@ -55,10 +43,26 @@ export interface RangePickerInputProps extends RangePickerProps {
 	isDisabled?: boolean
 }
 
+// use by :  RangePicker ( date time range picker )
+export interface RangePickerStates {
+	is_to_date: boolean,
+	advance_pill: string | null,
+}
+
+// use by : DateRangePicker
+export interface DateRangePickerStates {
+	is_to_date: boolean,
+	// show range trace on single calendar
+	traceStatus?: string,
+	advance_pill: string | null,
+	otherDateRangeIndex: number,
+}
+
 /********************************
  * Date Range Picker Interfaces *
  ********************************/
 
+// use by : DateRangeCalendarPicker, DateRangePicker
 export interface DateRangePickerProps {
 	/** default value : new Date() ; i.e. current time  */
 	from_date : Date | MainDate | string,
@@ -72,7 +76,6 @@ export interface DateRangePickerProps {
 	colors: ComponentTheme,
 
 	closeButtonText?: String,
-	showRangeTrace: boolean,
 
 	// if input is DateTime output than make sure to reset time values
 	onFromDateUpdate : ({}:DateTimePickerOutPut | DatePickerOutPut) => void,
@@ -81,6 +84,7 @@ export interface DateRangePickerProps {
 	onDone? : () => void
 }
 
+// use by : DateRangePickerInput, DateRangeCalendarPickerInput
 export interface DateRangePickerInputProps extends DateRangePickerProps {
 	inputStyle? : React.CSSProperties,
 	popupStyle? : React.CSSProperties,
@@ -89,7 +93,8 @@ export interface DateRangePickerInputProps extends DateRangePickerProps {
 	isDisabled?: boolean
 }
 
-export interface DateRangePickerStates {
+// use by : DateRangeCalendarPicker
+export interface DateRangeCalendarPickerStates {
 	is_to_date: boolean,
 	advance_pill: string | null,
 }

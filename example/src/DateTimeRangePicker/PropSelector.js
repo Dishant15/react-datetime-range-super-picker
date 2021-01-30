@@ -8,10 +8,9 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 	const [weekStartsOn, setWeekStartsOn] = useState(pickerProps.weekStartsOn || undefined)
 	const [closeButtonText, setCloseBtnText] = useState(pickerProps.closeButtonText || undefined)
 	const [isDisabled, setIsDisabled] = useState(false)
-	const [showRangeTrace, setShowRangeTrace] = useState(true)
 
 	const handleSubmit = () => {
-		handlePropsUpdate({...pickerProps, isDisabled, showRangeTrace,
+		handlePropsUpdate({...pickerProps, isDisabled,
 			format, timeFormat, dateFormat, closeButtonText,
 			weekStartsOn: !!Number(weekStartsOn) ? Number(weekStartsOn) : undefined
 		})
@@ -20,11 +19,6 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 	const handleCheckbox = (e) => {
 		if(e) e.preventDefault();
 		setIsDisabled(!isDisabled)
-	}
-
-	const handleTraceChange = (e) => {
-		if (e) e.preventDefault();
-		setShowRangeTrace(!showRangeTrace)
 	}
 
 	return (
@@ -79,15 +73,6 @@ export default ({pickerProps, handlePropsUpdate, isInput}) => {
 							</div>
 						</div>
 					}
-					<div className='disabled-wrapper'>
-						<div className="switch" onClick={handleTraceChange}>
-							<label>
-								<input type="checkbox" checked={showRangeTrace} readOnly />
-								<span className="lever"></span>
-									showRangeTrace
-								</label>
-						</div>
-					</div>
 
 				</div>
 			</div>

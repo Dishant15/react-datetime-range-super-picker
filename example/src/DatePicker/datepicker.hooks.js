@@ -26,7 +26,7 @@ const generatePickerHtml = ({format, weekStartsOn, isInput,
 	}
 
 	if(!!isDisabled && isInput) {
-		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}`
+		propStr += `\n\t\t\t\t\isDisabled={${isDisabled}}` //eslint-disable-line
 	}
 
 	return `
