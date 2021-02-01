@@ -4,8 +4,8 @@ import { startOfWeek, endOfWeek, subWeeks,
 } from "date-fns";
 
 import DatePicker from './DatePicker'
-import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
-import { createRangeIndex } from '../utils/datepicker.utils';
+import { getInputDate } from '../utils/datetimepicker.utils';
+import { createRangeIndex, generateDatePickerOutput } from '../utils/datepicker.utils';
 
 import { DateRangePickerProps, DateRangePickerStates } from '../interfaces/rangepicker.interfaces'
 import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
@@ -135,8 +135,10 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'lm', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			date_obj.day, date_obj.month, date_obj.year, format))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format))
 	}
 
 	handleThisMonth = () => {
@@ -151,8 +153,10 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'tm', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			date_obj.day, date_obj.month, date_obj.year, format))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format))
 	}
 
 	handleThisWeek = () => {
@@ -168,8 +172,10 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'tw', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			date_obj.day, date_obj.month, date_obj.year, format))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format))
 	}
 
 	handleLastWeek = () => {
@@ -187,7 +193,9 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		const otherDateRangeIndex = createRangeIndex(date_obj.day, date_obj.month, date_obj.year)
 		this.setState({advance_pill: 'lw', is_to_date: true, otherDateRangeIndex, traceStatus: 'A'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			date_obj.day, date_obj.month, date_obj.year, format))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format))
 	}
 }
