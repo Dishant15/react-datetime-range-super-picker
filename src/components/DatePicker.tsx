@@ -48,8 +48,9 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 		if(onDateUpdate) onDateUpdate(
 			generateDatePickerOutput(day, 
-				updated_date.month, updated_date.year, format))
-		
+				updated_date.month, updated_date.year, format), false)
+		// is_date_update is false because this will not update To / from state selection
+		// mainly used for date range picker
 	}
 
 	handleDateUpdate = (rangeIndex:number) => {

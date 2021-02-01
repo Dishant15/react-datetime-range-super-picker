@@ -43,21 +43,25 @@ export default class DateRangePicker extends React.Component<DateRangePickerProp
 		closeButtonText: 'Close'
 	}
 
-	handleToDateUpdate = (date_time:DatePickerOutPut) => {
+	handleToDateUpdate = (date_time:DatePickerOutPut, is_date_update=true) => {
 		const {onToDateUpdate} = this.props
 
-		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
-		this.setState({advance_pill : null, is_to_date: false, otherDateRangeIndex,
-			traceStatus:'A'})
+		if(is_date_update) {
+			const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
+			this.setState({advance_pill : null, is_to_date: false, otherDateRangeIndex,
+				traceStatus:'A'})
+		}
 		onToDateUpdate(date_time)
 	}
 
-	handleFromDateUpdate = (date_time:DatePickerOutPut) => {
+	handleFromDateUpdate = (date_time:DatePickerOutPut, is_date_update=true) => {
 		const {onFromDateUpdate} = this.props
 
-		const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
-		this.setState({advance_pill : null, is_to_date: true, otherDateRangeIndex, 
-			traceStatus:'T'})
+		if(is_date_update) {
+			const otherDateRangeIndex = createRangeIndex(date_time.day, date_time.month, date_time.year)
+			this.setState({advance_pill : null, is_to_date: true, otherDateRangeIndex, 
+				traceStatus:'T'})
+		}
 		onFromDateUpdate(date_time)
 	}
 

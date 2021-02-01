@@ -26,7 +26,7 @@ export interface DatePickerProps {
 	/** default value : 'dd/MM/YYY' */
 	format : string,
 	colors: ComponentTheme,
-	onDateUpdate : ({}:DatePickerOutPut) => void,
+	onDateUpdate : ({}:DatePickerOutPut, is_date_update?:boolean) => void,
 	onComplete? : () => void,
 	// internal props
 	/** created with func datepicker.utils => createRangeIndex */
