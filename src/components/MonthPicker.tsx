@@ -31,23 +31,23 @@ export default ({time=new Date(), colors, onDateUpdate}:MonthPickerProps) => {
 		if(onDateUpdate) onDateUpdate(new_time);
 	}, [])
 
-	// change direction : 1 : increment , 0 : decrement
+	// change direction : 1 : prev , 0 : next
 	const handleMonthPosChange = useCallback((change_dir:number) => {
 		if(change_dir) {
-			const next_pos = m_pos + pos_change_delta
-			// can not go left after Jan
-			if(next_pos < 3) setMPos(next_pos)
+			// prev month is dec of last year
+			if(month === 0) handleTimeChange({month: 11, year: year - 1})
+			else if(month > 0) handleTimeChange({month : month - 1, year})
 		} else {
-			const next_pos = m_pos - pos_change_delta
-			// can not go right after Dec
-			if(next_pos > -42) setMPos(next_pos)
+			// next month is jan of next year
+			if(month === 11) handleTimeChange({month: 0, year: year + 1})
+			else if(month < 11) handleTimeChange({month : month + 1, year})
 		}
-	}, [m_pos])
+	}, [month, year])
 
 	const handleYearChange = useCallback((e) => {
-		let new_year = Number(e.target.value)
+		const new_year = Number(e.target.value)
 		// validate year is a number
-		if(!isNaN(new_year) && new_year < 9999) setYear(Number(e.target.value))
+		if(!isNaN(new_year) && new_year < 9999) setYear(new_year)
 	}, [])
 
 	const month_list = range(0, 12)
