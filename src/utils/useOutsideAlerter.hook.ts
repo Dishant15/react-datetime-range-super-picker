@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 export const useOutsideAlerter = (
     wrapperRef:React.RefObject<Element>, 
     isOpen:Boolean, handlerShow: Function,
-    inputId:String,
 ) => {
 
     useEffect(() => {
@@ -17,13 +16,6 @@ export const useOutsideAlerter = (
                 // check click outside of picker, and picker open
                 if(!wrapperRef.current.contains(event.target) && isOpen) {
                     handlerShow(false)
-                    return
-                }
-            }
-            else {
-                // check input clicked, open picker
-                if(event.target.id === inputId) {
-                    handlerShow(true)
                     return
                 }
             }

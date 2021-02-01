@@ -36,13 +36,14 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 		if(props.onComplete) props.onComplete()
 	}
 
-	useOutsideAlerter(wrapperRef, show_picker, setShow, 'super-date-picker-input');
+	useOutsideAlerter(wrapperRef, show_picker, setShow);
 	
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input id="super-date-picker-input" value={show_date} className={styles.picker_input} 
+			<input value={show_date} className={styles.picker_input} 
 				readOnly disabled={isDisabled}
-				style={{...props.inputStyle}} />
+				style={{...props.inputStyle}} 
+				onFocus={() => setShow(true)} />
 
 			{(show_picker && !isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
