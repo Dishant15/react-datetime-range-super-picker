@@ -15,7 +15,7 @@ const DateRangeCalendarPickerInput = (props: DateRangePickerInputProps) => {
 
 	const [show_picker, setShow] = useState(false)
 
-	useOutsideAlerter(wrapperRef, show_picker, setShow, 'super-date-range-calendar-picker-input');
+	useOutsideAlerter(wrapperRef, show_picker, setShow);
 
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format || dateDefaultConfigs.format)
@@ -25,10 +25,10 @@ const DateRangeCalendarPickerInput = (props: DateRangePickerInputProps) => {
 
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input id="super-date-range-calendar-picker-input" 
-				value={show_date} className={styles.picker_input} 
+			<input value={show_date} className={styles.picker_input} 
 				readOnly disabled={props.isDisabled}
-				style={{...props.inputStyle}} />
+				style={{...props.inputStyle}}
+				onFocus={() => setShow(true)}/>
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
