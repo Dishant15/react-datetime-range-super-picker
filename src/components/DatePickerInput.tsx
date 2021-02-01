@@ -39,7 +39,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 	useOutsideAlerter(wrapperRef, show_picker, setShow);
 	
 	return (
-		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
+		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={show_date} className={styles.picker_input} 
 				readOnly disabled={isDisabled}
 				style={{...props.inputStyle}} 
@@ -48,7 +48,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 			{(show_picker && !isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div ref={wrapperRef} className={styles.picker_model_inside} >
+						<div className={styles.picker_model_inside} >
 							<DatePicker date={props.date} format={props.format} 
 								weekStartsOn={props.weekStartsOn} colors={props.colors}
 								onDateUpdate={handleDateUpdate} onComplete={handleComplete} />
