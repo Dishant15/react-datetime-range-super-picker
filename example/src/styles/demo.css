@@ -6,6 +6,10 @@
 	border-bottom: 2px solid black;
 }
 
+.heading.font-small {
+	font-size: 4em;
+}
+
 .picker-wrapper {
 	text-align: center;
 	padding: 30px;

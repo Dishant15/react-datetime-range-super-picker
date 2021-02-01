@@ -30,7 +30,6 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 		timeFormat: timeDefaultConfigs.format,
 		dateFormat: dateDefaultConfigs.format,
 		weekStartsOn : dateDefaultConfigs.weekStartsOn,
-		showRangeTrace: false, otherDateRangeIndex: 0,
 	}
 
 	static getDerivedStateFromProps(props:DateTimePickerProps) {
@@ -61,8 +60,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 	render = () => {
 		const curr_date = this.state
-		const {dateFormat, weekStartsOn, timeFormat, colors,
-			showRangeTrace, otherDateRangeIndex} = this.props
+		const {dateFormat, weekStartsOn, timeFormat, colors } = this.props
 
 		return (
 			<React.Fragment>
@@ -77,7 +75,7 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 						format={dateFormat}
 						weekStartsOn={weekStartsOn}
 						onDateUpdate={this.handleDateUpdate} 
-						showRangeTrace={showRangeTrace} otherDateRangeIndex={otherDateRangeIndex}
+						showRangeTrace={false} otherDateRangeIndex={0}
 					/>
 				</div>
 

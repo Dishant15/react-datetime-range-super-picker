@@ -63,7 +63,7 @@ export default () => {
 
 	return (
 		<div className="timepicker-wrapper">
-			<div className='heading'>Date Time Range Picker</div>
+			<div className='heading font-small'>Date Time Range Picker</div>
 		
 			<div className='row'>
 				

@@ -4,7 +4,7 @@ import { startOfWeek, endOfWeek, subWeeks,
 } from "date-fns";
 
 import DatePicker from './DatePicker'
-import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils';
+import { generateDatePickerOutput } from '../utils/datepicker.utils';
 
 import { DateRangePickerProps, DateRangeCalendarPickerStates } from '../interfaces/rangepicker.interfaces'
 import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
@@ -124,8 +124,12 @@ export default class DateRangeCalendarPicker extends React.Component<DateRangePi
 		let to_ts = endOfMonth(lastMonth)
 		this.setState({advance_pill: 'lm'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			from_ts.getDate(), from_ts.getMonth(), from_ts.getFullYear(), format
+		))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format
+		))
 	}
 
 	handleThisMonth = () => {
@@ -137,8 +141,12 @@ export default class DateRangeCalendarPicker extends React.Component<DateRangePi
 		const to_ts = endOfMonth(now)
 		this.setState({advance_pill: 'tm'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			from_ts.getDate(), from_ts.getMonth(), from_ts.getFullYear(), format
+		))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format
+		))
 	}
 
 	handleThisWeek = () => {
@@ -151,8 +159,12 @@ export default class DateRangeCalendarPicker extends React.Component<DateRangePi
 		const to_ts = endOfWeek(now, {weekStartsOn})
 		this.setState({advance_pill: 'tw'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			from_ts.getDate(), from_ts.getMonth(), from_ts.getFullYear(), format
+		))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format
+		))
 	}
 
 	handleLastWeek = () => {
@@ -167,7 +179,11 @@ export default class DateRangeCalendarPicker extends React.Component<DateRangePi
 		to_ts = subWeeks(to_ts, 1)
 		this.setState({advance_pill: 'lw'})
 		// call related handlers
-		onFromDateUpdate(generateOutPut(getInputDate(from_ts), format))
-		onToDateUpdate(generateOutPut(getInputDate(to_ts), format))
+		onFromDateUpdate(generateDatePickerOutput(
+			from_ts.getDate(), from_ts.getMonth(), from_ts.getFullYear(), format
+		))
+		onToDateUpdate(generateDatePickerOutput(
+			to_ts.getDate(), to_ts.getMonth(), to_ts.getFullYear(), format
+		))
 	}
 }

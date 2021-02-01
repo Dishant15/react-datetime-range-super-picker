@@ -64,8 +64,6 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 							onDateUpdate={props.onDateUpdate} 
 							onTimeUpdate={props.onTimeUpdate}
 							onDateTimeUpdate={handleDateUpdate}
-							showRangeTrace={props.showRangeTrace} 
-							otherDateRangeIndex={props.otherDateRangeIndex}
 						/>
 					</div>
 
