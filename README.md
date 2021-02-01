@@ -202,7 +202,7 @@ const DateRangeCalendarPickerWrapper = () => {
 | from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
 | format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| closeButtonText (Optional) | String | Default value: Close |
+| closeButtonText (Optional) | String | Default value: "Close" |
 | onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
 | onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
 
@@ -246,7 +246,7 @@ const DateRangePickerWrapper = () => {
 | from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
 | format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| showRangeTrace | Boolean | Default value: true |
+| closeButtonText (Optional) | String | Default value: "Close" |
 | onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
 | onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
 
@@ -292,7 +292,7 @@ const DateTimeRangePickerWrapper = () => {
 | timeFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | dateFormat | String | More format supported [date-fns](https://date-fns.org/v2.14.0/docs/format)|
 | weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| closeButtonText (Optional) | String | Default value: Close |
+| closeButtonText (Optional) | String | Default value: "Close" |
 | onFromDateTimeUpdate,<br/>onToDateTimeUpdate | Function | Every time user changes **date** or **time** this handler will be called<br> Arguments for the handlers : { date: { day, month, year, hour , hour24, minute, meridiem }, formatted } |
 | onFromDateUpdate,<br/>onToDateUpdate<br/>(optional) | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
 | onFromTimeUpdate,<br/>onToTimeUpdate<br/>(optional) | Function | Every time user changes **time** this handler will be called.<br>Arguments for the handlers : { time: { hour, hour24, minute, meridiem }, formatted } |
