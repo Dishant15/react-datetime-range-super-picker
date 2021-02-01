@@ -41,14 +41,14 @@ const TimePickerInput = (props:TimePickerInputProps) => {
 		if(props.onDone) props.onDone()
 	}
 
-	useOutsideAlerter(wrapperRef, show_picker, setShow, "super-time-picker-input");
+	useOutsideAlerter(wrapperRef, show_picker, setShow);
 
 	return (
 		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input id="super-time-picker-input"
-				value={showTime} className={styles.picker_input} 
+			<input value={showTime} className={styles.picker_input} 
 				readOnly disabled={props.isDisabled}
-				style={{...props.inputStyle}} />
+				style={{...props.inputStyle}}
+				onFocus={() => setShow(true)} />
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[styles.picker_model, props.popupClassName].join(' ')}
