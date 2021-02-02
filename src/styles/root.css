@@ -16,3 +16,20 @@
 	color: #6c6b6b;
 }
 
+.picker_model {
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	-webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0)
+}
+
+.picker_model_inside {
+	margin: 0 auto;
+	display: inline-block;
+	margin-top: 1px;
+	box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
+	-webkit-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
+	-moz-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
+}
