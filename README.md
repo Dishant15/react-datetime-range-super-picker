@@ -38,9 +38,9 @@ yarn add react-datetime-range-super-picker
   - [DatePicker](#DatePicker)
   - [DateTimePicker](#DateTimePicker)
   - [DateRangeCalendarPicker](#DateRangeCalendarPicker)
-  - [DateRangePicker](#DateRangePicker)
   - [DateTimeRangePicker](#DateTimeRangePicker)
   - [MonthPicker](#MonthPicker)
+  - [DateRangePicker - Beta](#DateRangePicker)
 - [Input Components](#InputComponents)
 - [Styling](#Styling)
 - [Future Updates](#FutureUpdates)
@@ -209,50 +209,6 @@ const DateRangeCalendarPickerWrapper = () => {
 Supports Input component : DateRangeCalendarPickerInput . [Checkout further details](#InputComponents)
 
 
-## DateRangePicker (Beta)
-
-```tsx
-import React, {useState} from 'react'
-
-import { DateRangePicker } from 'react-datetime-range-super-picker'
-import 'react-datetime-range-super-picker/dist/index.css'
-
-
-const DateRangePickerWrapper = () => {
-
-  const [from_date, setFromDate] = useState(new Date())
-  const [to_date, setToDate] = useState(new Date())
-  // OR use JSON object with : day, month, year
-
-  const handleFromDateUpdate = ({date}) => {
-    setFromDate(date.date)
-  }
-  const handleToDateUpdate = ({date}) => {
-    setToDate(date.date)
-  }
-  
-  return (
-    <DateRangePicker from_date={from_date} to_date={to_date}
-      onFromDateUpdate={handleFromDateUpdate} 
-      onToDateUpdate={handleToDateUpdate} />
-  )
-}
-```
-
-**Available Props:**
-
-| **Props** | **Type** | **Description** |
-| :--- |:---:| :--- |
-| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
-| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| closeButtonText (Optional) | String | Default value: "Close" |
-| onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
-| onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
-
-Supports Input component : DateRangePickerInput . [Checkout further details](#InputComponents)
-
-
 ## DateTimeRangePicker
 
 ```tsx
@@ -340,6 +296,50 @@ const MonthPickerWrapper = () => {
 | :--- | :---:| :--- |
 | time | Date OR Object | Example <br><ul><li>new Date()</li><li>{ month : number, year : number }</li></ul> |
 | onDateUpdate | Function | Returns <br>{ month, year } |
+
+
+## DateRangePicker (Beta)
+
+```tsx
+import React, {useState} from 'react'
+
+import { DateRangePicker } from 'react-datetime-range-super-picker'
+import 'react-datetime-range-super-picker/dist/index.css'
+
+
+const DateRangePickerWrapper = () => {
+
+  const [from_date, setFromDate] = useState(new Date())
+  const [to_date, setToDate] = useState(new Date())
+  // OR use JSON object with : day, month, year
+
+  const handleFromDateUpdate = ({date}) => {
+    setFromDate(date.date)
+  }
+  const handleToDateUpdate = ({date}) => {
+    setToDate(date.date)
+  }
+  
+  return (
+    <DateRangePicker from_date={from_date} to_date={to_date}
+      onFromDateUpdate={handleFromDateUpdate} 
+      onToDateUpdate={handleToDateUpdate} />
+  )
+}
+```
+
+**Available Props:**
+
+| **Props** | **Type** | **Description** |
+| :--- |:---:| :--- |
+| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
+| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
+| closeButtonText (Optional) | String | Default value: "Close" |
+| onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
+| onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
+
+Supports Input component : DateRangePickerInput . [Checkout further details](#InputComponents)
 
 
 ## InputComponents
