@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 
 
-export const useOutsideAlerter = (
-    wrapperRef:React.RefObject<Element>, 
-    isOpen:Boolean, handlerShow: Function,
-) => {
+export const useOutsideAlerter = (wrapperRef:React.RefObject<Element>, handlerShow: Function) => {
 
     useEffect(() => {
         /**
@@ -14,7 +11,7 @@ export const useOutsideAlerter = (
 
             if (wrapperRef.current) {
                 // check click outside of picker, and picker open
-                if(!wrapperRef.current.contains(event.target) && isOpen) {
+                if(!wrapperRef.current.contains(event.target)) {
                     handlerShow(false)
                     return
                 }
@@ -28,5 +25,5 @@ export const useOutsideAlerter = (
             // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [wrapperRef, isOpen]);
+    }, [wrapperRef]);
 }
