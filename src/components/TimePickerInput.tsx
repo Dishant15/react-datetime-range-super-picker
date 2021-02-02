@@ -8,6 +8,7 @@ import { TimePickerInputProps, OutputTime, defaultConfigs } from '../interfaces/
 import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 
 import styles from '../styles/timepicker.css'
+import rootstyles from "../styles/root.css";
 
 
 const TimePickerInput = (props:TimePickerInputProps) => {
@@ -41,19 +42,19 @@ const TimePickerInput = (props:TimePickerInputProps) => {
 		if(props.onDone) props.onDone()
 	}
 
-	useOutsideAlerter(wrapperRef, show_picker, setShow);
+	useOutsideAlerter(wrapperRef, setShow);
 
 	return (
-		<div className={[styles.picker_input_wrapper, props.className].join(' ')} >
+		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
 			<input value={showTime} className={styles.picker_input} 
 				readOnly disabled={props.isDisabled}
 				style={{...props.inputStyle}}
 				onFocus={() => setShow(true)} />
 
 			{(show_picker && !props.isDisabled) &&
-				<div className={[styles.picker_model, props.popupClassName].join(' ')}
+				<div className={[rootstyles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div ref={wrapperRef} className={styles.picker_model_inside} >
+						<div className={rootstyles.picker_model_inside} >
 							<TimePicker time={props.time} format={props.format} 
 								colors={props.colors}
 								onTimeUpdate={handleTimeUpdate} onDone={handleComplete} />

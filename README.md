@@ -6,7 +6,7 @@
 
 ###### There are lot of Date Range pickers but most of them do not handle _Date-TIME_ Range picking
 
-Amazing demo just for you ---> [Checkout Demo](https://dishant15.github.io/react-datetime-range-super-picker/)
+Amazing demo just for you ---> <a href="https://dishant15.github.io/react-datetime-range-super-picker" target="_blank">Checkout Demo</a>
 
 [![NPM](https://img.shields.io/npm/v/react-datetime-range-super-picker.svg)](https://www.npmjs.com/package/react-datetime-range-super-picker) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -27,7 +27,7 @@ yarn add react-datetime-range-super-picker
 ## Preview
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/20855294/101040877-43004f80-35a2-11eb-8355-01347c0af7f7.gif" width="700" />
+  <img src="https://user-images.githubusercontent.com/20855294/106562812-e0e7aa80-6550-11eb-831b-17a50939d742.gif" width="700" />
 </p>
 <br />
 
@@ -38,9 +38,9 @@ yarn add react-datetime-range-super-picker
   - [DatePicker](#DatePicker)
   - [DateTimePicker](#DateTimePicker)
   - [DateRangeCalendarPicker](#DateRangeCalendarPicker)
-  - [DateRangePicker](#DateRangePicker)
   - [DateTimeRangePicker](#DateTimeRangePicker)
   - [MonthPicker](#MonthPicker)
+  - [DateRangePicker - Beta](#DateRangePicker)
 - [Input Components](#InputComponents)
 - [Styling](#Styling)
 - [Future Updates](#FutureUpdates)
@@ -209,50 +209,6 @@ const DateRangeCalendarPickerWrapper = () => {
 Supports Input component : DateRangeCalendarPickerInput . [Checkout further details](#InputComponents)
 
 
-## DateRangePicker (Beta)
-
-```tsx
-import React, {useState} from 'react'
-
-import { DateRangePicker } from 'react-datetime-range-super-picker'
-import 'react-datetime-range-super-picker/dist/index.css'
-
-
-const DateRangePickerWrapper = () => {
-
-  const [from_date, setFromDate] = useState(new Date())
-  const [to_date, setToDate] = useState(new Date())
-  // OR use JSON object with : day, month, year
-
-  const handleFromDateUpdate = ({date}) => {
-    setFromDate(date.date)
-  }
-  const handleToDateUpdate = ({date}) => {
-    setToDate(date.date)
-  }
-  
-  return (
-    <DateRangePicker from_date={from_date} to_date={to_date}
-      onFromDateUpdate={handleFromDateUpdate} 
-      onToDateUpdate={handleToDateUpdate} />
-  )
-}
-```
-
-**Available Props:**
-
-| **Props** | **Type** | **Description** |
-| :--- |:---:| :--- |
-| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
-| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
-| weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
-| closeButtonText (Optional) | String | Default value: "Close" |
-| onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
-| onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
-
-Supports Input component : DateRangePickerInput . [Checkout further details](#InputComponents)
-
-
 ## DateTimeRangePicker
 
 ```tsx
@@ -303,10 +259,6 @@ Supports Input component : DateTimeRangePickerInput . [Checkout further details]
 
 ## MonthPicker
 
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/20855294/89802128-ad523780-db4e-11ea-864c-19b86c6d0424.gif" width="400" />
-</p>
-
 ###### Bonus Month picker! Useful when you want to pick just month and year in a cool way.
 
 ```tsx
@@ -340,6 +292,50 @@ const MonthPickerWrapper = () => {
 | :--- | :---:| :--- |
 | time | Date OR Object | Example <br><ul><li>new Date()</li><li>{ month : number, year : number }</li></ul> |
 | onDateUpdate | Function | Returns <br>{ month, year } |
+
+
+## DateRangePicker (Beta)
+
+```tsx
+import React, {useState} from 'react'
+
+import { DateRangePicker } from 'react-datetime-range-super-picker'
+import 'react-datetime-range-super-picker/dist/index.css'
+
+
+const DateRangePickerWrapper = () => {
+
+  const [from_date, setFromDate] = useState(new Date())
+  const [to_date, setToDate] = useState(new Date())
+  // OR use JSON object with : day, month, year
+
+  const handleFromDateUpdate = ({date}) => {
+    setFromDate(date.date)
+  }
+  const handleToDateUpdate = ({date}) => {
+    setToDate(date.date)
+  }
+  
+  return (
+    <DateRangePicker from_date={from_date} to_date={to_date}
+      onFromDateUpdate={handleFromDateUpdate} 
+      onToDateUpdate={handleToDateUpdate} />
+  )
+}
+```
+
+**Available Props:**
+
+| **Props** | **Type** | **Description** |
+| :--- |:---:| :--- |
+| from_date,<br/>to_date | <ul><li>Date Object</li><li>Json Object</li><li>String</li></ul> | Different types of input this prop can handle : <br><ul><li>JS Date object : new Date()</li><li>Json Object :{ day, month, year };</li><li>String : "1st january 2020"; string format needs to be same as format prop</li></ul>|
+| format | String | Default value : "do MMMM yyyy"<br> checkout all supported formats at [date-fns](https://date-fns.org/v2.14.0/docs/format)|
+| weekStartsOn | Number | Default value: 0 (Sunday)<br> 0 = sunday -> 6 = saturday<br>Updates calender date ordering |
+| closeButtonText (Optional) | String | Default value: "Close" |
+| onFromDateUpdate,<br/>onToDateUpdate | Function | Every time user changes **date** this handler will be called.<br>Arguments for the handlers : { day, month, year, date, formatted } |
+| onDone (optional) | Function | If this function is passed as a prop, picker will show a done/close button and call this handler when user clicks it. Can be used to easily handle picker hide state. |
+
+Supports Input component : DateRangePickerInput . [Checkout further details](#InputComponents)
 
 
 ## InputComponents
@@ -412,14 +408,14 @@ There are 3 easy ways to customise color scheme to suit your requirements:
 
 1. Light (Default)
 <p float="left">
-<img width="828" alt="Screenshot 2020-12-03 at 8 05 35 PM" src="https://user-images.githubusercontent.com/20855294/101042274-04b76000-35a3-11eb-9e9d-df8e69cc71c9.png"></p>
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 35 PM" src="https://user-images.githubusercontent.com/20855294/106562810-e04f1400-6550-11eb-968a-1c36b6925fc4.png"></p>
 2. Dark
 <p float="left">
-<img width="828" alt="Screenshot 2020-12-03 at 8 05 45 PM" src="https://user-images.githubusercontent.com/20855294/101042289-097c1400-35a3-11eb-8a33-51cce5930e9d.png">
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 45 PM" src="https://user-images.githubusercontent.com/20855294/106562799-dc22f680-6550-11eb-8b11-6d7658a873bc.png">
 </p>
 3. Colorful
 <p float="left">
-<img width="828" alt="Screenshot 2020-12-03 at 8 05 53 PM" src="https://user-images.githubusercontent.com/20855294/101042287-08e37d80-35a3-11eb-9777-f66d6e3391a0.png">
+<img width="828" alt="Screenshot 2020-12-03 at 8 05 53 PM" src="https://user-images.githubusercontent.com/20855294/106562804-df1de700-6550-11eb-8796-253cccaf0c4f.png">
 </p>
 
 ## FutureUpdates

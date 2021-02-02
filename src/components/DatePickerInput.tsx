@@ -8,6 +8,7 @@ import { DatePickerInputProps, DatePickerOutPut } from "../interfaces/datepicker
 import { useOutsideAlerter } from '../utils/useOutsideAlerter.hook'
 
 import styles from '../styles/datepicker.css'
+import rootstyles from "../styles/root.css";
 
 
 const DatePickerInput = (props:DatePickerInputProps) => {
@@ -36,7 +37,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 		if(props.onComplete) props.onComplete()
 	}
 
-	useOutsideAlerter(wrapperRef, show_picker, setShow);
+	useOutsideAlerter(wrapperRef, setShow);
 	
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
@@ -46,9 +47,9 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 				onFocus={() => setShow(true)} />
 
 			{(show_picker && !isDisabled) &&
-				<div className={[styles.picker_model, props.popupClassName].join(' ')}
+				<div className={[rootstyles.picker_model, props.popupClassName].join(' ')}
 					style={props.popupStyle} >
-						<div className={styles.picker_model_inside} >
+						<div className={rootstyles.picker_model_inside} >
 							<DatePicker date={props.date} format={props.format} 
 								weekStartsOn={props.weekStartsOn} colors={props.colors}
 								onDateUpdate={handleDateUpdate} onComplete={handleComplete} />

@@ -126,22 +126,6 @@
 	min-width: 30em;
 }
 
-.picker_model {
-	position: absolute;
-	left: 0;
-	right: 0;
-	z-index: 2;
-}
-
-.picker_model_inside {
-	margin: 0 auto;
-	display: inline-block;
-	margin-top: 1px;
-	box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
-	-webkit-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
-	-moz-box-shadow: -4px 4px 44px -4px rgba(0,0,0,0.24);
-}
-
 /**
 Date range picker style
 **/
