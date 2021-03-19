@@ -1,6 +1,6 @@
 {
   "name": "react-datetime-range-super-picker",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "description": "React date, time, date range, calender, clock i.e. all in one picker",
   "author": "Dishant15",
   "license": "MIT",
@@ -24,7 +24,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "lodash": "4.17.19",
+    "date-fns": "^2.14.0",
+    "lodash": "^4.17.19",
     "react": "^16.0.0"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
+    "date-fns": "^2.14.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -56,8 +58,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "date-fns": "^2.14.0"
-  }
+  ]
 }
