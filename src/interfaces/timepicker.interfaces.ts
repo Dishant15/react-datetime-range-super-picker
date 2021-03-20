@@ -30,6 +30,7 @@ export interface TimePickerProps {
 export interface MainTime {
 	hour : number, // 12 hours format
 	minute : number,
+	// AM | PM
 	meridiem : string
 }
 

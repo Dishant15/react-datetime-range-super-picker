@@ -1,4 +1,4 @@
-import { isObject, isString, isUndefined, trim } from "lodash";
+import { isObject, isString, isUndefined, trim, upperCase } from "lodash";
 import { format } from "date-fns";
 
 
@@ -37,7 +37,15 @@ export const createInputTime = (input_time : TimePickerProps["time"]):MainTime =
 
 			res_hour = Number(hour) === 0 ? 12 : Number(hour)
 			res_minute = Number(minute)
-			res_meridiem = meridiem ? meridiem : res_meridiem
+			if(!!meridiem) {
+				// meridiem can be a.m. | AM | am | a; result must be AM / PM
+				// remove all space and '.'
+				res_meridiem = meridiem.replace(/[^a-zA-Z]/g, "")
+				// all to capital , A | AM
+				res_meridiem = upperCase(res_meridiem)
+				// handle single A case
+				res_meridiem = res_meridiem.includes("A") ? "AM" : "PM"
+			}
 		}
 		else {
 			// 24 hrs format

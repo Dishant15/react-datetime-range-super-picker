@@ -30,16 +30,20 @@ export default () => {
 
 	const [hour, setHour] = useState(22)
 	const [minute, setMin] = useState(30)
+	// const [timeStr, setTimeStr] = useState('08:30 pm')
 	const [isCopy, setCopy] = useState(false)
 
 
-	const handleTimeUpdate = ({time}) => {
+	const handleTimeUpdate = ({time, formatted}) => {
 		setHour(time.hour24)
 		setMin(time.minute)
+		// setTimeStr(formatted)
 	}
 
 	const TProps = {...pickerProps, 
-		time: {hour24 : hour, minute }, onTimeUpdate: handleTimeUpdate
+		// time: timeStr,
+		time: {hour24 : hour, minute }, 
+		onTimeUpdate: handleTimeUpdate
 	}
 
 	const handleInputToggle = (e) => {
