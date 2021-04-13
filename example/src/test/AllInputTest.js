@@ -116,6 +116,9 @@ const DateTimeRangePickerComponent = () => {
 
     return (
         <DateTimeRangePickerInput from_date={from_date} to_date={to_date}
+            renderInput={(props) => {
+                return <input {...props}/>
+            }}
             onFromDateTimeUpdate={handleFromDateUpdate} 
             onToDateTimeUpdate={handleToDateUpdate} />
     )
@@ -126,7 +129,7 @@ export default class AllInputTest extends Component {
         return (
             <div className="container">
 
-                <div className="row">
+                {/* <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
                         <TimePickerComponent />
@@ -141,9 +144,9 @@ export default class AllInputTest extends Component {
                     </div>
                 </div>
 
-                <br /><hr /><br />
+                <br /><hr /><br /> */}
 
-                <div className="row">
+                {/* <div className="row">
                     <div className="col s6">
                         <h6>Date Time picker</h6>
                         <DateTimePickerComponent />
@@ -154,8 +157,8 @@ export default class AllInputTest extends Component {
                     </div>
                 </div>
 
-                <br /><hr /><br />
-
+                <br /><hr /><br /> */}
+{/* 
                 <div className="row">
                     <div className="col s12" style={{ height: '30em'}}>
                         <h6>Date Range Calendar picker</h6>
@@ -163,7 +166,7 @@ export default class AllInputTest extends Component {
                     </div>
                 </div>
 
-                <br /><hr /><br />
+                <br /><hr /><br /> */}
 
                 <div className="row">
                     <div className="col s12" style={{ height: '30em'}}>
