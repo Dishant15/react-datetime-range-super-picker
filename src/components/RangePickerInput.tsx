@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 import RangePicker from "./RangePicker";
 import { RangePickerInputProps } from '../interfaces/rangepicker.interfaces';
@@ -17,6 +17,10 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 
 	useOutsideAlerter(wrapperRef, setShow);
 
+	const handleClose = useCallback(() => {
+		setShow(false)
+		if(props.onDone) props.onDone()
+	},[])
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format)
@@ -53,7 +57,7 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 								onFromDateTimeUpdate={props.onFromDateTimeUpdate}
 								onToDateUpdate={props.onToDateUpdate} onToTimeUpdate={props.onToTimeUpdate}
 								onToDateTimeUpdate={props.onToDateTimeUpdate}
-								onDone={() => setShow(false)} colors={colors} />
+								onDone={handleClose} colors={colors} />
 						</div>
 				</div>
 			}
