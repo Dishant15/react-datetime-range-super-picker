@@ -2,6 +2,7 @@ import { OutputTime } from "./timepicker.interfaces";
 import { DatePickerOutPut, MainDate } from "./datepicker.interfaces";
 import { DateTimePickerOutPut, DateObject } from "./datetimepicker.interfaces";
 import { ComponentTheme } from './style.interfaces';
+import React from "react";
 
 
 /*************************************
@@ -41,7 +42,7 @@ export interface RangePickerInputProps extends RangePickerProps {
 	className? : string,
 	popupClassName? : string,
 	isDisabled?: boolean,
-	renderInput?: Function
+	inputComponent?: React.ReactElement,
 }
 
 // use by :  RangePicker ( date time range picker )

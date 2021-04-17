@@ -116,9 +116,7 @@ const DateTimeRangePickerComponent = () => {
 
     return (
         <DateTimeRangePickerInput from_date={from_date} to_date={to_date}
-            renderInput={(props) => {
-                return <input {...props}/>
-            }}
+            // renderInput={<input className='ggwp' style={{background: 'red', color: 'green'}} />}
             onFromDateTimeUpdate={handleFromDateUpdate} 
             onToDateTimeUpdate={handleToDateUpdate} />
     )

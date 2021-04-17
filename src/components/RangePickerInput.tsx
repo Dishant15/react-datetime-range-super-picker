@@ -29,20 +29,13 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			{!!(props.renderInput) ?
-				props.renderInput({
+			{React.isValidElement(props.inputComponent) &&
+				React.cloneElement(props.inputComponent, {
 					value: show_date,
 					readOnly: true,
 					disabled: props.isDisabled,
-					style: props.inputStyle,
 					onFocus: () => setShow(true)
 				})
-				:
-				<input value={show_date} className={styles.picker_input} 
-					readOnly disabled={props.isDisabled}
-					style={{...props.inputStyle}}
-					onFocus={() => setShow(true)} 
-				/>
 			}
 
 			{(show_picker && !props.isDisabled) &&
@@ -66,8 +59,9 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 }
 
 RangePickerInput.defaultProps = {
-	closeButtonText: 'Done',
-	isDisabled: false
+	closeButtonText: 'Close',
+	isDisabled: false,
+	inputComponent: <input className={styles.picker_input} />
 }
 
 
