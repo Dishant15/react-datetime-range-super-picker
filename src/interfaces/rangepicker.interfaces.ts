@@ -40,7 +40,8 @@ export interface RangePickerInputProps extends RangePickerProps {
 	popupStyle? : React.CSSProperties,
 	className? : string,
 	popupClassName? : string,
-	isDisabled?: boolean
+	isDisabled?: boolean,
+	renderInput?: Function
 }
 
 // use by :  RangePicker ( date time range picker )
