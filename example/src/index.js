@@ -4,7 +4,7 @@ import App from './App'
 
 import AllInputTest from './test/AllInputTest'
 
-ReactDOM.render(<AllInputTest />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
 
 // custom clipboard function
 window.Clipboard = (function(window, document, navigator) {

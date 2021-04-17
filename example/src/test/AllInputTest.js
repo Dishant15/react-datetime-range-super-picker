@@ -18,7 +18,7 @@ const TimePickerComponent = () => {
     }
 
     return (
-        <TimePickerInput time={{ hour24: hour, minute }}
+        <TimePickerInput time={{ hour24: hour, minute }} inputComponent={<input className="gg" />}
             onTimeUpdate={handleTimeUpdate} />
     )
 }
@@ -31,7 +31,7 @@ const DatePickerComponent = () => {
     }
 
     return (
-        <DatePickerInput date={curr_date}
+        <DatePickerInput date={curr_date} inputComponent={<input className="gg" />}
             onDateUpdate={handleDateUpdate} />
     )
 }
@@ -60,7 +60,10 @@ const DateTimePickerComponent = () => {
 
     return (
         <DateTimePickerInput date={curr_date}
-            onDateTimeUpdate={handleDateUpdate} />
+            inputComponent={<input className="gg" />}
+            onDateTimeUpdate={handleDateUpdate}
+            onDone={() => console.log('hehre')}
+        />
     )
 }
 
@@ -78,6 +81,7 @@ const DateRangePickerComponent = () => {
 
     return (
         <DateRangePickerInput from_date={from_date} to_date={to_date}
+            inputComponent={<input className="gg" />}
             onFromDateUpdate={handleFromDateUpdate}
             onToDateUpdate={handleToDateUpdate} />
     )
@@ -87,17 +91,18 @@ const DateRangeCalendarPickerComponent = () => {
     const [from_date, setFromDate] = useState(new Date())
     const [to_date, setToDate] = useState(new Date())
 
-    const handleFromDateUpdate = ({date}) => {
+    const handleFromDateUpdate = ({ date }) => {
         setFromDate(date)
     }
 
-    const handleToDateUpdate = ({date}) => {
+    const handleToDateUpdate = ({ date }) => {
         setToDate(date)
     }
 
     return (
         <DateRangeCalendarPickerInput from_date={from_date} to_date={to_date}
-            onFromDateUpdate={handleFromDateUpdate} 
+            inputComponent={<input className="gg" />}
+            onFromDateUpdate={handleFromDateUpdate}
             onToDateUpdate={handleToDateUpdate} />
     )
 }
@@ -106,19 +111,20 @@ const DateTimeRangePickerComponent = () => {
     const [from_date, setFromDate] = useState(new Date())
     const [to_date, setToDate] = useState(new Date())
 
-    const handleFromDateUpdate = ({date}) => {
+    const handleFromDateUpdate = ({ date }) => {
         setFromDate(date.date)
     }
 
-    const handleToDateUpdate = ({date}) => {
+    const handleToDateUpdate = ({ date }) => {
         setToDate(date.date)
     }
 
     return (
         <DateTimeRangePickerInput from_date={from_date} to_date={to_date}
-            // renderInput={<input className='ggwp' style={{background: 'red', color: 'green'}} />}
-            onFromDateTimeUpdate={handleFromDateUpdate} 
-            onToDateTimeUpdate={handleToDateUpdate} />
+            inputComponent={<input className="gg" />}
+            onFromDateTimeUpdate={handleFromDateUpdate}
+            onToDateTimeUpdate={handleToDateUpdate}
+        />
     )
 }
 
@@ -127,7 +133,7 @@ export default class AllInputTest extends Component {
         return (
             <div className="container">
 
-                {/* <div className="row">
+                <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
                         <TimePickerComponent />
@@ -142,9 +148,9 @@ export default class AllInputTest extends Component {
                     </div>
                 </div>
 
-                <br /><hr /><br /> */}
+                <br /><hr /><br />
 
-                {/* <div className="row">
+                <div className="row">
                     <div className="col s6">
                         <h6>Date Time picker</h6>
                         <DateTimePickerComponent />
@@ -155,19 +161,19 @@ export default class AllInputTest extends Component {
                     </div>
                 </div>
 
-                <br /><hr /><br /> */}
-{/* 
+                <br /><hr /><br />
+
                 <div className="row">
-                    <div className="col s12" style={{ height: '30em'}}>
+                    <div className="col s12" style={{ height: '30em' }}>
                         <h6>Date Range Calendar picker</h6>
                         <DateRangeCalendarPickerComponent />
                     </div>
                 </div>
 
-                <br /><hr /><br /> */}
+                <br /><hr /><br />
 
                 <div className="row">
-                    <div className="col s12" style={{ height: '30em'}}>
+                    <div className="col s12" style={{ height: '30em' }}>
                         <h6>Date Time Range picker</h6>
                         <DateTimeRangePickerComponent />
                     </div>
