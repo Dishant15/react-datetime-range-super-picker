@@ -48,7 +48,8 @@ export interface DatePickerInputProps extends DatePickerProps {
 	popupStyle? : React.CSSProperties,
 	className? : string,
 	popupClassName? : string,
-	isDisabled?: boolean
+	isDisabled?: boolean,
+	inputComponent?: React.ReactElement,
 }
 
 export const defaultConfigs = {
