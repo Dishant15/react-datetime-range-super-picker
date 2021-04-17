@@ -41,7 +41,7 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 	const inputComponent = React.isValidElement(props.inputComponent) ?
 		React.cloneElement(props.inputComponent, inputComponentProps)
 		:
-		<input className={styles.picker_input} {...inputComponentProps} />
+		<input className={styles.picker_input} style={{...props.inputStyle}} {...inputComponentProps} />
 
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
@@ -71,7 +71,6 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 RangePickerInput.defaultProps = {
 	closeButtonText: 'Close',
 	isDisabled: false,
-	inputComponent: <input className={styles.picker_input} />
 }
 
 
