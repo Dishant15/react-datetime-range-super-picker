@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 import TimePicker from "./TimePicker";
 
@@ -37,19 +37,33 @@ const TimePickerInput = (props:TimePickerInputProps) => {
 		setTime(timeObj.formatted)
 	}
 
-	const handleComplete = () => {
+	const handleShow = useCallback(() => {
+		setShow(true)
+	},[])
+
+	const handleComplete = useCallback(() => {
 		setShow(false)
 		if(props.onDone) props.onDone()
-	}
+	}, [])
 
 	useOutsideAlerter(wrapperRef, setShow);
 
+	const inputComponentProps = {
+		value: showTime,
+		readOnly: true,
+		disabled: props.isDisabled,
+		onFocus: handleShow
+	}
+
+	const inputComponent = React.isValidElement(props.inputComponent) ?
+		React.cloneElement(props.inputComponent, inputComponentProps)
+		:
+		<input className={styles.picker_input} style={{...props.inputStyle}} {...inputComponentProps} />
+
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={showTime} className={styles.picker_input} 
-				readOnly disabled={props.isDisabled}
-				style={{...props.inputStyle}}
-				onFocus={() => setShow(true)} />
+			
+			{inputComponent}
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[rootstyles.picker_model, props.popupClassName].join(' ')}
