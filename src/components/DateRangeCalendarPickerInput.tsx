@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 import DateRangePicker from "./DateRangeCalendarPicker";
 import { DateRangePickerInputProps } from '../interfaces/rangepicker.interfaces';
@@ -18,18 +18,32 @@ const DateRangeCalendarPickerInput = (props: DateRangePickerInputProps) => {
 
 	useOutsideAlerter(wrapperRef, setShow);
 
+	const handleShow = useCallback(() => {
+		setShow(true)
+	},[])
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format || dateDefaultConfigs.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format || dateDefaultConfigs.format)
 	const show_date = `${from_date_str} To ${to_date_str}`
 	const {colors} = props
 
+	const inputComponentProps = {
+		value: show_date,
+		readOnly: true,
+		disabled: props.isDisabled,
+		onFocus: handleShow
+	}
+
+	const inputComponent = React.isValidElement(props.inputComponent) ?
+		React.cloneElement(props.inputComponent, inputComponentProps)
+		:
+		<input className={styles.picker_input} style={{...props.inputStyle}} {...inputComponentProps} />
+
+
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			<input value={show_date} className={styles.picker_input} 
-				readOnly disabled={props.isDisabled}
-				style={{...props.inputStyle}}
-				onFocus={() => setShow(true)}/>
+			
+			{inputComponent}
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[rootstyles.picker_model, props.popupClassName].join(' ')}
