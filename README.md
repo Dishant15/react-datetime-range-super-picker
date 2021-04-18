@@ -384,6 +384,7 @@ In addition it provides extra props for styling. Which are as listed below.
 | className | String, css class to be used apply additional style to text box with raw css |
 | popupClassName | String, css class to be used apply additional style to picker popup with raw css |
 | isDisabled | Boolean, to control input model show |
+| inputComponent | React Component, to render custom input |
 
 Note : All of above props are optional.
 

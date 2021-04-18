@@ -17,6 +17,10 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 
 	useOutsideAlerter(wrapperRef, setShow);
 
+	const handleShow = useCallback(() => {
+		setShow(true)
+	},[])
+
 	const handleClose = useCallback(() => {
 		setShow(false)
 		if(props.onDone) props.onDone()
@@ -27,16 +31,22 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 	const show_date = `${from_date_str} To ${to_date_str}`
 	const {colors} = props
 
+	const inputComponentProps = {
+		value: show_date,
+		readOnly: true,
+		disabled: props.isDisabled,
+		onFocus: handleShow
+	}
+
+	const inputComponent = React.isValidElement(props.inputComponent) ?
+		React.cloneElement(props.inputComponent, inputComponentProps)
+		:
+		<input className={styles.picker_input} style={{...props.inputStyle}} {...inputComponentProps} />
+
 	return (
 		<div ref={wrapperRef} className={[styles.picker_input_wrapper, props.className].join(' ')} >
-			{React.isValidElement(props.inputComponent) &&
-				React.cloneElement(props.inputComponent, {
-					value: show_date,
-					readOnly: true,
-					disabled: props.isDisabled,
-					onFocus: () => setShow(true)
-				})
-			}
+
+			{inputComponent}
 
 			{(show_picker && !props.isDisabled) &&
 				<div className={[rootstyles.picker_model, props.popupClassName].join(' ')}
@@ -61,7 +71,6 @@ const RangePickerInput = (props: RangePickerInputProps) => {
 RangePickerInput.defaultProps = {
 	closeButtonText: 'Close',
 	isDisabled: false,
-	inputComponent: <input className={styles.picker_input} />
 }
 
 
