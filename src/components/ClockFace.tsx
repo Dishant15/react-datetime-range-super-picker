@@ -68,27 +68,33 @@ export default ({hour, minute, meridiem, onTimeUpdate, colors} : ClockFaceProps)
 }
 
 const ClockHands = ({hour, minute, colors}:any) => {
-	const mm_rotation = ((minute / 5) * 30) - 90
-	const hh_rotation = hour === 12 ? -90 : (hour * 30) - 90
+	const hasMin = !isNaN(Number(minute)) // isNaN will handle 0 boolean true problem
+	const hasHour = !isNaN(Number(hour))
+	const mm_rotation = hasMin ? ((minute / 5) * 30) - 90 : 0
+	const hh_rotation = hasHour ? (hour === 12 ? -90 : (hour * 30) - 90) : 0
 
 	const hand_position = (CLOCK_SIZE / 2) + (CLOCK_HAND_HEIGHT / 2 )
 
 	return (
 		<React.Fragment>
-			<div className={styles.mm_hand} 
+			{hasMin &&
+				<div className={styles.mm_hand} 
 				style={{
 					transform:`rotate(${mm_rotation}deg)`,
 					top : `${hand_position}em`,
 					left : `${hand_position}em`,
 					background: colors.primary_highlight_color
 				}} ></div>
-			<div className={styles.hh_hand} 
+			}
+			{hasHour &&
+				<div className={styles.hh_hand} 
 				style={{
 					transform:`rotate(${hh_rotation}deg)`,
 					top : `${hand_position}em`,
 					left : `${hand_position}em`,
 					background: colors.secondary_highlight_color
 				}} ></div>
+			}
 		</React.Fragment>
 	)
 }

@@ -12,6 +12,7 @@ import {
 } from "../interfaces/timepicker.interfaces";
 
 import styles from '../styles/timepicker.css'
+import { padStart } from "lodash";
 
 
 export default ({
@@ -19,11 +20,21 @@ export default ({
 	colors,
 	onTimeUpdate
 } : TimePickerProps) => {
-
 	const curr_time = createInputTime(time)
 
 	const handleTimeChange = useCallback((newTime : MainTime) => {
-		const resTime = generateTimeOutput(newTime, format)
+		let resTime = generateTimeOutput(newTime, format)
+		if(!resTime.formatted) {
+			// formatted string is empty even after user clicked smt
+			if(!isNaN(Number(resTime.time.minute))) {
+				// @ts-ignore
+				resTime.formatted = `00:${padStart(resTime.time.minute, 2, '0')} AM`
+			}
+			else if(!isNaN(Number(resTime.time.hour))) {
+				// @ts-ignore
+				resTime.formatted = `${padStart(resTime.time.hour, 2, '0')}:00 AM`
+			}
+		}
 		onTimeUpdate(resTime)
 	}, [])
 
@@ -56,7 +67,7 @@ const TimeTitleWrapper = ({hour, minute, meridiem, time_format, colors}:TimeTitl
 	return (
 		<div className={styles.title} 
 			style={{ color: colors.primary_highlight_color }}>
-			{formatted}
+			{formatted || 'Select time'}
 		</div>
 	)
 }

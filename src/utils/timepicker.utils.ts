@@ -1,4 +1,4 @@
-import { isObject, isString, isUndefined, trim, upperCase } from "lodash";
+import { isObject, isString, isUndefined, isNull, trim, upperCase } from "lodash";
 import { format } from "date-fns";
 
 
@@ -7,15 +7,16 @@ import { TimePickerProps, MainTime, OutputTime } from "../interfaces/timepicker.
 
 export const createInputTime = (input_time : TimePickerProps["time"]):MainTime => {
 	// default values
-	let res_hour = 8, res_minute = 0, res_meridiem = 'AM';
+	let res_hour, res_minute, res_meridiem = 'AM';
+    
 
 	if(isObject(input_time)) {
 		const {hour, hour24, minute, meridiem} = input_time
-		if(isUndefined(hour) && isUndefined(hour24)) {
-			// keep hour as it is
-			res_minute = Number(minute)
+		if( (isUndefined(hour) || isNull(hour)) &&
+		(isUndefined(hour24) || isNull(hour24)) ){
 			res_meridiem = meridiem ? meridiem : res_meridiem
 		}
+		// input has hour | hour24
 		else if(isUndefined(hour)) {
 			// 24 hour format given
 			const modulo = Number(hour24) % 12
@@ -50,10 +51,13 @@ export const createInputTime = (input_time : TimePickerProps["time"]):MainTime =
 		else {
 			// 24 hrs format
 			const [hour24, minute] = trim(input_time).split(":")
-			const modulo = Number(hour24) % 12
-			res_hour = modulo === 0 ? 12 : modulo
-			res_minute = Number(minute)
-			res_meridiem = Number(hour24) >= 12 ? 'PM' : 'AM'
+			// handle incorrect string; where hour24 is undefined | null | NaN
+            if(hour24) {
+				const modulo = Number(hour24) % 12
+				res_hour = modulo === 0 ? 12 : modulo
+				res_minute = Number(minute)
+				res_meridiem = Number(hour24) >= 12 ? 'PM' : 'AM'
+			}
 		}
 	}
 
@@ -69,20 +73,31 @@ export const generateTimeOutput = (
 	
 	let hour24 = hour
 	// create hour24
+	if(!hour) {
+		return {formatted: '', time: {hour, hour24, minute, meridiem}}
+	} 
 	if(meridiem === 'PM') {
 		// 12 PM is 12 hrs
-		hour24 =(hour === 12) ? 12 : hour + 12
-	} else {
+		hour24 = (hour === 12) ? 12 : hour + 12
+	} 
+	else {
 		// 12 AM is 00 hrs
 		if(hour === 12) hour24 = 0
 	}
 	let time = {hour, minute, meridiem, hour24}
 
-	// create time formatted string
-	let now = new Date()
-	now.setHours(hour24)
-	now.setMinutes(minute)
-	const formatted = format(now, time_format)
+	let formatted:string
+	try {
+		// create time formatted string
+		let now = new Date()
+		// @ts-ignore
+		now.setHours(hour24)
+		// @ts-ignore -- format bellow will raise err if this is wrong
+		now.setMinutes(minute)
+		formatted = format(now, time_format)
+	} catch (error) {
+		formatted = ''
+	}
 
 	return {
 		formatted,

@@ -43,7 +43,7 @@ export default () => {
 	const TProps = {...pickerProps, 
 		// time: timeStr,
 		time: {hour24 : hour, minute }, 
-		onTimeUpdate: handleTimeUpdate
+		onTimeUpdate: handleTimeUpdate,
 	}
 
 	const handleInputToggle = (e) => {

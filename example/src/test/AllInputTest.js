@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 
-import {
+import { TimePicker,
     TimePickerInput, DatePickerInput, MonthPicker,
     DateRangePickerInput, DateTimePickerInput,
     DateRangeCalendarPickerInput, DateTimeRangePickerInput
@@ -9,16 +9,17 @@ import {
 import 'react-datetime-range-super-picker/dist/index.css'
 
 const TimePickerComponent = () => {
-    const [hour, setHour] = useState(22)
-    const [minute, setMin] = useState(30)
+    const [hour, setHour] = useState('PM')
+    const [minute, setMin] = useState()
 
-    const handleTimeUpdate = ({ time }) => {
-        setHour(time.hour24)
-        setMin(time.minute)
+    const handleTimeUpdate = (timeObj) => {
+        setHour(timeObj.time.hour24)
+        setMin(timeObj.time.minute)
+        // setHour(timeObj.formatted)
     }
 
     return (
-        <TimePickerInput time={{ hour24: hour, minute }} inputComponent={<input className="gg" />}
+        <TimePicker time={{hour24: hour, minute}}
             onTimeUpdate={handleTimeUpdate} />
     )
 }
@@ -137,45 +138,6 @@ export default class AllInputTest extends Component {
                     <div className="col s4">
                         <h6>Time picker</h6>
                         <TimePickerComponent />
-                    </div>
-                    <div className="col s4">
-                        <h6>Date picker</h6>
-                        <DatePickerComponent />
-                    </div>
-                    <div className="col s4">
-                        <h6>Month picker</h6>
-                        <MonthPickerComponent />
-                    </div>
-                </div>
-
-                <br /><hr /><br />
-
-                <div className="row">
-                    <div className="col s6">
-                        <h6>Date Time picker</h6>
-                        <DateTimePickerComponent />
-                    </div>
-                    <div className="col s6">
-                        <h6>Date Range picker</h6>
-                        <DateRangePickerComponent />
-                    </div>
-                </div>
-
-                <br /><hr /><br />
-
-                <div className="row">
-                    <div className="col s12" style={{ height: '30em' }}>
-                        <h6>Date Range Calendar picker</h6>
-                        <DateRangeCalendarPickerComponent />
-                    </div>
-                </div>
-
-                <br /><hr /><br />
-
-                <div className="row">
-                    <div className="col s12" style={{ height: '30em' }}>
-                        <h6>Date Time Range picker</h6>
-                        <DateTimeRangePickerComponent />
                     </div>
                 </div>
 

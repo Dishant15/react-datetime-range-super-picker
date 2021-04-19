@@ -28,8 +28,8 @@ export interface TimePickerProps {
  * Time object used internally for render and updates
  */
 export interface MainTime {
-	hour : number, // 12 hours format
-	minute : number,
+	hour : number | undefined, // 12 hours format
+	minute : number | undefined,
 	// AM | PM
 	meridiem : string
 }
@@ -38,11 +38,11 @@ export interface OutputTime {
 	formatted : string,
 	time : {
 		/** default value : 8 */
-		hour :number, 
+		hour :number | undefined, 
 		/** default value : undefined */
-		hour24 :number, 
+		hour24 :number | undefined, 
 		/** default value : 0 */
-		minute :number, 
+		minute :number | undefined, 
 		/** default value : AM */
 		meridiem : string
 	}
