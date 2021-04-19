@@ -27,12 +27,16 @@ export default ({
 		if(!resTime.formatted) {
 			// formatted string is empty even after user clicked smt
 			if(!isNaN(Number(resTime.time.minute))) {
-				// @ts-ignore
+				// @ts-ignore; user clicked minute so default hour to 0 and add mins
 				resTime.formatted = `00:${padStart(resTime.time.minute, 2, '0')} AM`
 			}
 			else if(!isNaN(Number(resTime.time.hour))) {
-				// @ts-ignore
+				// @ts-ignore; user clicked hour so default min to 0 and add hour
 				resTime.formatted = `${padStart(resTime.time.hour, 2, '0')}:00 AM`
+			}
+			else if(resTime.time.meridiem === 'PM') {
+				// user Clicked on PM btn
+				resTime.formatted = '00:00 PM'
 			}
 		}
 		onTimeUpdate(resTime)
@@ -67,7 +71,7 @@ const TimeTitleWrapper = ({hour, minute, meridiem, time_format, colors}:TimeTitl
 	return (
 		<div className={styles.title} 
 			style={{ color: colors.primary_highlight_color }}>
-			{formatted || 'Select time'}
+			{formatted || '-- : -- AM'}
 		</div>
 	)
 }

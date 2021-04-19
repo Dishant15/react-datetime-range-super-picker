@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 
-import { TimePicker,
+import { DatePicker,
     TimePickerInput, DatePickerInput, MonthPicker,
     DateRangePickerInput, DateTimePickerInput,
     DateRangeCalendarPickerInput, DateTimeRangePickerInput
@@ -19,7 +19,7 @@ const TimePickerComponent = () => {
     }
 
     return (
-        <TimePicker time={{hour24: hour, minute}}
+        <TimePickerInput time={{hour24: hour, minute}}
             onTimeUpdate={handleTimeUpdate} />
     )
 }
@@ -27,12 +27,13 @@ const TimePickerComponent = () => {
 const DatePickerComponent = () => {
     const [curr_date, setDate] = useState(new Date())
 
-    const handleDateUpdate = ({ date }) => {
-        setDate(date)
+    const handleDateUpdate = (dateObj) => {
+    console.log("🚀 ~ file: AllInputTest.js ~ line 31 ~ handleDateUpdate ~ dateObj", dateObj)
+        setDate(dateObj.date)
     }
 
     return (
-        <DatePickerInput date={curr_date} inputComponent={<input className="gg" />}
+        <DatePicker date={curr_date}
             onDateUpdate={handleDateUpdate} />
     )
 }

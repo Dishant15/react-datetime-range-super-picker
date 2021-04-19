@@ -50,6 +50,7 @@ const TimePickerInput = (props:TimePickerInputProps) => {
 
 	const inputComponentProps = {
 		value: showTime,
+		placeholder: 'Click to select time',
 		readOnly: true,
 		disabled: props.isDisabled,
 		onFocus: handleShow
