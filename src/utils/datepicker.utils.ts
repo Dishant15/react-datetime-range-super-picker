@@ -1,5 +1,5 @@
 import { startOfMonth, startOfWeek, isValid,
-	endOfMonth, addDays, format as date_format, parse, parseISO } from "date-fns";
+	endOfMonth, addDays, format as date_format, parse } from "date-fns";
 import {chunk, get, isString, isNaN} from 'lodash'
 
 import { DayListShape, DatePickerOutPut, MainDate,
@@ -7,7 +7,7 @@ import { DayListShape, DatePickerOutPut, MainDate,
 
 
 export const _type_safe_isValidDate = (time:any):time is Date => {
-	return isValid(parseISO(time))
+	return isValid(time)
 }
 
 export const _is_number = (num: number | undefined | null): num is number => {

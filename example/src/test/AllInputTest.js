@@ -34,7 +34,7 @@ const DatePickerComponent = () => {
 
     return (
         <>
-        <DatePickerInput date={curr_date}
+        <DatePickerInput date={curr_date} inputComponent={<input placeholder='This is shit' />}
             onDateUpdate={handleDateUpdate} />
             <button onClick={() => setDate(null)}>Clear Date</button>
         </>
@@ -138,7 +138,7 @@ export default class AllInputTest extends Component {
                 <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
-                        <DateTimeRangePickerComponent />
+                        <DateTimePickerComponent />
                     </div>
                 </div>
 

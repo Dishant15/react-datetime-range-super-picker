@@ -19,7 +19,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 
 	const [show_picker, setShow] = useState(false)
 	const [show_date, setDate] = useState(
-		getInitialDateForInput(date || new Date(), format)
+		getInitialDateForInput(date, format)
 	)
 
 	// update state if direct prop update
