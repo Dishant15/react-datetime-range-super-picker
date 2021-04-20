@@ -24,7 +24,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 
 	// update state if direct prop update
 	useEffect(() => {
-		setDate(getInitialDateForInput(date || new Date(), format))
+		setDate(getInitialDateForInput(date, format))
 	}, [date, format])
 
 	const handleDateUpdate = (date_obj:DatePickerOutPut) => {
@@ -44,7 +44,7 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 	useOutsideAlerter(wrapperRef, setShow);
 
 	const inputComponentProps = {
-		value: show_date,
+		value: show_date || '',
 		readOnly: true,
 		disabled: props.isDisabled,
 		onFocus: handleShow
@@ -53,7 +53,9 @@ const DatePickerInput = (props:DatePickerInputProps) => {
 	const inputComponent = React.isValidElement(props.inputComponent) ?
 		React.cloneElement(props.inputComponent, inputComponentProps)
 		:
-		<input className={styles.picker_input} style={{...props.inputStyle}} {...inputComponentProps} />
+		<input className={styles.picker_input} style={{...props.inputStyle}} 
+			placeholder='Click to select date'
+			{...inputComponentProps} />
 
 	
 	return (

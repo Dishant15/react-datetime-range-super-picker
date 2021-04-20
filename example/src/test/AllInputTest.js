@@ -8,6 +8,7 @@ import { DatePicker,
 
 import 'react-datetime-range-super-picker/dist/index.css'
 
+
 const TimePickerComponent = () => {
     const [hour, setHour] = useState('PM')
     const [minute, setMin] = useState()
@@ -25,16 +26,18 @@ const TimePickerComponent = () => {
 }
 
 const DatePickerComponent = () => {
-    const [curr_date, setDate] = useState(new Date())
+    const [curr_date, setDate] = useState()
 
     const handleDateUpdate = (dateObj) => {
-    console.log("🚀 ~ file: AllInputTest.js ~ line 31 ~ handleDateUpdate ~ dateObj", dateObj)
         setDate(dateObj.date)
     }
 
     return (
-        <DatePicker date={curr_date}
+        <>
+        <DatePickerInput date={curr_date}
             onDateUpdate={handleDateUpdate} />
+            <button onClick={() => setDate(null)}>Clear Date</button>
+        </>
     )
 }
 
@@ -138,7 +141,7 @@ export default class AllInputTest extends Component {
                 <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
-                        <TimePickerComponent />
+                        <DatePickerComponent />
                     </div>
                 </div>
 

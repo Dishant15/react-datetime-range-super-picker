@@ -1,6 +1,6 @@
 import { startOfMonth, startOfWeek, isValid,
 	endOfMonth, addDays, format as date_format, parse } from "date-fns";
-import {chunk, get, isString} from 'lodash'
+import {chunk, get, isString, isNaN} from 'lodash'
 
 import { DayListShape, DatePickerOutPut, MainDate,
 	defaultConfigs } from "../interfaces/datepicker.interfaces";
@@ -10,7 +10,12 @@ export const _type_safe_isValidDate = (time:any):time is Date => {
 	return isValid(time)
 }
 
-export const formatDate = (date:Date | MainDate | string, format=defaultConfigs.format) => {
+export const _is_number = (num: number | undefined | null): num is number => {
+	// check if num is number ( even 0 ); return false only if its undefined / null
+	return !isNaN(Number(num))
+}
+
+export const formatDate = (date:Date | MainDate | string | undefined, format=defaultConfigs.format) => {
 	if(_type_safe_isValidDate(date)) {
 		return {day : date.getDate(), month : date.getMonth(), year : date.getFullYear()}
 
@@ -28,15 +33,17 @@ export const formatDate = (date:Date | MainDate | string, format=defaultConfigs.
 		// }
 		const now = defaultConfigs.date
 		let ip_obj = {
-			day : get(date , 'day', now.getDate() ), 
+			day : get(date , 'day'), 
 			month : get(date , 'month', now.getMonth() ), 
 			year : get(date , 'year', now.getFullYear() )
 		}
 		// validate if date is correct else reset day
 		// if day is 31 feb or something else
-		const test_date = new Date(ip_obj.year, ip_obj.month, ip_obj.day)
-		if(test_date.getMonth() !== ip_obj.month) {
-			ip_obj.day = 1
+		if(_is_number(ip_obj.day)) {
+			const test_date = new Date(ip_obj.year, ip_obj.month, ip_obj.day)
+			if(test_date.getMonth() !== ip_obj.month) {
+				ip_obj.day = 1
+			}
 		}
 		return ip_obj
 	}
@@ -73,8 +80,9 @@ export const getWeekList = (weekStartsOn=defaultConfigs.weekStartsOn):string[] =
 	return res_week_list
 }
 
-export const createRangeIndex = (day:number, month:number, year:number):number => {
-	return (year*10000) + (month*100) + day
+export const createRangeIndex = (day:number | undefined, month:number, year:number):number | null => {
+	if(_is_number(day)) return (year*10000) + (month*100) + day;
+	return null
 }
 
 export const parseRangeIndex = (rangeIndex:number):number[] => {
@@ -87,9 +95,9 @@ export const parseRangeIndex = (rangeIndex:number):number[] => {
 }
 
 export const getDayList = (
-	day:number, month:number, year:number, weekStartsOn:any = defaultConfigs.weekStartsOn
+	day:number | undefined, month:number, year:number, weekStartsOn:any = defaultConfigs.weekStartsOn
 ) : DayListShape[][] => {
-	const curr_date = new Date(year, month, day)
+	const curr_date = !!(day) ? new Date(year, month, day) : new Date(year, month)
 	// start month date
 	const sm_date = startOfMonth(curr_date)
 	const sw_date = startOfWeek(sm_date, {weekStartsOn})
@@ -136,35 +144,40 @@ export const getDayList = (
 	const next_year = next_month_first_day.getFullYear()
 	for(let index = 1; index <= end_delta; index++) {
 		chunked_res_list[last_week_ind].push({
-			day : index, rangeIndex: 
-			createRangeIndex(index, next_month, next_year),
+			day : index, 
+			rangeIndex: createRangeIndex(index, next_month, next_year),
 			curr_month : false,
 		})
 	}
-
+	// @ts-ignore; rangeIndex will not be null for any createRangeIndex here
 	return chunked_res_list
 }
 
 
 export const generateDatePickerOutput = (
-	day:number, month:number, year:number, 
+	day:number | undefined, month:number, year:number, 
 	format:string) : DatePickerOutPut => {
-		
-	let date = new Date(year, month, day)
-	const formatted = date_format(date, format)
-
-	if(date.getDate() !== day) {
-		// reset day as this month don't have that day
-		day = 1
+	
+	let date;
+	let formatted = ''
+	if(!isNaN(Number(day))) {
 		date = new Date(year, month, day)
+		formatted = date_format(date, format)
+
+		if(date.getDate() !== day) {
+			// reset day as this month don't have that day
+			day = 1
+			date = new Date(year, month, day)
+		}
 	}
 
 	return {date, formatted, day, month, year}
 }
 
 export const getInitialDateForInput = (
-	date : Date | MainDate | string, format : string=defaultConfigs.format
+	date : Date | MainDate | string | undefined, format : string=defaultConfigs.format
 ):string => {
+	if(!date) return ''
 	const {day, month, year} = formatDate(date, format)
 	return generateDatePickerOutput(day, month, year, format).formatted
 }

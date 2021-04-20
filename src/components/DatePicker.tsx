@@ -3,7 +3,8 @@ import React from 'react'
 import MonthPicker from "./MonthPicker";
 
 import { formatDate, getWeekList, getDayList, 
-	generateDatePickerOutput, createRangeIndex, parseRangeIndex } from "../utils/datepicker.utils";
+	generateDatePickerOutput, createRangeIndex, parseRangeIndex, 
+	_is_number } from "../utils/datepicker.utils";
 import { DatePickerProps, defaultConfigs, DatePickerState } from "../interfaces/datepicker.interfaces";
 import { OutputShape } from '../interfaces/monthpicker.interfaces'
 import { getWrapperStyles, getCalenderCellColors } from '../styles/datepicker.color'
@@ -15,10 +16,9 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 
 	constructor(props:DatePickerProps) {
 		super(props)
-
 		const date_obj = formatDate(props.date, props.format)
 		this.state = {
-			...date_obj,
+			...date_obj, // day, month, year
 			dateRangeIndex: createRangeIndex(date_obj.day, date_obj.month, date_obj.year),
 			// hover states
 			hoverOn: false,
@@ -27,7 +27,6 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 	}
 
 	static defaultProps = {
-		date : defaultConfigs.date,
 		weekStartsOn : defaultConfigs.weekStartsOn,
 		format : defaultConfigs.format,
 		showRangeTrace: false,
@@ -47,7 +46,7 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const {onDateUpdate, format} = this.props
 
 		if(onDateUpdate) onDateUpdate(
-			generateDatePickerOutput(day, 
+			generateDatePickerOutput(day || 1, // if user changed month set day to 1
 				updated_date.month, updated_date.year, format), false)
 		// is_date_update is false because this will not update To / from state selection
 		// mainly used for date range picker
@@ -85,20 +84,22 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const week_header_list = getWeekList(weekStartsOn)
 		const day_obj_list = getDayList(day, month, year, weekStartsOn)
 
-		let minRangeIndex:number, maxRangeIndex:number;
+		let minRangeIndex:number = 0, maxRangeIndex:number = 0;
 		// create min max selected range end points of our current range
 		if(showRangeTrace) {
 			// if user selected both date only show selected Range and disable hover highlights
 			const compareDate = traceStatus==='A' ? dateRangeIndex :
 			// if hover than show range on hover state, else show on selected state
 				hoverOn ? hoverRangeIndex : dateRangeIndex;
-			minRangeIndex = Math.min(compareDate, otherDateRangeIndex)
-			maxRangeIndex = Math.max(compareDate, otherDateRangeIndex)
+			if(_is_number(compareDate)) {
+				minRangeIndex = Math.min(compareDate, otherDateRangeIndex)
+				maxRangeIndex = Math.max(compareDate, otherDateRangeIndex)
+			}
 		}
 
 		return(
 			<div className={styles.wrapper} style={{ background: colors.primary_color }}>
-				<MonthPicker time={{month : month, year : year}}
+				<MonthPicker time={{month, year}}
 					colors={colors}
 					onDateUpdate={this.handleMonthUpdate} />
 
@@ -131,7 +132,8 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 										// other selected day will be simple when selecting from date
 										if(traceStatus==='T' || traceStatus==='A') cell_type = 'solid';
 									}
-									else if(curr_day.rangeIndex < maxRangeIndex && 
+									else if(
+										curr_day.rangeIndex < maxRangeIndex && 
 										curr_day.rangeIndex > minRangeIndex) {
 										// range between hovered date and selected From date
 										if(traceStatus==='T') cell_type = 'border'

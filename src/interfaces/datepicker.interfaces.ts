@@ -1,18 +1,18 @@
 import { ComponentTheme } from './style.interfaces';
 
 export interface MainDate {
-	day : number,
+	day : number | undefined,
 	month : number,
 	year : number,
 }
 
 export interface DatePickerOutPut extends MainDate {
-	date : Date,
+	date : Date | undefined,
 	formatted : string
 }
 
 export interface DatePickerState extends MainDate {
-	dateRangeIndex: number,
+	dateRangeIndex: number | null,
 	// hover states
 	hoverOn: boolean,
 	hoverRangeIndex: number,
@@ -20,7 +20,7 @@ export interface DatePickerState extends MainDate {
 
 export interface DatePickerProps {
 	/** default value : new Date() ; i.e. current time  */
-	date : Date | MainDate | string,
+	date : Date | MainDate | string | undefined,
 	/** default value : 0, Sunday */
 	weekStartsOn : number,
 	/** default value : 'dd/MM/YYY' */
