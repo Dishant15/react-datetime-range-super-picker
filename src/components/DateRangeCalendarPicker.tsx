@@ -7,7 +7,6 @@ import DatePicker from './DatePicker'
 import { generateDatePickerOutput } from '../utils/datepicker.utils';
 
 import { DateRangePickerProps, DateRangeCalendarPickerStates } from '../interfaces/rangepicker.interfaces'
-import { defaultConfigs } from '../interfaces/datetimepicker.interfaces';
 import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 import { getActivePillColors } from '../styles/rangepicker.colors'
 
@@ -24,8 +23,6 @@ export default class DateRangeCalendarPicker extends React.Component<DateRangePi
 	}
 
 	static defaultProps = {
-		from_date : defaultConfigs.date,
-		to_date : defaultConfigs.date,
 		weekStartsOn : dateDefaultConfigs.weekStartsOn,
 		format : dateDefaultConfigs.format,
 		closeButtonText: 'Close'

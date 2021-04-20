@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 
-import { DateTimePicker,
+import { DateTimeRangePicker,
     TimePickerInput, DatePickerInput, MonthPicker,
     DateRangePickerInput, DateTimePickerInput,
     DateRangeCalendarPickerInput, DateTimeRangePickerInput
@@ -73,8 +73,8 @@ const DateTimePickerComponent = () => {
 }
 
 const DateRangePickerComponent = () => {
-    const [from_date, setFromDate] = useState(new Date())
-    const [to_date, setToDate] = useState(new Date())
+    const [from_date, setFromDate] = useState()
+    const [to_date, setToDate] = useState()
 
     const handleFromDateUpdate = ({ date }) => {
         setFromDate(date)
@@ -86,15 +86,14 @@ const DateRangePickerComponent = () => {
 
     return (
         <DateRangePickerInput from_date={from_date} to_date={to_date}
-            inputComponent={<input className="gg" />}
             onFromDateUpdate={handleFromDateUpdate}
             onToDateUpdate={handleToDateUpdate} />
     )
 }
 
 const DateRangeCalendarPickerComponent = () => {
-    const [from_date, setFromDate] = useState(new Date())
-    const [to_date, setToDate] = useState(new Date())
+    const [from_date, setFromDate] = useState()
+    const [to_date, setToDate] = useState()
 
     const handleFromDateUpdate = ({ date }) => {
         setFromDate(date)
@@ -106,15 +105,14 @@ const DateRangeCalendarPickerComponent = () => {
 
     return (
         <DateRangeCalendarPickerInput from_date={from_date} to_date={to_date}
-            inputComponent={<input className="gg" />}
             onFromDateUpdate={handleFromDateUpdate}
             onToDateUpdate={handleToDateUpdate} />
     )
 }
 
 const DateTimeRangePickerComponent = () => {
-    const [from_date, setFromDate] = useState(new Date())
-    const [to_date, setToDate] = useState(new Date())
+    const [from_date, setFromDate] = useState()
+    const [to_date, setToDate] = useState()
 
     const handleFromDateUpdate = ({ date }) => {
         setFromDate(date.date)
@@ -126,7 +124,6 @@ const DateTimeRangePickerComponent = () => {
 
     return (
         <DateTimeRangePickerInput from_date={from_date} to_date={to_date}
-            inputComponent={<input className="gg" />}
             onFromDateTimeUpdate={handleFromDateUpdate}
             onToDateTimeUpdate={handleToDateUpdate}
         />
@@ -141,7 +138,7 @@ export default class AllInputTest extends Component {
                 <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
-                        <DateTimePickerComponent />
+                        <DateTimeRangePickerComponent />
                     </div>
                 </div>
 

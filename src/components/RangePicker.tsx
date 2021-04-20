@@ -30,8 +30,6 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 	}
 
 	static defaultProps = {
-		from_date : defaultConfigs.date,
-		to_date : defaultConfigs.date,
 		weekStartsOn : defaultConfigs.weekStartsOn,
 		format : defaultConfigs.format,
 		closeButtonText: 'Close',
@@ -67,8 +65,8 @@ export default class RangePicker extends React.Component<RangePickerProps, Range
 
 		const commonProps = {format, timeFormat, dateFormat, weekStartsOn }
 
-		const from_date_str = getInitialDateForInput(from_date, format)
-		const to_date_str = getInitialDateForInput(to_date, format)
+		const from_date_str = getInitialDateForInput(from_date, format) || 'Click and select FROM date-time'
+		const to_date_str = getInitialDateForInput(to_date, format) || 'Click and select TO date-time'
 
 		return (
 			<div className={styles.wrapper} style={{color: colors.primary_font_color}}>

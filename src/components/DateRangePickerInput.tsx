@@ -30,7 +30,7 @@ const DateRangePickerInput = (props:DateRangePickerInputProps) => {
 
 	const from_date_str = getInitialDateForInput(props.from_date, props.format)
 	const to_date_str = getInitialDateForInput(props.to_date, props.format)
-	const show_date = `${from_date_str} To ${to_date_str}`
+	const show_date = `${from_date_str || '-- / -- / --  '} To ${to_date_str || '  -- / -- / --'}`
 	const {colors} = props
 
 	const inputComponentProps = {
