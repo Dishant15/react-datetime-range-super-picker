@@ -14,6 +14,7 @@ import {
 import { defaultConfigs as timeDefaultConfig, OutputTime } from "../interfaces/timepicker.interfaces";
 import { DatePickerOutPut } from "../interfaces/datepicker.interfaces";
 
+
 export const getInputDate = (
 	date_time_input: DateTimePickerProps["date"], dt_format=defaultConfigs.format
 ): MainDateTimeObject => {
@@ -50,7 +51,7 @@ export const generateOutPut = (
 	curr_date:MainDateTimeObject, date_format:string,
 	date? : DatePickerOutPut, time? : OutputTime, 
 ):DateTimePickerOutPut => { // DateTimePickerOutPut
-	let result, formatted;
+	let result, formatted = '';
 
 	if(date) {
 		// date object given; passed from calender component
@@ -59,7 +60,11 @@ export const generateOutPut = (
 			date.year, date.month, date.day,
 			new_time_json.time.hour24, new_time_json.time.minute
 		)
-		formatted = format(current_date_obj, date_format)
+		try {
+			formatted = format(current_date_obj, date_format)
+		} catch (error) {
+			// pass; can not parse cause time maybe empty
+		}
 
 		result = {
 			date : current_date_obj,
@@ -70,9 +75,13 @@ export const generateOutPut = (
 		// time given; passed from clock component
 		const current_date_obj = new Date(
 			curr_date.year, curr_date.month, curr_date.day,
-			time.time.hour24, time.time.minute
+			time.time.hour24 || 0, time.time.minute || 0
 		)
-		formatted = format(current_date_obj, date_format)
+		try {
+			formatted = format(current_date_obj, date_format)
+		} catch (error) {
+			// pass; can not parse cause time maybe empty
+		}
 
 		result = {
 			day : curr_date.day, month: curr_date.month, year: curr_date.year,
@@ -94,7 +103,7 @@ export const generateOutPut = (
 			...new_time_json.time
 		}
 	}
-
+	
 	return {
 		date : result,
 		formatted
@@ -105,6 +114,7 @@ export const generateOutPut = (
 export const getInitialDateForInput = (
 	date:Date | DateObject | string , format:string=defaultConfigs.format
 ): string => {
+	if(!date) return ''
 	const curr_date = getInputDate(date, format)
 	return generateOutPut(curr_date, format).formatted
 }

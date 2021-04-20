@@ -80,9 +80,9 @@ export const getWeekList = (weekStartsOn=defaultConfigs.weekStartsOn):string[] =
 	return res_week_list
 }
 
-export const createRangeIndex = (day:number | undefined, month:number, year:number):number | null => {
+export const createRangeIndex = (day:number | undefined, month:number, year:number):number | undefined => {
 	if(_is_number(day)) return (year*10000) + (month*100) + day;
-	return null
+	return undefined
 }
 
 export const parseRangeIndex = (rangeIndex:number):number[] => {

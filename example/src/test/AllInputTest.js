@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 
-import { DatePicker,
+import { DateTimePicker,
     TimePickerInput, DatePickerInput, MonthPicker,
     DateRangePickerInput, DateTimePickerInput,
     DateRangeCalendarPickerInput, DateTimeRangePickerInput
@@ -57,15 +57,15 @@ const MonthPickerComponent = () => {
 }
 
 const DateTimePickerComponent = () => {
-    const [curr_date, setDate] = useState(new Date())
+    const [curr_date, setDate] = useState()
 
-    const handleDateUpdate = ({ date }) => {
-        setDate(date.date)
+    const handleDateUpdate = (ip) => {
+    console.log("🚀 ~ file: AllInputTest.js ~ line 63 ~ handleDateUpdate ~ ip", ip)
+        setDate(ip.formatted)
     }
 
     return (
         <DateTimePickerInput date={curr_date}
-            inputComponent={<input className="gg" />}
             onDateTimeUpdate={handleDateUpdate}
             onDone={() => console.log('hehre')}
         />
@@ -141,7 +141,7 @@ export default class AllInputTest extends Component {
                 <div className="row">
                     <div className="col s4">
                         <h6>Time picker</h6>
-                        <DatePickerComponent />
+                        <DateTimePickerComponent />
                     </div>
                 </div>
 

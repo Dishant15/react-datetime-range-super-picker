@@ -13,6 +13,7 @@ import {defaultConfigs as timeDefaultConfigs, OutputTime } from "../interfaces/t
 import {defaultConfigs as dateDefaultConfigs, DatePickerOutPut } from "../interfaces/datepicker.interfaces"
 
 import { getInputDate, generateOutPut } from '../utils/datetimepicker.utils'
+import { _is_number } from '../utils/datepicker.utils';
 
 import styles from '../styles/date_time_picker.css'
 
@@ -38,7 +39,11 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 	handleDateUpdate = (date:DatePickerOutPut) => {
 		const {onDateUpdate, onDateTimeUpdate, format} = this.props
-		const curr_date = this.state
+		let curr_date = {...this.state}
+
+		// if time is empty; user clicked date than update default time
+		if(!_is_number(curr_date.hour)) curr_date.hour = 0
+		if(!_is_number(curr_date.minute)) curr_date.minute = 0
         
 		if(onDateUpdate) onDateUpdate(date)
 
@@ -49,7 +54,11 @@ export class UnwrappedDateTimePicker extends React.Component<DateTimePickerProps
 
 	handleTimeUpdate = (time:OutputTime) => {
 		const {onTimeUpdate, onDateTimeUpdate, format} = this.props
-		const curr_date = this.state
+		let curr_date = {...this.state}
+		// set defaults if empty to generate date , formatted outputs
+		if(!_is_number(curr_date.day)) curr_date.day = 1
+		if(!_is_number(curr_date.hour)) curr_date.hour = 0
+		if(!_is_number(curr_date.minute)) curr_date.minute = 0
         
 		if(onTimeUpdate) onTimeUpdate(time)
 

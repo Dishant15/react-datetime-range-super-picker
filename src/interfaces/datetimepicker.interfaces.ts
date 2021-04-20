@@ -30,11 +30,11 @@ export interface OutPutDateTime extends MainDate {
 	// { day, month, year, hour , hour24, minute, meridem }
 	date : Date,
 	/** default value : 8 */
-	hour :number, 
+	hour :number | undefined, 
 	/** default value : undefined */
-	hour24 :number, 
+	hour24 :number | undefined, 
 	/** default value : 0 */
-	minute :number, 
+	minute :number | undefined, 
 	/** default value : AM */
 	meridiem : string
 }

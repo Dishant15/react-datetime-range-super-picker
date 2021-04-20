@@ -12,7 +12,7 @@ export interface DatePickerOutPut extends MainDate {
 }
 
 export interface DatePickerState extends MainDate {
-	dateRangeIndex: number | null,
+	dateRangeIndex: number | undefined,
 	// hover states
 	hoverOn: boolean,
 	hoverRangeIndex: number,

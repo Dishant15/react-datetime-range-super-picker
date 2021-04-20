@@ -18,13 +18,13 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 	const wrapperRef = useRef(null);
 	const [show_picker, setShow] = useState(false)
 	const [show_date, setDate] = useState(
-		getInitialDateForInput(props.date || new Date(), props.format)
+		getInitialDateForInput(props.date, props.format)
 	)
 
 	// update state if direct prop update
 	useEffect(() => {
 		setDate(
-			getInitialDateForInput(props.date || new Date(), props.format)
+			getInitialDateForInput(props.date, props.format)
 		)
 	}, [props.date, props.format])
 
@@ -46,6 +46,7 @@ const DateTimePickerInput = (props:DateTimePickerInputProps) => {
 
 	const inputComponentProps = {
 		value: show_date,
+		placeholder: 'Click to select date time',
 		readOnly: true,
 		disabled: props.isDisabled,
 		onFocus: handleShow

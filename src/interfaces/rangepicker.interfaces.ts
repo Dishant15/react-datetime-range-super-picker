@@ -57,7 +57,7 @@ export interface DateRangePickerStates {
 	// show range trace on single calendar
 	traceStatus?: string,
 	advance_pill: string | null,
-	otherDateRangeIndex: number,
+	otherDateRangeIndex: number | undefined,
 }
 
 /********************************
