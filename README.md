@@ -24,6 +24,20 @@ if you are using yarn
 yarn add react-datetime-range-super-picker
 ```
 
+## Install dependencies
+
+Install using npm
+
+```bash
+npm install --save lodash date-fns
+```
+
+if you are using yarn
+
+```bash
+yarn add lodash date-fns
+```
+
 ## Preview
 
 <p float="left">
