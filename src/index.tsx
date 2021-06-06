@@ -1,7 +1,9 @@
+import { ComponentType } from 'react';
 import StyleWrapper from './utils/style.utils';
 
 import TimePickerModule from "./components/TimePicker";
 import TimePickerInputModule from "./components/TimePickerInput";
+import { TimePickerProps } from "./interfaces/timepicker.interfaces";
 import MonthPickerModule from "./components/MonthPicker";
 
 import DatePickerModule from "./components/DatePicker";
@@ -20,7 +22,7 @@ import DateRangePickerModule from './components/DateRangePicker'
 import DateRangePickerInputModule from './components/DateRangePickerInput'
 
 
-export const TimePicker = StyleWrapper(TimePickerModule)
+export const TimePicker:ComponentType<TimePickerProps> = StyleWrapper(TimePickerModule)
 export const TimePickerInput = StyleWrapper(TimePickerInputModule)
 
 export const MonthPicker = StyleWrapper(MonthPickerModule)
