@@ -17,6 +17,7 @@ export const getMonthPillColors = (
 	}
 }
 
+// common use in month picker and time picker
 export const getSetButtonStyles = (colors: ComponentTheme) => ({
 	color: colors.secondary_highlight_color,
 	'--year-edit-hover-color': colors.primary_color,

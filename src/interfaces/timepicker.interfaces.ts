@@ -54,7 +54,8 @@ export const defaultConfigs = {
 
 export interface TimeTitleWrapperProps extends MainTime {
 	time_format : string,
-	colors: ComponentTheme
+	colors: ComponentTheme,
+	onTimeUpdate : ({}:MainTime) => void,
 }
 
 export interface ClockFaceProps extends MainTime {
