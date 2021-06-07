@@ -1,156 +1,156 @@
 .wrapper {
-	box-sizing: border-box;
-	margin : 0 auto;
-	font-family: Geneva, Tahoma, Verdana, sans-serif;
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
 
-	/** clock size */
-	--clock-size : 16em;
-	--clock-padding : 0.8em;
-	--clock-hand-height : 1.8em;
+  /** clock size */
+  --clock-size: 16em;
+  --clock-padding: 0.8em;
+  --clock-hand-height: 1.8em;
 
-	padding-top: .8em;
-	width: calc(var(--clock-size) + (var(--clock-padding) * 2) );
+  padding-top: 0.8em;
+  width: calc(var(--clock-size) + (var(--clock-padding) * 2));
 }
 
 .title {
-	text-align: center;
-	font-size: 1.5em;
-	padding-bottom: .4em;
+  text-align: center;
+  font-size: 1.5em;
+  padding-bottom: 0.4em;
 }
 
 .clockface {
-	position: relative;
-	padding : var(--clock-padding);
+  position: relative;
+  padding: var(--clock-padding);
 }
 
 .clock {
-	height: var(--clock-size);
-	width: var(--clock-size);
-	border-radius: 50%;
+  height: var(--clock-size);
+  width: var(--clock-size);
+  border-radius: 50%;
 }
 
 .hand_wrapper {
-	position: absolute;
-	top: calc( (var(--clock-size) / 2) );
-	width: calc(var(--clock-size) / 2);
-	height: var(--clock-hand-height);
-	transform-origin: left;
+  position: absolute;
+  top: calc((var(--clock-size) / 2));
+  width: calc(var(--clock-size) / 2);
+  height: var(--clock-hand-height);
+  transform-origin: left;
 }
 
 .btns {
-	position: relative;
-	z-index: 2;
-	cursor: pointer;
-	width: var(--clock-hand-height);
-	height: var(--clock-hand-height);
-	line-height: var(--clock-hand-height);
-	text-align: center;
-	display: inline-block;
-	float: right;
-	margin-left: .5em;
-	margin-right: .4em;
-	border-radius: 50%;
-	transition: all .2s linear;
-	transform:scale(1) rotate(var(--font-rotation));
-	composes: no_select from "./root.css";
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  width: var(--clock-hand-height);
+  height: var(--clock-hand-height);
+  line-height: var(--clock-hand-height);
+  text-align: center;
+  display: inline-block;
+  float: right;
+  margin-left: 0.5em;
+  margin-right: 0.4em;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+  transform: scale(1) rotate(var(--font-rotation));
+  composes: no_select from "./root.css";
 }
 
 .hh {
-	composes: btns;
+  composes: btns;
 }
 
 .mm {
-	composes : btns;
+  composes: btns;
 }
 
-.hh:hover, .mm:hover {
-	background: var(--hover-bg-color) !important;
-	color:  var(--hover-color) !important;
-	transform:scale(1.2) rotate(var(--font-rotation));
+.hh:hover,
+.mm:hover {
+  background: var(--hover-bg-color) !important;
+  color: var(--hover-color) !important;
+  transform: scale(1.2) rotate(var(--font-rotation));
 }
 
 .hand {
-	z-index: 1;
-	pointer-events: none;
-	position: absolute;
-	height: 1px;
-	transform-origin: left;
-	transition: all .2s linear;
+  z-index: 1;
+  pointer-events: none;
+  position: absolute;
+  height: 1px;
+  transform-origin: left;
+  transition: all 0.2s linear;
 }
 
 .mm_hand {
-	composes : hand;
-	width: calc( (var(--clock-size) / 2) - var(--clock-hand-height) );
+  composes: hand;
+  width: calc((var(--clock-size) / 2) - var(--clock-hand-height));
 }
 
 .hh_hand {
-	composes : hand;
-	width: calc( (var(--clock-size) / 2) - (var(--clock-hand-height) * 2.5) );
+  composes: hand;
+  width: calc((var(--clock-size) / 2) - (var(--clock-hand-height) * 2.5));
 }
 
 .meridiem {
-	cursor: pointer;
-	position: absolute;
-	bottom: .4em;
-	height: 2.5em;
-	line-height: 2.5em;
-	width: 2.5em;
-	text-align: center;
-	border-radius: 50%;
-	transition: all .2s linear;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0.4em;
+  height: 2.5em;
+  line-height: 2.5em;
+  width: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  transition: all 0.2s linear;
 }
 
 .meridiem_am {
-	left: .4em;
-	composes: no_select from "./root.css";
+  left: 0.4em;
+  composes: no_select from "./root.css";
 }
 
 .meridiem_pm {
-	right: .4em;
-	composes: no_select from "./root.css";
+  right: 0.4em;
+  composes: no_select from "./root.css";
 }
 
 .meridiem:hover {
-	color:  var(--hover-color) !important;
-	background: var(--hover-bg-color) !important;
+  color: var(--hover-color) !important;
+  background: var(--hover-bg-color) !important;
 }
 
-
 .picker_input_wrapper {
-	position: relative;
+  position: relative;
 }
 
 .picker_input {
-	composes: input from "./root.css";
-	/* 1.7 is padding in input */
-	width: calc(100% - 1.7em);
-	text-align: center;
+  composes: input from "./root.css";
+  /* 1.7 is padding in input */
+  width: calc(100% - 1.7em);
+  text-align: center;
 }
 
 /* --------- Time Input ------------ */
 
 .time_edit {
-	padding-bottom: .4em;
-	text-align: center;
+  padding-bottom: 0.4em;
+  text-align: center;
 }
 
 .time_edit_input {
-	composes: input from "./root.css";
-  padding: .2em .5em .2em .5em !important;
-	display: inline-block;
-	text-align: center;
-	width: 3em;
+  composes: input from "./root.css";
+  padding: 0.2em 0.5em 0.2em 0.5em !important;
+  display: inline-block;
+  text-align: center;
+  width: 3em;
 }
 
 .time_edit_select {
-	width: 4em;
+  width: 4em;
   margin-left: 1em;
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2Y3ZjdmNzt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+");
   background-repeat: no-repeat;
   background-position: 95% 50%;
-	-moz-appearance: none; 
-	-webkit-appearance: none; 
-	appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .time_edit_select:focus {
@@ -159,21 +159,21 @@
 
 .time_edit_colon {
   display: inline-block;
-	text-align: center;
-  padding: 0 .4em;
+  text-align: center;
+  padding: 0 0.4em;
 }
 
 .time_edit_submit {
-	cursor: pointer;
-	padding : .5em;
-	display: inline-block;
-	transition: all .2s linear;
-	border-radius: .5em;
-	font-weight: bold;
-	margin: 0 0.6em;
+  cursor: pointer;
+  padding: 0.5em;
+  display: inline-block;
+  transition: all 0.2s linear;
+  border-radius: 0.5em;
+  font-weight: bold;
+  margin: 0 0.6em;
 }
 
 .time_edit_submit:hover {
-	color: var(--year-edit-hover-color) !important;
-	background: var(--year-edit-hover-bg-color);
+  color: var(--year-edit-hover-color) !important;
+  background: var(--year-edit-hover-bg-color);
 }
