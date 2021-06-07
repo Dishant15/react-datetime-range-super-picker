@@ -37,15 +37,15 @@ const COLORFUL_THEME_COLORS:ComponentTheme = {
 export const getThemeColors = (theme = 'light'):ComponentTheme => {
 	switch (theme) {
 		case 'light':
-			return LIGHT_THEME_COLORS
+			return {...LIGHT_THEME_COLORS}
 
 		case 'dark':
-			return DARK_THEME_COLORS
+			return {...DARK_THEME_COLORS}
 
 		case 'colorful':
-			return COLORFUL_THEME_COLORS
+			return {...COLORFUL_THEME_COLORS}
 	
-		default:
-			return LIGHT_THEME_COLORS;
+		default: // default theme light
+			return {...LIGHT_THEME_COLORS};
 	}
 }

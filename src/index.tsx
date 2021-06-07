@@ -3,7 +3,6 @@ import StyleWrapper from './utils/style.utils';
 
 import TimePickerModule from "./components/TimePicker";
 import TimePickerInputModule from "./components/TimePickerInput";
-import { TimePickerProps } from "./interfaces/timepicker.interfaces";
 import MonthPickerModule from "./components/MonthPicker";
 
 import DatePickerModule from "./components/DatePicker";
@@ -20,23 +19,52 @@ import DateRangeCalendarPickerInputModule from "./components/DateRangeCalendarPi
 
 import DateRangePickerModule from './components/DateRangePicker'
 import DateRangePickerInputModule from './components/DateRangePickerInput'
+// TypeScript imports
+import {
+  TimePickerInputProps, TimePickerProps
+} from './interfaces/timepicker.interfaces'
+import { MonthPickerProps } from './interfaces/monthpicker.interfaces'
+import {
+  DatePickerInputProps, DatePickerProps
+} from './interfaces/datepicker.interfaces'
+import {
+  DateTimePickerInputProps,
+  DateTimePickerProps
+} from './interfaces/datetimepicker.interfaces'
+import {
+  DateRangePickerInputProps, DateRangePickerProps, 
+  RangePickerInputProps, RangePickerProps
+} from './interfaces/rangepicker.interfaces'
 
 
-export const TimePicker:ComponentType<TimePickerProps> = StyleWrapper(TimePickerModule)
-export const TimePickerInput = StyleWrapper(TimePickerInputModule)
+export const TimePicker:ComponentType<TimePickerProps> =
+  StyleWrapper(TimePickerModule)
+export const TimePickerInput:ComponentType<TimePickerInputProps> =
+  StyleWrapper(TimePickerInputModule)
 
-export const MonthPicker = StyleWrapper(MonthPickerModule)
-export const DatePicker = StyleWrapper(DatePickerModule)
-export const DatePickerInput = StyleWrapper(DatePickerInputModule)
+export const MonthPicker:ComponentType<MonthPickerProps> =
+	StyleWrapper(MonthPickerModule)
+export const DatePicker:ComponentType<DatePickerProps> =
+  StyleWrapper(DatePickerModule)
+export const DatePickerInput:ComponentType<DatePickerInputProps> =
+  StyleWrapper(DatePickerInputModule)
 
-export const DateTimePicker = StyleWrapper(DateTimePickerModuel)
-export const DateTimePickerInput = StyleWrapper(DateTimePickerInputModuel)
+export const DateTimePicker:ComponentType<DateTimePickerProps> =
+  StyleWrapper(DateTimePickerModuel)
+export const DateTimePickerInput:ComponentType<DateTimePickerInputProps> =
+  StyleWrapper(DateTimePickerInputModuel)
 
-export const DateTimeRangePicker = StyleWrapper(RangePicker)
-export const DateTimeRangePickerInput = StyleWrapper(DateTimeRangePickerInputModule)
+export const DateTimeRangePicker:ComponentType<RangePickerProps> =
+  StyleWrapper(RangePicker)
+export const DateTimeRangePickerInput:ComponentType<RangePickerInputProps> =
+  StyleWrapper(DateTimeRangePickerInputModule)
 
-export const DateRangeCalendarPicker = StyleWrapper(DateRangeCalendarPickerModule)
-export const DateRangeCalendarPickerInput = StyleWrapper(DateRangeCalendarPickerInputModule)
+export const DateRangeCalendarPicker:ComponentType<DateRangePickerProps> =
+  StyleWrapper(DateRangeCalendarPickerModule)
+export const DateRangeCalendarPickerInput:ComponentType<DateRangePickerInputProps> =
+  StyleWrapper(DateRangeCalendarPickerInputModule)
 
-export const DateRangePicker = StyleWrapper(DateRangePickerModule)
-export const DateRangePickerInput = StyleWrapper(DateRangePickerInputModule)
+export const DateRangePicker:ComponentType<DateRangePickerProps> =
+  StyleWrapper(DateRangePickerModule)
+export const DateRangePickerInput:ComponentType<DateRangePickerInputProps> =
+  StyleWrapper(DateRangePickerInputModule)

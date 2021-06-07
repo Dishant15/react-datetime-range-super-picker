@@ -41,21 +41,16 @@ type WrapperProps =
  */
  const StyleWrapper = <P extends WrapperProps>(
   WrappedComponent: React.ComponentType<P>
-) => {
-	return class ComponentWrapper extends React.Component<
-    P & {colors: ComponentTheme, theme: string}
-  > {
-		render = () => {
-			const {colors, theme, ...otherProps} = this.props
-			// override theme colors provided by props
-			let themeColors = {...getThemeColors(theme)}
-			themeColors = assign(themeColors, colors)
-			// pass-on other props with new colors
-			const mergeProps = {...otherProps, colors: themeColors}
+):React.FC<P & {colors: ComponentTheme, theme: string}> => ({
+  colors, theme, ...otherProps
+}) => {
+    // override theme colors provided by props
+    let themeColors = getThemeColors(theme)
+    themeColors = assign(themeColors, colors)
+    // pass-on other props with new colors
+    const mergeProps = {...otherProps, colors: themeColors}
 
-			return <WrappedComponent {...mergeProps as P} />
-		}
-	}
+		return <WrappedComponent {...mergeProps as P} />
 }
 
 export default StyleWrapper
