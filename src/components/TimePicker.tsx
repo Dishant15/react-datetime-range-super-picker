@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { isNaN, padStart } from 'lodash'
+import { isEmpty, isNaN, padStart } from 'lodash'
 
 import ClockFace from './ClockFace'
 
@@ -73,19 +73,16 @@ const TimeTitleWrapper = ({
   const [resHour, setHour] = useState(hour)
   const [resMinute, setMinute] = useState(minute)
   const [resMeridiem, setMeridiem] = useState(meridiem)
+  const [errors, setErrors] = useState({}) // { hour: false, min: false }
 
   const { formatted } = generateTimeOutput({ hour, minute, meridiem }, time_format)
 
   const handleHourChange = useCallback((e) => {
-    const newHour = Number(e.target.value)
-    // validate hour is a number
-    if (!isNaN(newHour) && newHour < 23 && newHour > 0) setHour(newHour)
+    setHour(e.target.value)
   }, [])
 
   const handleMinuteChange = useCallback((e) => {
-    const newMinute = Number(e.target.value)
-    // validate minute is a number
-    if (!isNaN(newMinute) && newMinute < 60 && newMinute >= 0) setMinute(newMinute)
+    setMinute(e.target.value)
   }, [])
 
   const handleMeridiemChange = useCallback((e) => {
@@ -93,19 +90,33 @@ const TimeTitleWrapper = ({
   }, [])
 
   const handleTimeChange = useCallback(() => {
-    onTimeUpdate({ hour: resHour, minute: resMinute, meridiem: resMeridiem })
+    let errors = {}
+    if (!validHour(String(resHour))) errors['hour'] = true
+    if (!validMinute(String(resMinute))) errors['min'] = true
+    if (!isEmpty(errors)) {
+      // error in input
+      setErrors(errors)
+      return
+    }
+    // update data
+    onTimeUpdate({
+      hour: Number(resHour),
+      minute: Number(resMinute),
+      meridiem: resMeridiem
+    })
+    setErrors({})
     setEdit(false)
   }, [resHour, resMinute, resMeridiem])
 
   if (edit) {
     return (
       <div className={styles.time_edit}>
-        <input placeholder="HH"
-          value={resHour} className={styles.time_edit_input}
+        <input type="number" placeholder="HH"
+          value={resHour} className={getInputClass('hour', errors)}
           onChange={handleHourChange} />
         <div className={styles.time_edit_colon}>:</div>
-        <input placeholder="MM"
-          value={resMinute} className={styles.time_edit_input}
+        <input type="number" placeholder="MM"
+          value={resMinute} className={getInputClass('min', errors)}
           onChange={handleMinuteChange} />
         <select defaultValue={resMeridiem}
           className={[styles.time_edit_input, styles.time_edit_select].join(' ')}
@@ -128,4 +139,41 @@ const TimeTitleWrapper = ({
       {formatted || '-- : -- AM'}
     </div>
   )
+}
+
+// update input class based on field error
+const getInputClass = (
+  fieldName: string,
+  errors: {
+    hour?: boolean,
+    min?: boolean
+  }) => {
+  return [
+    styles.time_edit_input,
+    errors[fieldName] && styles.time_edit_input_error
+  ].join(' ')
+}
+
+// validate hour
+const validHour = (hour: string): boolean => {
+  // empty string handle
+  if (!!hour.trim()) {
+    // number validation
+    let newHour = Number(hour)
+    return !isNaN(newHour) && newHour <= 12 && newHour > 0
+  } else {
+    return false
+  }
+}
+
+// validate minute
+const validMinute = (minute: string): boolean => {
+  // empty string handle
+  if (!!minute.trim()) {
+    // number validation
+    let newMinute = Number(minute)
+    return !isNaN(newMinute) && newMinute < 60 && newMinute >= 0
+  } else {
+    return false
+  }
 }
