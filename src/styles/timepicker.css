@@ -142,6 +142,22 @@
   width: 3em;
 }
 
+.time_edit_input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.time_edit_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number].time_edit_input {
+  -moz-appearance: textfield;
+}
+
+.time_edit_input_error {
+  border: 1px solid red !important;
+}
+
 .time_edit_select {
   width: 4em;
   margin-left: 1em;
