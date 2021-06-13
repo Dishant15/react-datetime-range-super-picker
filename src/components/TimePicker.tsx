@@ -76,6 +76,7 @@ const TimeTitleWrapper = ({
   const [errors, setErrors] = useState({}) // { hour: false, min: false }
   
   useEffect(() => {
+    // handle props update
     setHour(hour)
     setMinute(minute)
     setMeridiem(meridiem)
@@ -96,11 +97,11 @@ const TimeTitleWrapper = ({
   }, [])
 
   const handleTimeChange = useCallback(() => {
-    let errors = {}
-    if (!validHour(String(resHour))) errors['hour'] = true
-    if (!validMinute(String(resMinute))) errors['min'] = true
+    let errors = {};
+    if (!validHour(String(resHour))) errors['hour'] = true;
+    if (!validMinute(String(resMinute))) errors['min'] = true;
+    // error in input
     if (!isEmpty(errors)) {
-      // error in input
       setErrors(errors)
       return
     }
@@ -108,7 +109,8 @@ const TimeTitleWrapper = ({
     onTimeUpdate({
       hour: Number(resHour),
       minute: Number(resMinute),
-      meridiem: resMeridiem
+      meridiem: Number(resHour) > 12
+        ? "PM" : resMeridiem,
     })
     setErrors({})
     setEdit(false)
@@ -166,7 +168,7 @@ const validHour = (hour: string): boolean => {
   if (!!hour.trim()) {
     // number validation
     let newHour = Number(hour)
-    return !isNaN(newHour) && newHour <= 12 && newHour > 0
+    return !isNaN(newHour) && newHour <= 23 && newHour >= 0
   } else {
     return false
   }
