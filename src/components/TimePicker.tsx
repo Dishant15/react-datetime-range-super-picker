@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { isEmpty, isNaN, padStart } from 'lodash'
 
 import ClockFace from './ClockFace'
@@ -74,6 +74,12 @@ const TimeTitleWrapper = ({
   const [resMinute, setMinute] = useState(minute)
   const [resMeridiem, setMeridiem] = useState(meridiem)
   const [errors, setErrors] = useState({}) // { hour: false, min: false }
+  
+  useEffect(() => {
+    setHour(hour)
+    setMinute(minute)
+    setMeridiem(meridiem)
+  }, [hour, minute, meridiem])
 
   const { formatted } = generateTimeOutput({ hour, minute, meridiem }, time_format)
 
@@ -118,7 +124,7 @@ const TimeTitleWrapper = ({
         <input type="number" placeholder="MM"
           value={resMinute} className={getInputClass('min', errors)}
           onChange={handleMinuteChange} />
-        <select defaultValue={resMeridiem}
+        <select value={resMeridiem}
           className={[styles.time_edit_input, styles.time_edit_select].join(' ')}
           onChange={handleMeridiemChange}>
           <option value="AM" >AM</option>
