@@ -81,8 +81,11 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 		const {weekStartsOn, colors,  otherDateRangeIndex,
 			showRangeTrace, traceStatus} = this.props;
 
-		const week_header_list = getWeekList(weekStartsOn)
-		const day_obj_list = getDayList(day, month, year, weekStartsOn)
+		const week_header_list = getWeekList(weekStartsOn);
+		const day_obj_list = getDayList(day, month, year, weekStartsOn);
+		const todayRangeIndex = createRangeIndex(
+			new Date().getDate(), new Date().getMonth(), new Date().getFullYear()
+		);
 
 		let minRangeIndex:number = 0, maxRangeIndex:number = 0;
 		// create min max selected range end points of our current range
@@ -136,9 +139,12 @@ export default class DatePicker extends React.Component<DatePickerProps, DatePic
 										curr_day.rangeIndex < maxRangeIndex && 
 										curr_day.rangeIndex > minRangeIndex) {
 										// range between hovered date and selected From date
-										if(traceStatus==='T') cell_type = 'border'
+										if(traceStatus==='T') cell_type = 'border';
 										// range between From date and To date
-										else if(traceStatus==='A') cell_type = 'solid'
+										else if(traceStatus==='A') cell_type = 'solid';
+									}
+									else if (curr_day.rangeIndex == todayRangeIndex) {
+										cell_type = 'border-dotted';
 									}
 									
 									const day_styles = getCalenderCellColors(colors, cell_type)
