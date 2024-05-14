@@ -31,7 +31,7 @@
 
 .hand_wrapper {
   position: absolute;
-  top: calc((var(--clock-size) / 2));
+  top: calc(var(--clock-size) / 2);
   width: calc(var(--clock-size) / 2);
   height: var(--clock-hand-height);
   transform-origin: left;
